@@ -1,12 +1,11 @@
-baseurl = "/"
+baseurl = "https://www.example.com/"
 languageCode = "en-us"
-title = "Dados Aleatórios"
+title = "Blackburn Theme Demo"
 theme = "blackburn"
-author = "Bruno Lucian"
+author = "Yoshiharu Yamashita"
 copyright = "&copy; 2016. All rights reserved."
 canonifyurls = true
 paginate = 10
-math = true
 
 [indexes]
   tag = "tags"
@@ -14,10 +13,10 @@ math = true
 
 [params]
   # Shown in the home page
-  subtitle = "Dados Aleatórios"
-  brand = ""
-  googleAnalytics = ""
-  disqus = ""
+  subtitle = "A Hugo Theme"
+  brand = "Blackburn"
+  googleAnalytics = "Your Google Analytics tracking ID"
+  disqus = "Your Disqus shortname"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006, 15:04"
@@ -37,13 +36,13 @@ math = true
     identifier = "post"
     url = "/post/"
   [[menu.main]]
-    name = "Sobre"
+    name = "About"
     pre = "<i class='fa fa-user fa-fw'></i>"
     weight = 3
     identifier = "about"
     url = "/about/"
   [[menu.main]]
-    name = "Contato"
+    name = "Contact"
     pre = "<i class='fa fa-phone fa-fw'></i>"
     weight = 4
     url = "/contact/"
@@ -51,9 +50,9 @@ math = true
 [social]
   # Link your social networking accouns to the side menu
   # by entering your username or ID.
-  twitter = "dadosaleatorios"
-  facebook = "dadosaleatorios"
+  twitter = "*"
+  facebook = "*"
   instagram = "*"
-  github = "dadosaleatorios"
+  github = "yoshiharuyamashita"
   stackoverflow = "*"
   linkedin = "*"
