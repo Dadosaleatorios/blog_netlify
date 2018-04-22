@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Modelagem Preditiva: Aprendendo a partir dos dados &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Modelagem Preditiva: Aprendendo a partir dos dados</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>02 Jan 2016, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <nav>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#mas-então-a-máquina-faz-tudo-e-não-é-necessária-nenhum-tipo-de-intervenção-humana">Mas então a máquina faz tudo e não é necessária nenhum tipo de intervenção humana?</a></li>
+<li><a href="#ok-parece-legal-mas-como-isso-pode-me-ajudar">Ok, parece legal, mas como isso pode me ajudar?</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>Em 2013 <a href="http://example.com/">foi publicada uma reportagem pela Forbes</a> onde era afirmado que machine learning era a disciplina mais popular de Stanford com 760 alunos inscritos. E o motivo pelo qual esta disciplina se tornou popular é simples: porquê machine learning funciona bem no mundo real. Ainda que machine learning seja uma área bem ampla e com diversas aplicações, existe uma especialmente interessante: A modelagem preditiva.</p>
+
+<p>Predição é um dos assuntos mais intrigantes e que despertam o interesse e curiosidade humana. Desde o início dos tempos desejamos fazer predições: a condição climática para saber se o dia será propício a caça, os oráculos prevendo o futuro e as datas em que acontecerá a cheia do Rio Nilo, são exemplos de que esta sempre acompanhou os seres humanos. E utilizando técnicas de modelagem preditiva, é possível estimar predições de forma eficiente.</p>
+
+<p>Modelagem preditiva é uma subárea de estudo em machine learning que tem como objetivo a generalização de um sistema que seja capaz de gerar as melhores predições possíveis. Um sistema pode ser definido como qualquer coisa que recebe uma entrada e gera uma saída, por exemplo se a temperatura está alta (dados de entrada) a venda de sorvetes tende a aumentar (saída).</p>
+
+<p><img src="https://dadosaleatorios.files.wordpress.com/2016/01/c4276-machine_learning2b252812529.png" alt="" /></p>
+
+<p>Podemos definir aprendizado como um processo de estimação de um sistema utilizando um número limitado de observações. Podemos dividir este problema em 3 componentes:</p>
+
+<ul>
+<li>Um conjunto de dados de entrada;</li>
+<li>Um sistema que, dado uma entrada, retorna uma saída;</li>
+<li>Learning Machine (máquina de aprendizado) que estima a relação entre a entrada e a saída do sistema.
+Voltando ao caso do sorvete, posso não saber exatamente como é este sistema de temperatura -&gt; venda de sorvete, mas se durante muito tempo forem coletadas amostras de temperatura e quantidade de sorvete vendido, pode-se obter uma estimativa de como é esta relação, sendo assim possível a realização da predição da venda de sorvetes dado a temperatura diária.</li>
+</ul>
+
+<h6 id="mas-então-a-máquina-faz-tudo-e-não-é-necessária-nenhum-tipo-de-intervenção-humana">Mas então a máquina faz tudo e não é necessária nenhum tipo de intervenção humana?</h6>
+
+<p>Errado. Na verdade muitas das etapas envolvidas em um projeto de data science utilizando modelagem preditiva necessita de intervenção humana. Definição do problema, seleção de variáveis, forma de representação dos dados e conhecimentos sobre o negócio são exemplos de coisas a serem observadas. E não é nem necessário citar que caso os dados de entrada sejam escolhidos de forma incorreta então o método de aprendizado será comprometido.</p>
+
+<p>Mas em contrapartida a partir do momento que o modelo está estimado e validado, o processo de predição é completamente automatizado. De forma genérica, os projetos envolvendo machine learning possuem 2 passos principais</p>
+
+<p><strong>(1)</strong> Aprendizado da relação entre os dados de entrada e a saída do sistema através de amostras.
+<strong>(2)</strong> Utilização da dependência estimada em (1) para a realização de predição para futuros dados de entrada.</p>
+
+<h6 id="ok-parece-legal-mas-como-isso-pode-me-ajudar">Ok, parece legal, mas como isso pode me ajudar?</h6>
+
+<p>Modelagem preditiva está presente em quase todos os lugares, embora nem sempre pareça óbvio. Segue aqui algumas aplicações presentes no dia a dia.
+**
+**<strong>Recomendação</strong>
+Sabe aquela estranha sensação de intimidade que você possui com serviços como Netflix em relação aos filmes sugeridos porquê você assistiu um outro filme? Tudo isso é graças a <a href="http://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited">algoritmos bem eficientes de modelagem</a> que aprendem a partir do seu comportamento e o de outros milhões de usuários.
+**
+**<strong>Predição de preço de aluguéis</strong>
+O <a href="http://nerds.airbnb.com/aerosolve">Airbnb possui uma ferramenta de machine learning</a> que auxilia usuário do site que desejam disponibilizar alugueis de quartos. A ferramenta é capaz de estimar valores para a locação dos imóveis utilizando como dados de entrada diversos atributos, incluindo as fotos publicadas no anúncio.
+**
+**<strong>Detecção de spam e filtros de e-mail</strong>
+Detecção de spam é umas das aplicações mais antigas e clássicas de problema envolvendo machine learning. A ideia central é utilizar as palavras contidas no e-mail para classificar a mensagem como spam ou não. Uma <a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36955.pdf">aplicação recente feita pelo Google</a> é a categorização das mensagens em diferentes filtros (social, promoções, atualizações, &hellip;).
+**
+**<strong>Detecção de fraude</strong>
+Ao solicitar crédito ou fazer alguma compra, um modelo de risco calcula a probabilidade de que, dado o perfil informado, a pessoa seja fraudadora ou inadimplente. Existem tecnologias que utilizam diversas fontes de dados, como comportamento de navegação, redes sociais e histórico de transações.
+**
+**<strong>OCR e reconhecimento de escrita</strong>
+OCR (optical character recognition - reconhecimento de caractere óptico) é uma tecnologia capaz de reconhecer caracteres a partir de imagens. Isto torna possível a digitalização de documentos e a solução de sistemas de captcha também.</p>
+
+<p>Não há a menor dúvida de que, embora não seja novidade, machine learning é uma metodologia mais moderna e presente do que nunca, com diversas subáreas que possuem problemas e soluções próprias - como por exemplo seleção de atributos, clusterização e modelagem preditiva - que são capazes de atingir o estado da arte e por vezes performam melhores que julgadores humanos.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2015-12-09-e-possivel-aumentar-as-chances-na-loteria/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2015-12-09-e-possivel-aumentar-as-chances-na-loteria/">É possível aumentar as chances na loteria?</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2016-01-29-baixando-e-interpretando-sites-ou-como-fazer-backup-do-seu-fotolog-com-r/">Baixando e interpretando sites (ou: como fazer backup do seu fotolog) com R.</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2016-01-29-baixando-e-interpretando-sites-ou-como-fazer-backup-do-seu-fotolog-com-r/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Fazendo múltiplos gráficos com o ggplot2 &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Fazendo múltiplos gráficos com o ggplot2</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>09 Oct 2014, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Fazer múltiplos gráficos de acordo com o nível de uma ou mais variáveis categóricas no ggplot2 é fácil: basta utilizar as funções <a href="http://docs.ggplot2.org/current/facet_grid.html">facet_grid</a> ou <a href="http://docs.ggplot2.org/current/facet_wrap.html">facet_wrap</a>. Com essas funções, tudo que você fizer para um gráfico valerá para todos (tema, títulos, rótulos dos eixos). E nos casos que eu preciso gráficos independentes - não só com configurações diferentes, mas também gráficos de tipos diferentes - como faço?</p>
+
+<p>Infelizmente, o ggplot2 não possui suporte para esse tipo de gráfico. Felizmente, os pacotes grid e o gridExtra acrescentam esse suporte. Através da função arrangeGrob do pacote gridExtra podemos fazer uma &lsquo;matriz&rsquo; de gráficos - dividimos a área gráfica em X linhas e Y colunas - sendo que cada gráfico será um elemento da matriz. A função ainda apresenta alguns parâmetros possibilitando , entra outras coisas, acrescentar um título geral aos gráficos e notas de rodapé.</p>
+
+<p><img src="https://dadosaleatorios.files.wordpress.com/2014/10/57907-201010092b-2bgrafico2b1.png" alt="" /></p>
+
+<p>Entretanto, há alguns casos em que queremos dar destaque para algum gráfico, deixando-o maior que os demais. No pacote graphics do R, podemos fazer isso com a função <a href="http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/layout.html">layout</a>, mas ele não funciona para gráficos do ggplot2. Procurando na internet, encontrei <a href="http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/">essa função</a>, que permite darmos esse destaque a alguns gráficos. Seu funcionamento é praticamente igual ao da função layout, mudando apenas que os gráficos e o layout são informados na mesma função, e não em momentos diferentes como ocorre na função original.</p>
+
+<p>Para darmos o destaque devemos informar à função qual o formato que queremos dos gráficos através do parâmetro layout, que deve ser uma matriz com números de 1 a N, onde N é o número de gráficos. Por exemplo, para reproduzirmos os mesmos 4 gráficos anteriores, mas dando ênfase ao primeiro - colocando ele numa linha inteira só para ele, e os demais dividindo uma segunda linha - o parâmetro layout seria:</p>
+
+<pre><code>&gt; matrix(c(1, 1, 1, 2, 3, 4), nrow = 2, byrow = TRUE)&lt;br&gt;&lt;/br&gt;     [,1] [,2] [,3]&lt;br&gt;&lt;/br&gt;[1,]    1    1    1&lt;br&gt;&lt;/br&gt;[2,]    2    3    4&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Ou seja: o primeiro gráfico ocupará uma linha inteira (3 colunas), enquanto os 3 gráficos seguintes ocuparão a segunda linha, cada um com uma coluna. Note que o número informado na matriz representa a ordem que os gráficos são passados à função.</p>
+
+<p><img src="https://dadosaleatorios.files.wordpress.com/2014/10/5378c-201010092b-2bgrafico2b2.png" alt="" /></p>
+
+<p>Infelizmente a função não nos permite acrescentar textos após os gráficos (o título que aparece é o título do 1° gráfico, e não um título geral), mas já é de grande ajuda. Dúvidas, críticas ou sugestões? Deixe seu comentário!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2014-10-08-alterando-a-escala-dos-eixos-no-ggplot2/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2014-10-08-alterando-a-escala-dos-eixos-no-ggplot2/">Alterando a escala dos eixos no ggplot2</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2014-11-05-ordenando-o-grafico-de-barras-no-ggplot/">Ordenando o gráfico de barras no ggplot</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2014-11-05-ordenando-o-grafico-de-barras-no-ggplot/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

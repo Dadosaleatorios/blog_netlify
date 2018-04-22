@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Medindo a semelhança (ou diferença) entre duas palavras distintas &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Medindo a semelhança (ou diferença) entre duas palavras distintas</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>19 Aug 2014, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Há quem diga que, caso existam opções de não se trabalhar com strings, deve-se optar por estas escolhas. Como problemas podemos citar falta de estruturas/padrões a serem seguidos, difícil manipulação, erros de tabulação e por aí vai. Sim, é uma lista grande. Porém existem alguns algoritmos que prometem acabar com algumas destas dificuldades (ou ao menos tornar o problema um pouco mais simples, pelo menos ao ponto de ser trabalhável) e hoje falaremos de um deles, que é o cálculo da <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">distância de edição ou distância de <em>Levenshtein</em></a>.</p>
+
+<p>Uma aplicação imediata da solução proposta é aplicável ao problema de correção ortográfica. Imagine que você conheça todo o vocabulário de palavras possíveis a serem reportadas na sua aplicação - não é um pressuposto absurdo, uma vez que você pode estar trabalhando em um nicho específico, como por exemplo os nomes de todas as ruas de um determinado bairro ou o nome de todas as empresas cadastradas em algum tipo de sistema - então sua aplicação receberá uma palavra qualquer(<em>w)</em> e irá procurar no vocabulário se esta palavra existe. Se não existir, basta calcular a distância de edição para cada uma das outras palavras e pronto, você terá a recomendação de uma possível palavra para aquela que inicialmente foi escrita errada. Para as aplicações que suportam respostas livres mas que não é possível contar com um vocabulário para consulta, pode-se pegar as palavras que aparecem com baixa frequência e tentar uma aproximação da mesma forma, pois espera-se que uma palavra escrita errada não aparecerá muitas vezes, ao menos não com a mesma grafia. Agora precisamos saber o que é exatamente a distância de edição e como podemos calculá-la.</p>
+
+<p>Dado duas palavras (ou sentenças) <em>s1</em> e <em>s2</em>, chamaremos de distância de edição o número mínimo de operações de edição que são necessárias fazer em uma destas palavras para que esta fique igual a outra palavra. As operações de edição permitidas são as seguintes:</p>
+
+<ol>
+<li>Inserir um caractere;</li>
+<li>Deletar um caractere;</li>
+<li>Substituir um caractere por outro caractere;</li>
+</ol>
+
+<p>Deve-se lembrar também que o custo de cada uma destas operações é 1. Na verdade esses custos relacionados costumam ser flexíveis, mas aqui vamos abordar apenas a situação onde as operações possuem o mesmo peso. Por exemplo, qual seria a distância de edição entre as palavras _s1=_LAGARTO e _s2=_LARGATO?</p>
+
+<p><code>L A R G A - T O
+L A - G A R T O
+</code></p>
+
+<p>Seria 2, pois para transformar s2 em s1, devemos tirar o primeiro <em>R</em> (LAGATO) e em seguida adicionar um <em>R</em> entre os caractere <em>A</em> e <em>T</em> (LAGARTO) e a solução para este problema é feito via <a href="http://en.wikipedia.org/wiki/Dynamic_programming">programação dinâmica</a>.</p>
+
+<p>Para solucionar o problema, a ideia é quebrar o problema principal em subproblemas menores, e usar um <a href="http://en.wikipedia.org/wiki/Backtracking">backtracking</a> para calcular a solução ótima. O algoritmo irá preencher uma matriz <em>m</em> com dimensão igual ao tamanho de cada uma das duas strings e para cada célula de <em>m</em>, calcular o valor da célular <em>m[i,j]</em>, sendo <em>i</em> os primeiros i-ésimos caracteres da primeira palavra e <em>j</em> os j-ésimos caracteres da segunda palavra. Logo a distância da substring _s1<em>i</em> e _s2<em>j</em> é <code>_m[i,j]=_min(1+m[i-1, j], 1+m[i, j-1], m[i-1, j-1] + dij)</code>, onde dij é uma variável que assume valor 1 se _s1<em>i[i]</em> é igual a _s2<em>j[j]</em> e zero caso contrário. Apresentamos o algoritmo abaixo. É importante notar que o valor de <em>m[i,j]</em> significa fazer uma daquelas três operações descritas acima. Logo abaixo, apresentamos o algoritmos - em python - que faz o cálculo da distância de edição entre duas strings.</p>
+
+<pre><code>import numpy&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;def edit_distance(s1, s2):&lt;br&gt;&lt;/br&gt;    s1_len = len(s1)&lt;br&gt;&lt;/br&gt;    s2_len = len(s2)&lt;br&gt;&lt;/br&gt;    E = numpy.zeros(shape=(s1_len+1,s2_len+1))&lt;br&gt;&lt;/br&gt;    for i in range(s1_len):&lt;br&gt;&lt;/br&gt;        E[i, 0] = i&lt;br&gt;&lt;/br&gt;    for j in range(s2_len):&lt;br&gt;&lt;/br&gt;        E[0, j] = j&lt;br&gt;&lt;/br&gt;    for i in range(s1_len):&lt;br&gt;&lt;/br&gt;        i += 1&lt;br&gt;&lt;/br&gt;        for j in range(s2_len):&lt;br&gt;&lt;/br&gt;            j += 1&lt;br&gt;&lt;/br&gt;            diff_i_j = 0 if s1[i-1] == s2[j-1] else 1&lt;br&gt;&lt;/br&gt;            E[i, j] = numpy.min([1+E[i-1, j], 1+E[i, j-1], E[i-1, j-1] + diff_i_j])&lt;br&gt;&lt;/br&gt;    return E[s1_len, s2_len]&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Porém certamente nem tudo são flores, pois ainda que a distância de edição possa se mostrar útil para identificar e corrigir possíveis erros de digitação, dificilmente poderá ser implementada em um sistema de alta performance, uma vez que o custo computacional para o cálculo é razoavelmente alto. Nestes casos existem algumas alternativas, como por exemplo as <em><a href="http://nlp.stanford.edu/IR-book/html/htmledition/wildcard-queries-1.html">wildcards queries</a></em>.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2014-08-07-visualizando-grandes-bancos-de-dados/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2014-08-07-visualizando-grandes-bancos-de-dados/">Visualizando grandes bancos de dados</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2014-08-28-quanto-e-0-1-0-2/">Quanto é 0.1 &#43; 0.2 ?</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2014-08-28-quanto-e-0-1-0-2/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

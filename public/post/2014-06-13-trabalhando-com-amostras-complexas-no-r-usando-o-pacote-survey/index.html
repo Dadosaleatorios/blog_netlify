@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Trabalhando com amostras complexas no R: usando o pacote survey &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Trabalhando com amostras complexas no R: usando o pacote survey</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>13 Jun 2014, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Ao contrário da amostra aleatória simples, nos planos amostrais complexos as unidades amostrais (geralmente, pessoas) possuem probabilidades diferentes de serem amostradas quando comparadas com outras unidades amostrais e, devido a isso, todas as análises realizadas sobre amostras complexas devem levar em consideração a probabilidade de cada um dos indivíduos amostrados. Nessa postagem, mostrarei como utilizar o pacote survey, que permite a realização de inferências e análises em amostras complexas. Para tal, utilizarei os dados da amostra do Censo de 2010.</p>
+
+<h3 id="como-assim-amostra-do-censo">Como assim, amostra do censo?!</h3>
+
+<p>Como já precisei explicar mais de uma vez, acho que vale a pena explicar aqui também: paralelo ao censo demográfico - onde todas as pessoas respondem o mesmo questionário, o IBGE desenvolve também uma pesquisa amostral, onde um determinado percentual de domicílios são sorteados e todos os moradores desse domicílio respondem, além do questionário do universo, um questionário mais longo e detalhado (coloquei os questionários no meu <a href="http://goo.gl/gK3l2k">Drive</a>). Esse percentual varia de cidade para cidade, sendo que em 2010 um total de 6.192.332 (10,67%) domicílios foram amostrados. Os 2 questionários possuem perguntas em comum, o que permite, após juntar os setores censitários em Áreas de Expansão dos Dados da amostra (AEDs), calcular pesos para cada uma das unidades amostrais (tanto domicílio quanto pessoas). Maiores detalhes sobre a metodologia usada podem ser encontrados na documentação disponibilizada pelo IBGE <a href="ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Resultados_Gerais_da_Amostra/Microdados/Documentacao.zip">aqui</a>.</p>
+
+<h3 id="ta-mas-qual-é-o-delineamento-e-como-incorporar-ele-às-análises">Ta, mas qual é o delineamento? E como incorporar ele às análises?</h3>
+
+<p>Infelizmente não existe (ou eu não encontrei) um documento do IBGE que deixe claro qual é o delineamento amostral utilizado. Depois de um tempo pesquisando, conclui que, para domicílios é uma amostra estratificada (onde os estratos são as AEDs) e, para pessoas é uma amostra em cluster estratificada em 1 etapa (onde os estratos são as AEDs e os clusters as residências). Há ainda outros dois bancos disponibilizados nos microdados: o de emigrantes e o de pessoas falecidas. Os dados podem ser baixados <a href="ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Resultados_Gerais_da_Amostra/Microdados/">aqui</a>. Alguns municípios tiveram as suas AEDs alteradas após a primeira publicação, e seus novos microdados encontram-se <a href="ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Resultados_Gerais_da_Amostra_areas_de_ponderacao/Municipios_com_areas_de_ponderacao_redefinidas/microdados_%2014_municipios_com_areas_redefinidas.zip">aqui</a>. Para os exemplos, utilizarei os de Porto Alegre, que está entre os 14 municípios que tiveram suas AEDs alteradas.</p>
+
+<p>Após carregar os dados (e aplicar os labels das variáveis de interesse) e o pacote survey, devemos informar o delineamento amostral. Tanto para domicílio quanto para pessoas, o comando para definir o delineamento utilizado é:</p>
+
+<p>amostra &lt;- svydesign(ids = ~ V0300,  strata = ~ V0011, weights = ~ V0010, fpc = ~ FPC, data = dados)</p>
+
+<p>No parâmetro ids informamos os clusters, identificados através da variável V0300 (no layout dos dados, disponível junto com a documentação, ela é identificada como variável controle), que é um valor único para cada residência amostrada. No parâmetro strata informamos os estratos, identificados pela variável V0011, que é o código das áreas de ponderação. O IBGE fornece o peso amostral de cada unidade amostral (com precisão de 13 decimais!) na variável V0010, que é informado pelo parâmetro weights. Por fim, informo a população de cada estrato através do parâmetro fpc (Finite Population Correction), sendo o único parâmetro não dado no banco disponibilizado pelo IBGE, se fazendo necessário a sua obtenção através da soma dos pesos de todas unidades amostrais do estrato.</p>
+
+<h3 id="e-as-análises">E as análises?</h3>
+
+<p>O pacote apresenta uma série de análises já corrigidas para diversos delineamentos amostrais. Por exemplo, podemos fazer uma tabela de frequência através do svytable(~ V0633, design = amostra). Para calcular uma média, podemos utilizar svymean(~ V6525, amostra, na.rm = TRUE). Caso queiramos calcular a média de acordo com os fatores de uma variável categória, podemos utilizar o <a href="http://r-survey.r-forge.r-project.org/survey/html/svyby.html">svyby()</a>, que é uma versão do by() para objetos do pacote survey, ficando assim  svyby(~ V6525, ~ V0633, amostra, svymean, na.rm = TRUE). Note que esses 2 comandos retornam também o erro padrão da estimativa (SE). É possível realizar alguns testes estatísticos também, como o Teste-t (<a href="http://r-survey.r-forge.r-project.org/survey/html/svyttest.html">svyttest()</a>), Qui-quadrado (<a href="http://r-survey.r-forge.r-project.org/survey/html/svychisq.html">svychisq()</a>) e até mesmo ANOVA (<a href="http://r-survey.r-forge.r-project.org/survey/html/svyglm.html">svyglm()</a>), entre outros. Disponibilizei também no meu <a href="http://goo.gl/gK3l2k">Drive</a> alguns exemplos de análises utilizando os dados de Porto Alegre, junto com o comando de leitura do banco disponibilizado.</p>
+
+<p>Dúvidas? Críticas? Sugestões? Deixe seu comentário!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2014-05-30-interagindo-com-o-usuario-no-r/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2014-05-30-interagindo-com-o-usuario-no-r/">Interagindo com o usuário no R</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2014-06-27-participacao-nas-eleicoes-de-2010/">Participação nas eleições de 2010</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2014-06-27-participacao-nas-eleicoes-de-2010/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

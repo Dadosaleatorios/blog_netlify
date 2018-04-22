@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Lendo arquivos OFX no R &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Lendo arquivos OFX no R</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>14 Sep 2016, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Há um tempo atrás, a Nubank (se você não sabe o que é Nubank, deveria) postou em sua página que era possível exportar as faturas fechadas, para serem levadas a programas de organização financeira. Apesar de não usar nenhum programa do tipo, resolvi dar uma olhada no arquivo disponibilizado. Admito que esperava encontrar um arquivo amigável e de fácil manipulação no R, ou até mesmo no Excel. Mas o que encontrei foi um arquivo no formato OFX.</p>
+
+<p>O formato OFX (<a href="http://www.ofx.org/">Open Financial Exchange</a>) foi criado em 1997, visando criar um padrão de arquivos para troca de informações financeira, seja entre instituições, seja entre instituição e cliente. Pesquisando um pouco sobre o formato, descobri que ele é baseado em XML - ótimo, o R lê arquivos XML através de diversos pacotes. Mas infelizmente eles não funcionaram - não pesquisei muito sobre as diferenças entre OFX e XML, mas acredito que seja devido ao OFX permitir que tags não sejam fechadas, enquanto todas tags XML devem ser fechadas, entre outras diferenças. Procurando na internet encontrei <a href="http://www.cdata.com/kb/tech/ofx-odbc-r.rst">esse ODBC Driver</a>, que possibilita a leitura de arquivos OFX com o pacote RODBC. Por não ser gratuito, nem tentei utilizar e fui para o plano B: fazer meu próprio código.</p>
+
+<p>A função parse_OFX() está disponível no meu <a href="https://github.com/rcoster/R/blob/master/parse_OFX.r">GitHub</a> (junto tem também um <a href="https://github.com/rcoster/R/blob/master/Exemplo.ofx">arquivo OFX de exemplo</a>), e seu uso é bastante simples: parse_OFX(readLines(&lsquo;C:/Exemplo.ofx&rsquo;)). Ela é toda baseada em expressões regulares (regex), que nos permite procurar por padrões de caracteres em strings. Segue a explicação dos principais padrões utilizados:</p>
+
+<p>/<strong>^</strong>[^&lt;]*****<strong>|</strong>[^ &gt;]*****<strong>$</strong>/ - Para remover todos caracteres antes da primeira tag e depois da última.</p>
+
+<ul>
+<li><p>1a alternativa: ^[^&lt;]*</p>
+
+<ul>
+<li><p>^ -  Indica que deve ser no início da string</p></li>
+
+<li><p>[^&lt;]* - casa qualquer caractere diferente (^) de &lt;, em qualquer quantidade (*)</p></li>
+</ul></li>
+
+<li><p>2a alternativa: [^ &gt;]*$</p>
+
+<ul>
+<li><p>[^ &gt;]* - casa qualquer caractere diferente (^) de &gt;, em qualquer quantidade (*)</p></li>
+
+<li><p>$ - Indica que deve ser no final da string</p></li>
+</ul></li>
+</ul>
+
+<p>]*&gt;: - Para localizar todas as tags</p>
+
+<ul>
+<li><p>&lt; - casa com o caractere &lt;</p></li>
+
+<li><p>[^/&gt;]*- casa qualquer caractere diferente (^) de &gt; e /, em qualquer quantidade</p></li>
+
+<li><blockquote>
+<ul>
+<li>casa com o caractere &gt;</li>
+</ul>
+</blockquote></li>
+</ul>
+
+<p>.<em>? - Para localizar início e fim de tags (o %s e %1$s é substituído por uma tag através do sprintf(), no exemplo: .</em>?)</p>
+
+<ul>
+<li><ul>
+<li>casa com a string</li>
+</ul></li>
+
+<li><p>.<em>? - casa com qualquer caractere, em qualquer quantidade (</em>), mas a menor possível (?)</p></li>
+
+<li><ul>
+<li>casa com a string</li>
+</ul></li>
+</ul>
+
+<p>A explicação desses 3 padrões é suficiente para entender os demais padrões utilizados no comando. Outra explicação importante sobre exressão regular é o comando utilizado, que possuem diferentes funções:</p>
+
+<ul>
+<li>gsub(): Permite realizar substituições de strings que se encaixam no padrão informado</li>
+<li>grepl(): Indica se o padrão informado está presente na string</li>
+<li>gregexpr(): Informa a posição que o padrão foi encontrado dentro da string, além do comprimento dele.
+Após ler o arquivo OFX, ainda é possível transformar a fatura em um data.frame, para facilitar as análises e gráficos, através do comando:</li>
+</ul>
+
+<p><code>do.call(rbind, mapply(as.data.table, tail(dados$OFX$CREDITCARDMSGSRSV1$CCSTMTTRNRS$CCSTMTRS$BANKTRANLIST, -2), SIMPLIFY = FALSE))</code></p>
+
+<p>Único detalhe é que tudo é lido como string e, ao transformar em data.frame, eles viram fatores - incluindo os valores das operações!</p>
+
+<p>A ideia desta postagem era mostrar um pouco mais sobre o quão poderosas são as funções do R de expressões regulares, e incentivar quem não utiliza a dar uma olhada nelas. Dúvida? Sugestões? Deixe seu comentário!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2016-03-13-coletando-dados-do-facebook/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2016-03-13-coletando-dados-do-facebook/">Coletando dados do Facebook</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2017-01-22-identificando-emocoes-em-fotos/">Identificando emoções em fotos</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2017-01-22-identificando-emocoes-em-fotos/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

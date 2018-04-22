@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Inserindo tabelas no LaTex de forma dinâmica &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Inserindo tabelas no LaTex de forma dinâmica</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>17 Dec 2013, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Para aqueles que já trabalharam com geração de números aleatórios, a situação a seguir pode ser rotineira: Você escreve um script e sempre que o executa gera outputs diferentes. Caso esteja usando uma semente para a geração destes número aleatórios talvez o problema não seja tão grave, mas se por algum motivo a aleatoriedade for importante então escrever resultados sobre isso pode ser um problema.</p>
+
+<p>Imagine a seguinte situação: Você gera um bocado de números aleatórios, calcula uma série de estatísticas e escreve um belo texto sobre todas elas. Mas depois você percebe que podia ter feito algo a mais. Desta forma, lá se inicia o ciclo vicioso sem prazo para término. Caso exista algo a mais a ser feito então isso irá significar uma longa e torturante sessão, executando os mesmos códigos para inserir tabelas, gerar gráficos e etc. Mas aqui estamos nós para mostrar-lhe que existe uma opção de deixar o torturante trabalho mais agradável (e fácil).</p>
+
+<p>A motivação deste post é deixar claro uma filosofia de vida a ser seguida. Perder tempo com coisas banais (como por exemplo ficar atualizando uma tabela de valores aleatórios) é perda de tempo e tem como ser evitada, afinal é muito mais interessante e produtivo perder tempo pensando em análises/conclusões sobre os resultados.  E para fazer isso, vamos utilizar o próprio tex e o R. O R será fundamental, pois ele será responsável por gerar as tabelas no formato tex. Obs.: O arquivo .tex e o .R devem estar na mesma pasta.</p>
+
+<p>Então vamos lá. O primeiro passo é criar um arquivo .tex.</p>
+
+<pre><code> % artigo.tex&lt;br&gt;&lt;/br&gt;\documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size&lt;br&gt;&lt;/br&gt;\usepackage{amsfonts}&lt;br&gt;&lt;/br&gt;\usepackage{amssymb}&lt;br&gt;&lt;/br&gt;\usepackage{latexsym}        &lt;br&gt;&lt;/br&gt;\usepackage[utf8]{inputenc}&lt;br&gt;&lt;/br&gt;\usepackage[brazil]{babel}&lt;br&gt;&lt;/br&gt;\usepackage{amsmath,amsthm} % Math packages&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\begin{document}&lt;br&gt;&lt;/br&gt;Um exemplo de documento.&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\end{document}&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Após feito isso e compilar o artigo.tex, teremos um documento não tão bonito, mas funcional. Caso você, caro leitor, tenha um layout mais agradável, pode utilizá-lo sem peso na consciência. Feito isso, vamos ao R criar uma função que recebe um dataframe e gera um arquivo .tex com informações de uma tabela. O primeiro passo é instalar o pacote <em>xtable</em>. Para quem não conhece, o <em>xtable</em> é capaz de transformar um dataframe do R em uma tabela tex. E tudo isso em um passe de mágica.</p>
+
+<p>Então tudo que deve ser feito é pegar o dataframe com as estatísticas que você precisa calcular, imprimi-lo em um arquivo de texto, e anexá-lo ao tex. A função abaixo recebe um dataframe, o transforma em uma tabela e salva com um devido nome.</p>
+
+<pre><code class="language-r"># gera_tabela.R&lt;br&gt;&lt;/br&gt;imprime_tabela = function(dados, nome_arquivo)&lt;br&gt;&lt;/br&gt;{&lt;br&gt;&lt;/br&gt;    dataframe_tex = xtable::xtable(dados)&lt;br&gt;&lt;/br&gt;    sink(nome_arquivo)&lt;br&gt;&lt;/br&gt;    print(dataframe_tex)&lt;br&gt;&lt;/br&gt;    sink()&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;imprime_tabela(head(cars), 'teste.tex')&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Se chamarmos &ldquo;_imprime<em>tabela(head(cars), &lsquo;teste.tex&rsquo;)</em>&rdquo;, será gerado, no seu diretório de trabalho um arquivo com o nome de <em>teste.tex</em> e com as primeiras seis linhas do dataset cars. A geração deste arquivo, é feita utilizando a função <em>sink()</em> que cria um arquivo e tudo que é impresso pelo R também é inserido naquele arquivo (no nosso caso, o arquivo teste.tex). Agora precisamos voltar ao arquivo principal do tex e inserir essa tabela lá de forma que não seja necessário ficar copiando e colando e sim fazer referência a um arquivo que contém a tabela desejada. Basta inserir no arquivo .tex principal o comando \input{nome_da_tabela}, que vai &ldquo;anexar&rdquo; as informações do arquivo no seu conteúdo principal. O novo código seria assim:</p>
+
+<pre><code>% artigo.tex&lt;br&gt;&lt;/br&gt;\documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\usepackage{amsfonts}&lt;br&gt;&lt;/br&gt;\usepackage{amssymb}&lt;br&gt;&lt;/br&gt;\usepackage{latexsym}        &lt;br&gt;&lt;/br&gt;\usepackage[utf8]{inputenc}&lt;br&gt;&lt;/br&gt;\usepackage[brazil]{babel}&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\usepackage{amsmath,amsthm} % Math packages&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\begin{document}&lt;br&gt;&lt;/br&gt;Um exemplo de documento.&lt;br&gt;&lt;/br&gt;\input{teste.tex}&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;\end{document}&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Agora não é mais necessário nos preocuparmos em copiar e colar a tabela toda vez no tex, basta modificar o arquivo teste.tex. Se rodarmos no R, por exemplo  &ldquo;_imprime<em>tabela(tail(cars), &lsquo;teste.tex&rsquo;)</em>&rdquo; e compilarmos o tex novamente, a tabela será atualizada automáticamente.</p>
+
+<p>Isso é tudo que é preciso fazer para gerar conteúdo sem a preocupação de atualizar toda vez que fizer uma modificação. Basta pensar que é necessário apenas alterar o conjunto de dados no script R e executar novamente. Com isso, todas as tabelas serão atualizadas. No exemplo dado talvez isto não tenha sido perceptível, mas em projetos maiores pode ser um verdadeiro quebra galho. Em um futuro próximo, iremos ensinar como inserir dinâmicamente outputs do R, é claro seguindo a mesma lógica. É interessante explorar trambém as opções do <em>xtable</em>, como por exemplo a inserção de <em>\captions</em>, <em>\labels</em> e etc.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2013-12-07-integrando-r-e-julia-em-um-mesmo-ambiente/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2013-12-07-integrando-r-e-julia-em-um-mesmo-ambiente/">Integrando R e Julia em um mesmo ambiente</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/">Enviando mensagens automáticas para o seu amigo oculto</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

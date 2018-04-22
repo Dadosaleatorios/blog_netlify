@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Integrando R e Julia em um mesmo ambiente &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Integrando R e Julia em um mesmo ambiente</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>07 Dec 2013, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Já faz algum tempo que muito se fala sobre a performance da linguagem Julia. Volta e meia são apresentados benchmarks de algoritmos implementados em Julia e, comparados a outras linguagens, apresenta uma performace bem superior, sendo até mesmo comparado as compilações feitas em C. Em contrapartida, pobre R, sempre sendo associado a baixa performance e alto consumo de memória, entretanto é uma das linguagens mais simples de se aprender com grande facilidade de manipulação das estruturas de dados presentes. Será que não seria possível unir as duas linguagens (alta performace de Julia e facilidade de manipulação do R) em um mesmo ambiente?</p>
+
+<p>A resposta é sim. Na verdade a forma que será apresentada é bem razoável de ser pensada. Basta escrever um código .jl e chamá-lo no terminal passando os argumentos necessários para a chamada daquela função. E temos que fazer isso diretamente do R.</p>
+
+<p>Antes de tudo, vamos dar um bom motivo para fazer isso. Queremos uma função que calcule o valor da série de Fibonacci de um número.</p>
+
+<p>A seguir, os códigos escritos em R e em Julia.</p>
+
+<pre><code class="language-r"># fibonacci.R&lt;br&gt;&lt;/br&gt;fib = function(n)&lt;br&gt;&lt;/br&gt;{&lt;br&gt;&lt;/br&gt;    ifelse(n &lt; 2, n, fib(n - 1) + fib(n - 2))&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;
+
+ # fibonacci.jl&lt;br&gt;&lt;/br&gt;fib(n) = n &lt; 2 ? n : fib(n - 1) + fib(n - 2) &lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Logo após calcular o Fibonacci de 30 em cada um das linguagens começamos a entender o real propósito de tudo. A chamada da função em R leva cerca de 1 minuto e 40 segundos enquanto que em Julia apenas 10 segundos, logo seria algo próximo de 10 vezes mais rápido. Sabemos que existem formas mais eficientes de calcular o Fibonacci de um número, mas este não é o propósito aqui, queremos apenas testar o desempenho das duas linguagens com um mesmo código.</p>
+
+<p>Então para rodar o código Julia em R como teríamos de fazer? Basicamente temos que rodar o código Julia no R e uma opção para isso é usar a função <strong>system</strong> que nada mais faz do que executar a uma string que é passada como parâmetro, então se por exemplo passamos como argumento a string &ldquo;julia fibonacci.jl&rdquo; o R iria executar o script fibonacci.jl. Porém queremos mais que isso, desejamos não apenas executar o script, mas também passar o parâmetro de qual o valor da série de Fibonacci desejamos calcular.</p>
+
+<p>O primeiro passo é instalar o pacote ArgParse no ambiente Julia. Para isso basta executar no ambiente o seguinte comando: Pkg.add(&ldquo;ArgParse&rdquo;). Com isso o pacote será baixado e instalado. O segundo passo é criar um arquivo &ldquo;executa_fibonacci.jl&rdquo; que será responsável por ler os argumentos no terminal e chamar o script &ldquo;fibonacci.jl&rdquo;. A seguir apresentamos o código.</p>
+
+<pre><code class="language-r"> # executa_fibonacci.jl&lt;br&gt;&lt;/br&gt;using ArgParse&lt;br&gt;&lt;/br&gt;require(&quot;fibonacci.jl&quot;)&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;s = ArgParseSettings()&lt;br&gt;&lt;/br&gt;@add_arg_table s begin&lt;br&gt;&lt;/br&gt;    &quot;--n&quot;&lt;br&gt;&lt;/br&gt;        help = &quot;valor do serie de fibonacci que queremos calcular&quot;&lt;br&gt;&lt;/br&gt;        required = true&lt;br&gt;&lt;/br&gt;end&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;pargs = parse_args(ARGS, s) &lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;println(fib(float(pargs[&quot;n&quot;])))&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Na primeira linha estamos carregando o pacote ArgParse, aquele que acabamos de instalar. Aqui temos duas tarefas principais: Uma é criar o ArgParseSettings que nada mais é um objeto que contém todas as configurações a serem utilizadas e a outra é preenchê-la com argumentos permitidos. No nosso exemplo estou dizendo que existe apenas a variável _n _e que obrigatoriamente tem que ser preenchida. A seguir, utilizamos a função parse_args, que é o carro-chefe do pacote. O que ela faz é receber um vetor de argumentos e um objeto ArgParseSettings e parseia os argumentos passado via terminal de acordo com aquela configuração forncecida. A saída é um dicionário com as chaves iguais aos nomes dos argumentos e valores iguais ao que é passado no terminal. Após feito isso, podemos chamar nosso script passando o argumento de qual número queremos, como por exemplo: julia executa_fibonacci.jl &ndash;n 30 , que no caso irá calcular o Fibonacci de n=30.</p>
+
+<p>Agora precisamos fazer uma função no R que vai chamar a função _executa<em>fibonacci.jl .</em></p>
+
+<pre><code class="language-r"> # executa_fibonacci.R&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;fib = function(n)&lt;br&gt;&lt;/br&gt;{&lt;br&gt;&lt;/br&gt;    comando = sprintf(&quot;julia executa_fibonacci.jl --n %s&quot;, n)&lt;br&gt;&lt;/br&gt;    saida = system(comando, intern=T)&lt;br&gt;&lt;/br&gt;    return(as.numeric(saida))&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Para que funcione, basta que seja possível &ldquo;gerar comandos para serem executados no terminal&rdquo; de forma dinâmica. Basta concatenar _julia executa<em>fibonacci.jl &ndash;n</em> com um número qualquer, e é isso que o sprintf faz. A seguir o system executa este comando e o argumento _intern=T _faz com que o output seja retornado como string.</p>
+
+<p>Após testar esta função, podemos perceber que o tempo de execução cai bastante, passando para apenas 20 segundos, o que é uma grande vantagem, uma vez que o código em Julia não tem nada de esperto e caso fosse uma grande simulação esta diferença de tempo poderia ser facilmente contornada com uma simples implementação.</p>
+
+<p><strong>Obs.:</strong> Parece que Julia tem um problema de slowdown ao ser executado, e é isto que faz o código demorar mais que deveria.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/">Uma primeira experiência com a linguagem Julia</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2013-12-17-inserindo-tabelas-no-latex-de-forma-dinamica/">Inserindo tabelas no LaTex de forma dinâmica</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2013-12-17-inserindo-tabelas-no-latex-de-forma-dinamica/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

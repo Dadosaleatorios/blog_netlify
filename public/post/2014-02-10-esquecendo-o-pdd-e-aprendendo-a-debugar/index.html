@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Esquecendo o PDD e aprendendo a debugar &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Esquecendo o PDD e aprendendo a debugar</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>10 Feb 2014, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Já faz algum tempo em que eu via as pessoas programaram em C++ com a utilização do Visual Studio, famosa IDE da Microsoft. Nesta época eu tinha a tarefa de transcrever algumas metodologias estatística em pseudo-código para que as mesmas fossem implementadas por algum desenvolvedor em C++. Até aí nada demais, mas volta e meia o código quebrava e lá começava-se o ciclo vicioso na procura de onde estava o erro - e um detalhe importante: o código era complexo, grande parte das ferramentas tinham sido implementadas - e pensando assim, achar onde estava o erro seria um verdadeiro pesadelo.</p>
+
+<p>Porém o Visual Studio contava com uma ferramenta bem conhecida já por desenvolvedores, e pouco aproveitada pelos usuários um pouco menos hardcores, que é o modo debug. Lá funcionava da seguinte forma: O desenvolvedor escolhia alguns pontos onde ele desejava explorar o valor de variáveis locais e mandava o programa executar, então com isso ele seria possível executar linha a linha em tempo real explorando cada uma daquelas variáveis que estavam sendo criada ou alteradas. E isto era simplesmente fantástico !</p>
+
+<p>Geralmente a tática utilizada pelos usuários menos experientes é o famoso PDD(Print Driven Development) que significa mais ou menos o seguinte: Se deu algum erro, imprime um monte de coisa. É provável que neste processo você se perca no meio de tanta informação impressa. E neste post vamos ensinar uma alternativa ao PDD. Antes de tudo, nada contra o PDD. Eu mesmo fui um forte usuário desta famosa técnica por muito tempo, antes de descobrir como debugar códigos, porém temos que confirmar que o trabalho de inserir vários <em>prints</em> e depois removê-los é bem árduo. Então só o trabalho economizado ao não inserir/apagar estes <em>prints</em> já vale a pena, na minha opinião. Para quem utiliza o Revolution R ou o RStudio, estes já possuem um modo de debug incluso na IDE, então é mais fácil ainda.</p>
+
+<p>Mas afinal, o que significa debugar um código? Podemos dizer de forma grosseira que debugar um código é executá-lo e explorá-lo em tempo real. Então vamos a um exemplo simples.
+Uma função que recebe um inteiro e um múltiplo, então retorna todos os números até aquele inteiro multiplicado pelo múltiplo.</p>
+
+<pre><code>calcula_multiplos = function(tamanho, multiplo)&lt;br&gt;&lt;/br&gt;{&lt;br&gt;&lt;/br&gt;    vetor_multiplo = c()&lt;br&gt;&lt;/br&gt;    for(iesimo in seq(tamanho))&lt;br&gt;&lt;/br&gt;    {&lt;br&gt;&lt;/br&gt;        iesimo_multiplo = iesimo * multiplo&lt;br&gt;&lt;/br&gt;        vetor_multiplo = c(vetor_multiplo, iesimo_multiplo)&lt;br&gt;&lt;/br&gt;    } &lt;br&gt;&lt;/br&gt;    vetor_multiplo&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>É uma função simples, que aproveitando as propriedades vetoriais do R, sequer precisaria de um for para isso. Mas a intenção é aqui é mostrar como funciona o debug mode. Para acessar a ferramenta, precisamos em primeiro caso, ativar a função como debug mode.</p>
+
+<pre><code> debug(calcula_multiplos)&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Feito isso, sempre que a função for executada, o modo debug será ativado. Com isso, o modo browser será aberto e a função será executada linha a linha. Em cada passo, os seguintes comandos podem ser dados:</p>
+
+<p>####</p>
+
+<ul>
+<li>n : Avança para a próxima linha.</li>
+<li>c : Avança para o próximo bloco. Em termos práticos significa avançar o loop ou seguir para a próxima função, caso tenha funções aninhadas.</li>
+<li>cont : Mesma coisa que o c.</li>
+<li>where : Indica em que ponto do código você está.</li>
+<li>Q : sai do modo browser e volta ao prompt de comando do R.</li>
+</ul>
+
+<p>Um detalhe interessante é que se você executar a função ls() de dentro do prompt, serão exibidos apenas os objetos que pertencem aquele ambiente, diferentemente do ls() normal, onde é exibido o ambiente global do R. Então para a nossa função anterior, aqui vai um exemplo de como seria o debug mode.</p>
+
+<pre><code> calcula_multiplos(3, 7)&lt;br&gt;&lt;/br&gt;calcula_multiplos(3, 7)&lt;br&gt;&lt;/br&gt;debugging in: calcula_multiplos(3, 7)&lt;br&gt;&lt;/br&gt;debug at #2: {&lt;br&gt;&lt;/br&gt;    vetor_multiplo = c()&lt;br&gt;&lt;/br&gt;    for (iesimo in seq(tamanho)) {&lt;br&gt;&lt;/br&gt;        iesimo_multiplo = iesimo * multiplo&lt;br&gt;&lt;/br&gt;        vetor_multiplo = c(vetor_multiplo, iesimo_multiplo)&lt;br&gt;&lt;/br&gt;    }&lt;br&gt;&lt;/br&gt;    vetor_multiplo&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;debug at #3: vetor_multiplo = c()&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;debug at #4: for (iesimo in seq(tamanho)) {&lt;br&gt;&lt;/br&gt;    iesimo_multiplo = iesimo * multiplo&lt;br&gt;&lt;/br&gt;    vetor_multiplo = c(vetor_multiplo, iesimo_multiplo)&lt;br&gt;&lt;/br&gt;}&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;debug at #4: iesimo&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;debug at #6: iesimo_multiplo = iesimo * multiplo&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;debug at #7: vetor_multiplo = c(vetor_multiplo, iesimo_multiplo)&lt;br&gt;&lt;/br&gt;Browse[2]&gt; iesimo_multiplo&lt;br&gt;&lt;/br&gt;[1] 7&lt;br&gt;&lt;/br&gt;Browse[2]&gt; where&lt;br&gt;&lt;/br&gt;where 1: calcula_multiplos(3, 7)&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;Browse[2]&gt; &lt;br&gt;&lt;/br&gt;debug at #4: iesimo&lt;br&gt;&lt;/br&gt;Browse[2]&gt; c&lt;br&gt;&lt;/br&gt;debug at #9: vetor_multiplo&lt;br&gt;&lt;/br&gt;Browse[2]&gt; n&lt;br&gt;&lt;/br&gt;exiting from: calcula_multiplos(3, 7)&lt;br&gt;&lt;/br&gt;[1]  7 14 21&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Como podem ver, pouca coisa foi executada e explorada. Na verdade apenas em 2 momentos foi realmente utilizado, quando vi quem era o primeiro iesimo_multiplo e quando vi em que ponto da execução estava com o <em>where</em>. Logo depois sai do for e a chamada da função terminou. Feito isso, temos que sair do debug mode, caso contrário sempre que chamarmos a função, o debug mode será executado, e não queremos isso. Se utilizarmos a função _debugonce(calcula_multiplos), _a mesma será debugada apenas uma vez. Caso contrário temos que utilizar a função undebug(calcula_multiplos).</p>
+
+<pre><code> undebug(calcula_multiplos)&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Com isso, sabemos tudo que precisamos para utilizar o debug mode e não mais o PDD, ainda que este seja realmente útil e provavelmente mais simples e intuitivo, porém quando se trata de funções maiores e aninhadas, pode ser um verdeiro pesadelo ficar inserindo e apagando prints, e com debugging você pode, de fato explorar o código, linha a linha para saber o que está acontecendo, uma vez que este é um processo interativo.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2014-02-04-r-e-a-15a-linguagem-mais-utilizada-segundo-redmonk/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2014-02-04-r-e-a-15a-linguagem-mais-utilizada-segundo-redmonk/">R é a 15ª linguagem mais utilizada, segundo RedMonk</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/">Quer aprender a programar em python? Veja aqui 8 dicas que irão lhe ajudar</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

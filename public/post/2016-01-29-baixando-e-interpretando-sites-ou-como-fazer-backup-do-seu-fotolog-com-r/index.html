@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37.1" />
+
+  <title>Baixando e interpretando sites (ou: como fazer backup do seu fotolog) com R. &middot; Dados Aleatórios</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>Sobre</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contato</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/dadosaleatorios" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/dadosaleatorios" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/*" target="_blank"><i class="fa fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/*" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dadosaleatorios" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://stackoverflow.com/users/*" target="_blank"><i class="fa fa-stack-overflow fa-fw"></i>Stack Overflow</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Baixando e interpretando sites (ou: como fazer backup do seu fotolog) com R.</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>29 Jan 2016, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Se você usava a internet no início dos anos 2000, muito provavelmente teve - ou quis ter - um <a href="https://en.wikipedia.org/wiki/Fotolog">Fotolog</a>. Como o próprio nome diz, era um blog voltado a fotografia, onde as pessoas podiam postar 1 foto por dia (ou 6, caso pagasse). Em 01/01/2016, o Fotolog encerrou suas atividades sem aviso prévio, gerando uma comoção nos mais saudosistas, voltando ao em final de janeiro com um aviso de que o site ficaria mais um mês online, permitindo que as pessoas fizessem backup. E agora que entra a parte de R da postagem.</p>
+
+<p>Como já mostramos em <a href="http://www.dadosaleatorios.com.br/2015/10/r-tambem-pode-ser-diversao.html">outras postagens</a>, o R é uma linguagem de programação bastante poderosa e versátil, podendo ser utilizada para coisas além da estatística. Por ser a única linguagem que eu domino (e por ter mais de 500 fotos no Fotolog), resolvi fazer uma função em R para fazer um backup dele, salvando foto, descrição e comentários. Pelo site ser bastante antigo, ele não possui uma <a href="https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es">API</a> que facilitasse a minha vida, e com isso tive que interpretar a página do Fotolog com as ferramentas que o R disponibiliza, mais especificamente, com expressão regular.</p>
+
+<p><a href="https://pt.wikipedia.org/wiki/Express%C3%A3o_regular">Expressão regular</a> (ou regex, para os mais íntimos) é - resumidamente - uma maneira de localizar sequencias de caracteres em strings, de forma bastante flexível. A grande &lsquo;mágica&rsquo; nas ER é que você pode procurar por padrões de caracteres, informando desde possíveis caracteres, o que deve (ou não deve) anteceder/suceder esses caracteres, quantidades, entre outras características do texto procurado. Caso você trabalha com bancos de dados que tenham string e se interessa por somente uma parte delas, aconselho fortemente a aprender ER. O help do R (?gsub) é um bom começo pois possui vários exemplos e o site <a href="https://regex101.com/">regex101</a> permite que você teste elas em tempo real, além de listar todas as opções de tokens.</p>
+
+<p>As funções que criei para fazer o backup estão no meu <a href="https://github.com/rcoster/blog/blob/master/2016_01_29%20-%20Backup%20fotolog.R">Git</a>, e são bastante simples (as instruções estão nas primeiras linhas). Acredito que elas serão de pouco uso para a maioria dos leitores do blog - até porque em 1 mês elas não funcionarão mais - mas ficam como sugestão de leitura para entender um pouco mais sobre ER - temos em mente fazermos uma postagem detalhada sobre elas, além de exemplificar algumas APIs de redes sociais atuais. Ficou com alguma dúvida? Tem alguma sugestão de postagem? Deixe seu comentário!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/2016-01-02-modelagem-preditiva-aprendendo-a-partir-dos-dados/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/2016-01-02-modelagem-preditiva-aprendendo-a-partir-dos-dados/">Modelagem Preditiva: Aprendendo a partir dos dados</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/2016-02-22-primeiros-contatos-com-o-rselenium/">Primeiros contatos com o RSelenium</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/2016-02-22-primeiros-contatos-com-o-rselenium/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+
