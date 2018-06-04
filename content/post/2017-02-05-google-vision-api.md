@@ -45,7 +45,7 @@ O resultado da análise pode ser obtido através do comando content(resultado). 
 #### **LABEL_DETECTION**
 
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg)
+![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg=80x)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
 
