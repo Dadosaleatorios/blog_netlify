@@ -42,67 +42,46 @@ resultado <- httr::POST(url = sprintf("https://vision.googleapis.com/v1/images:a
 
 O resultado da análise pode ser obtido através do comando content(resultado). Dependendo da análise solicitada, o resultado apresenta um score, que varia de 0 a 1 e que quanto mais próximo de 1, mais 'certeza' tem a API do resultado. Abaixo estão alguns exemplos das possibilidade de análises:
 
-**LABEL_DETECTION**
+#### **LABEL_DETECTION**
 
-<p align="center">
+
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg)
-</p>
 
-<p align="center">
 [](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/b35e5-borboleta.jpg)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/fbe71-borboleta2b-2btabela.png)
-</p>
 
-**LANDMARK_DETECTION**
+#### **LANDMARK_DETECTION**
 
-<p align="center">
+
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/e7bd1-serra.jpg)
-</p>
 
-<p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/c0f7c-serra2b-2btabela.png)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/c0f7c-serra2b-2btabela.png)
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/79292-igreja.jpg)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/cafe6-igreja2b-2btabela.png)
-</p>
 
-**TEXT_DETECTION**
-<p align="center">
+#### **TEXT_DETECTION**
+
+
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/37291-carros.jpg)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/bc0dd-carros2b-2btabela.png)
-</p>
 
-<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/3d8b9-cerveja.jpg)
-</p>
 
-<p align="center">
+
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/578ac-cerveja2b-2btabela.png)
-</p>
-
 
 **Além dos dados mostrados, a API também retorna as mesmas informações palavra por palavra.**
 
 
-### **Conclusões**
+## **Conclusões**
 
 De modo geral, o resultado obtido foi satisfatório - a API conseguiu descrever bem as duas primeiras fotos e acertou o local das duas seguintes. O OCR deixou a desejar, principalmente na segunda foto testada. Os códigos utilizados podem ser encontrados no meu [Github](https://github.com/rcoster/blog). Dúvidas? Sugestões? Deixe seu comentário!
 
