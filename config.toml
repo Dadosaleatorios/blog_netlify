@@ -28,13 +28,13 @@ math = true
     name = "Home"
     pre = "<i class='fa fa-home fa-fw'></i>"
     weight = 1
-  #  identifier = "home"
+    identifier = "home"
     url = "/"
   [[menu.main]]
     name = "Posts"
     pre = "<i class='fa fa-list fa-fw'></i>"
     weight = 2
-  # identifier = "post"
+    identifier = "post"
     url = "/post/"
   [[menu.main]]
     name = "Sobre"
