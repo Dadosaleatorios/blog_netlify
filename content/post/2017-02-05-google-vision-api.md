@@ -45,37 +45,58 @@ O resultado da análise pode ser obtido através do comando content(resultado). 
 **LABEL_DETECTION**
 
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg)
+</p>
+
 <p align="center">
-[](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)</p>
+[](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
+</p>
+
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
+</p>
+
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/b35e5-borboleta.jpg)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/b35e5-borboleta.jpg)
+</p>
+
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/fbe71-borboleta2b-2btabela.png)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/fbe71-borboleta2b-2btabela.png)
+</p>
 
 **LANDMARK_DETECTION**
 
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/e7bd1-serra.jpg)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/e7bd1-serra.jpg)
+</p>
+
 <p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0f7c-serra2b-2btabela.png)</p>
+
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/79292-igreja.jpg)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/79292-igreja.jpg)
+</p>
+
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/cafe6-igreja2b-2btabela.png)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/cafe6-igreja2b-2btabela.png)
+</p>
 
 **TEXT_DETECTION**
-
+<p align="center">
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/37291-carros.jpg)
-<p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/bc0dd-carros2b-2btabela.png)</p>
-<p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/3d8b9-cerveja.jpg)</p>
+</p>
 
 <p align="center">
-![](https://dadosaleatorios.files.wordpress.com/2017/02/578ac-cerveja2b-2btabela.png)</p>
+![](https://dadosaleatorios.files.wordpress.com/2017/02/bc0dd-carros2b-2btabela.png)
+</p>
+
+<p align="center">
+![](https://dadosaleatorios.files.wordpress.com/2017/02/3d8b9-cerveja.jpg)
+</p>
+
+<p align="center">
+![](https://dadosaleatorios.files.wordpress.com/2017/02/578ac-cerveja2b-2btabela.png)
+</p>
 
 
 **Além dos dados mostrados, a API também retorna as mesmas informações palavra por palavra.**
