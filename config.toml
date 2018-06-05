@@ -21,6 +21,7 @@ math = true
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006"
+  relativeurls = true
 
 [menu]
   # Shown in the side menu.
