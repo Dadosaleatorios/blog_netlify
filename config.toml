@@ -16,8 +16,8 @@ math = true
   # Shown in the home page
   subtitle = "Dados Aleatórios"
   brand = ""
-  googleAnalytics = ""
-  disqus = ""
+  googleAnalytics = "UA-46346743-1"
+  disqus = "brunolucian"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006"
