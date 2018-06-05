@@ -45,7 +45,7 @@ O resultado da análise pode ser obtido através do comando content(resultado). 
 #### **LABEL_DETECTION**
 
 
-![](/img/vision-api/0824c-foto2bhamburger.png =80x)
+![](/img/vision-api/0824c-foto2bhamburger.png =90x30)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
 
