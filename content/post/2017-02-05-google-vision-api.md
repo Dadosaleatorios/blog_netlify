@@ -44,32 +44,32 @@ O resultado da análise pode ser obtido através do comando content(resultado). 
 
 #### **LABEL_DETECTION**
 
-<img src='/img/vision-api/0824c-foto2bhamburger.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/0824c-foto2bhamburger.png', alt = 'hamburguer', width="800", height="600"/>
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
 
-<img src='/img/vision-api/b35e5-borboleta.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/b35e5-borboleta.png', alt = 'hamburguer', width="800", height="600"/>
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/fbe71-borboleta2b-2btabela.png)
 
 #### **LANDMARK_DETECTION**
 
-<img src='/img/vision-api/e7bd1-serra.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/e7bd1-serra.png', alt = 'hamburguer', width="800", height="600"/>
 
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0f7c-serra2b-2btabela.png)
 
-<img src='/img/vision-api/79292-igreja.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/79292-igreja.png', alt = 'hamburguer', width="800", height="600"/>
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/cafe6-igreja2b-2btabela.png)
 
 #### **TEXT_DETECTION**
 
-<img src='/img/vision-api/37291-carros.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/37291-carros.png', alt = 'hamburguer', width="800", height="600"/>
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/bc0dd-carros2b-2btabela.png)
 
-<img src='/img/vision-api/3d8b9-cerveja.png', alt = 'hamburguer', width="800", height="400"/>
+<img src='/img/vision-api/3d8b9-cerveja.png', alt = 'hamburguer', width="800", height="600"/>
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/578ac-cerveja2b-2btabela.png)
 
