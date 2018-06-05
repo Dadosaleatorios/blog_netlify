@@ -7,6 +7,7 @@ copyright = "&copy; 2016. All rights reserved."
 canonifyurls = true
 paginate = 10
 math = true
+relativeurls = true
 
 [indexes]
   tag = "tags"
@@ -21,7 +22,7 @@ math = true
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006"
-  relativeurls = true
+
 
 [menu]
   # Shown in the side menu.
