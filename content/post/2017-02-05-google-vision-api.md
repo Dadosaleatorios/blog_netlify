@@ -45,33 +45,33 @@ O resultado da análise pode ser obtido através do comando content(resultado). 
 #### **LABEL_DETECTION**
 
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/0824c-foto2bhamburger.jpg =80x40)
+![](/img/vision-api/0824c-foto2bhamburger.png)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0923-hamburger2b-2btabela.png)
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/b35e5-borboleta.jpg)
+![](/img/vision-api/b35e5-borboleta.png)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/fbe71-borboleta2b-2btabela.png)
 
 #### **LANDMARK_DETECTION**
 
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/e7bd1-serra.jpg)
+![](/img/vision-api/e7bd1-serra.png)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/c0f7c-serra2b-2btabela.png)
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/79292-igreja.jpg)
+![](/img/vision-api/79292-igreja.png)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/cafe6-igreja2b-2btabela.png)
 
 #### **TEXT_DETECTION**
 
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/37291-carros.jpg)
+![](/img/vision-api/37291-carros.png)
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/bc0dd-carros2b-2btabela.png)
 
-![](https://dadosaleatorios.files.wordpress.com/2017/02/3d8b9-cerveja.jpg)
+![](/img/vision-api/3d8b9-cerveja.png)
 
 
 ![](https://dadosaleatorios.files.wordpress.com/2017/02/578ac-cerveja2b-2btabela.png)
