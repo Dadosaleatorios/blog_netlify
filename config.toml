@@ -1,4 +1,4 @@
-baseurl = "https://cranky-bassi-25da8f.netlify.com/"
+baseurl = "http://cranky-bassi-25da8f.netlify.com/"
 languageCode = "en-us"
 title = "Dados Aleatórios"
 theme = "blackburn"
