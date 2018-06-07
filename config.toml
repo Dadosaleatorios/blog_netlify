@@ -18,7 +18,7 @@ relativeurls = true
   subtitle = "Dados Aleatórios"
   brand = ""
   googleAnalytics = "UA-46346743-1"
-  disqus = "brunolucian"
+  disqus = "www-dadosaleatorios-com-br"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006"
