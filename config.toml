@@ -44,18 +44,10 @@ relativeurls = true
     weight = 3
     identifier = "about"
     url = "/about/"
-  [[menu.main]]
-    name = "Contato"
-    pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 4
-    url = "/contact/"
 
 [social]
   # Link your social networking accouns to the side menu
   # by entering your username or ID.
   twitter = "dadosaleatorios"
   facebook = "dadosaleatorios"
-  instagram = "*"
   github = "dadosaleatorios"
-  stackoverflow = "*"
-  linkedin = "*"
