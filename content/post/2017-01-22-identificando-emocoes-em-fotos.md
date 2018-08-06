@@ -18,7 +18,7 @@ A Emotion API é bastante simples de ser utilizada, a apresenta apenas 3 opçõe
 
 Os comandos para análise em foto retornam o resultado no momento da solicitação (claro, com um pequeno delay) e o de vídeo retorna um link que deve ser consultado após, e que expira em 24 horas. No final da página de cada um dos comandos há exemplos de como utilizar a API em diversas linguagens de programação. Nesta postagem usaremos somente o R para interagir com a API, através do pacote [httr](https://cran.r-project.org/web/packages/httr/index.html). Para usar as API do MCS, você deve fazer uma conta gratuita e solicitar acesso as APIs desejadas - a quantidade de uso gratuito é limitada, mas para usuários comuns a quota gratuita é mais que suficiente (para a Emotion API, 30.000 solicitações/mês, sendo 20 por minuto). O segundo passo necessário é... escolher uma foto! Essa foto precisa estar hospedada em algum servidor da internet. No nosso exemplo, usaremos a foto do funeral do ministro do STF Teori Zavascki [desta matéria](http://g1.globo.com/politica/noticia/so-depois-que-houver-a-indicacao-do-relator-diz-temer-sobre-nomear-substituto-de-teori.ghtml) do G1.
 
-[![](http://s2.glbimg.com/bfEzi3PTA6GeUEYL3tjBaPJTdp4=/0x0:3500x2141/1000x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2017/01/21/2017-01-21t160532z_228373221_rc1fe25a9a60_rtrmadp_3_brazil-crash.jpg)](http://s2.glbimg.com/bfEzi3PTA6GeUEYL3tjBaPJTdp4=/0x0:3500x2141/1000x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2017/01/21/2017-01-21t160532z_228373221_rc1fe25a9a60_rtrmadp_3_brazil-crash.jpg)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-01.jpg', alt = 'foto_original', width="800", height="600"/>
 
 Foto: REUTERS/Diego Vara TPX IMAGES OF THE DAY
 
@@ -45,24 +45,24 @@ Foto: REUTERS/Diego Vara TPX IMAGES OF THE DAY - A ordem dos rotos é definida p
 
 Identificados os rostos, agora só falta identificar a emoção expressa por ele. Os scores informados estão padronizados no intervalo de 0 a 1, de maneira que a soma de todos é igual a 1. Na figura abaixo está a pontuação de cada uma das 8 emoções analisadas.
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/54496-emocoes.png)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-03.jpg', alt = 'tabela_emocoes', width="800", height="600"/>
 
 Nos 12 rostos identificados, a emoção que mais pontuou foi a de neutralidade, sendo que a segunda que mais pontuou variava entre raiva e tristeza na maioria dos casos. A seguir mais algumas fotos e a tabela da pontuação de cada emoção.
 
 Foto 2: Refugiados
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/d3300-refugiados2b-2bidentificado.jpg)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-04.jpg', alt = 'refugiados', width="800", height="600"/>
 
 Retirado de: http://www.esquerda.net/artigo/refugiados-urgencia-da-solidariedade/44444
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/4d817-emocoes_2.png)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-05.jpg', alt = 'tabela_refugiados', width="800", height="600"/>
 
 Foto 3: Premiação Copa do Mundo
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/5b260-copa2b-2bidentificado.jpg)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-06.jpg', alt = 'alemanha_copa', width="800", height="600"/>
 
 Retirado de: http://www.bbc.co.uk/sport/football/world-cup/2014
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/fe177-emocoes_3.png)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-07.jpg', alt = 'tabela_alemanha', width="800", height="600"/>
 
 E aí, o que achou dessa API? Como podemos ver na última foto, ela ainda tem bastante a evoluir (pelo menos eu acredito que não tenha ninguém com raiva nessa foto, mas vai saber...). Os códigos utilizados na postagem estão no [GitHub](https://github.com/rcoster/blog/blob/master/Identificando%20emo%C3%A7%C3%B5es%20em%20fotos). Em breve estaremos postando como identificar emoções em vídeos com a mesma API. Dúvidas? Sugestões? Deixe seu comentário!
