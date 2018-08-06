@@ -39,7 +39,7 @@ faceEMO <- httr::POST(
 
 O objeto faceEMO é de classe 'response' - não vamos entrar em muitos detalhes sobre essa classe. Para obter o resultado da análise da API, podemos usar o comando content(faceEMO), que nos retornará uma lista com 12 elementos não nominados, sendo cada elemento uma lista de 2 elementos nominados faceRectangle e score - onde ele se localiza na foto e a pontuação de cada emoção. Isso significa que na foto em questão foram identificados 12 faces (o limite da API são 64 faces), sendo que para cada face é informado o retângulo onde ela se encontra e o score de cada emoção analisada (raiva, desprezo, desgosto, medo, felicidade, neutro, tristeza e surpresa). No caso, as faces identificadas foram:
 
-![](https://dadosaleatorios.files.wordpress.com/2017/01/c49f3-foto2btemer2b-2bidentificado.jpg)
+<img src='/img/2017-01-22-identificando-emocoes-em-fotos/imagem-02.jpg', alt = 'faces_identificadas', width="800", height="600"/>
 
 Foto: REUTERS/Diego Vara TPX IMAGES OF THE DAY - A ordem dos rotos é definida pela área do retângulo
 
