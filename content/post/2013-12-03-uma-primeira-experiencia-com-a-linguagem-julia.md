@@ -17,7 +17,7 @@ Inicialmente foi implementada uma solução escrita em R, menos de 20 linhas, e 
 <table cellpadding="0" style="float:right;margin-left:1em;text-align:center;" cellspacing="0" class="tr-caption-container" ><tbody ><tr >
 <td style="text-align:center;" >
 
-<img src='/img/2013-12-09-uma-primeira-experiencia-com-a-linguagem-julia/imagem-01.png', alt = 'dispersao', width="800", height="600"/>
+<img src='/img/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/imagem-01.png', alt = 'dispersao', width="800", height="600"/>
 
 
 </td></tr><tr >
@@ -35,7 +35,7 @@ Apesar de ter conseguido tempos de execuções razoavelmente bons, a grande perg
 
 Bom, e para quem ficou curioso sobre a posição final do grilo, aqui vai um heatmap com a posição (x,y) e a freqûencia.
 
-<img src='/img/2013-12-09-uma-primeira-experiencia-com-a-linguagem-julia/imagem-02.png', alt = 'plot_cor', width="800", height="600"/>
+<img src='/img/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/imagem-02.png', alt = 'plot_cor', width="800", height="600"/>
 
 Os códigos fontes nas diversas linguagens podem ser achados [aqui](https://github.com/djongs/Grasshopper-Jumps).
 
