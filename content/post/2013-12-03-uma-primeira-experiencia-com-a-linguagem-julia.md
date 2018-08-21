@@ -12,18 +12,18 @@ Imaginem a seguinte situação: Existe um grilo no jardim e o mesmo pula de form
 
 Uma das muitas opções de resolver este problema (e acredito que a mais simples) é simular os respectivos pulos do grilo muitas vezes e ver onde foi a posição final. Simples assim.
 
-Inicialmente foi implementada uma solução escrita em R, menos de 20 linhas, e como era de esperar, o desempenho não foi um dos pontos fortes (demorou cerca de 30 minutos). Então veio a assombrosa pergunta que paira a cabeça de
+Inicialmente foi implementada uma solução escrita em R, menos de 20 linhas, e como era de esperar, o desempenho não foi um dos pontos fortes (demorou cerca de 30 minutos). Então veio a assombrosa pergunta que paira a cabeça de todos: Tem como fazer melhor? E é claro, a resposta é sim !
 
 <table cellpadding="0" style="float:right;margin-left:1em;text-align:center;" cellspacing="0" class="tr-caption-container" ><tbody ><tr >
 <td style="text-align:center;" >
 
-![](https://dadosaleatorios.files.wordpress.com/2013/12/caminhoaleatorio.png)
+<img src='/img/2013-12-09-uma-primeira-experiencia-com-a-linguagem-julia/imagem-01.png', alt = 'dispersao', width="800", height="600"/>
+
 
 </td></tr><tr >
 <td style="text-align:center;" class="tr-caption" >Um exemplo do grilo dando 5 pulos.
 </td></tr></tbody></table>
 
-todos: Tem como fazer melhor? E é claro, a resposta é sim !
 
 Sobre a implementação em si não teria muito o que mudar, afinal o código já não tinha nenhum _for_ ou _while, _todas as operações ou eram vetoriais ou estavam sendo feitas com a utilização de funções de alta ordem (os famosos _applys_). Então tive a ideia de executar o código em paralelo, utilizando os muitos núcleos de um HPC (_High Performance Computer_) que tenho acesso. A adaptação foi relativamente simples, dado que o código já estava utilizando os _applys. _Tudo que tinha que ser feito era trocar o _lapply_ por um _mclapply (_que faz parte do pacote _multicore). _Adaptações feitas. No meu modesto computador utilizando 4 cores, o código passou a demorar 17 minutos ! Bela melhora, pensei. O próximo passo foi executar o código diretamente no _HPC, _afinal lá_ _teria acesso a 12 _cores_. O novo tempo? 5 minutos ! Surpreendente, pensei. Estava simulando 100.000 vezes o grilo pulando 1.000 vezes. Isto dá um total de 100 milhões de operações pelo menos. Então novamente veio a pergunta a cabeça: Dá para fazer melhor? Inicialmente pensei em implementar o problema utilizando Python, mas foi neste momento que lembrei da linguagem [Julia](http://julialang.org/), que era tão comentada por sua incrível performance em computação científica.
 
@@ -35,7 +35,7 @@ Apesar de ter conseguido tempos de execuções razoavelmente bons, a grande perg
 
 Bom, e para quem ficou curioso sobre a posição final do grilo, aqui vai um heatmap com a posição (x,y) e a freqûencia.
 
-![](https://dadosaleatorios.files.wordpress.com/2013/12/posicaofinal.png)
+<img src='/img/2013-12-09-uma-primeira-experiencia-com-a-linguagem-julia/imagem-02.png', alt = 'plot_cor', width="800", height="600"/>
 
 Os códigos fontes nas diversas linguagens podem ser achados [aqui](https://github.com/djongs/Grasshopper-Jumps).
 
