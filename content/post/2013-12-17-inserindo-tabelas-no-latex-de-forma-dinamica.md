@@ -16,19 +16,58 @@ A motivação deste post é deixar claro uma filosofia de vida a ser seguida. Pe
 
 Então vamos lá. O primeiro passo é criar um arquivo .tex.
 
-     % artigo.tex<br></br>\documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size<br></br>\usepackage{amsfonts}<br></br>\usepackage{amssymb}<br></br>\usepackage{latexsym}        <br></br>\usepackage[utf8]{inputenc}<br></br>\usepackage[brazil]{babel}<br></br>\usepackage{amsmath,amsthm} % Math packages<br></br><br></br>\begin{document}<br></br>Um exemplo de documento.<br></br><br></br>\end{document}<br></br>
+     % artigo.tex
+     \documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size
+     \usepackage{amsfonts}
+     \usepackage{amssymb}
+     \usepackage{latexsym}        
+     \usepackage[utf8]{inputenc}
+     \usepackage[brazil]{babel}
+     \usepackage{amsmath,amsthm} % Math packages
+     
+     \begin{document}
+     Um exemplo de documento.
+     
+     \end{document}
+     
 
 Após feito isso e compilar o artigo.tex, teremos um documento não tão bonito, mas funcional. Caso você, caro leitor, tenha um layout mais agradável, pode utilizá-lo sem peso na consciência. Feito isso, vamos ao R criar uma função que recebe um dataframe e gera um arquivo .tex com informações de uma tabela. O primeiro passo é instalar o pacote _xtable_. Para quem não conhece, o _xtable_ é capaz de transformar um dataframe do R em uma tabela tex. E tudo isso em um passe de mágica.
 
 Então tudo que deve ser feito é pegar o dataframe com as estatísticas que você precisa calcular, imprimi-lo em um arquivo de texto, e anexá-lo ao tex. A função abaixo recebe um dataframe, o transforma em uma tabela e salva com um devido nome.
 
 ```r
-# gera_tabela.R<br></br>imprime_tabela = function(dados, nome_arquivo)<br></br>{<br></br>    dataframe_tex = xtable::xtable(dados)<br></br>    sink(nome_arquivo)<br></br>    print(dataframe_tex)<br></br>    sink()<br></br>}<br></br><br></br>imprime_tabela(head(cars), 'teste.tex')<br></br><br></br>
+# gera_tabela.R
+imprime_tabela = function(dados, nome_arquivo){
+  dataframe_tex = xtable::xtable(dados)
+  sink(nome_arquivo)
+  print(dataframe_tex)
+  sink()
+}
+
+imprime_tabela(head(cars), 'teste.tex')
+
+
 ```
 
 Se chamarmos "_imprime_tabela(head(cars), 'teste.tex')_", será gerado, no seu diretório de trabalho um arquivo com o nome de _teste.tex_ e com as primeiras seis linhas do dataset cars. A geração deste arquivo, é feita utilizando a função _sink()_ que cria um arquivo e tudo que é impresso pelo R também é inserido naquele arquivo (no nosso caso, o arquivo teste.tex). Agora precisamos voltar ao arquivo principal do tex e inserir essa tabela lá de forma que não seja necessário ficar copiando e colando e sim fazer referência a um arquivo que contém a tabela desejada. Basta inserir no arquivo .tex principal o comando \input{nome_da_tabela}, que vai "anexar" as informações do arquivo no seu conteúdo principal. O novo código seria assim:
 
-    % artigo.tex<br></br>\documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size<br></br><br></br>\usepackage{amsfonts}<br></br>\usepackage{amssymb}<br></br>\usepackage{latexsym}        <br></br>\usepackage[utf8]{inputenc}<br></br>\usepackage[brazil]{babel}<br></br><br></br>\usepackage{amsmath,amsthm} % Math packages<br></br><br></br>\begin{document}<br></br>Um exemplo de documento.<br></br>\input{teste.tex}<br></br><br></br>\end{document}<br></br>
+    % artigo.tex
+    \documentclass[paper=a4, fontsize=11pt]{article} % A4 paper and 11pt font size
+    
+    \usepackage{amsfonts}
+    \usepackage{amssymb}
+    \usepackage{latexsym}        
+    \usepackage[utf8]{inputenc}
+    \usepackage[brazil]{babel}
+    
+    \usepackage{amsmath,amsthm} % Math packages
+    
+    \begin{document}
+    Um exemplo de documento.
+    \input{teste.tex}
+    
+    \end{document}
+    
 
 Agora não é mais necessário nos preocuparmos em copiar e colar a tabela toda vez no tex, basta modificar o arquivo teste.tex. Se rodarmos no R, por exemplo  "_imprime_tabela(tail(cars), 'teste.tex')_" e compilarmos o tex novamente, a tabela será atualizada automáticamente.
 
