@@ -21,7 +21,7 @@ Inicialmente foi implementada uma solução escrita em R, menos de 20 linhas, e 
 
 
 </td></tr><tr >
-<td style="text-align:center;" class="tr-caption" >Um exemplo do grilo dando 5 pulos.
+<td style="text-align:center;" class="tr-caption" ><b>Um exemplo do grilo dando 5 pulos.</br>
 </td></tr></tbody></table>
 
 
