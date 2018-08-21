@@ -29,7 +29,7 @@ Algum tempo se passou, veio a vontade de enviar uma mensagem anônima. Porém es
 
 Para a criação do bot, foi utilizada a linguagem Python. O motivo: A grandiosa biblioteca [requests](http://docs.python-requests.org/en/latest/) e suas facilidades. O primeiro passo é fazer o login. Então vamos analisar o que acontece ao fazer o login no site. Se você usa o Google Chrome, basta apertar botão direito > Inspecionar Elemento. Se você usar o Firefox pode usar o plugin do [Firebug](https://addons.mozilla.org/pt-br/firefox/addon/firebug/) ou apenas apertar o botão direito > Inspecionar Elemento e de certa forma o processo é o mesmo utilizando ambas as plataformas. Feito isso, abra a aba Networks e marque a opção de preservar o log da navegação. Vá para a tela de login do [amigosecreto.com.br](http://www.amigosecreto.com.br/) e preencha suas informações de login, então sua aba Network será parecida com a minha, postada logo abaixo.
 
-<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-02.png', alt = 'Network', width="800", height="300"/>
+<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-02.png', alt = 'Network', width="800", height="250"/>
 
 Então podemos ver algumas coisas aí. A primeira é que existe uma página /login.asp e lá dentro temos um Form Data com os campos 'origem', 'origem_string', 'destino', 'email' e 'senha'. As 3 primeiras informações são as mesmas para todos, as duas últimas serão as suas informações pessoais, que embora esteja em branco, na sua tela você estará vendo justamente suas informações de login.
 
