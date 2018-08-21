@@ -50,19 +50,19 @@ Nos campos EMAIL e SENHA você deve botar suas informações pessoais. /login.as
 
 Agora precisamos começar a coletar as informações de usuários/grupos. Após fazer login, a primeira coisa que fazemos é clicar em um dos grupos que estamos participando, então ao clicar no grupo, o seguinte formulário aparece.
 
-<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-03.png', alt = 'formulario', width="800", height="200"/>
+<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-03.png', alt = 'formulario', width="900", height="250"/>
 
 Então podemos ver que, ao clicar, acontece um redirecionamento (_http://www.amigosecreto.com.br/load-grupo.asp?grupo_cod=56694_) para uma página referente aquele grupo, no meu caso o código é 56694. Isso faz com que seja possível acessar as informações dentro do grupo desejado. No website é possível ver as mensagens enviadas para todos e também uma aba de nosso interesse, que é a aba de 'mensagens'. Mais uma vez, vamos ver o que acontece ao clicar nesta aba.
 
-<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-04.png', alt = 'Network', width="800", height="200"/>
+<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-04.png', alt = 'Network', width="900", height="250"/>
 
 Assim como anteriormente, mais um redirecionamento. Porém desta vez para _http://www.amigosecreto.com.br/grupo-msg.asp . _Agora estamos quase chegando lá, afinal falta apenas ver onde é o local onde acontece o envio de mensagens para a pessoa desejada (no caso, a pessoa que eu tirei). Então clicando em "Quem eu tirei" iremos para a página alvo. Esta página de mensagens é muito importate, pois caso deseje enviar mensagens para outras pessoas, o ponto de partida é este.
 
-<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-05.png', alt = 'mensagem', width="800", height="200"/>
+<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-05.png', alt = 'mensagem', width="900", height="250"/>
 
 Com isso, somos levados a página _http://www.amigosecreto.com.br/grupo-msg-quem-eu-tirei.asp_ . E enviando uma mensagem de teste pelo site, podemos ver claramente o que acontece de forma a conseguir reproduzir utilizando uma linguagem de programação.
 
-<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-06.png', alt = 'Quem_tirei', width="800", height="200"/>
+<img src='/img/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/imagem-06.png', alt = 'Quem_tirei', width="900", height="250"/>
 
 Estamos enviando um formulário com 3 campos ("quem_eu_tirei", "quem_me_tirou" e "amigo_mensagem_secreta") para _http://www.amigosecreto.com.br/grupo-msg-quem-eu-tirei.asp_ . Os 2 primeiros campos devem ser obrigatoriamente preenchidos com "quem_eu_tirei"=1 e "quem_me_tirou"=0, já em "amigo_mensagem_secreta" deve-se escrever a mensagem que se deseja enviar, que no exemplo acima foi "Duvido advinhar quem sou eu !". A seguir mostramos uma implementação em Python dos passos descritos anteriormente.
 
