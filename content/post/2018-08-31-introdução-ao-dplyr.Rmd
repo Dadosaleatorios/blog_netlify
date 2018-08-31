@@ -25,10 +25,8 @@ Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recome
 
 ```{r eval = F}
 install.packages("tidyverse")
-# Ou
-install.packages("dplyr")
 
-require(tidyerse) #ou require(dplyr)
+require(tidyerse)
 ```
 
 ```{r echo = F, message=FALSE, warning=FALSE}
@@ -45,4 +43,12 @@ starwars
 
 Já podemos ver que não estamos lidando com um `data.frame` tradicional. Este é um `tibble`, que é, basicamente, um data.frame com uma série de modificações. A propósito, [`tibble`](https://tibble.tidyverse.org/) é outro pacote do `tidyverse`. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final.
 
-Nesse `tibble` temos então, para 87 personagens de Star Wars, informações de nome, altura, massa, cor de cabelo, pele, dos olhos, idade na batalha de Yavin (quando os rebeldes destruíram a primeira estrela da morte), gênero, mundo natal, espécie, lista de filmes onde o personagem aparece, 
+Nesse `tibble` temos então, para 87 personagens de Star Wars, informações de nome, altura, massa, cor de cabelo, pele, dos olhos, idade na batalha de Yavin (quando os rebeldes destruíram a primeira estrela da morte), gênero, mundo natal, espécie, lista de filmes onde o personagem aparece, lista de veículos que o personagem pilotou e lista de naves que o personagem pilotou. Perceba que usei a palavra 'lista' nessas três ultimas informações, isso porque essas colunas são realmente listas. Podemos, então, ter um `tibble` onde colunas são listas.
+
+Também podemos utilizar a função `glimpse`, do pacote `tibble`, para visualizar a tabela de outra maneira. A função é carregada ao ativar o `dplyr`. Observe que o `glimpse` também mostra o número de linhas e colunas, além de mostrar a classe das colunas e alguns valores dessas colunas.
+
+```{r}
+glimpse(starwars)
+```
+
+Apesar de a concepção de `data.frame` do `tidyverse` ser o `tibble`, é perfeitamente possível utilizar suas funções com um `data.frame`. Para, porém, transformar um `data.frame` em um `tibble`, basta usar a função `as_tibble` (ou `as_data_frame`).
