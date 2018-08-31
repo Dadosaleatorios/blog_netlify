@@ -4,14 +4,14 @@ require(tidyverse)
 #criando script que captura imagens dos post antigos
 
 posts <- list.files("content/post/", pattern = "*.md")
-
+i = 49
 for(i in 18:52){
 
-  texto <- readLines(paste0("content/post/",posts[i]), encoding = "utf-8")
+  texto <- readLines(paste0("content/post/", posts[i]), encoding = "utf-8")
   
   imagens <- grep("jpg|png", texto, value = T)
   
-  dir.create(paste0("static/img/", str_replace(posts[i], ".md", "")))
+  # dir.create(paste0("static/img/", str_replace(posts[i], ".md", "")))
 
   if(length(imagens) > 0){
     for(j in seq_along(imagens)){
