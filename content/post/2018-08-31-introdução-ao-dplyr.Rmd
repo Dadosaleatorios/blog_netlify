@@ -43,4 +43,6 @@ Neste post vamos apresentar as principais funções do pacote com exemplos, e pa
 starwars
 ```
 
-Já podemos ver que não estamos lidando com um `data.frame` tradicional. Este é um `tibble`, que é, basicamente, um data.frame com uma série de modificações. A propósito, [`tibble`](https://tibble.tidyverse.org/) é outro pacote do `tidyverse`. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final
+Já podemos ver que não estamos lidando com um `data.frame` tradicional. Este é um `tibble`, que é, basicamente, um data.frame com uma série de modificações. A propósito, [`tibble`](https://tibble.tidyverse.org/) é outro pacote do `tidyverse`. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final.
+
+Nesse `tibble` temos então, para 87 personagens de Star Wars, informações de nome, altura, massa, cor de cabelo, pele, dos olhos, idade na batalha de Yavin (quando os rebeldes destruíram a primeira estrela da morte), gênero, mundo natal, espécie, lista de filmes onde o personagem aparece, 
