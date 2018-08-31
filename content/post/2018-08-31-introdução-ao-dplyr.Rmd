@@ -1,0 +1,46 @@
+---
+title: Introdução ao dplyr
+author: dadosaleatorios
+date: '2018-08-31'
+slug: introdução-ao-dplyr
+categories:
+  - analise de dados
+  - data science
+  - estatistica
+  - iniciantes
+  - linguagem R
+---
+
+## O que é o dplyr e por que usá-lo?
+
+[`dplyr`](https://dplyr.tidyverse.org/) é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do [`tidyverse`](https://www.tidyverse.org/). Se você nunca ouviu falar no `tidyverse`, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente em nosso script. O `dplyr` tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.
+
+Um outro ponto é que o `dplyr` permite que nós façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o `data.table` (que não tem uma sintaxe simples de utilização).
+
+As funções do `dplyr` podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.
+
+### Instalação
+
+Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recomendado):
+
+```{r eval = F}
+install.packages("tidyverse")
+# Ou
+install.packages("dplyr")
+
+require(tidyerse) #ou require(dplyr)
+```
+
+```{r echo = F, message=FALSE, warning=FALSE}
+require(tidyverse)
+```
+
+## Dados
+
+Neste post vamos apresentar as principais funções do pacote com exemplos, e para isso utilizaremos o dataset `starwars`, que pode ser utilizado ao ativar o `dplyr`. O dataset tem informações sobre personagens da saga, que foram coletados de uma [API de Star Wars](http://swapi.co/). Vamos dar uma olhada no dataset:
+
+```{r}
+starwars
+```
+
+Já podemos ver que não estamos lidando com um `data.frame` tradicional. Este é um `tibble`, que é, basicamente, um data.frame com uma série de modificações. A propósito, [`tibble`](https://tibble.tidyverse.org/) é outro pacote do `tidyverse`. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final
