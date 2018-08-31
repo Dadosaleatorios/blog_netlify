@@ -19,7 +19,7 @@ Um outro ponto é que o `dplyr` permite que nós façamos um código facilmente 
 
 As funções do `dplyr` podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.
 
-### Instalação
+## Instalação
 
 Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recomendado):
 
@@ -52,3 +52,73 @@ glimpse(starwars)
 ```
 
 Apesar de a concepção de `data.frame` do `tidyverse` ser o `tibble`, é perfeitamente possível utilizar suas funções com um `data.frame`. Para, porém, transformar um `data.frame` em um `tibble`, basta usar a função `as_tibble` (ou `as_data_frame`).
+
+## Funções básicas (verbos)
+
+O `dplyr` oferece 5 verbos (funções) básicos, que resolvem alguns problemas comuns:
+
+- `select`: Seleciona colunas.
+- `filter`: Filtra registros (linhas).
+- `mutate`: Cria novas variáveis (colunas).
+- `summarise` (ou `summarize`): Reduz uma série de valores de uma coluna em um valor apenas.
+- `arrange`: Ordena o `data.frame` de acordo com os valores de uma(s) coluna(s).
+
+Além disso, existe a função `group_by`, que pode ser usada em conjunto com os verbos, de maneira a fazer operações por grupos de valores de coluna(s).
+
+Todas essas funções recebem pelo menos dois argumentos: o `data.frame` e o(s) argumento(s) pertinente(s) à função (nomes de colunas, funções, condições). A seguir vamos utilizar as funções para ficar mais clara sua sintaxe.
+
+## Uso
+
+- O `select` seleciona colunas, podendo ser indicadas pelos nomes (com ou sem aspas, embora seja preferível não usar aspas) ou pelo índice da coluna. Por exemplo, se quisermos selecionar as colunas `name`, `height` e `mass`, podemos selecioná-las das seguintes maneiras:
+
+```{r eval = F}
+select(starwars, name, height, mass)
+# ou
+select(starwars, "name", "height", "mass")
+# Ou, como as colunas são seguidas
+select(starwars, name:mass)
+# Utilizando os índices
+select(starwars, 1:3)
+```
+
+Gerando o seguinte output:
+
+```{r echo = F}
+select(starwars, name:mass)
+```
+
+Também podemos remover colunas. Por exemplo, queremos selecionar todas as colunas do nosso `tibble`, exceto a coluna `height`:
+
+```{r}
+select(starwars, -height)
+```
+
+- A função `filter` recebe uma condição (ou mais de uma condição) e retorna as linhas do `tibble` que atendam a essa condição. Vamos filtrar personagens que não têm cabelo, logo `hair_color` é `NA`:
+
+```{r}
+filter(starwars, is.na(hair_color))
+```
+
+    Podemos também utilizar mais de uma condição (usando & ou |). Caso queiramos registros que atendam a todas as condições, podemos utilizar & (E) ou separar as condições por vírgulas. Caso queiramos registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:
+    
+    ```{r}
+    filter(starwars, is.na(hair_color), species == "Droid")
+    ```
+    
+Vamos agora filtrar por personagens com mais de 130 kg e selecionar `name`, `height`, `mass` e `homeworld`:
+
+```{r}
+select(filter(starwars, mass > 130), name:mass, homeworld)
+```
+
+Apesar de termos só duas funções envolvidas, veja que começa a não ser tão simples de ler o que o R irá fazer com esse comando. Quando o número de funções aumenta, isso fica bem pior de ler. Para resolver esse problema, o `tidyverse` propõe uma maneira de encadear o código:
+
+- **pipe** (`%>%`): O **pipe** é o operador que faz o encadeamento das funções do `tidyverse`. Este operador é do pacote [`magrittr`](https://magrittr.tidyverse.org/), mas ao carregar o `dplyr` já poderemos usá-lo. Seu atalho, no RStudio, é *Ctrl + Shift + M*. O *pipe* irá pegar o resultado da expressão a sua esquerda e colocar como primeiro argumento (por default) da expressão da direita. Como as funções do `dplyr` recebem um `tibble` no primeiro argumento, então isso vai facilitar a escrita. Vejamos o exemplo anterior com o pipe:
+
+```{r}
+starwars %>% 
+  filter(mass > 130) %>% 
+  select(name:mass, homeworld)
+```
+
+Perceba que agora o código fica muito mais simples de entender: Pegamos o `tibble` stawars, filtramos personagens com mais de 130 kg e do `tibble` resultante do filtro selecionamos as colunas desejadas.
