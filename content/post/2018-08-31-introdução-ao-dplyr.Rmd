@@ -71,33 +71,33 @@ Todas essas funções recebem pelo menos dois argumentos: o `data.frame` e o(s) 
 
 - O `select` seleciona colunas, podendo ser indicadas pelos nomes (com ou sem aspas, embora seja preferível não usar aspas) ou pelo índice da coluna. Por exemplo, se quisermos selecionar as colunas `name`, `height` e `mass`, podemos selecioná-las das seguintes maneiras:
 
-```{r eval = F}
-select(starwars, name, height, mass)
-# ou
-select(starwars, "name", "height", "mass")
-# Ou, como as colunas são seguidas
-select(starwars, name:mass)
-# Utilizando os índices
-select(starwars, 1:3)
-```
-
-Gerando o seguinte output:
-
-```{r echo = F}
-select(starwars, name:mass)
-```
-
-Também podemos remover colunas. Por exemplo, queremos selecionar todas as colunas do nosso `tibble`, exceto a coluna `height`:
-
-```{r}
-select(starwars, -height)
-```
+    ```{r eval = F}
+    select(starwars, name, height, mass)
+    # ou
+    select(starwars, "name", "height", "mass")
+    # Ou, como as colunas são seguidas
+    select(starwars, name:mass)
+    # Utilizando os índices
+    select(starwars, 1:3)
+    ```
+    
+    Gerando o seguinte output:
+    
+    ```{r echo = F}
+    select(starwars, name:mass)
+    ```
+    
+    Também podemos remover colunas. Por exemplo, queremos selecionar todas as colunas do nosso `tibble`, exceto a coluna `height`:
+    
+    ```{r}
+    select(starwars, -height)
+    ```
 
 - A função `filter` recebe uma condição (ou mais de uma condição) e retorna as linhas do `tibble` que atendam a essa condição. Vamos filtrar personagens que não têm cabelo, logo `hair_color` é `NA`:
 
-```{r}
-filter(starwars, is.na(hair_color))
-```
+    ```{r}
+    filter(starwars, is.na(hair_color))
+    ```
 
     Podemos também utilizar mais de uma condição (usando & ou |). Caso queiramos registros que atendam a todas as condições, podemos utilizar & (E) ou separar as condições por vírgulas. Caso queiramos registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:
     
@@ -115,10 +115,69 @@ Apesar de termos só duas funções envolvidas, veja que começa a não ser tão
 
 - **pipe** (`%>%`): O **pipe** é o operador que faz o encadeamento das funções do `tidyverse`. Este operador é do pacote [`magrittr`](https://magrittr.tidyverse.org/), mas ao carregar o `dplyr` já poderemos usá-lo. Seu atalho, no RStudio, é *Ctrl + Shift + M*. O *pipe* irá pegar o resultado da expressão a sua esquerda e colocar como primeiro argumento (por default) da expressão da direita. Como as funções do `dplyr` recebem um `tibble` no primeiro argumento, então isso vai facilitar a escrita. Vejamos o exemplo anterior com o pipe:
 
-```{r}
-starwars %>% 
-  filter(mass > 130) %>% 
-  select(name:mass, homeworld)
-```
+    ```{r}
+    starwars %>% 
+      filter(mass > 130) %>% 
+      select(name:mass, homeworld)
+    ```
 
-Perceba que agora o código fica muito mais simples de entender: Pegamos o `tibble` stawars, filtramos personagens com mais de 130 kg e do `tibble` resultante do filtro selecionamos as colunas desejadas.
+    Perceba que agora o código fica muito mais simples de entender: Pegamos o `tibble` stawars, filtramos personagens com mais de 130 kg e do `tibble` resultante do filtro selecionamos as colunas desejadas.
+
+- Com o `mutate` podemos criar novas colunas. Essas novas colunas podem ser criadas em função das já existentes. Vamos calcular o IMC dos personagens, mas para isso precisamos da altura em metros. Vamos então criar uma coluna com a altura em metros e usar esse coluna recém criada para o cálculo do IMC:
+
+    ```{r}
+    starwars %>% 
+      mutate(altura_metros = height/100,
+             IMC = mass/(altura_metros^2)) %>% 
+      select(name, IMC) 
+    ```
+
+- O `summarise` (ou `summarize`) permite que usemos funções de sumarização, ou seja, funções que recebem $n$ elementos e retornam apenas $1$ valor. Vamos calcular a maior altura e a massa média:
+
+    ```{r}
+    starwars %>% 
+      summarise(max_altura = max(height, na.rm = T),
+                massa_media = mean(mass, na.rm = T))
+    ```
+
+- Usamos o `arrange` para ordenar o `tibble`, de maneira crescente ou decrescente. Vamos refazer o cálculo do IMC e usar essa coluna para ordenar, em ordem crescente, o `tibble` resultante:
+
+    ```{r}
+    starwars %>%
+      mutate(altura_metros = height/100,
+             IMC = mass/(altura_metros^2)) %>% 
+      select(name, height, mass, IMC) %>% 
+      arrange(IMC)
+    ```
+    
+    Para que a ordenação seja feita de maneira decrescente basta utilizar o símbolo `-`, ou então a função `desc`
+    
+    ```{r}
+    starwars %>%
+      mutate(altura_metros = height/100,
+             IMC = mass/(altura_metros^2)) %>% 
+      select(name, height, mass, IMC) %>% 
+      arrange(-IMC) # Ou arrange(desc(IMC))
+    ```
+    
+    Também podemos reordenar o `tibble` de acordo com mais de uma coluna.
+    
+    ```{r}
+    starwars %>% 
+      arrange(hair_color, name, -mass, -birth_year)
+    ```
+    
+- Por fim, podemos realizar todas as operações por grupos. Para isso existe a função `group_by`. Faremos então o cálculo da maior altura e a massa média por espécie:
+
+    ```{r}
+    starwars %>% 
+      group_by(species) %>% 
+      summarise(max_altura = max(height, na.rm = T),
+                massa_media = mean(mass, na.rm = T))
+    ```
+    
+    Todos os outros verbos têm (ou podem ter) seu comportamento alterado ao usar `group_by`. Nessa [página](https://dplyr.tidyverse.org/articles/dplyr.html#grouped-operations) os comportamentos são descritos.
+    
+## Fonte
+
+[Vignette de Introdução ao `dplyr`](https://dplyr.tidyverse.org/articles/dplyr.html)
