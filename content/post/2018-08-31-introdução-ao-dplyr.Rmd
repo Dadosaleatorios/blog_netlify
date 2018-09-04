@@ -13,9 +13,9 @@ categories:
 
 ## O que é o dplyr e por que usá-lo?
 
-[`dplyr`](https://dplyr.tidyverse.org/) é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do [`tidyverse`](https://www.tidyverse.org/). Se você nunca ouviu falar no `tidyverse`, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente em nosso script. O `dplyr` tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.
+[`dplyr`](https://dplyr.tidyverse.org/) é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do [`tidyverse`](https://www.tidyverse.org/). Se você nunca ouviu falar no `tidyverse`, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise. O `dplyr` tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.
 
-Um outro ponto é que o `dplyr` permite que nós façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o `data.table` (que não tem uma sintaxe simples de utilização).
+Um outro ponto é que o `dplyr` permite que façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o `data.table` (que não tem uma sintaxe tão amigável).
 
 As funções do `dplyr` podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.
 
@@ -51,7 +51,7 @@ Também podemos utilizar a função `glimpse`, do pacote `tibble`, para visualiz
 glimpse(starwars)
 ```
 
-Apesar de a concepção de `data.frame` do `tidyverse` ser o `tibble`, é perfeitamente possível utilizar suas funções com um `data.frame`. Para, porém, transformar um `data.frame` em um `tibble`, basta usar a função `as_tibble` (ou `as_data_frame`).
+Apesar da concepção de `data.frame` do `tidyverse` ser o `tibble`, é perfeitamente possível utilizar suas funções com um `data.frame`. Porém para transformar um `data.frame` em um `tibble`, basta usar a função `as_tibble` (ou `as_data_frame`).
 
 ## Funções básicas (verbos)
 
@@ -93,13 +93,13 @@ Todas essas funções recebem pelo menos dois argumentos: o `data.frame` e o(s) 
     select(starwars, -height)
     ```
 
-- A função `filter` recebe uma condição (ou mais de uma condição) e retorna as linhas do `tibble` que atendam a essa condição. Vamos filtrar personagens que não têm cabelo, logo `hair_color` é `NA`:
+- A função `filter` recebe uma ou mais condições lógicas e retorna as linhas do `tibble` que atendam o solicitado. Vamos filtrar personagens que não têm cabelo, logo `hair_color` é `NA`:
 
     ```{r}
     filter(starwars, is.na(hair_color))
     ```
 
-    Podemos também utilizar mais de uma condição (usando & ou |). Caso queiramos registros que atendam a todas as condições, podemos utilizar & (E) ou separar as condições por vírgulas. Caso queiramos registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:
+    Podemos também utilizar mais de uma condição (usando & ou |). Se quisermos registros que atendam a todas as condições, podemos utilizar & (E) ou separar as condições por vírgulas. E quando for necessário registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:
     
     ```{r}
     filter(starwars, is.na(hair_color), species == "Droid")
@@ -113,7 +113,7 @@ select(filter(starwars, mass > 130), name:mass, homeworld)
 
 Apesar de termos só duas funções envolvidas, veja que começa a não ser tão simples de ler o que o R irá fazer com esse comando. Quando o número de funções aumenta, isso fica bem pior de ler. Para resolver esse problema, o `tidyverse` propõe uma maneira de encadear o código:
 
-- **pipe** (`%>%`): O **pipe** é o operador que faz o encadeamento das funções do `tidyverse`. Este operador é do pacote [`magrittr`](https://magrittr.tidyverse.org/), mas ao carregar o `dplyr` já poderemos usá-lo. Seu atalho, no RStudio, é *Ctrl + Shift + M*. O *pipe* irá pegar o resultado da expressão a sua esquerda e colocar como primeiro argumento (por default) da expressão da direita. Como as funções do `dplyr` recebem um `tibble` no primeiro argumento, então isso vai facilitar a escrita. Vejamos o exemplo anterior com o pipe:
+- **pipe** (`%>%`): O **pipe** é o operador que faz o encadeamento das funções do `tidyverse`. Este operador é do pacote [`magrittr`](https://magrittr.tidyverse.org/), mas ao carregar o `dplyr` já poderemos usá-lo. Seu atalho, no RStudio, é *(Cmd)Ctrl + Shift + M*. O *pipe* irá pegar o resultado da expressão a sua esquerda e colocar como primeiro argumento (por padrão) da expressão da direita. Como as funções do `dplyr` recebem um `tibble` no primeiro argumento, então isso vai facilitar a escrita. Vejamos o exemplo anterior com o pipe:
 
     ```{r}
     starwars %>% 
@@ -121,9 +121,9 @@ Apesar de termos só duas funções envolvidas, veja que começa a não ser tão
       select(name:mass, homeworld)
     ```
 
-    Perceba que agora o código fica muito mais simples de entender: Pegamos o `tibble` stawars, filtramos personagens com mais de 130 kg e do `tibble` resultante do filtro selecionamos as colunas desejadas.
+    Perceba que agora o código fica muito mais simples de entender: Pegamos o `tibble` starwars, filtramos personagens com mais de 130 kg e do `tibble` resultante do filtro selecionamos as colunas desejadas.
 
-- Com o `mutate` podemos criar novas colunas. Essas novas colunas podem ser criadas em função das já existentes. Vamos calcular o IMC dos personagens, mas para isso precisamos da altura em metros. Vamos então criar uma coluna com a altura em metros e usar esse coluna recém criada para o cálculo do IMC:
+- Com o `mutate` podemos criar novas colunas e essas novas colunas podem ser criadas em função das já existentes. Vamos calcular o IMC dos personagens, mas para isso precisamos da altura em metros. Vamos então criar uma coluna com a altura em metros e usar esse coluna recém criada para o cálculo do IMC:
 
     ```{r}
     starwars %>% 
