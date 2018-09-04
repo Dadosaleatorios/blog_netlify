@@ -35,7 +35,11 @@ require(tidyverse)
 
 ## Dados
 
-Neste post vamos apresentar as principais funções do pacote com exemplos, e para isso utilizaremos o dataset `starwars`, que pode ser utilizado ao ativar o `dplyr`. O dataset tem informações sobre personagens da saga, que foram coletados de uma [API de Star Wars](http://swapi.co/). Vamos dar uma olhada no dataset:
+Neste post vamos apresentar as principais funções do pacote com exemplos, e para isso utilizaremos o dataset `starwars`, que pode ser utilizado ao ativar o `dplyr`. O dataset tem informações sobre personagens da saga, que foram coletados de uma [API de Star Wars](http://swapi.co/). 
+
+<img src='/img/2018-08-31-introducao-ao-dplyr/starWars1.jpg', alt = 'SW', width="720", height="480"/>
+
+Vamos dar uma olhada no dataset:
 
 ```{r}
 starwars
@@ -105,6 +109,8 @@ Todas essas funções recebem pelo menos dois argumentos: o `data.frame` e o(s) 
     filter(starwars, is.na(hair_color), species == "Droid")
     ```
     
+    <img src='/img/2018-08-31-introducao-ao-dplyr/starWars2.png', alt = 'SW', width="480", height="720"/>
+
 Vamos agora filtrar por personagens com mais de 130 kg e selecionar `name`, `height`, `mass` e `homeworld`:
 
 ```{r}
