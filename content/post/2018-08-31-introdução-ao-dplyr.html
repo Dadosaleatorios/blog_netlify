@@ -30,8 +30,8 @@ require(tidyerse)</code></pre>
 <h2>Dados</h2>
 <p>Neste post vamos apresentar as principais funções do pacote com exemplos, e para isso utilizaremos o dataset <code>starwars</code>, que pode ser utilizado ao ativar o <code>dplyr</code>. O dataset tem informações sobre personagens da saga, que foram coletados de uma <a href="http://swapi.co/">API de Star Wars</a>.</p>
 <div class="figure">
-<img src="/img/2018-08-31-introducao-ao-dplyr/starWars1.jpg" alt="SW" style="width:50.0%" />
-<p class="caption">SW</p>
+<img src="/img/2018-08-31-introducao-ao-dplyr/starWars1.jpg" />
+
 </div>
 <p>Vamos dar uma olhada no dataset:</p>
 <pre class="r"><code>starwars</code></pre>
@@ -152,8 +152,8 @@ select(starwars, 1:3)</code></pre>
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
 </ul>
 <div class="figure">
-<img src="/img/2018-08-31-introducao-ao-dplyr/starWars2.png" alt="SW" style="height:50.0%" />
-<p class="caption">SW</p>
+<img src="/img/2018-08-31-introducao-ao-dplyr/starWars2.png" />
+
 </div>
 <p>Vamos agora filtrar por personagens com mais de 130 kg e selecionar <code>name</code>, <code>height</code>, <code>mass</code> e <code>homeworld</code>:</p>
 <pre class="r"><code>select(filter(starwars, mass &gt; 130), name:mass, homeworld)</code></pre>
