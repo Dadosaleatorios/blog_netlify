@@ -147,6 +147,10 @@ select(starwars, 1:3)</code></pre>
 ## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
 </ul>
+<div class="figure">
+<img src="/img/2018-08-31-introducao-ao-dplyr/starWars2.png" alt="SW" />
+<p class="caption">SW</p>
+</div>
 <p>Vamos agora filtrar por personagens com mais de 130 kg e selecionar <code>name</code>, <code>height</code>, <code>mass</code> e <code>homeworld</code>:</p>
 <pre class="r"><code>select(filter(starwars, mass &gt; 130), name:mass, homeworld)</code></pre>
 <pre><code>## # A tibble: 5 x 4
