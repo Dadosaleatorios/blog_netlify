@@ -5,7 +5,7 @@ date: '2018-09-12'
 slug: help-functions-do-dplyr
 ---
 
-Este post supõe que estamos minimamente familiarizados com o pacote `dplyr`, especialmente com a função `select` e com o *pipe*. Confira [aqui](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/) o post de introdução ao `dplyr`.
+Este post supõe que estamos minimamente familiarizados com o pacote `dplyr` (se você não está, veja [este](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/) post), especialmente com a função `select` e com o *pipe*.
 
 O `dplyr` traz algumas funções que podem ser muito úteis em algum momento de nossa manipulação de dados com o `select`, que são as *help functions*. Essas funções são, na verdade, do pacote [`tidyselect`](https://github.com/tidyverse/tidyselect), mas são disponibilizadas ao ativar o `dplyr` (melhor ainda seria ativar o `tidyvserse`). São elas:
 
@@ -18,8 +18,6 @@ O `dplyr` traz algumas funções que podem ser muito úteis em algum momento de 
 - `one_of`: seleciona variáveis num vetor.
 
 - `everything`: seleciona todas as colunas.
-
-- `last_col`: seleciona a última coluna.
 
 ## Exemplos
 
@@ -68,14 +66,6 @@ starwars %>%
   select(homeworld, everything())
 ```
 
-A função `last_col` não é carregada com o `dplyr`. Para utilizá-la precisamos ativar o pacote `tidyselect` (o que não é necessário se tivermos ativado todo o `tidyverse`). Com essa função, podemos selecionar as `n` últimas colunas de um `tibble`. Nesse caso iremos selecionar as 5 últimas colunas (atenção para o fato de a última coluna ter o índice `0`):
-
-```{r message = FALSE, warning = FALSE}
-
-starwars %>% 
-  select(last_col(0:4))
-```
-
 Iremos criar um `tibble` para poder mostrar o uso de `num_range`:
 
 ```{r}
@@ -85,6 +75,16 @@ dados %>%
   select(num_range("x", 1:2))
 ```
 
+Também podemos juntar várias funções auxiliares dentro de um mesmo `select`. Vamos selecionar colunas que terminam com "color", contenham a string "es", e depois todas as outras colunas:
+
+```{r}
+starwars %>% 
+  select(name, ends_with("color"), contains("es"), everything())
+```
+
+De se tornar um novo jedi`R`, um passo mais próximo você está!
+
+![](/img/2018-09-12-help-functions-do-dplyr/jedis.jpg)
 
 ## Fontes:
 
