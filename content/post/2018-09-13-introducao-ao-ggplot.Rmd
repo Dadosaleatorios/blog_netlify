@@ -1,0 +1,405 @@
+---
+title: Introdução ao ggplot
+author: dadosaleatorios
+date: '2018-09-13'
+slug: introducao-ao-ggplot
+categories:
+  - iniciantes
+  - linguagem R
+  - ggplot
+tags:
+  - ggplot
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+require(ggplot2)
+require(tidyverse)
+require(viridis)
+require(ggmap)
+  ```
+
+
+  Este material tem por objetivo passar uma idéia inicial das funcionalidades do pacote GGPLOT2 na visualização de dados.
+
+  O ggplot2 é um pacote de visualização de dados do R criado por Hadley Wickham.É uma implementação das ideias do livro *Grammar of Graphics* de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas. 
+  
+  O ggplot2 pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.
+
+Esses componentes semânticos(camadas) podem ser organizados conforme a descrição abaixo.
+
+* Uma base de dados 
+* Atributos estéticos (aesthetics);
+* Objetos geométricos;
+* Transformações estatísticas; 
+* Escalas;
+* Facetas; e, 
+* Demais ajustes.
+
+  Segue abaixo modelo de gráfico, utilizando a função do pacote **Base** e utilizando o pacote **GGPLOT2**
+
+
+```{r,echo=FALSE, fig.width=4.5, fig.height=4.5, message=FALSE, warning=FALSE}
+
+plot(mtcars$cyl, mtcars$mpg, main = "Gráfico Base", xlab = "Cyl", ylab = "MPG")
+
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_point()+
+  ggtitle("Gráfico ggplot")+
+  labs(x= "Cyl", y= "MPG")
+
+```
+
+## Intalação do pacote
+
+  Para a utilização do pacote, devemos fazer a intalação e requisição do mesmo:
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+install.packages("ggplot2")
+require(ggplot2)
+```
+  
+## Base de dados
+
+  A base de dados utilizada para exemplificar as funções do pacote é a base **mtcars**, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974.
+
+## Atributos estéticos
+
+  Os Atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos geoms. Os mapeamentos estéticos podem ser definidos em ggplot2 e em camadas individuais.
+
+Argumentos utilizados no **aes( )**:
+
+* x e y: Observações que serão mapeadas  
+* color: Altera a cor das formas que não tem área (como retas e pontos)
+* fill: altera a cor dos preenchimentos das formas com área 
+* size: altera o tamanho das formas 
+* alpha: altera a trasparência das formas
+* labels: altera o nome das observações
+* shape: altera o estilo das formas
+
+## Objetos geométricos
+
+  Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos _geoms_ disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:
+
+|Tipo de Gráfico                    |  Geom              |
+|-----------------------------------|--------------------|
+|scatterplot (gráfico de dispersão)	|  geom_point( )     |
+|barchart (gráfico de barras)	      |  geom_bar( )       |
+|boxplot	                          |  geom_boxplot( )   |
+|smooth (Curva suavizada)         	|  geom_smooth( )    |
+  
+### Gráficos de Dispersão
+
+```{r, message=FALSE, warning=FALSE}
+
+p <- ggplot(mtcars, aes(wt, mpg))
+
+p + geom_point(aes(colour = factor(cyl))) + ggtitle("Utilizando Cor")
+p + geom_point(aes(shape = factor(cyl))) + ggtitle("Utilizando Shape")
+p + geom_point(aes(size = qsec)) + ggtitle("Utilizando Size")
+p + geom_point(aes(colour = factor(cyl), size = qsec, shape = factor(cyl))) + ggtitle("Utilizando todos")
+
+```
+
+### Gráficos de Barras
+
+Posição - Stack, Fill e Dodge
+
+**Stack**: coloca as barras em cima umas das outras. Contagens são usadas. Esta é a posição padrão.
+
+```{r, message=FALSE, warning=FALSE}
+
+ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = "stack")+
+  ggtitle("Posição Stack")
+```
+
+**Fill**: coloca as barras umas sobre as outras, mas desta vez usa proporções.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = "fill")+
+  ggtitle("Posição Fill")
+```
+
+**Dodge**: coloca as barras uma ao lado da outra. Contagens são usadas.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = "dodge") +
+  ggtitle("Posição Dodge")
+```
+
+### Boxplot 
+
+  Gráfico utilizado para visualizar compactamente a distribuição de uma variável contínua.
+  
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
+  geom_boxplot() +
+  labs(x="Cyl")
+```
+
+### smooth(Curva suavizada)
+
+  Gráfico utilizado para analisar padrões de comportamento de uma variável, através da curva suavizada 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(y = mpg, x = disp)) + 
+  geom_point() +
+  geom_smooth()
+```
+
+
+Outros _geoms_ utilizados:
+
+* geom_abline(), geom_hline(), geom_vline - Adiciona linhas de referência: horizontal, vertical e diagonal.
+
+* geom_label(), geom_text() - Adiciona e ajusta textos na plotagem.
+
+* geom_polygon - Plota polígonos, preenchendo o interior (cores).
+
+* Entre outros 
+
+## Transformações Estatísticas
+
+  Um punhado de camadas é mais facilmente especificado com uma função stat_, chamando a atenção para a transformação estatística em vez da aparência visual. Dentre suas funcionalidades, estão a de computar a distribuição cumulativa empírica, sumarizar os valores da variável, remover duplicadas, entre outros.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_point() +
+  stat_summary(fun.data = "mean_cl_normal", # função que retorna informações sumarizadas (resumo)
+               geom = "crossbar", # Define o formato
+               width = .2, # define largura
+               col = "red") + # Define cor
+  scale_y_log10()
+```
+
+  Cada **stat** cria, se necessário, uma variável adicional que é mapeada para a estética (**aes()**). A sintaxe utilizada para a criação dessa nova variável é **..nome..**
+
+Há várias outras funções para transformações estatísticas que podem ser utilizadas.
+
+## Escalas
+
+  Bastante utilizada para substituir as escalas padrão e ajustar detalhes, como os rótulos dos eixos ou as chaves de legenda, ou para usar uma tradução completamente diferente dos dados para a estética.
+  
+  Algumas funções que trabalham com a escala do gráfico:
+
+* labs(), xlab(), ylab(), ggtitle() - Modificar rótulos de eixo, legenda e Título
+
+* lims(), xlim(), ylim() - Definem os limites de escala do gráfico
+
+* scale_x_continuous(), scale_y_continuous() - Escalas de dados para dados contínuos 
+
+* scale_x_discrete(), scale_y_discrete() - Escalas de posição para dados discretos
+
+* Além de outros tipos de escala, como de cores, preenchimento, transparência.
+
+## Coordenadas
+
+  Camada utilizada para modificar as estruturas dos eixos, seja delimitando -os ou o modificando sua visualização. 
+
+### coord_cartesian()
+
+  Define limites no sistema de coordenadas, aumentando o tamanho do gráfico, sem alteração nos dados.
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = wt, y = hp, col = am)) + 
+  geom_point() + 
+  geom_smooth() +
+coord_cartesian(xlim = c(3,6)) 
+```
+
+### coord_fixed()
+
+  Sistema de coordenada de escala fixa. representa o número de unidades no eixo y equivalente a uma unidade no eixo x. Garante que os intervalos de eixos sejam iguais.
+  
+```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(mpg, wt)) + 
+  geom_point() + 
+  coord_fixed(ratio = 1) +
+  ggtitle("Definindo escala igual a 1")
+```
+
+
+```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(mpg, wt)) + 
+  geom_point() + 
+  coord_fixed(ratio = 5) +
+  ggtitle("Definindo escala igual a 5")
+```
+
+### coord_polar() 
+
+  converte um gráfico cartesiano planar x-y em coordenadas polares. Útil para produzir gráficos de setores.
+
+```{r, message=FALSE, warning=FALSE}
+thin.bar <- ggplot(mtcars, aes(x=1, fill = factor(cyl))) +
+              geom_bar()
+
+thin.bar +
+  coord_polar(theta = "y")
+```
+
+### coord_flip()
+
+  Inverte coordenadas cartesianas para que a horizontal se torne vertical e vertical, horizontal. 
+
+##### Mudando a coordenada do gráfico de boxplot, gerado anteriormente
+```{r, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
+  geom_boxplot() +
+  coord_flip() +
+  labs(x="Cyl")
+```
+
+### coord_map 
+
+  Utilizada para fazer projeções de mapas. Ajusta a imagem para projetar uma porção da terra, aproximadamente esférica
+
+```{r, echo= TRUE, message=FALSE, warning=FALSE}
+
+state <- map_data("state")
+ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
+  geom_polygon(col = "white") +
+  theme_nothing()
+
+ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
+  geom_polygon(col = "white") +
+  coord_map() +
+  theme_nothing()
+
+```
+
+## Facets
+
+  Função utilizada para visualizar subconjuntos de dados em gráficos separados.
+  
+Tipos de facetas:
+
+* **Facet grid** - Forma uma matriz de painéis definidos por variáveis na forma de linhas e colunas. É mais útil quando você tem duas variáveis discretas e todas as combinações das variáveis existem nos dados.
+
+* **Facet wrap** - envolve uma sequência de painéis de 1d em 2d. Geralmente, esse é um uso melhor do espaço da tela do que facet_grid, porque a maioria dos plots é aproximadamente retangular.
+
+```{r, message=FALSE, warning=FALSE}
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+
+p + facet_grid(am ~ .) +
+  ggtitle("Separa linha de acordo com o tipo de transmissão, am")
+
+
+p + facet_grid(. ~ cyl)+
+  ggtitle("Separa coluna de acordo com o cilindro")
+
+p + facet_grid(am ~ cyl) +
+  ggtitle("Separa linha e coluna, de acordo com am e cilindro")
+
+```
+
+## Temas
+
+  Os temas controlam a exibição de todos os elementos que não são de dados da plotagem. Você pode substituir todas as configurações por um tema completo como __theme_bw()__ ou optar por ajustar configurações individuais usando __theme()__ e as funções **element_**. Use __theme_set()__ para modificar o tema ativo, afetando todos os gráficos futuros.
+
+  As funções mais utilizadas nas criações/modificações de temas são:
+
+* element_line( ) - Modifica a aparência das linhas;
+* element_text( ) - Modificar estrutura do texto;
+* element_blank( ) - Não desenha nada e não atribui espaços
+* theme( ) - Modifica o Layout da plotagem
+
+### Exemplos
+
+* Dentro do Tema, podemos modificar os painéis do gráfico:
+
+```{r, message=FALSE, warning=FALSE}
+p1 <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+p1 + theme(panel.background = element_rect(fill = "white", colour = "grey50"))
+p1 + theme(panel.border = element_rect(linetype = "dashed", fill = NA))
+p1 + theme(panel.grid.major = element_line(colour = "black"))
+p1 + theme(
+  panel.grid.major.y = element_blank(),
+  panel.grid.minor.y = element_blank()
+)
+
+  
+```
+
+* Podemos acrescentar grid
+  
+```{r, message=FALSE, warning=FALSE}
+p1 <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+
+  p1 + theme(
+  panel.background = element_rect(fill = NA),
+  panel.grid.major = element_line(colour = "grey50"),
+  panel.ontop = TRUE
+)
+```
+
+* Podemos modificar os eixos 
+  
+```{r, message=FALSE, warning=FALSE}
+p1 <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+p1 + theme(axis.line = element_line(size = 3, colour = "grey80"))
+p1 + theme(axis.text = element_text(colour = "blue"))
+p1 + theme(axis.ticks = element_line(size = 2))
+p1 + theme(axis.ticks.length = unit(.25, "cm"))
+```
+
+* Podemos também modificar a legenda, quanto a sua posição
+  
+```{r, message=FALSE, warning=FALSE}
+p2 <- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point(aes(colour = factor(cyl), shape = factor(vs))) +
+  labs(
+    x = "Weight (1000 lbs)",
+    y = "Fuel economy (mpg)",
+    colour = "Cylinders",
+    shape = "Transmission"
+  )
+p2 + theme(legend.position = "none")
+p2 + theme(legend.justification = "top")
+p2 + theme(legend.position = "bottom")
+
+```
+
+## Plots para dados específicos
+
+* Gráficos de densidade em 2D
+
+```{r, message=FALSE, warning=FALSE}
+p <- ggplot(faithful, aes(x = waiting, y = eruptions)) +
+  scale_y_continuous(limits = c(1, 5.5), expand = c(0, 0)) +
+  scale_x_continuous(limits = c(40, 100), expand = c(0, 0)) +
+  coord_fixed(60 / 4.5)
+
+p + stat_density_2d(aes(col = ..level..), h = c(5, .5))
+```
+
+* Gráficos de calor (Necessário a intalação do pacote "viridis")
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(faithful, aes(x = waiting, y = eruptions)) +
+  scale_y_continuous(limits = c(1, 5.5), expand = c(0,0)) +
+  scale_x_continuous(limits = c(40, 100), expand = c(0,0)) +
+  coord_fixed(60/4.5) +
+  stat_density_2d(geom = "tile", aes(fill = ..density..), h=c(5,.5), contour = FALSE) +
+  scale_fill_viridis()
+```
+
+## Extensões ggplot
+
+O ggplot apresenta várias extensões disponíveis para explorar aspectos mais avançados em termos de visualização de dados:
+
+* gganimate - Para criar gráficos ggplot2 animados.
+* ggiraph - Gráficos interativos
+* ggrepel - Modifica posição de texto para não sobrepôr
+* Entre outros.
+
+## Referências
+
+#### https://www.datacamp.com/
+
+#### http://ggplot2.tidyverse.org/index.html
