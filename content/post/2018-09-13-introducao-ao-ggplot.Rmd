@@ -57,7 +57,9 @@ Para a utilização do pacote, devemos fazer a intalação e requisição do mes
 install.packages("ggplot2")
 require(ggplot2)
 ```
-  
+
+Além disso, para alguns dos comandos aqui apresentados funcionarem, será necessário ter instalado os pacotes `Hmisc` e `maps`.
+
 ## Base de dados
 
 A base de dados utilizada para exemplificar as funções do pacote é a base **mtcars**, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:
