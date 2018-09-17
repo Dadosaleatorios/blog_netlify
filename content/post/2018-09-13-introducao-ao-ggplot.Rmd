@@ -25,7 +25,7 @@ O ggplot2 é um pacote de visualização de dados do R criado por Hadley Wickham
   
 O ggplot2 pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.
 
-Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo.
+Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo:
 
 * Uma base de dados 
 * Atributos estéticos (aesthetics);
@@ -89,10 +89,10 @@ Argumentos utilizados no **aes( )**:
 
 |Tipo de Gráfico                    |    Geom              |
 |-----------------------------------|----------------------|
-|scatterplot (gráfico de dispersão)	|  `geom_point( )`     |
-|barchart (gráfico de barras)	      |  `geom_bar( )`       |
-|boxplot	                          |  `geom_boxplot( )`   |
-|smooth (Curva suavizada)         	|  `geom_smooth( )`    |
+|scatterplot (gráfico de dispersão)	|  `geom_point()`     |
+|barchart (gráfico de barras)	      |  `geom_bar()`       |
+|boxplot	                          |  `geom_boxplot()`   |
+|smooth (Curva suavizada)         	|  `geom_smooth()`    |
   
 ### Gráficos de Dispersão
 
@@ -398,14 +398,6 @@ As funções mais utilizadas nas criações/modificações de temas são:
       scale_fill_viridis()
     ```
 
-## Extensões ggplot
-
-O ggplot apresenta várias extensões disponíveis para explorar aspectos mais avançados em termos de visualização de dados:
-
-* [`gganimate`](https://github.com/thomasp85/gganimate) - Para criar gráficos ggplot2 animados.
-* [`ggiraph`](https://github.com/davidgohel/ggiraph) - Gráficos interativos
-* [`ggrepel`](https://github.com/slowkow/ggrepel) - Modifica posição de texto para não sobrepor
-* Entre outros.
 
 ## Referências
 
