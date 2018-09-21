@@ -136,7 +136,7 @@ Da mesma maneira acontece com todas as outras funções.
 
 #### Select *vs* Rename
 
-As funções `select_` e `rename_`, com algum dos sufixos, se diferenciam pelo fato de que com o `select` não é necessário passar uma função que mude os nomes, já com o `rename` é necessário incluir uma função que modifique os nomes das colunas.
+As funções `select_ e rename_`, com algum dos sufixos, se diferenciam pelo fato de que com o `select` não é necessário passar uma função que mude os nomes, já com o `rename` é necessário incluir uma função que modifique os nomes das colunas.
 
 ### Fonte
 
