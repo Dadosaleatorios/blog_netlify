@@ -26,11 +26,11 @@ O `dplyr` apresenta uma série de funções similares aos verbos, que podem ser 
 
 As funções que podem ser utilizadas com o sufixo são:
 
-- `mutate` e `transmute`.
+- `mutate e transmute`.
 - `summarise`.
 - `filter`.
 - `group_by`.
-- `select` e `rename`.
+- `select e rename`.
 - `arrange`.
 
 Agora vamos mostrar alguns exemplos de aplicações dessas funções. 
@@ -43,7 +43,12 @@ Iremos utilizar o famoso conjunto de dados `iris`.
 knitr::opts_chunk$set(warning = F)
 ```
 
+<center>
 ![](/img/2018-09-19-scoped-functions-do-dplyr/iris_img.png){width=600px}
+</center>
+
+</center>
+
 
 ```{r message = FALSE, warning = FALSE}
 require(dplyr)
@@ -133,8 +138,6 @@ Da mesma maneira acontece com todas as outras funções.
 
 As funções `select_` e `rename_`, com algum dos sufixos, se diferenciam pelo fato de que com o `select` não é necessário passar uma função que mude os nomes, já com o `rename` é necessário incluir uma função que modifique os nomes das colunas.
 
-### Fontes
-
-- http://rstudio-pubs-static.s3.amazonaws.com/367502_a41eeee9a7dd4d919b27267f9cc34237.html
+### Fonte
 
 - https://dplyr.tidyverse.org/reference/index.html
