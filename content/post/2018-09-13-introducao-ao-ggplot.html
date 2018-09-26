@@ -1,22 +1,22 @@
 ---
 title: Introdução ao ggplot
 author: dadosaleatorios
-date: '2018-09-13'
-slug: introducao-ao-ggplot
+date: '2018-09-26'
 categories:
+  - ggplot
   - iniciantes
   - linguagem R
-  - ggplot
 tags:
   - ggplot
+slug: introducao-ao-ggplot
 ---
 
 
 
 <p>Este material tem por objetivo passar uma ideia inicial das funcionalidades do pacote <code>ggplot2</code> na visualização de dados.</p>
-<p>O ggplot2 é um pacote de visualização de dados do R criado por Hadley Wickham.É uma implementação das ideias do livro <em>Grammar of Graphics</em> de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas.</p>
-<p>O ggplot2 pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.</p>
-<p>Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo.</p>
+<p>O <code>ggplot2</code> é um pacote de visualização de dados do R criado por Hadley Wickham. É uma implementação das ideias do livro <em>Grammar of Graphics</em> de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas.</p>
+<p>O <code>ggplot2</code> pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.</p>
+<p>Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo:</p>
 <ul>
 <li>Uma base de dados</li>
 <li>Atributos estéticos (aesthetics);</li>
@@ -26,7 +26,7 @@ tags:
 <li>Facetas; e,</li>
 <li>Demais ajustes.</li>
 </ul>
-<p>Veja abaixo modelo de gráfico, utilizando a função do pacote básico e utilizando o pacote <code>ggplot2</code>:</p>
+<p>Veja abaixo modelo de gráfico, utilizando a função do pacote <code>graphics</code> (pacote do R básico) e utilizando o pacote <code>ggplot2</code>:</p>
 <p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="432" /><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-2.png" width="432" /></p>
 <div id="intalacao-do-pacote" class="section level2">
 <h2>Intalação do pacote</h2>
@@ -37,7 +37,7 @@ require(ggplot2)</code></pre>
 </div>
 <div id="base-de-dados" class="section level2">
 <h2>Base de dados</h2>
-<p>A base de dados utilizada para exemplificar as funções do pacote é a base <strong>mtcars</strong>, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:</p>
+<p>A base de dados utilizada para exemplificar as funções do pacote é a base <code>mtcars</code>, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:</p>
 <pre class="r"><code>head(mtcars)</code></pre>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -46,11 +46,15 @@ require(ggplot2)</code></pre>
 ## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<center>
+<img src="/img/2018-09-26-introducao-ao-ggplot/mtcars.jpg" width="600" />
+</center>
+<p>Fotos de outros carros podem ser encontradas <a href="https://twitter.com/i/moments/1001619000827228160">aqui</a>.</p>
 </div>
 <div id="atributos-esteticos" class="section level2">
 <h2>Atributos estéticos</h2>
 <p>Os atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos <code>geoms</code>. Os mapeamentos estéticos podem ser definidos em <code>ggplot2</code> e em camadas individuais.</p>
-<p>Argumentos utilizados no <strong>aes( )</strong>:</p>
+<p>Argumentos utilizados no <code>aes( )</code>:</p>
 <ul>
 <li><code>x</code> e <code>y</code>: Observações que serão mapeadas<br />
 </li>
@@ -75,19 +79,19 @@ require(ggplot2)</code></pre>
 <tbody>
 <tr class="odd">
 <td>scatterplot (gráfico de dispersão)</td>
-<td><code>geom_point( )</code></td>
+<td><code>geom_point()</code></td>
 </tr>
 <tr class="even">
 <td>barchart (gráfico de barras)</td>
-<td><code>geom_bar( )</code></td>
+<td><code>geom_bar()</code></td>
 </tr>
 <tr class="odd">
 <td>boxplot</td>
-<td><code>geom_boxplot( )</code></td>
+<td><code>geom_boxplot()</code></td>
 </tr>
 <tr class="even">
 <td>smooth (Curva suavizada)</td>
-<td><code>geom_smooth( )</code></td>
+<td><code>geom_smooth()</code></td>
 </tr>
 </tbody>
 </table>
@@ -128,7 +132,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 <p>Gráfico utilizado para visualizar compactamente a distribuição de uma variável contínua.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot() +
-  labs(x=&quot;Cyl&quot;)</code></pre>
+  labs(x = &quot;Cyl&quot;)</code></pre>
 <p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="smooth-curva-suavizada" class="section level3">
@@ -322,37 +326,6 @@ p2 + theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p></li>
 </ul>
 </div>
-</div>
-<div id="plots-para-dados-especificos" class="section level2">
-<h2>Plots para dados específicos</h2>
-<ul>
-<li><p>Gráficos de densidade em 2D</p>
-<pre class="r"><code>p &lt;- ggplot(faithful, aes(x = waiting, y = eruptions)) +
-  scale_y_continuous(limits = c(1, 5.5), expand = c(0, 0)) +
-  scale_x_continuous(limits = c(40, 100), expand = c(0, 0)) +
-  coord_fixed(60 / 4.5)
-
-p + stat_density_2d(aes(col = ..level..), h = c(5, .5))</code></pre>
-<p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p></li>
-<li><p>Gráficos de calor (Necessário a intalação do pacote “viridis”)</p>
-<pre class="r"><code>ggplot(faithful, aes(x = waiting, y = eruptions)) +
-  scale_y_continuous(limits = c(1, 5.5), expand = c(0,0)) +
-  scale_x_continuous(limits = c(40, 100), expand = c(0,0)) +
-  coord_fixed(60/4.5) +
-  stat_density_2d(geom = &quot;tile&quot;, aes(fill = ..density..), h=c(5,.5), contour = FALSE) +
-  scale_fill_viridis()</code></pre>
-<p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p></li>
-</ul>
-</div>
-<div id="extensoes-ggplot" class="section level2">
-<h2>Extensões ggplot</h2>
-<p>O ggplot apresenta várias extensões disponíveis para explorar aspectos mais avançados em termos de visualização de dados:</p>
-<ul>
-<li><a href="https://github.com/thomasp85/gganimate"><code>gganimate</code></a> - Para criar gráficos ggplot2 animados.</li>
-<li><a href="https://github.com/davidgohel/ggiraph"><code>ggiraph</code></a> - Gráficos interativos</li>
-<li><a href="https://github.com/slowkow/ggrepel"><code>ggrepel</code></a> - Modifica posição de texto para não sobrepor</li>
-<li>Entre outros.</li>
-</ul>
 </div>
 <div id="referencias" class="section level2">
 <h2>Referências</h2>

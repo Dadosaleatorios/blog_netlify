@@ -1,14 +1,14 @@
 ---
 title: Introdução ao ggplot
 author: dadosaleatorios
-date: '2018-09-13'
-slug: introducao-ao-ggplot
+date: '2018-09-26'
 categories:
+  - ggplot
   - iniciantes
   - linguagem R
-  - ggplot
 tags:
   - ggplot
+slug: introducao-ao-ggplot
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -21,9 +21,9 @@ require(ggmap)
 
 Este material tem por objetivo passar uma ideia inicial das funcionalidades do pacote `ggplot2` na visualização de dados.
 
-O ggplot2 é um pacote de visualização de dados do R criado por Hadley Wickham.É uma implementação das ideias do livro *Grammar of Graphics* de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas. 
+O `ggplot2` é um pacote de visualização de dados do R criado por Hadley Wickham. É uma implementação das ideias do livro *Grammar of Graphics* de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas. 
   
-O ggplot2 pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.
+O `ggplot2` pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.
 
 Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo:
 
@@ -35,8 +35,7 @@ Esses componentes semânticos (camadas) podem ser organizados conforme a descri�
 * Facetas; e, 
 * Demais ajustes.
 
-Veja abaixo modelo de gráfico, utilizando a função do pacote básico e utilizando o pacote `ggplot2`:
-
+Veja abaixo modelo de gráfico, utilizando a função do pacote `graphics` (pacote do R básico) e utilizando o pacote `ggplot2`:
 
 ```{r,echo=FALSE, fig.width=4.5, fig.height=4.5, message=FALSE, warning=FALSE}
 
@@ -62,18 +61,23 @@ Além disso, para alguns dos comandos aqui apresentados funcionarem, será neces
 
 ## Base de dados
 
-A base de dados utilizada para exemplificar as funções do pacote é a base **mtcars**, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:
+A base de dados utilizada para exemplificar as funções do pacote é a base `mtcars`, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:
 
 ```{r} 
 head(mtcars)
 ```
 
+<center>
+![](/img/2018-09-26-introducao-ao-ggplot/mtcars.jpg){width=600px}
+</center>
+
+Fotos de outros carros podem ser encontradas [aqui](https://twitter.com/i/moments/1001619000827228160).
 
 ## Atributos estéticos
 
 Os atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos `geoms`. Os mapeamentos estéticos podem ser definidos em `ggplot2` e em camadas individuais.
 
-Argumentos utilizados no **aes( )**:
+Argumentos utilizados no `aes( )`:
 
 * `x` e `y`: Observações que serão mapeadas  
 * `color`: Altera a cor das formas que não tem área (como retas e pontos)
@@ -85,7 +89,7 @@ Argumentos utilizados no **aes( )**:
 
 ## Objetos geométricos
 
-  Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos _geoms_ disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:
+Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos _geoms_ disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:
 
 |Tipo de Gráfico                    |    Geom              |
 |-----------------------------------|----------------------|
@@ -143,7 +147,7 @@ Gráfico utilizado para visualizar compactamente a distribuição de uma variáv
 ```{r, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot() +
-  labs(x="Cyl")
+  labs(x = "Cyl")
 ```
 
 ### smooth (Curva suavizada)
