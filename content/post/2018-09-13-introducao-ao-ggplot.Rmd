@@ -220,7 +220,7 @@ ggplot(mtcars, aes(x = wt, y = hp, col = am)) +
 
 Sistema de coordenada de escala fixa. representa o número de unidades no eixo y equivalente a uma unidade no eixo x. Garante que os intervalos de eixos sejam iguais.
   
-```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE, fig.height=5}
 ggplot(mtcars, aes(mpg, wt)) + 
   geom_point() + 
   coord_fixed(ratio = 1) +
@@ -373,31 +373,6 @@ As funções mais utilizadas nas criações/modificações de temas são:
     p2 + theme(legend.position = "bottom")
     
     ```
-
-## Plots para dados específicos
-
-* Gráficos de densidade em 2D
-
-    ```{r, message=FALSE, warning=FALSE}
-    p <- ggplot(faithful, aes(x = waiting, y = eruptions)) +
-      scale_y_continuous(limits = c(1, 5.5), expand = c(0, 0)) +
-      scale_x_continuous(limits = c(40, 100), expand = c(0, 0)) +
-      coord_fixed(60 / 4.5)
-    
-    p + stat_density_2d(aes(col = ..level..), h = c(5, .5))
-    ```
-
-* Gráficos de calor (Necessário a intalação do pacote "viridis")
-
-    ```{r, message=FALSE, warning=FALSE}
-    ggplot(faithful, aes(x = waiting, y = eruptions)) +
-      scale_y_continuous(limits = c(1, 5.5), expand = c(0,0)) +
-      scale_x_continuous(limits = c(40, 100), expand = c(0,0)) +
-      coord_fixed(60/4.5) +
-      stat_density_2d(geom = "tile", aes(fill = ..density..), h=c(5,.5), contour = FALSE) +
-      scale_fill_viridis()
-    ```
-
 
 ## Referências
 
