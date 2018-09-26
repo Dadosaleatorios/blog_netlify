@@ -14,7 +14,6 @@ slug: introducao-ao-ggplot
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 require(ggplot2)
 require(tidyverse)
-require(viridis)
 require(ggmap)
 ```
 
@@ -90,14 +89,16 @@ Argumentos utilizados no `aes( )`:
 ## Objetos geométricos
 
 Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos _geoms_ disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+`Tipo de Gráfico` <- c("scatterplot (dispersão)","barchart (barras)","boxplot","smooth (suavizada)")
+`Geom` <- c("geom_point()","geom_bar()","geom_boxplot()","geom_smooth()")
 
-|Tipo de Gráfico                    |    Geom              |
-|-----------------------------------|----------------------|
-|scatterplot (gráfico de dispersão)	|  `geom_point()`     |
-|barchart (gráfico de barras)	      |  `geom_bar()`       |
-|boxplot	                          |  `geom_boxplot()`   |
-|smooth (Curva suavizada)         	|  `geom_smooth()`    |
-  
+dados <- data_frame(`Tipo de Gráfico`,`Geom`, stringsAsFactors = F)
+
+dados
+
+```
+
 ### Gráficos de Dispersão
 
 ```{r, message=FALSE, warning=FALSE}
