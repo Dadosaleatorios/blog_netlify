@@ -1,0 +1,117 @@
+---
+title: Introdução ao GIT
+author: dadosaleatorios
+date: '2018-10-03'
+slug: introdução-ao-git
+categories:
+  - Controle de versão
+  - data science
+  - github
+---
+
+## O que é o [GitHub](https://github.com/)?  
+
+É um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
+
+<center>
+<img src="img/2018-10-03-introducao-ao-git/dplyr.png"  height="600" width="800">
+</center>
+
+O GitHub apresenta diferentes funcionalidades para um repositório:
+
+- **Código** - Todos (com acesso ao repositório) terão acesso aos códigos utilizados, e poderão modificá-los:
+
+    <center>
+    <img src="img/2018-10-03-introducao-ao-git/codigo.png"  height="600" width="800">
+    </center>
+
+- **Histórico de modificações** - Todas as modificações contêm uma mensagem que explica as modificações feitas, sempre identificadas e reversíveis:
+
+    <center>
+    <img src="img/2018-10-03-introducao-ao-git/commits.png"  height="350" width="750">
+    </center>
+
+## O que é o GIT?  
+
+Git é um sistema de controle de versão. Ele permite o gerenciamento do repositório, como *clone* e alteração de código, além de outras funcionalidades. Além disso, é um software livre.
+
+[Download do Git](https://git-scm.com/downloads)
+
+<center>
+<img src="img/2018-10-03-introducao-ao-git/git_download.png"  height="550" width="800">
+</center>
+
+## Configurando o GIT
+
+**Definindo a identidade:**
+
+Obviamente, é necessário criar uma conta no GitHub (é gratuito).
+No terminal, digitamos as informações de usuário do GitHub:
+
+```{r, engine='bash', eval = F}
+git config --global user.name "nome_de_usuario"
+git config --global user.email user@exemplo.com
+```
+
+## Configurando RStudio e GitLab
+
+No RStudio, vamos em tools > Global Options > Git/SVN, clicamos em *Create RSA Key*. Clique em *View public key* e copie a key.
+
+No GitHub, clique na sua foto > Settings > SSH and GPG Keys e cole a key copiada na caixa de texto. Coloque um título que lhe ajude a identificar de onde é a key, cole a key e confirme.  
+
+## Clonando [repositório](https://github.com/tidyverse/dplyr)
+
+Basta abrir a página do repositório no GitLab e copiar o endereço destacado:
+
+<center>
+<img src="img/2018-10-03-introducao-ao-git/git_clone.png"  height="600" width="800">
+</center>
+
+Com essa informação copiada, abrimos o RStudio, File > New Project. Selecionamos *Version Control*, escolhemos *Git* e colamos a *url* do repositório.
+
+## Fazendo e obtendo modificações
+
+Tendo clonado o projeto com sucesso, irá aparecer esta nova aba no RStudio, chamada Git:
+
+<center>
+<img src="img/RStudio_Git.png"  height="350" width="700">
+</center>
+
+Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com Git. São elas:
+
+- *Pull*
+- *Commit*
+- *Push*
+
+### Pull
+
+- *Puxa* as modificações do repositório remoto (GitHub).
+- Necessário para atualizar o repositório antes de enviar modificações.
+
+<center>
+<img src="img/pull.png"  height="70" width="450">
+</center>
+
+### Commit
+
+É a modificação dos arquivos, juntamente com uma mensagem de modificação. Basicamente, iremos contextualizar as mudanças feitas no código. 
+
+<center>
+<img src="img/exemplo_commit.png"  height="600" width="800">
+</center>
+
+Existe toda uma discussão sobre boas práticas ao escrever uma mensagem de commit, mas não é o objetivo deste post. 
+
+### Push
+
+Ao dar um commit, nada é atualizado no repositório remoto, apenas no local. Para enviar os commits ao repositório remoto (caso o dono do repositório nos autorize a fazer isso), é necessário dar um *push*. Após dar push, os commits serão enviados para o repositório remoto.
+
+É importante o repositório estar atualizado, caso contrário o push retornará um erro. Na mensagem de erro, o Git sugere que seja dado um *pull* antes do *push*.
+
+<center>
+<img src="img/push.png"  height="70" width="450">
+</center>
+
+## Veja também:
+
+http://rogerdudler.github.io/git-guide/index.pt_BR.html 
