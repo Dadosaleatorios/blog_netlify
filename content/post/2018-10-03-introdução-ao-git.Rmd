@@ -53,6 +53,8 @@ git config --global user.name "nome_de_usuario"
 git config --global user.email user@exemplo.com
 ```
 
+A flag `--global` deve ser usada ao fazer a configuração no seu computador pessoal.
+
 ## Configurando RStudio e GitLab
 
 No RStudio, vamos em tools > Global Options > Git/SVN, clicamos em *Create RSA Key*. Clique em *View public key* e copie a key.
@@ -85,8 +87,7 @@ Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com 
 
 ### Pull
 
-- *Puxa* as modificações do repositório remoto (GitHub).
-- Necessário para atualizar o repositório antes de enviar modificações.
+*Puxa* as modificações do repositório remoto (GitHub). Precisamos dar pull para atualizar o repositório antes de enviar modificações. 
 
 <center>
 <img src="img/pull.png"  height="70" width="450">
