@@ -14,7 +14,7 @@ categories:
 É um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
 
 <center>
-<img src="img/2018-10-03-introducao-ao-git/dplyr.png"  height="600" width="800">
+![](/img/2018-10-03-introducao-ao-git/dplyr.png){width=800px}
 </center>
 
 O GitHub apresenta diferentes funcionalidades para um repositório:
@@ -22,23 +22,21 @@ O GitHub apresenta diferentes funcionalidades para um repositório:
 - **Código** - Todos (com acesso ao repositório) terão acesso aos códigos utilizados, e poderão modificá-los:
 
     <center>
-    <img src="img/2018-10-03-introducao-ao-git/codigo.png"  height="600" width="800">
+    ![](/img/2018-10-03-introducao-ao-git/codigo.png){width=800px}
     </center>
 
 - **Histórico de modificações** - Todas as modificações contêm uma mensagem que explica as modificações feitas, sempre identificadas e reversíveis:
 
     <center>
-    <img src="img/2018-10-03-introducao-ao-git/commits.png"  height="350" width="750">
+    ![](/img/2018-10-03-introducao-ao-git/commits.png){width=800px}
     </center>
 
 ## O que é o GIT?  
 
-Git é um sistema de controle de versão. Ele permite o gerenciamento do repositório, como *clone* e alteração de código, além de outras funcionalidades. Além disso, é um software livre.
-
-[Download do Git](https://git-scm.com/downloads)
+Git é um sistema de controle de versão. Ele permite o gerenciamento do repositório, como *clone* e alteração de código, além de outras funcionalidades. Além disso, é um software livre. Faça [aqui](https://git-scm.com/downloads) o download do Git
 
 <center>
-<img src="img/2018-10-03-introducao-ao-git/git_download.png"  height="550" width="800">
+![](/img/2018-10-03-introducao-ao-git/git_download.png){width=800px}
 </center>
 
 ## Configurando o GIT
@@ -66,7 +64,7 @@ No GitHub, clique na sua foto > Settings > SSH and GPG Keys e cole a key copiada
 Basta abrir a página do repositório no GitLab e copiar o endereço destacado:
 
 <center>
-<img src="img/2018-10-03-introducao-ao-git/git_clone.png"  height="600" width="800">
+![](/img/2018-10-03-introducao-ao-git/git_clone.png){width=800px}
 </center>
 
 Com essa informação copiada, abrimos o RStudio, File > New Project. Selecionamos *Version Control*, escolhemos *Git* e colamos a *url* do repositório.
@@ -76,7 +74,7 @@ Com essa informação copiada, abrimos o RStudio, File > New Project. Selecionam
 Tendo clonado o projeto com sucesso, irá aparecer esta nova aba no RStudio, chamada Git:
 
 <center>
-<img src="img/RStudio_Git.png"  height="350" width="700">
+![](/img/2018-10-03-introducao-ao-git/RStudio_Git.png){width=700px}
 </center>
 
 Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com Git. São elas:
@@ -90,7 +88,7 @@ Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com 
 *Puxa* as modificações do repositório remoto (GitHub). Precisamos dar pull para atualizar o repositório antes de enviar modificações. 
 
 <center>
-<img src="img/pull.png"  height="70" width="450">
+![](/img/2018-10-03-introducao-ao-git/pull.png){width=450px}
 </center>
 
 ### Commit
@@ -98,7 +96,7 @@ Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com 
 É a modificação dos arquivos, juntamente com uma mensagem de modificação. Basicamente, iremos contextualizar as mudanças feitas no código. 
 
 <center>
-<img src="img/exemplo_commit.png"  height="600" width="800">
+![](/img/2018-10-03-introducao-ao-git/exemplo_commit.png){width=800px}
 </center>
 
 Existe toda uma discussão sobre boas práticas ao escrever uma mensagem de commit, mas não é o objetivo deste post. 
@@ -110,7 +108,7 @@ Ao dar um commit, nada é atualizado no repositório remoto, apenas no local. Pa
 É importante o repositório estar atualizado, caso contrário o push retornará um erro. Na mensagem de erro, o Git sugere que seja dado um *pull* antes do *push*.
 
 <center>
-<img src="img/push.png"  height="70" width="450">
+![](/img/2018-10-03-introducao-ao-git/push.png){width=450px}
 </center>
 
 ## Veja também:
