@@ -115,3 +115,5 @@ Ao dar um commit, nada é atualizado no repositório remoto, apenas no local. Pa
 ## Veja também:
 
 http://rogerdudler.github.io/git-guide/index.pt_BR.html 
+
+Gostou do post? Diga o que achou nos comentários. Comente também suas dúvidas e sugestões.
