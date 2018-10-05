@@ -9,6 +9,14 @@ categories:
   - github
 ---
 
+## O que é o GIT?  
+
+Git é um sistema de controle de versão que permite o gerenciamento de um repositório remoto (armazenado em um site, como [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/)), fazendo *clone* e alteração de código, além de outras funcionalidades. Repositório é, basicamente, uma pasta com os arquivos do nosso projeto. Como vamos utilizar o R, o repositório será, no nosso computador, vinculado a um projeto do R. Além disso, é um software livre. Faça [aqui](https://git-scm.com/downloads) o download do Git
+
+<center>
+![](/img/2018-10-03-introducao-ao-git/git_download.png){width=800px}
+</center>
+
 ## O que é o [GitHub](https://github.com/)?  
 
 É um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
@@ -31,13 +39,6 @@ O GitHub apresenta diferentes funcionalidades para um repositório:
     ![](/img/2018-10-03-introducao-ao-git/commits.png){width=800px}
     </center>
 
-## O que é o GIT?  
-
-Git é um sistema de controle de versão. Ele permite o gerenciamento do repositório, como *clone* e alteração de código, além de outras funcionalidades. Além disso, é um software livre. Faça [aqui](https://git-scm.com/downloads) o download do Git
-
-<center>
-![](/img/2018-10-03-introducao-ao-git/git_download.png){width=800px}
-</center>
 
 ## Configurando o GIT
 
@@ -51,9 +52,9 @@ git config --global user.name "nome_de_usuario"
 git config --global user.email user@exemplo.com
 ```
 
-A flag `--global` deve ser usada ao fazer a configuração no seu computador pessoal.
+A flag `--global` pode ser usada ao fazer a configuração no seu computador pessoal. Caso contrário recomendamos omitir essa flag.
 
-## Configurando RStudio e GitLab
+## Configurando RStudio e GitHub
 
 No RStudio, vamos em tools > Global Options > Git/SVN, clicamos em *Create RSA Key*. Clique em *View public key* e copie a key.
 
@@ -96,7 +97,7 @@ Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com 
 É a modificação dos arquivos, juntamente com uma mensagem de modificação. Basicamente, iremos contextualizar as mudanças feitas no código. 
 
 <center>
-![](/img/2018-10-03-introducao-ao-git/exemplo_commit.png){width=800px}
+![](/img/2018-10-03-introducao-ao-git/commit_msg.png){width=800px}
 </center>
 
 Existe toda uma discussão sobre boas práticas ao escrever uma mensagem de commit, mas não é o objetivo deste post. 
