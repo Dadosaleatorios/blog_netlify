@@ -11,7 +11,26 @@ categories:
 
 ## O que é o GIT?  
 
-Git é um sistema de controle de versão que permite o gerenciamento de um repositório remoto (armazenado em um site, como [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/)), fazendo *clone* e alteração de código, além de outras funcionalidades. Repositório é, basicamente, uma pasta com os arquivos do nosso projeto. Como vamos utilizar o R, o repositório será, no nosso computador, vinculado a um projeto do R. Além disso, é um software livre. Faça [aqui](https://git-scm.com/downloads) o download do Git
+No cotidiano de nossas tarefas acabamos por criar varias "versões finais" dos nossos projetos, como ilustrado abaixo, o sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
+
+<center>
+![](/img/2018-10-03-introducao-ao-git/doc_final.png){width=800px}
+</center>
+
+
+Git é um sistema de controle de versão. Mas o que é controle de versão?
+
+Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde. E porque precisamos do controle de versão?
+
+- Trabalhar simultaneamente
+- Evitar conflitos em alterações
+- Manter versões
+- Retornar ou revisar versões anteriores de suas análises
+- E muito mais!
+
+O objetivo de um VCS é garantir que todas as mudanças ocorram de maneira controlada e otimizada, mantendo o histórico de mundança com sua respectiva justificativa.
+
+Faça [aqui](https://git-scm.com/downloads) o download do Git
 
 <center>
 ![](/img/2018-10-03-introducao-ao-git/git_download.png){width=800px}
@@ -19,7 +38,19 @@ Git é um sistema de controle de versão que permite o gerenciamento de um repos
 
 ## O que é o [GitHub](https://github.com/)?  
 
-É um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
+Serviço de Web Hosting compartilhado para projetos que usam o controle de versionamento Git.
+Além do [GitHub](https://github.com/) podemos citar também o [GitLab](https://about.gitlab.com/) e o [Bitbucket](https://bitbucket.org/). Nesse tutorial vamos focar no GitHub
+
+Github é um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
+
+A idéia é que o repositório remoto fique sempre com a versão mais atualizada que se queira compartilhar. Podemos ver como funciona na imagem a seguir:
+
+<center>
+![](/img/2018-10-03-introducao-ao-git/git_distribuido.jpg){width=800px}
+</center>
+
+Abaixo temos um exemplo de um repositório do pacote *dplyr* hospedado no GitHub. 
+
 
 <center>
 ![](/img/2018-10-03-introducao-ao-git/dplyr.png){width=800px}
