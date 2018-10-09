@@ -11,7 +11,7 @@ categories:
 
 ## O que é o GIT?  
 
-No cotidiano de nossas tarefas acabamos por criar varias "versões finais" dos nossos projetos, como ilustrado abaixo, o sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
+No cotidiano de nossas tarefas acabamos por criar varias "versões finais" dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
 
 <center>
 ![](/img/2018-10-03-introducao-ao-git/doc_final.png){width=800px}
@@ -20,12 +20,12 @@ No cotidiano de nossas tarefas acabamos por criar varias "versões finais" dos n
 
 Git é um sistema de controle de versão. Mas o que é controle de versão?
 
-Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde. E porque precisamos do controle de versão?
+Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde. E por que precisamos do controle de versão?
 
-- Trabalhar simultaneamente
-- Evitar conflitos em alterações
-- Manter versões
-- Retornar ou revisar versões anteriores de suas análises
+- Trabalhar simultaneamente.
+- Evitar conflitos em alterações.
+- Manter versões.
+- Retornar ou revisar versões anteriores de suas análises.
 - E muito mais!
 
 O objetivo de um VCS é garantir que todas as mudanças ocorram de maneira controlada e otimizada, mantendo o histórico de mundança com sua respectiva justificativa.
@@ -41,7 +41,7 @@ Faça [aqui](https://git-scm.com/downloads) o download do Git
 Serviço de Web Hosting compartilhado para projetos que usam o controle de versionamento Git.
 Além do [GitHub](https://github.com/) podemos citar também o [GitLab](https://about.gitlab.com/) e o [Bitbucket](https://bitbucket.org/). Nesse tutorial vamos focar no GitHub
 
-Github é um site que oferece hospedagem gratuita para *repositórios*. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
+Com ele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.
 
 A idéia é que o repositório remoto fique sempre com a versão mais atualizada que se queira compartilhar. Podemos ver como funciona na imagem a seguir:
 
