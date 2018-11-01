@@ -25,6 +25,12 @@ Possui interesse em modelagem preditiva, processamento de linguagem natural, vis
 E-mail: dalbem.evandro@gmail.com  
 Perfis: [linkedin](https://www.linkedin.com/in/evandro-lopes-ba89964a/), [twitter](https://twitter.com/Ding_and_Djong), [facebook](https://www.facebook.com/evandro.dalbem), [github](https://github.com/djongs) 
 
+* Leonardo Filgueira
+Graduando em Estatística pela UFF.
+Possui interesse em sistemas de recomendação, machine learning.
+E-mail: leonardo_filgueira@id.uff.br
+Perfis: [linkedin](https://www.linkedin.com/in/leonardo-filgueira-b1815b163/), [facebook](https://www.facebook.com/netododono), [github](https://github.com/leo-filgueira)
+
 * Rodrigo Coster  
 Formado em Estatística e mestre em Adminstração/Contabilidade e Finanças pela UFRGS, atualmente é estatístico da Prefeitura de Porto Alegre.
 Possui interesse em séries temporais e automatização de processos.  
