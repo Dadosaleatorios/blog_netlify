@@ -1,0 +1,457 @@
+---
+title: Introdução ao shell
+author: dadosaleatorios
+date: '2018-11-07'
+slug: introducao-ao-shell
+---
+
+```{r, echo = F}
+knitr::opts_chunk$set(comment = NA)
+```
+
+Neste post vamos dar uma pausa nos posts de pacotes do R, e vamos aprender a usar o shell, do Linux, para nos ajudar na jornada de Data Scientists. Com esse post vamos nos acostumar com algumas expressões e com a ideia de se escrever comandos na tela preta do sistema.
+
+Todos os comandos neste tutorial foram feitos utilizando um ambiente Linux baseado em Debian.
+
+# Arquivos e pastas
+
+## Working directory {#pwd}
+
+Pra começar, podemos desejar saber "onde estamos", ou seja, podemos querer descobrir qual nossa pasta de trabalho (working directory). No R, fazemos isso com a função `getwd()`. No shell, digitamos `pwd` (*print working directory*).
+
+```{r, engine='bash'}
+pwd
+```
+
+## Listar objetos numa pasta
+
+Agora sabendo nos localizar, podemos querer saber o que há na pasta onde estamos, quais são os arquivos que estão lá, as pastas. Para fazer isto, usamos o comando `ls` (*listing*).
+
+```{r, engine='bash'}
+ls
+```
+
+## Diretório absoluto x diretório relativo
+
+Um diretório absoluto é como a latitude e longitude de um ponto no mapa, ou seja, ele especifica a localização do ponto de onde quer que estejamos nesse mapa. Já o diretório relativo é como se fosse uma localização a partir da nossa localização, como: A partir de onde você está, vá 1km nesta rua. Na prática, o shell irá diferenciar os tipos de diretório da seguinte forma: Se começarmos com /, então será absoluto, se começarmos com o nome da pasta, será um diretório relativo.
+
+- Diretório absoluto:
+    ```{r, engine='bash', eval = F}
+    ls /home/user/PROCEDIMENTOS_DS/Materiais/Shell/Exemplos
+    ```
+   
+    
+- Diretório relativo:
+    ```{r, engine='bash'}
+    ls Exemplos
+    ```
+
+## Troca de diretório
+
+Para trocar o *working directory* usamos o comando ``cd`` (*change directory*). Basta apenas colocar o diretório (absoluto ou relativo) para o qual queremos mudar (lembrando que estamos no diretório [mostrado acima](#pwd)). Note que o comando ``cd`` não printa nada na tela. Para checar que nossa troca de diretório funcionou, inserimos também ``pwd``.
+
+```{r, engine = 'bash'}
+cd Exemplos
+pwd
+```
+
+Também podemos ir para um diretório acima de onde estamos. Para isso podemos usar o diretório absoluto ou ``..`` (O working directory voltou a ser o mostrado na [primeira seção](#pwd)). Perceba que, de *Shell* voltamos para o seu *parent directory*, que é Materiais.
+
+```{r, engine = 'bash'}
+cd ..
+pwd
+```
+
+Também há um atalho para a *home*, que é ``~``. Se escrevermos ``cd ~``, iremos trocar o diretório de trabalho para nossa *home*.
+
+## Copiar e mover arquivos
+
+Se quisermos copiar um arquivo de uma pasta para outra usamos ``cp`` (*copy*). A sintaxe é: ``cp arq1 arq2 ... arqn dest1 des2 ... destn``, onde *arq* são os arquivos existentes e *dest* são os locais (com nome do arquivo) onde os *arq* serão copiados. Note que precisamos escrever o caminho até o arquivo, se ele não estiver no nosso working directory. Após a cópia pedimos para o Shell mostrar os arquivos na pasta Exemplos.
+
+```{r, engine = 'bash'}
+cp ex.txt Exemplos/ex.txt
+ls Exemplos
+```
+
+Obs.: Se houver algum arquivo de mesmo nome, ``cp`` irá substituí-lo pelo que nós estamos colando.
+
+Para mover um arquivo, utilizamos ``mv`` (*move*), que tem a mesma sintaxe de ``cp``. Este comando também sobrescreve arquivos com mesmo nome. Se houver espaços nos nomes dos arquivos (o que deve ser evitado ao máximo), devemos utilizar aspas simples nos nomes dos arquivos.
+
+## Remover arquivos e pastas
+
+- Para remover arquivos utilizamos ``rm`` (*remove*) seguido pelos nomes dos arquivos a serem removidos. **Atenção**: Para o *shell* não há lixeira, então os arquivos serão excluídos permamentemente.
+
+- Para remover pastas utilizamos ``rmdir`` (*remove directory*) seguido dos nomes das pastas (as pastas devem estar vazias).
+
+## Criar pastas
+
+Para criar uma nova pasta basta utilizar ``mkdir`` (*make directory*) seguido pelo nome da nova pasta. Se a pasta já existe então obteremos uma mensagem de erro informando que a pasta já existe.
+
+```{r engine='bash'}
+mkdir Exemplos/Nova_pasta
+ls Exemplos
+```
+
+# Manipulando dados
+
+## Visualizando arquivos
+
+Para printar um arquivo na tela utilizamos ``cat`` (*concatenate*) seguido pelo nome do arquivo.
+
+```{r engine='bash'}
+cat Exemplos/Exemplo_shell.csv
+```
+
+Uma outra opção é utilizar ``less``. Se o arquivo for muito grande, ele vai ser dividido em páginas. Nessa situação a barra de espaços vai para a próxima página e *q* fecha a visualização
+
+```{r engine='bash'}
+less Exemplos/Exemplo_shell.csv
+```
+
+Caso tenhamos inserido múltiplos arquivos, *:n* vai para o próximo (*next*) e *:p*, para o anterior (*preview*).
+
+## Help 
+
+Para visualizar o manual (*help*) de algum comando do shell basta digitar: ``man comando``. Para navegar no manual basta seguir o mesmo que em ``less``.
+
+## Head e tail
+
+- Para exibir as primeiras 10 linhas (default) de um arquivo, utilizamos ``head`` seguido do nome do arquivo.
+
+    ```{r engine = 'bash'}
+    head Exemplos/Exemplo_shell.csv
+    ```
+
+    Para exibir um número de linhas diferente do default, basta utilizar a *flag* -n, seguida do número de linhas desejado. Para outras opções e possibilidades, veja o manual de ``head``.
+    
+    ```{r engine = 'bash'}
+    head -n 5 Exemplos/Exemplo_shell.csv
+    ```
+    
+    Se colocarmos um *-* antes do número 5, o ``head`` irá exibir todas as linhas até faltarem 5 linhas para acabar o arquivo.
+    
+- Para exibir as últimas 10 linhas (default) de um arquivo, utilizamos ``tail``. Para alterar o número de linhas, o processo é igual ao usado em ``head``.
+
+    ```{r engine = 'bash'}
+    tail -n 4 Exemplos/Exemplo_shell.csv
+    ```
+
+    Para que o tail mostre o arquivo a partir de uma certa linha, basta utilizar um ``+`` antes do número. Se queremos exibir o arquivo a partir da linha 7:
+    
+    ```{r engine = 'bash'}
+    tail -n +7 Exemplos/Exemplo_shell.csv
+    ```
+
+## Selecionar colunas
+
+Para selecionar colunas de um arquivo, usamos ``cut``. Precisaremos especificar os números das colunas a serem exibidas e qual o caractere utilizado para separar as colunas. Se o delimitador de colunas for ponto e vírgula, devemos utilizar aspas simples no símbolo. Caso o delimitador seja vírgula isso não se faz necessário.
+
+```{r engine = 'bash'}
+cut -f 1-2,4 -d ';' Exemplos/Exemplo_shell.csv
+```
+
+## Selecionar linhas de acordo com padrão
+
+Usando o comando ``grep`` podemos selecionar linhas de acordo com um padrão. Por exemplo, vamos selecionar as linhas de *Exemplo_shell.csv* que tenham o valor "*v1*".
+
+```{r engine = 'bash'}
+grep v1 Exemplos/Exemplo_shell.csv
+```
+
+### Flags
+
+- ``-c``: Printa número de linhas com o padrão.
+- ``-h``: Não printa os nomes dos arquivos (quando há múltiplos arquivos).
+- ``-i``: Trata letras maiúsculas e minúsculas como iguais (*ignore case*).
+- ``-n``: Printa o número das linhas que apresentam o padrão.
+- ``-v``: Inverte a procura (seleciona linhas que não contêm o padrão).
+
+## Contando caracteres
+
+Com ``wc`` (*word count*) podemos contar o número de linhas, palavras e bytes de um documento. 
+
+```{r engine = 'bash'}
+wc Exemplos/Exemplo_shell.csv
+```
+
+### Flags
+
+- ``-c``: bytes
+- ``-m``: caracteres.
+- ``-w``: palavras (*words*).
+- ``-l``: linhas.
+
+# Combinando ferramentas
+
+## Salvar resultado num arquivo
+
+Para salvar o resultado de comandos feitos em um arquivo devemos usar ``> nome_arquivo``. Esse comando pode estar antes ou depois de todos os comandos.
+
+```{r engine = 'bash'}
+head -n 7 Exemplos/Exemplo_shell.csv > Exemplos/saida.csv 
+```
+
+O comando acima produz o mesmo resultado que:
+
+```{r engine = 'bash', eval = F}
+> Exemplos/saida.csv head -n 7 Exemplos/Exemplo_shell.csv 
+```
+
+## Pipe
+
+Podemos utilizar a saída de um comando como input para um próximo comando com o pipe - ``|``
+
+```{r engine = 'bash'}
+head -n 10 Exemplos/Exemplo_shell.csv | tail -n 5
+```
+
+Assim temos as cinco últimas linhas das dez primeiras linhas do arquivo ``Exemplo_shell.csv``.
+
+## Wildcards
+
+Podemos querer selecionar todos os arquivos em uma pasta para, por exemplo, movê-los, ou simplesmente visualizar quais são os arquivos com extensão csv numa pasta.
+ 
+- Listando todos os arquivos na pasta Exemplos de extensão csv
+    ```{r engine = 'bash'}
+    ls Exemplos/*.csv
+    ```
+
+- Listando todos os arquivos na pasta Exemplos de extensão csv ou txt
+
+    ```{r engine = 'bash'}
+    ls Exemplos/*.{txt,csv}
+    ```
+
+- ``?`` corresponde a um caractere, então ``201?.txt`` corresponderá a ``2017.txt`` ou ``2018.txt``, mas não a ``2017-01.txt``.
+- ``[...]`` corresponde a qualquer um dos caracteres nos colchetes, então ``201[78].txt`` corresponde a ``2017.txt`` ou a ``2018.txt``, mas não a ``2016.txt``.
+- ``{...}`` corresponde a qualquer um dos termos separados por vírgulas, então ``{*.txt, *.csv}`` corresponde a todos os arquivos de extensão ``.txt`` ou ``.csv``.
+
+## Ordenação
+
+Para ordenar, usamos ``sort``.
+
+```{r engine = 'bash'}
+cut -d ';' -f 3 Exemplos/Exemplo_shell.csv | sort
+```
+
+Note que o valor 'var2' (nome da coluna) entrou na lista de valores a serem ordenados. Pra resolver isso basta usar o ``grep``.
+
+### Flags
+
+- ``-n``: Ordem numérica.
+- ``-r``: Ordem reversa.
+
+```{r engine = 'bash'}
+cut -d ';' -f 3 Exemplos/Exemplo_shell.csv | sort -r | grep -v var2
+```
+
+## Valores distintos
+
+Vamos querer saber quais são os valores distintos da terceira coluna do arquivo ``Exemplo_shell.csv``.
+
+```{r engine='bash'}
+cut -d ';' -f 3 Exemplos/Exemplo_shell.csv | uniq
+```
+
+Perceba que os valores, no fundo, não são únicos. Isso é porque o ``uniq`` reconhece valores como iguais se eles forem seguidos. Para isso precisamos então ordenar os valores antes de buscar os valores distintos. Então para obter, realmente, valores distintos:
+
+```{r engine = 'bash'}
+cut -d ';' -f 3 Exemplos/Exemplo_shell.csv | sort | grep -v var2 | uniq
+```
+
+### Flag
+
+- ``-c``: Adiciona frequência (*count*).
+
+```{r engine = 'bash'}
+cut -d ';' -f 3 Exemplos/Exemplo_shell.csv | sort | grep -v var2 | uniq -c
+```
+
+## Interromper comando
+
+Quando, por algum motivo (possivelmente erro) o shell ficar aguardando inserirmos mais coisas, podemos interromper o processo apenas apertando *Ctrl + C*.
+
+## Histórico
+
+Para visualizar uma listagem dos comandos executados anteriormente, basta usar ``history``. Ao digitarmos ``!`` + número do comando, ele será rodado novamente.
+
+# Criando ferramentas
+
+## Variáveis
+
+O shell já tem algumas variáveis globais, que sempre estão disponíveis. Para verificar quais são elas, digitamos ``set``. Daremos um ``head`` para não ocupar muito espaço neste tutorial. Em geral, as variáveis são escritas com letras maiúsculas.
+
+```{r engine = 'bash'}
+set | head -n 20
+```
+
+### Variáveis comumente usadas
+
+- ``HOME``: Diretório home.
+- ``PWD``: Diretório de trabalho atual.
+- ``SHELL``: Programa de shell usado.
+- ``USER``: ID do usuário
+
+### Valor da variável
+
+Para printar o valor da variável, devemos usar ``echo $nome_variavel``. Atenção para o uso de ``$``.
+
+```{r engine = 'bash'}
+echo $SHELL
+```
+
+## Atribuição
+
+Para atribuir um valor a uma variável usamos ``=``, sem espaços:
+
+```{r engine = 'bash'}
+v1=1
+echo $v1
+
+arquivo=Exemplo_shell.csv
+echo $arquivo
+```
+
+Observação: Se o valor a ser atribuído à variável é um string com acento, então o uso de aspas é obrigatório.
+
+## Loop
+
+Podemos criar também um loop no shell da seguinte forma: ``for variavel in v1  v2  v3; do comandos; done``
+
+```{r engine='bash'}
+for i in 1 2 3 4 5; do echo $i; done
+```
+
+Os comandos do loop podem conter pipe. Se houver mais de um comando, devemos separar com ``;``. Além disso, os valores em que o índice vai variar podem vir de alguma variável ou de uma sequência, como veremos na próxima seção.
+
+### Gerando sequência para loop
+
+Podemos usar o comando ``seq`` para criar uma sequência.
+
+- ``seq`` 5: Sequência de 1 a 5.
+- ``seq`` 2 6: Sequência de 2 a 6.
+- ``seq`` 1 2 10: Números ímpares de 1 a 10.
+
+```{r engine='bash'}
+for i in $(seq 5); do echo $i; done
+```
+
+Também podemos usar o conteúdo de uma pasta, por exemplo:
+
+```{r engine = 'bash'}
+arquivos=Exemplos/*
+  
+for nome in $arquivos; do echo $nome; done  
+```
+
+
+## Scripts
+
+### Editar um arquivo 
+
+Para abrir um arquivo em um editor de texto, a fim de editá-lo, usamos o comando ``nano``. O editor não será aberto aqui, portanto, para visualizar o arquivo no editor, você deve digitar este comando no shell (lembrando de adaptar o caminho se você estiver num diretório diferente). Pode ser usado para criar um novo arquivo.
+
+```{r engine='bash', eval = F}
+nano Exemplos/ex.txt
+```
+
+#### Atalhos importantes
+
+Ao editar um arquivo, algumas combinações de teclas são muito importantes, como:
+
+- Ctrl-K: Deleta uma linha.
+- Ctrl-U: Faz o *un-delete* da linha.
+- Ctrl-O: Salva o arquivo.
+- Ctrl-X: Fecha o editor.
+
+### Criando um script
+
+Para criar um script basta criar um arquivo (de extensão .sh) e digitar comandos neste script. Por exemplo, iremos criar um script que calcula a frequência dos valores da segunda coluna de Exemplo_shell.csv:
+
+```{r engine='bash', eval = F}
+nano Exemplos/script.sh
+```
+
+Ao abrir o arquivo no editor (ele não abrirá neste relatório), iremos colocar o seguinte comando:
+
+```{r engine='bash', eval = F}
+cut -d ';' -f 2 Exemplos/Exemplo_shell.csv | grep -v var1 | sort | uniq -c
+```
+
+### Executando script
+
+Para executar o script usamos o comando ``bash``.
+
+```{r engine = 'bash'}
+bash Exemplos/script.sh
+```
+
+### Passando nomes de arquivos para scripts
+
+Podemos também fazer o script receber o nome do arquivo que deve ser trabalhado apenas na hora de rodar o script. Para isso, vamos criar um novo script.
+
+```{r engine='bash', eval = F}
+nano Exemplos/script2.sh
+```
+
+Neste script colocaremos o seguinte comando:
+
+```{r engine='bash', eval = F}
+cut -d ';' -f 2 $@ | grep -v var1 | sort | uniq -c
+```
+
+Observe a inclusão de ``$@``, que vai fazer o papel do nome do arquivo.
+
+Para executar este script iremos passar o nome do arquivo. Então:
+
+```{r engine = 'bash'}
+bash Exemplos/script2.sh Exemplos/Exemplo_shell.csv
+```
+
+### Passando argumentos para script
+
+Para deixar nosso script que calcula frequência mais geral, podemos deixar que se passem argumentos, como o número da coluna selecionada, o nome da coluna (que deve ser retirada no ``grep``), além do nome do arquivo. Iremos criar um terceiro script que receberá três coisas: nome do arquivo, número da coluna e nome da variável (que será retirado).
+
+```{r engine='bash', eval = F}
+nano Exemplos/script2.sh
+```
+
+Neste script colocaremos o seguinte comando:
+
+```{r engine='bash', eval = F}
+cut -d ';' -f $2 $1 | grep -v $3 | sort | uniq -c
+```
+
+Perceba que o número após o ``$`` será a ordem de entrada dos parâmetros, ou seja, o segundo parâmetro deverá ser o número da coluna que será selecionada. Então, para rodar esse script:
+
+```{r engine = 'bash'}
+bash Exemplos/script3.sh Exemplos/Exemplo_shell.csv 3 var2
+```
+
+### Pipe após script
+
+É possível também usar o pipe para pegar o output de um script. Vamos selecionar as 10 primeiras linhas do output gerado pelo *script2.sh*:
+
+```{r engine = 'bash'}
+bash Exemplos/script2.sh Exemplos/Exemplo_shell.csv | head
+```
+
+### Script com loop
+
+Veja o *script4.sh*:
+
+```{r engine='bash'}
+cat Exemplos/script4.sh
+```
+
+Perceba que há um loop com três comandos e note também o comentário, com o símbolo #. (a identação dos comandos dentro do loop não é obrigatória)
+
+```{r engine = 'bash'}
+bash Exemplos/script4.sh Exemplos/Exemplo_shell.csv Exemplos/saida.csv
+```
+
+# Sugestão de leitura
+
+[Este tutorial](https://www.shellscript.sh/) temos muito mais informação sobre o shell, que vai além desse tutorial de introdução.
+
+[*Introduction to Shell for Data Science*](https://www.datacamp.com/courses/introduction-to-shell-for-data-science), curso do DataCamp, usado como base para este post.
