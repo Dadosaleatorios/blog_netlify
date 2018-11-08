@@ -1,0 +1,30 @@
+---
+title: Como passar parametros para um script R
+author: ''
+date: '2018-11-07'
+slug: como-passar-parametros-para-um-script-r
+categories: []
+tags: []
+description: ''
+topics: []
+---
+
+Esse post vai descrever como passar argumentos para um script chamando-o pela linha de comando.
+Vamos mostra uma aplicação simples utilizada na pratica do dia a dia.
+Um script **R** é chamado via linha de comando(no shell) da seguinte forma `Rscript argScript.R`, dessa forma todo o script é processado e é gerado a saida que foi criada no script. Esse comando é analogo ao comando `source(argScript.R)` que pode ser usado dentro do **R** para executa todas as operações descritas no arquivo. 
+
+Já sabendo disso, vamos agora deixar esse `argScript.R` dependendo de um input externo, como por exemplo um nome de arquivo (um arquivo text contendo dados que devem ser lidos para o **R** processar) e um nome para o arquivo de saida a ser gerado por esse script **R**. 
+
+Para passar argumentos para um script **R** vamos utilizar a função `commandArgs`, essa função lista todos os argumentos que foram fornecidos quando a sessão do **R** atual foi chamada. Então vamos criar um script **R**  com nome de `argScript.R` que começa com o comando abaixo:
+
+```{r}
+argumentos = commandArgs(trailingOnly=TRUE)
+```
+
+
+
+
+
+Se você estiver usando uma maquina windows, talvez seja necessário add o caminho do arquivo Rscript.exe no _$PATH_
+
+- Fonte: https://www.computerhope.com/issues/ch000549.htm
