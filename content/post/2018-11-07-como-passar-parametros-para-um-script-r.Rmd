@@ -25,6 +25,4 @@ argumentos = commandArgs(trailingOnly=TRUE)
 
 
 
-Se você estiver usando uma maquina windows, talvez seja necessário add o caminho do arquivo Rscript.exe no _$PATH_
-
-- Fonte: https://www.computerhope.com/issues/ch000549.htm
+Se você estiver usando uma maquina windows, talvez seja necessário add o caminho do arquivo Rscript.exe no _$PATH_, veja como fazer aqui https://www.computerhope.com/issues/ch000549.htm
