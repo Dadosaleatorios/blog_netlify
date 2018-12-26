@@ -1,5 +1,5 @@
 ---
-title: Cartao de Natal com o R
+title: Cartão de Natal com o R
 author: ''
 date: '2018-12-26'
 slug: cartao-de-natal-com-o-r
