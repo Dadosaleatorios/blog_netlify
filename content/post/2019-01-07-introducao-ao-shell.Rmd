@@ -37,7 +37,7 @@ Um diretório absoluto é como a latitude e longitude de um ponto no mapa, ou se
 
 - Diretório absoluto:
     ```{r, engine='bash', eval = F}
-    ls /home/user/PROCEDIMENTOS_DS/Materiais/Shell/Exemplos
+    ls /home/user/Shell/Exemplos
     ```
    
     
