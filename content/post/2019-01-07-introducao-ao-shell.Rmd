@@ -1,9 +1,16 @@
 ---
 title: Introdução ao shell
 author: dadosaleatorios
-date: '2018-11-07'
+date: '2019-01-09'
 slug: introducao-ao-shell
 ---
+```{r, echo=FALSE}
+library(knitr)
+opts_chunk$set(eval=F)
+
+```
+
+
 
 ```{r, echo = F}
 knitr::opts_chunk$set(comment = NA)
