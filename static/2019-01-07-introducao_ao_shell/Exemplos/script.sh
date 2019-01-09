@@ -1,0 +1,1 @@
+cut -d ';' -f 2 Exemplos/Exemplo_shell.csv | grep -v var1 | sort | uniq -c
