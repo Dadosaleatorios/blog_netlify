@@ -10,16 +10,18 @@ tags:
 slug: diferenças-entre-segmentação-e-clusterização
 ---
 
-Na modelagem de marketing, o termo "clustering" é muito usado. Em vez de agrupar pessoas, o agrupamento simplesmente identifica o que as pessoas fazem na maior parte do tempo. Isso nos permite prever o que os clientes provavelmente farão sem encaixá-los em grupos rígidos.
+Na modelagem de marketing, o termo "clustering" é muito usado. Ao invés de agrupar pessoas, o agrupamento simplesmente identifica o que as pessoas fazem na maior parte do tempo. Isso nos permite prever o que os clientes provavelmente farão sem encaixá-los em grupos rígidos.
 
 Segmentar é o processo de colocar os clientes em grupos com base nas semelhanças, e o agrupamento é o processo de encontrar semelhanças nos clientes para que eles possam ser agrupados e, portanto, segmentados. Eles parecem bastante semelhantes, mas não são exatamente os mesmos.
 
 
 ## Segmentação
 
-Quando você segmenta, sabe quem segmentar. Se estou vendendo um carro familiar caro, quero segmentar pessoas que tenham uma familia grande e uma renda familiar alta. Neste caso, estou definindo os limites do grupo. É natural supor que esse grupo de pessoas comprariam os carros dessa linha.
+Quando você segmenta, sabe quem segmentar. Se estou vendendo um carro familiar caro, quero segmentar pessoas que tenham uma família grande e uma renda familiar alta. Neste caso, estou definindo os limites do grupo. É natural supor que esse grupo de pessoas comprariam os carros dessa linha.
 
-Identificar e agrupar clientes que têm uma renda alta e familia grande é o processo de segmentação. Isso é importante porque as pessoas de fora desse segmento provavelmente não querem um carro com caracteristicas familiar. Personalizar o marketing para esse segmento faz sentido.
+![Aprendizado supervisionado](/img/2019-02-04-diferencas-entre-segmentacao-e-clusterizacao/segmentation.png)
+
+Identificar e agrupar clientes que têm uma renda alta e família grande é o processo de segmentação. Isso é importante porque as pessoas de fora desse segmento provavelmente não querem um carro com características familiares. Personalizar o marketing para esse segmento faz sentido.
 
 Mas o segmento ainda é muito grande e nem todo mundo compra esse carro. E se adicionar mais uma dimensão para aumentar a especificidade? Por exemplo a idade. Dos meus dados, vejo que os clientes começam a comprar carros familiares depois dos 35 anos de idade. Então, para refinar meu segmento, eu removo clientes com menos de 35 anos. Mas ainda assim, nem todo mundo neste segmento recém-refinado compra o carro. E quanto a localização? Acho que apenas clientes com mais de 35 anos nos grandes centros estão comprando esse tipo de carro. Vamos remover clientes que não são dos grandes centros. A ideia é refinar o segmento até chegar a um segmento de um - o santo graal do marketing. Mas quantas características um profissional de marketing pode refinar?
 
@@ -29,8 +31,10 @@ Com a democratização do big data, os profissionais de marketing agora têm cen
 
 Técnicas de clusters são usadas para agrupar dados/observações em alguns segmentos, de modo que os dados de qualquer segmento sejam semelhantes, enquanto os dados entre os segmentos são diferentes. Definir o que queremos dizer quando dizemos observações “semelhantes” ou “diferentes” é uma parte fundamental da análise de cluster, que muitas vezes requer muito conhecimento contextual e criatividade além do que as ferramentas estatísticas podem fornecer.
 
-A análise de cluster é usada em várias aplicações. Como por exemplo, ele pode ser usado para identificar segmentos de consumidores ou conjuntos competitivos de produtos ou grupos de ativos cujos preços alternam, ou para segmentação geo-demográfica, entre outros. Em geral, muitas vezes é necessário dividir nossos dados em segmentos e realizar qualquer análise subsequente em cada segmento, a fim de desenvolver insights específicos do segmento (potencialmente mais refinados). Esse pode ser o caso, mesmo que não haja segmentos intuitivamente "naturais" em nossos dados.
+![Aprendizado não supervisionado](/img/2019-02-04-diferencas-entre-segmentacao-e-clusterizacao/cluster.png)
+
+A análise de cluster é usada em várias aplicações. Como por exemplo, ele pode ser usado para identificar segmentos de consumidores ou conjuntos competitivos de produtos ou grupos de ativos cujos preços alternam, ou para segmentação geo-demográfica, entre outros. Em geral, muitas vezes é necessário dividir nossos dados em segmentos e realizar qualquer análise subsequente em cada um destes, a fim de desenvolver insights específicos do segmento. Esse pode ser o caso, mesmo que não haja segmentos intuitivamente "naturais" em nossos dados.
 
 Clustering é o processo de usar aprendizado de máquina e algoritmos para identificar como diferentes tipos de dados estão relacionados e criar novos segmentos com base nesses relacionamentos. O cluster encontra a relação entre os pontos de dados para que eles possam ser segmentados.
 
-Agrupar os dados nos ajuda a descobrir um novo segmento de clientes e seu comportamento de compra. Podemos aplicar modelos de clustering e centenas de outros semelhantes a centenas de conjuntos de dados para prever a probabilidade de compra de um cliente. Isso é Big Data!
+Agrupar os dados nos ajuda a descobrir um novo segmento de clientes e seu fluxo de compra. Podemos aplicar modelos de clustering e centenas de outros semelhantes a centenas de conjuntos de dados para prever e antecipar o comportamento de um cliente. Com as tecnologias aplicadas a big data essa clusterização pode ser realizada utilizando milhares de Gb de dados!
