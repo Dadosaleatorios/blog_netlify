@@ -42,4 +42,6 @@ Agrupar os dados nos ajuda a descobrir um novo segmento de clientes e seu fluxo 
 
 ## Resumo
 
-Quando falamos sobre clusterização, estamos trabalhando com aprendizado não supervisionado, ou seja, não vamos delimitar previamente como nosso segmento deva ser, e sim vamos aplicar métodos que que buscam similaridades que podem ser não óbvias. Já quando estamos trabalhando com segmentação, podemos pensar em um afunilamento, ou em slices (cortes em pedaços) da base em caracteristicas previamente conhecidas.  
+
+Quando falamos sobre clusterização, estamos trabalhando com aprendizado não supervisionado, ou seja, não vamos delimitar previamente como nosso segmento deve ser, e sim vamos aplicar métodos que buscam similaridades não triviais. 
+Já quando estamos trabalhando com segmentação, podemos pensar em um afunilamento, ou em slices(cortes em pedaços), da base em caracteristicas já previamente conhecidas.
