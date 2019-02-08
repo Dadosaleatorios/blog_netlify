@@ -13,14 +13,35 @@ categories:
 
 <div id="o-que-e-o-git" class="section level2">
 <h2>O que é o GIT?</h2>
-<p>Git é um sistema de controle de versão que permite o gerenciamento de um repositório remoto (armazenado em um site, como <a href="https://github.com/">GitHub</a>, <a href="https://about.gitlab.com/">GitLab</a>, <a href="https://bitbucket.org/">Bitbucket</a>), fazendo <em>clone</em> e alteração de código, além de outras funcionalidades. Repositório é, basicamente, uma pasta com os arquivos do nosso projeto. Como vamos utilizar o R, o repositório será, no nosso computador, vinculado a um projeto do R. Além disso, é um software livre. Faça <a href="https://git-scm.com/downloads">aqui</a> o download do Git</p>
+<p>No cotidiano de nossas tarefas acabamos por criar varias “versões finais” dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.</p>
+<center>
+<img src="/img/2018-10-03-introducao-ao-git/doc_final.png" width="800" />
+</center>
+<p>Git é um sistema de controle de versão. Mas o que é controle de versão?</p>
+<p>Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde. E por que precisamos do controle de versão?</p>
+<ul>
+<li>Trabalhar simultaneamente.</li>
+<li>Evitar conflitos em alterações.</li>
+<li>Manter versões.</li>
+<li>Retornar ou revisar versões anteriores de suas análises.</li>
+<li>E muito mais!</li>
+</ul>
+<p>O objetivo de um VCS é garantir que todas as mudanças ocorram de maneira controlada e otimizada, mantendo o histórico de mundança com sua respectiva justificativa.</p>
+<p>Faça <a href="https://git-scm.com/downloads">aqui</a> o download do Git</p>
 <center>
 <img src="/img/2018-10-03-introducao-ao-git/git_download.png" width="800" />
 </center>
 </div>
 <div id="o-que-e-o-github" class="section level2">
 <h2>O que é o <a href="https://github.com/">GitHub</a>?</h2>
-<p>É um site que oferece hospedagem gratuita para <em>repositórios</em>. Ou seja, nele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.</p>
+<p>Serviço de Web Hosting compartilhado para projetos que usam o controle de versionamento Git.
+Além do <a href="https://github.com/">GitHub</a> podemos citar também o <a href="https://about.gitlab.com/">GitLab</a> e o <a href="https://bitbucket.org/">Bitbucket</a>. Nesse tutorial vamos focar no GitHub</p>
+<p>Com ele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.</p>
+<p>A idéia é que o repositório remoto fique sempre com a versão mais atualizada que se queira compartilhar. Podemos ver como funciona na imagem a seguir:</p>
+<center>
+<img src="/img/2018-10-03-introducao-ao-git/git_distribuido.jpg" width="800" />
+</center>
+<p>Abaixo temos um exemplo de um repositório do pacote <em>dplyr</em> hospedado no GitHub.</p>
 <center>
 <img src="/img/2018-10-03-introducao-ao-git/dplyr.png" width="800" />
 </center>
@@ -39,7 +60,8 @@ categories:
 <div id="configurando-o-git" class="section level2">
 <h2>Configurando o GIT</h2>
 <p><strong>Definindo a identidade:</strong></p>
-<p>Obviamente, é necessário criar uma conta no GitHub (é gratuito). No terminal, digitamos as informações de usuário do GitHub:</p>
+<p>Obviamente, é necessário criar uma conta no GitHub (é gratuito).
+No terminal, digitamos as informações de usuário do GitHub:</p>
 <pre class="bash"><code>git config --global user.name &quot;nome_de_usuario&quot;
 git config --global user.email user@exemplo.com</code></pre>
 <p>A flag <code>--global</code> pode ser usada ao fazer a configuração no seu computador pessoal. Caso contrário recomendamos omitir essa flag.</p>

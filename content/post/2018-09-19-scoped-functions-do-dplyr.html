@@ -10,28 +10,33 @@ categories:
 
 
 
-<p>Neste post estamos supondo que você já tenha familiaridade com o pacote <code>dplyr</code>. Caso ainda não conheça o pacote, veja o post de <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">introdução ao dplyr</a>.</p>
+<p>Este post faz parte da série de post que estamos criando sobre o <code>dplyr</code>. Caso ainda não conheça o pacote, veja o post de <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">introdução ao dplyr</a>.</p>
 <p>O <code>dplyr</code> apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos <code>_if</code>, <code>_at</code> e <code>_all</code> são utilizados com as funções do <code>dplyr</code> de forma a realizar uma mesma operação a várias colunas, simultaneamente.</p>
 <ul>
-<li><p><code>_all</code>: Realiza as operações para todas as colunas do <code>tibble</code>.</p></li>
-<li><p><code>_at</code>: Realiza operações sobre um conjunto de variáveis com nomes específicos ou índices das colunas (assim como fazemos no <code>select</code>).</p></li>
-<li><p><code>_if</code>: Realiza operações sobre um conjunto de colunas para os quais a comparação com algum predicado é verdadeira.</p></li>
+<li><p><code>_all</code>: Realiza as operações para todas as colunas do <code>tibble</code> ou <code>dataframe</code>.</p></li>
+<li><p><code>_at</code>: Realiza operações sobre um conjunto de variáveis com nomes específicos ou índices das colunas.</p></li>
+<li><p><code>_if</code>: Realiza operações sobre um conjunto de colunas para os quais a condição lógica é verdadeira.</p></li>
 </ul>
 <p>As funções que podem ser utilizadas com o sufixo são:</p>
 <ul>
-<li><code>mutate</code> e <code>transmute</code>.</li>
+<li><code>mutate e transmute</code>.</li>
 <li><code>summarise</code>.</li>
 <li><code>filter</code>.</li>
 <li><code>group_by</code>.</li>
-<li><code>select</code> e <code>rename</code>.</li>
+<li><code>select e rename</code>.</li>
 <li><code>arrange</code>.</li>
 </ul>
-<div id="dados" class="section level2">
-<h2>Dados</h2>
-<p>Iremos utilizar o famoso conjunto de dados <code>iris</code>:</p>
+<p>Agora vamos mostrar alguns exemplos de aplicações dessas funções.</p>
+<div id="aprendendo-por-exemplo" class="section level3">
+<h3>Aprendendo por exemplo:</h3>
+<p>Iremos utilizar o famoso conjunto de dados <code>iris</code>.</p>
+<center>
+<img src="/img/2018-09-19-scoped-functions-do-dplyr/iris_img.png" width="600" />
+</center>
+</center>
 <pre class="r"><code>require(dplyr)
 
-as_tibble(iris)</code></pre>
+as_tibble(x = iris)</code></pre>
 <pre><code># A tibble: 150 x 5
    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -46,13 +51,12 @@ as_tibble(iris)</code></pre>
  9          4.4         2.9          1.4         0.2 setosa 
 10          4.9         3.1          1.5         0.1 setosa 
 # ... with 140 more rows</code></pre>
-</div>
-<div id="sufixo-_all" class="section level2">
-<h2>Sufixo <code>_all</code></h2>
+<div id="sufixo-_all" class="section level4">
+<h4>Sufixo <code>_all</code></h4>
 <p>Vamos agrupar por espécie e calcular a média de todas as colunas (note que os argumentos adicionais da função são colocados depois da função):</p>
 <pre class="r"><code>iris %&gt;% 
   group_by(Species) %&gt;% 
-  summarise_all(mean, na.rm = T)</code></pre>
+  summarise_all(.funs = mean, na.rm = T)</code></pre>
 <pre><code># A tibble: 3 x 5
   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
@@ -62,7 +66,7 @@ as_tibble(iris)</code></pre>
 <p>Agora iremos transformar todas as colunas de maneira a estarem na escala <span class="math inline">\([0, 1]\)</span>. Como a coluna de espécies não é numérica, então vamos tranformá-la numa variável de grupo. Assim a função <code>_all</code> não se aplicará para ela. Note que poderemos criar uma função para fazer a tarefa desejada.</p>
 <pre class="r"><code>iris %&gt;% 
   group_by(Species) %&gt;% 
-  mutate_all(function(x){ x/max(x) })</code></pre>
+  mutate_all(.funs = function(x){ x / max(x) })</code></pre>
 <pre><code># A tibble: 150 x 5
 # Groups:   Species [3]
    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -82,7 +86,7 @@ as_tibble(iris)</code></pre>
 <p>Vamos filtrar para que todas as variáveis sejam maiores que <span class="math inline">\(1,5\)</span>:</p>
 <pre class="r"><code>iris %&gt;% 
   select(-Species) %&gt;% 
-  filter_all(all_vars(. &gt; 1.5))</code></pre>
+  filter_all(.vars_predicate = all_vars(. &gt; 1.5))</code></pre>
 <pre><code># A tibble: 52 x 4
    Sepal.Length Sepal.Width Petal.Length Petal.Width
           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
@@ -100,7 +104,7 @@ as_tibble(iris)</code></pre>
 <p>Agora filtraremos para que pelo menos uma das variáveis sejam maiores que <span class="math inline">\(7,5\)</span>:</p>
 <pre class="r"><code>iris %&gt;% 
   select(-Species) %&gt;% 
-  filter_all(any_vars(. &gt; 7.5))</code></pre>
+  filter_all(.vars_predicate = any_vars(. &gt; 7.5))</code></pre>
 <pre><code># A tibble: 6 x 4
   Sepal.Length Sepal.Width Petal.Length Petal.Width
          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
@@ -112,7 +116,7 @@ as_tibble(iris)</code></pre>
 6          7.7         3            6.1         2.3</code></pre>
 <p>Podemos, de duas maneiras, modificar os nomes de todas as colunas:</p>
 <pre class="r"><code>iris %&gt;% 
-  select_all(toupper) # ou rename_all(toupper)</code></pre>
+  select_all(.funs = toupper) # ou rename_all(toupper)</code></pre>
 <pre><code># A tibble: 150 x 5
    SEPAL.LENGTH SEPAL.WIDTH PETAL.LENGTH PETAL.WIDTH SPECIES
           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -129,18 +133,18 @@ as_tibble(iris)</code></pre>
 # ... with 140 more rows</code></pre>
 <p>O <code>group_by_all</code> torna todas as colunas do <code>tibble</code> em colunas de grupos. Já o <code>arrange_all</code> irá ordenar os dados de acordo com os valores de todas as colunas, em ordem crescente. Caso desejemos a ordenação descrescente, basta adicionar <code>desc</code> no segundo argumento.</p>
 </div>
-<div id="sufixo-_at" class="section level2">
-<h2>Sufixo <code>_at</code></h2>
+<div id="sufixo-_at" class="section level4">
+<h4>Sufixo <code>_at</code></h4>
 <p>Utilizando o sufixo <code>_at</code>, podemos selecionar as colunas para as quais as funções serão aplicadas, da mesma maneira como podemos escrever no <code>select</code>. Basta utilizar a função <code>vars</code>. Desta maneira, podemos calcular a média de todas as variáveis, exceto <code>Species</code>.</p>
 <pre class="r"><code>iris %&gt;% 
-  summarise_at(vars(-Species), mean)</code></pre>
+  summarise_at(.vars = vars(-Species), .funs = mean)</code></pre>
 <pre><code># A tibble: 1 x 4
   Sepal.Length Sepal.Width Petal.Length Petal.Width
          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
 1         5.84        3.06         3.76        1.20</code></pre>
 <p>Também podemos utilizar as <em>help functions</em>. Neste caso multiplicaremos por <span class="math inline">\(100\)</span> as colunas que terminam com “Length”:</p>
 <pre class="r"><code>iris %&gt;% 
-  mutate_at(vars(ends_with(&quot;Length&quot;)), funs(. * 100))</code></pre>
+  mutate_at(.vars = vars(ends_with(&quot;Length&quot;)), .funs =  funs(. * 100))</code></pre>
 <pre><code># A tibble: 150 x 5
    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -158,26 +162,26 @@ as_tibble(iris)</code></pre>
 <p>Note que ao invés de criar uma função que recebe <code>x</code> e retorna <code>x * 100</code>, nós utilizamos a função <code>funs</code>. O ponto funciona como cada uma das colunas, que, neste caso, é multiplicada por <span class="math inline">\(100\)</span>.</p>
 <p>O mesmo raciocínio se aplica às outras funções: <code>filter</code>, <code>arrange</code> e <code>group_by</code>. Não foi encontrado uso de <code>select_at</code> e <code>rename_at</code>.</p>
 </div>
-<div id="sufixo-_if" class="section level2">
-<h2>Sufixo <code>_if</code></h2>
+<div id="sufixo-_if" class="section level4">
+<h4>Sufixo <code>_if</code></h4>
 <p>O sufixo <code>_if</code> permite que nós apliquemos as funções para colunas que tenham algum predicado.</p>
 <p>Vamos calcular o máximo de todas as variáveis que são numéricas:</p>
 <pre class="r"><code>iris %&gt;% 
-  summarise_if(is.numeric, max)</code></pre>
+  summarise_if(.predicate = is.numeric, .funs = max)</code></pre>
 <pre><code># A tibble: 1 x 4
   Sepal.Length Sepal.Width Petal.Length Petal.Width
          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
 1          7.9         4.4          6.9         2.5</code></pre>
 <p>Da mesma maneira acontece com todas as outras funções.</p>
 </div>
-<div id="select-vs-rename" class="section level2">
-<h2>Select <em>vs</em> Rename</h2>
-<p>As funções <code>select_</code> e <code>rename_</code>, com algum dos sufixos, se diferenciam pelo fato de que com o <code>select</code> não é necessário passar uma função que mude os nomes, já com o <code>rename</code> é necessário incluir uma função que modifique os nomes das colunas.</p>
+<div id="select-vs-rename" class="section level4">
+<h4>Select <em>vs</em> Rename</h4>
+<p>As funções <code>select_ e rename_</code>, com algum dos sufixos, se diferenciam pelo fato de que com o <code>select</code> não é necessário passar uma função que mude os nomes, já com o <code>rename</code> é necessário incluir uma função que modifique os nomes das colunas.</p>
 </div>
-<div id="fontes" class="section level2">
-<h2>Fontes</h2>
+</div>
+<div id="fonte" class="section level3">
+<h3>Fonte</h3>
 <ul>
-<li><p><a href="http://rstudio-pubs-static.s3.amazonaws.com/367502_a41eeee9a7dd4d919b27267f9cc34237.html" class="uri">http://rstudio-pubs-static.s3.amazonaws.com/367502_a41eeee9a7dd4d919b27267f9cc34237.html</a></p></li>
-<li><p><a href="https://dplyr.tidyverse.org/reference/index.html" class="uri">https://dplyr.tidyverse.org/reference/index.html</a></p></li>
+<li><a href="https://dplyr.tidyverse.org/reference/index.html" class="uri">https://dplyr.tidyverse.org/reference/index.html</a></li>
 </ul>
 </div>
