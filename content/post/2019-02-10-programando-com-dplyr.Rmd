@@ -1,0 +1,351 @@
+---
+title: Programando com dplyr
+author: Leonardo Filgueira
+date: '2019-02-10'
+slug: programando-com-dplyr
+categories:
+  - data science
+  - linguagem R
+tags:
+  - dplyr
+---
+
+E aí, pessoal! Hoje vamos mostrar como utilizar o `dplyr` para fazer nossas próprias funções. Isso pode ser muito bom, pra aproveitar a facilidade e rapidez que o pacote nos oferece. 
+
+## Contextualização 
+
+Ao escrever funções que utilizam funções do pacote `dplyr`, devemos ter atenção a alguns pontos no que diz respeito aos nomes de colunas passados como argumentos. Suponha que tenhamos o seguinte `tibble`:
+
+```{r, message = FALSE, echo = FALSE}
+require(dplyr)
+require(rlang)
+```
+
+
+```{r}
+(df <- tibble(
+  g1 = c(1, 1, 2, 2, 2),
+  g2 = c(1, 2, 1, 2, 1),
+  a = sample(5), 
+  b = sample(5)
+))
+```
+
+Iremos escrever uma função que irá calcular a média da coluna `a`, agrupando por outra coluna, que será passada como argumento da função:
+
+```{r}
+my_summarise <- function(df, var_grupo) {
+  df %>%
+    group_by(var_grupo) %>%
+    summarise(a = mean(a))
+}
+```
+
+Agora vamos usar a função utilizando como argumentos `df` e `g1`, ou seja, queremos calcular a média de `a`, agrupando pelos valores de `g1`.
+
+```{r, error = TRUE}
+my_summarise(df, g1)
+```
+
+Note que o erro mostra que a coluna desconhecida é `var_grupo`, que é o argumento da função. A função não está reconhecendo que o nome da coluna que queremos usar em `group_by` é, na verdade, `g1`. Podemos tentar usar aspas em `g1`:
+
+```{r, error = TRUE}
+my_summarise(df, "g1")
+```
+
+E percebemos o mesmo erro. O que acontece é que a função não está esperando `var_grupo` receber um valor para então substituir por seu valor (`g1`) no `group_by`. Precisamos então fazer a função esperar até fazer a substituição.
+
+## Quosures
+
+Iremos então capturar uma expressão ao invés de calculá-la. Para isso usaremos a função `quo()`. Vejamos um exemplo:
+
+```{r}
+# O R fará a conta
+1 + 1
+
+# O R retornará a expressão sem fazer a conta
+quo(1 + 1)
+```
+
+Assim nós temos um objeto do tipo *quosure*, que é um tipo de fórmula. Então, aplicando no nosso problema, iremos precisar passar um *quosure* como argumento para a função, mas também teremos que dizer quando substituir a expressão da *quosure* por seu valor. Para isto, utilizaremos `!!`:
+
+```{r}
+my_summarise <- function(df, var_grupo) {
+  df %>%
+    group_by(!!var_grupo) %>%
+    summarise(a = mean(a))
+}
+```
+
+Agora utilizaremos a função passando um *quosure* como argumento:
+
+```{r}
+my_summarise(df, quo(g1))
+```
+
+Certo, temos então a função retornando o que é desejado. Mas e se quisermos que a função receba os argumentos do mesmo jeito que os verbos do `dplyr`, ou seja, `(data.frame, nomes_das_colunas)`? Podemos pensar em usar `quo()` dentro da função:
+
+```{r, error = TRUE}
+my_summarise <- function(df, var_grupo) {
+  
+  var_grupo <- quo(var_grupo)
+  print(var_grupo)
+  
+  df %>%
+    group_by(!!var_grupo) %>%
+    summarise(a = mean(a))
+}
+
+my_summarise(df, g1)
+```
+
+O `print(var_grupo)` foi inserido pra entendermos melhor o que aconteceu. A função `quo()` é muito literal, ou seja, ela armazemou `var_grupo` mesmo ela tendo o valor `g1`. Precisamos então de uma função que espere o argumento ser dado para capturar seu nome.
+
+## Enquo
+
+Para fazer o que desejamos precisamos usar a função `enquo()`. Esta função irá primeiro tomar o valor de `var_grupo` e depois transformar esse valor num *quosure*. 
+
+**Observação**: Esta função serve apenas para utilizarmos dentro de uma função. Se quisermos testar a função rodando linha a linha, devemos substituir `enquo()` por `quo()`.
+
+```{r}
+my_summarise <- function(df, var_grupo) {
+  
+  var_grupo <- enquo(var_grupo)
+  print(var_grupo)
+  
+  df %>%
+    group_by(!!var_grupo) %>%
+    summarise(a = mean(a))
+}
+
+my_summarise(df, g1)
+```
+
+Agora sim temos exatamente o que precisamos. `enquo()` tomou o valor de `var_grupo`, que é `g1`, e o transformou num *quosure*. Um ponto é que não poderemos passar como argumento `"g1"`, com aspas, porque o *quosure* é usado em `group_by`.
+
+```{r}
+my_summarise(df, "g1")
+
+```
+
+Já se tivermos em uma situação em que o *quosure* é usado nos verbos `select()` ou `pull()`, poderemos passar o nome da coluna com ou sem aspas.
+
+### Enquo com `select`
+
+```{r}
+my_select <- function(df, coluna){
+  coluna <- enquo(coluna)
+  
+  df %>% select(!!coluna)
+}
+
+# Sem aspas
+my_select(df, a)
+
+# Com aspas
+my_select(df, "a")
+```
+
+Independente das aspas, podemos perceber que o resultado foi igual.
+
+### Enquo com `pull`
+
+```{r}
+my_pull <- function(df, coluna){
+  coluna <- enquo(coluna)
+  
+  df %>% pull(!!coluna)
+}
+
+my_pull(df, "a")
+```
+
+Assim como acontece ao usar `select()`, com o `pull()` também podemos usar aspas.
+
+### Enquo com `summarise`
+
+Também podemos passar nomes de colunas (sem aspas) como argumentos que serão utilizados no `summarise()`. Vamos criar uma função que recebe `df` e o nome de uma coluna para calcular sua média e sua soma.
+
+```{r}
+my_summarise2 <- function(df, expr) {
+  expr <- enquo(expr)
+  
+  summarise(df, 
+    media = mean(!!expr),
+    soma = sum(!!expr),
+    n = n()
+  )
+}
+
+my_summarise2(df, a)
+```
+
+## Mudar nomes de variáveis
+
+Suponha que queiramos retornar a média das colunas `a` e `b` e, para diferenciar os nomes, as colunas terão os nomes `media_a` e `media_b`. Para isso iremos utilizar `quo_name()`, que converte o *quosure* num string, e o operador `:=`
+
+```{r}
+my_summarise3 <- function(df, var1, var2) {
+  
+  var1 <- enquo(var1)
+  var2 <- enquo(var2)
+  
+  mean_name1 <- paste0("media_", quo_name(var1))
+  mean_name2 <- paste0("media_", quo_name(var2))
+  
+  summarise(df, 
+    !!mean_name1 := mean(!!var1), 
+    !!mean_name2 := mean(!!var2)
+  )
+}
+
+my_summarise3(df, a, b)
+```
+
+Da mesma maneira, podemos receber o nome da coluna que vai ser criada no `summarise()` como argumento da função.
+
+```{r}
+my_summarise4 <- function(df, coluna, nome){
+  
+  coluna <- enquo(coluna)
+  nome <- enquo(nome)
+  
+  df %>%
+  summarise(
+    !!quo_name(nome) := mean(!!coluna)
+  )
+}
+
+my_summarise4(df, a, media)
+```
+
+**Observação**: Estas duas formas também funcionam dentro do `mutate()`.
+
+## Argumentos em `group_by, arrange, mutate` e `summarise`
+
+Ao passarmos o nome de uma coluna com aspas para ser usado em `group_by`, o `enquo()` (como vimos acima) não irá retornar o resultado desejado. Uma maneira de resolver esta questão é utilizar a função `sym()`, do pacote `rlang`. Iremos trabalhar com ela como trabalhamos com `enquo()`.
+
+```{r}
+my_summarise_string <- function(df, var_grupo) {
+  
+  var_grupo <- rlang::sym(var_grupo)
+  
+  df %>%
+    group_by(!!var_grupo) %>%
+    summarise(a = mean(a))
+}
+
+my_summarise_string(df, "g1")
+```
+
+Da mesma maneira fazemos se os parâmetros forem usados em `arrange()`, `summarise()` e `mutate()`. O ponto é que desta maneira a função só irá conseguir fazer os cálculos se passarmos `var_grupo` com aspas. Se quisermos uma função que aceite os parâmetros com ou sem aspas, uma alternativa será utilizar `try()` e, com isso, utilizar `if()`. Veja na função a seguir:
+
+```{r}
+summarise_by <- function(df, var_grupo, var_soma){
+  
+  teste_1 <- try(is.character(var_grupo), silent = T)
+  teste_2 <- try(is.character(var_soma), silent = T)
+
+  if(teste_1 == T & teste_2 == T){
+    summ_sym <- sym(var_soma)
+    group_syms <- sym(var_grupo)
+
+    return(df %>%
+      group_by(!!group_syms) %>%
+      summarise(soma = sum(!!summ_sym)) %>%
+      arrange(!!group_syms))
+
+  }else if(teste_1 != T & teste_2 != T){
+
+    summ_sym <- enquo(var_soma)
+    group_syms <- enquo(var_grupo)
+    
+    return(df %>%
+      group_by(!!group_syms) %>%
+      summarise(soma = sum(!!summ_sym)) %>% 
+      arrange(!!group_syms))
+   }
+}
+
+summarise_by(df, g1, a)
+# Ou
+summarise_by(df, "g1", "a")
+```
+
+## Joins
+
+Ao fazer algum dos joins do `dplyr`, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento `by` requer um vetor de caractere nomeado, ou seja, `c("c1" = "c2")`, mas também já sabemos que um `enquo` não é um caractere, e sim uma fórmula. Suponha as seguintes bases:
+
+```{r}
+base1 <- data_frame(id = sample(1:5, 3), val = sample(1:10, 3))
+base1
+
+base2 <- data_frame(id = sample(1:5, 3), val = sample(1:10, 3))
+base2
+```
+
+Suponha uma função que vai simplesmente fazer um `full_join` entre as bases. Para fazer isso, precisaremos das funções `set_names` e `quo_name`, ambas do pacote `rlang`, mas que são carregadas ao ativar o `dplyr`:
+
+```{r}
+meu_full_join <- function(b1, b2, id1, id2){
+  
+  id1 <- enquo(id1)
+  id2 <- enquo(id2)
+  
+  by <- rlang::set_names(rlang::quo_name(id2), rlang::quo_name(id1))
+  
+  b1 %>% 
+    full_join(b2, by = by)
+}
+
+meu_full_join(base1, base2, id, id)
+```
+
+Note que primeiro é inserido o `quo_name` da segunda base, e depois o `quo_name` da primeira. Isso porque `set_names` atribui ao primeiro argumento o nome, que é o segundo argumento. E é exatamente isso que estamos fazendo com `c("c1" = "c2")`.
+
+## Função com múltiplas variáveis
+
+Podemos modificar nossa primeira função `my_summarise()`, de forma que ela permita receber mais de um nome de coluna que será usado no `group_by()`. Precisamos fazer três mudanças:
+
+- Usar `...` na definição da função;
+- Usar `quos()` ao invés de `enquo()`;
+- Usar `!!!` ao invés de `!!`.
+
+```{r}
+my_summarise <- function(df, ...) {
+  
+  var_grupo <- quos(...)
+
+  df %>%
+    group_by(!!!var_grupo) %>%
+    summarise(a = mean(a))
+}
+
+my_summarise(df, g1, g2)
+```
+
+
+### Checando as múltiplas variáveis
+
+Podemos querer verificar se os múltiplos argumentos em `...` foram ou não passados pra função. Vamos fazer essa checagem com a função `my_summarise`, criada acima, utilizando apenas a função `length`.
+
+```{r, error = TRUE}
+my_summarise <- function(df, ...) {
+  
+  var_grupo <- quos(...)
+  
+  if(length(var_grupo) > 0){
+    df %>%
+      group_by(!!!var_grupo) %>%
+      summarise(a = mean(a))
+  }else{
+    stop("Colunas para agrupar não encontradas")
+  }
+}  
+
+my_summarise(df)
+```
+
+## Fonte
+
+- [Programming with dplyr](http://dplyr.tidyverse.org/articles/programming.html)
