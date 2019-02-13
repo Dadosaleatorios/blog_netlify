@@ -277,10 +277,10 @@ summarise_by(df, "g1", "a")
 Ao fazer algum dos joins do `dplyr`, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento `by` requer um vetor de caractere nomeado, ou seja, `c("c1" = "c2")`, mas também já sabemos que um `enquo` não é um caractere, e sim uma fórmula. Suponha as seguintes bases:
 
 ```{r}
-base1 <- data_frame(id = sample(1:5, 3), val = sample(1:10, 3))
+base1 <- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
 base1
 
-base2 <- data_frame(id = sample(1:5, 3), val = sample(1:10, 3))
+base2 <- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
 base2
 ```
 
@@ -339,7 +339,8 @@ my_summarise <- function(df, ...) {
       group_by(!!!var_grupo) %>%
       summarise(a = mean(a))
   }else{
-    stop("Colunas para agrupar não encontradas")
+    warning("Colunas para agrupar não encontradas")
+    df
   }
 }  
 
