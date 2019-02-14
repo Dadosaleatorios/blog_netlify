@@ -1,0 +1,419 @@
+---
+title: Programando com dplyr (tidy eval)
+author: Leonardo Filgueira
+date: '2019-02-10'
+slug: programando-com-dplyr
+categories:
+  - data science
+  - linguagem R
+tags:
+  - dplyr
+---
+
+
+
+<p>E aí, pessoal! Depois de conhecer o <code>dplyr</code> (se ainda não conhece, veja <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">aqui</a> nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o <code>dplyr</code> acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do <code>dplyr</code>. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre <em>tidy evaluation</em>. Com isso vamos conseguir escrever nossas primeiras funções usando <code>select</code>, <code>mutate</code>, ou outras funções do <code>dplyr</code>, aproveitando a facilidade e rapidez que o pacote nos oferece.</p>
+<p>Pra ilustrar esse primeiro exemplo, vamos usar o famoso <em>dataset</em> <code>iris</code>, mas vamos antes transformá-lo num <code>tibble</code>, apenas para facilitar na visualização:</p>
+<pre class="r"><code>require(dplyr)
+
+iris_tibble &lt;- as_tibble(iris)</code></pre>
+<p>Começamos fazendo uma função muito simples, que apenas seleciona uma coluna passada como argumento. Vamos usar essa nossa função para selecionar a coluna <code>Species</code>, mas iremos passar o nome dessa coluna entre aspas.</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  dados %&gt;% 
+    select(coluna)
+}
+
+seleciona(iris_tibble, &quot;Species&quot;)</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Da mesma forma funciona com o <code>pull</code>, ao invés do select. Faça o teste!</p>
+<p>Mas e se quisermos passar o nome da coluna <code>Species</code> sem aspas, como acontece em todos os verbos do <code>dplyr</code>? Vamos tentar passar a coluna sem aspas pra nossa função:</p>
+<pre class="r"><code>seleciona(iris, Species)</code></pre>
+<pre><code>## Error in .f(.x[[i]], ...): objeto &#39;Species&#39; não encontrado</code></pre>
+<p>Veja que o erro nos diz que o objeto <code>Species</code> não foi encontrado. Isso acontece porque não criamos nenhum objeto com esse nome, e o R retorna um erro quando executamos o nome de um objeto que ainda não existe.</p>
+<div id="quosures" class="section level2">
+<h2>Quosures</h2>
+<p>Iremos então capturar uma expressão ao invés de calculá-la. Para isso usaremos a função <code>quo()</code>. Essa função fará a captura da expressão e de seu <em>environment</em>. Dessa maneira, o R saberá de onde tirar o valor daquela expressão, por exemplo, do ambiente do nosso script principal e não do ambiente da nossa função. Vejamos um exemplo:</p>
+<pre class="r"><code># O R fará a conta
+1 + 1</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code># O R retornará a expressão sem fazer a conta
+quo(1 + 1)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^1 + 1
+## env:  global</code></pre>
+<p>Assim nós temos um objeto do tipo <em>quosure</em>. Então, aplicando no nosso problema, iremos precisar passar um <em>quosure</em> como argumento para a função, mas também teremos que dizer quando substituir a expressão da <em>quosure</em> por seu valor. Para isto, utilizaremos <code>!!</code>:</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, quo(Species))</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Dessa maneira podemos passar <code>Species</code> com ou sem aspas. Testa aí!</p>
+<p>Mas ficar usando <code>quo</code> ao passar os argumentos pra função pode ser um pouco chato. Podemos pensar em usar esse comando dentro da nossa função:</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  
+  coluna &lt;- quo(coluna)
+  
+  print(coluna)
+  
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, Species)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^coluna
+## env:  0000000018E76AE8</code></pre>
+<pre><code>## Error: `coluna` must evaluate to column positions or names, not a formula</code></pre>
+<p>Esse <code>print</code> foi colocado de propósito pra entendermos o que está acontecendo. A função <code>quo()</code> é muito literal, ou seja, ela armazemou <code>coluna</code>, não esperando ela receber o valor <code>Species</code> na chamada da função. Precisamos então de uma função que espere o argumento ser dado para capturar seu nome.</p>
+</div>
+<div id="enquo" class="section level2">
+<h2>Enquo</h2>
+<p>Para fazer o que desejamos precisamos usar a função <code>enquo()</code>. Esta função irá primeiro tomar o valor de <code>coluna</code> e depois transformar esse valor num <em>quosure</em>.</p>
+<p><strong>Observação</strong>: Esta função serve apenas para utilizarmos dentro de uma função. Se quisermos testar a função rodando linha a linha, devemos substituir <code>enquo()</code> por <code>quo()</code>.</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  
+  coluna &lt;- enquo(coluna)
+  
+  print(coluna)
+  
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, Species)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^Species
+## env:  global</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Neste caso também podemos passar <code>Species</code> com aspas, sem problemas. A partir de agora vamos construir um outro <code>tibble</code>, que nos ajudará a continuar entendendo <em>tidy eval</em>.</p>
+<pre class="r"><code>(df &lt;- tibble(
+  g1 = c(1, 1, 2, 2, 2),
+  g2 = c(1, 2, 1, 2, 1),
+  a = sample(5), 
+  b = sample(5)
+))</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##      g1    g2     a     b
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+## 1     1     1     4     1
+## 2     1     2     5     5
+## 3     2     1     2     3
+## 4     2     2     3     2
+## 5     2     1     1     4</code></pre>
+<p>Iremos construir uma função que recebe o <code>tibble</code>, a coluna a ser usada para agrupamento e a coluna para calcular a média:</p>
+<pre class="r"><code>my_summarise &lt;- function(df, var_grupo, var_summarise){
+  
+  var_grupo &lt;- enquo(var_grupo)
+  var_summarise &lt;- enquo(var_summarise)
+  
+  df %&gt;%
+    group_by(!!var_grupo) %&gt;%
+    summarise(media = mean(!!var_summarise))
+}</code></pre>
+<p>Agora vamos usar a função utilizando como argumentos <code>df</code>, <code>g1</code> e <code>a</code>, ou seja, queremos calcular a média de <code>a</code>, agrupando pelos valores de <code>g1</code>.</p>
+<pre class="r"><code>my_summarise(df, g1, a)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1 media
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1   4.5
+## 2     2   2</code></pre>
+<p>Assim como estávamos fazendo quando o <code>quosure</code> era passado para o <code>select</code>, vamos tentar passar os nomes de colunas com aspas:</p>
+<pre class="r"><code>my_summarise(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## Warning in mean.default(~&quot;a&quot;): argumento não é numérico nem lógico:
+## retornando NA</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   `&quot;g1&quot;` media
+##   &lt;chr&gt;  &lt;dbl&gt;
+## 1 g1        NA</code></pre>
+<p>Temos dois problemas aqui. O primeiro é que o <code>group_by</code> na verdade criou uma variável <code>&quot;g1&quot;</code>, com aspas, com um único valor: <code>&quot;g1&quot;</code>. Além disso, sabemos que não é possível calcular a média de <code>&quot;a&quot;</code>, então temos um <code>NA</code> na coluna <code>media</code>. Mais a frente vamos tentar solucionar essa questão.</p>
+</div>
+<div id="mudar-nomes-de-variaveis" class="section level2">
+<h2>Mudar nomes de variáveis</h2>
+<p>Suponha que queiramos retornar a média das colunas <code>a</code> e <code>b</code> e, para diferenciar os nomes, as colunas terão os nomes <code>media_a</code> e <code>media_b</code>. Para isso iremos utilizar <code>quo_name()</code>, que converte o <em>quosure</em> num string, e o operador <code>:=</code></p>
+<pre class="r"><code>my_summarise2 &lt;- function(df, var1, var2) {
+  
+  var1 &lt;- enquo(var1)
+  var2 &lt;- enquo(var2)
+  
+  mean_name1 &lt;- paste0(&quot;media_&quot;, quo_name(var1))
+  mean_name2 &lt;- paste0(&quot;media_&quot;, quo_name(var2))
+  
+  summarise(df, 
+    !!mean_name1 := mean(!!var1), 
+    !!mean_name2 := mean(!!var2)
+  )
+}
+
+my_summarise2(df, a, b)</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   media_a media_b
+##     &lt;dbl&gt;   &lt;dbl&gt;
+## 1       3       3</code></pre>
+<p>Da mesma maneira, podemos receber o nome da coluna que vai ser criada no <code>summarise()</code> como argumento da função.</p>
+<pre class="r"><code>my_summarise3 &lt;- function(df, coluna, nome){
+  
+  coluna &lt;- enquo(coluna)
+  nome &lt;- enquo(nome)
+  
+  df %&gt;%
+  summarise(
+    !!quo_name(nome) := mean(!!coluna)
+  )
+}
+
+my_summarise3(df, a, media)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   media
+##   &lt;dbl&gt;
+## 1     3</code></pre>
+<p><strong>Observação</strong>: Estas duas formas também funcionam dentro do <code>mutate()</code>.</p>
+</div>
+<div id="argumentos-em-group_by-arrange-mutate-e-summarise" class="section level2">
+<h2>Argumentos em <code>group_by, arrange, mutate</code> e <code>summarise</code></h2>
+<p>Ao passarmos o nome de uma coluna com aspas para ser usado em <code>group_by</code>, o <code>enquo()</code> (como vimos acima) não irá retornar o resultado desejado. Uma maneira de resolver esta questão é utilizar a função <code>sym()</code>. Vamos observar que o funcionamento dela é bem similar a função já mencionada <code>enquo()</code>.</p>
+<pre class="r"><code>my_summarise_string &lt;- function(df, var_grupo, var_summarise) {
+  
+  var_grupo &lt;- sym(var_grupo)
+  var_summarise &lt;- sym(var_summarise)
+  
+  df %&gt;%
+    group_by(!!var_grupo) %&gt;%
+    summarise(media = mean(!!var_summarise))
+}
+
+my_summarise_string(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1 media
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1   4.5
+## 2     2   2</code></pre>
+<p>Da mesma maneira fazemos se os parâmetros forem usados em <code>arrange()</code>, <code>summarise()</code> e <code>mutate()</code>. O ponto é que desta maneira a função só irá conseguir fazer os cálculos se passarmos <code>var_grupo</code> e <code>var_summarise</code> com aspas. Se quisermos uma função que aceite os parâmetros com ou sem aspas, uma alternativa será utilizar <code>try()</code> e, com isso, utilizar <code>if()</code>. Veja na função a seguir:</p>
+<pre class="r"><code>summarise_by &lt;- function(df, var_grupo, var_soma){
+  
+  teste_1 &lt;- try(is.character(var_grupo), silent = T)
+  teste_2 &lt;- try(is.character(var_soma), silent = T)
+
+  if(teste_1 == T &amp; teste_2 == T){
+    summ_sym &lt;- sym(var_soma)
+    group_syms &lt;- sym(var_grupo)
+
+    return(df %&gt;%
+      group_by(!!group_syms) %&gt;%
+      summarise(soma = sum(!!summ_sym)) %&gt;%
+      arrange(!!group_syms))
+
+  }else if(teste_1 != T &amp; teste_2 != T){
+
+    summ_sym &lt;- enquo(var_soma)
+    group_syms &lt;- enquo(var_grupo)
+    
+    return(df %&gt;%
+      group_by(!!group_syms) %&gt;%
+      summarise(soma = sum(!!summ_sym)) %&gt;% 
+      arrange(!!group_syms))
+   }
+}
+
+summarise_by(df, g1, a)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1  soma
+##   &lt;dbl&gt; &lt;int&gt;
+## 1     1     9
+## 2     2     6</code></pre>
+<pre class="r"><code># Ou
+summarise_by(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1  soma
+##   &lt;dbl&gt; &lt;int&gt;
+## 1     1     9
+## 2     2     6</code></pre>
+</div>
+<div id="capturando-expressao-para-filtrar" class="section level2">
+<h2>Capturando expressão para filtrar</h2>
+<p>Se quisermos capturar uma expressão a ser utilizada no filter, o procedimento é bem parecido:</p>
+<pre class="r"><code>meu_filtro &lt;- function(df, filtro){
+  
+  filtro &lt;- enquo(filtro)
+  
+  df %&gt;% 
+    filter(!!filtro)
+}
+
+meu_filtro(df, g1 == 1)</code></pre>
+<pre><code>## # A tibble: 2 x 4
+##      g1    g2     a     b
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+## 1     1     1     4     1
+## 2     1     2     5     5</code></pre>
+</div>
+<div id="joins" class="section level2">
+<h2>Joins</h2>
+<p>Ao fazer algum dos joins do <code>dplyr</code>, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento <code>by</code> requer um vetor de caractere nomeado, ou seja, <code>c(&quot;c1&quot; = &quot;c2&quot;)</code>, mas também já sabemos que um <code>enquo</code> não é um caractere, e sim uma fórmula. Suponha as seguintes bases:</p>
+<pre class="r"><code>base1 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
+base1</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##      id   val
+##   &lt;int&gt; &lt;int&gt;
+## 1     3     3
+## 2     5     6
+## 3     1     1</code></pre>
+<pre class="r"><code>base2 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
+base2</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##      id   val
+##   &lt;int&gt; &lt;int&gt;
+## 1     5     1
+## 2     4     2
+## 3     3    10</code></pre>
+<p>Suponha uma função que vai simplesmente fazer um <code>full_join</code> entre as bases. Para fazer isso, precisaremos das funções <code>set_names</code> e <code>quo_name</code>. (vamos ativar o pacote <code>rlang</code> para utilizar <code>set_names</code>):</p>
+<pre class="r"><code>require(rlang)
+
+meu_full_join &lt;- function(b1, b2, id1, id2){
+  
+  id1 &lt;- enquo(id1)
+  id2 &lt;- enquo(id2)
+  
+  by &lt;- set_names(quo_name(id2), quo_name(id1))
+  
+  b1 %&gt;% 
+    full_join(b2, by = by)
+}
+
+meu_full_join(base1, base2, id, id)</code></pre>
+<pre><code>## # A tibble: 4 x 3
+##      id val.x val.y
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     3     3    10
+## 2     5     6     1
+## 3     1     1    NA
+## 4     4    NA     2</code></pre>
+<p>Note que a função <code>set_names</code> funciona da seguinte forma, ela cria um vetor nomeado utilizando o primeiro argumento como valor e o segundo argumento como nome deste nosso novo vetor.</p>
+<pre class="r"><code>set_names(1:4, letters[1:4])</code></pre>
+<pre><code>## a b c d 
+## 1 2 3 4</code></pre>
+<p>que é o mesmo de criar vetores nomeados utilizando a função base <code>c</code>, como vamos ver abaixo:</p>
+<pre class="r"><code>c(&quot;a&quot; = 1, &quot;b&quot; = 2 , &quot;c&quot; = 3, &quot;d&quot; = 4 )</code></pre>
+<pre><code>## a b c d 
+## 1 2 3 4</code></pre>
+<p>voltando ao nosso objetivo principal, por isso que é colocado o <code>quo_name</code> da segunda base primeiro e depois o <code>quo_name</code> da primeira base.</p>
+</div>
+<div id="funcao-com-multiplas-variaveis" class="section level2">
+<h2>Função com múltiplas variáveis</h2>
+<p>Vamos criar uma função que conta o número de casos para todas as combinações de valores dos grupos que serão passados como argumentos, mas não vamos fixar o número de variáveis, vamos aceitar quantas variáveis forem passadas. Precisamos fazer três mudanças:</p>
+<ul>
+<li>Usar <code>...</code> na definição da função;</li>
+<li>Usar <code>quos()</code> ao invés de <code>enquo()</code>;</li>
+<li>Usar <code>!!!</code> ao invés de <code>!!</code>.</li>
+</ul>
+<pre class="r"><code>conta_casos &lt;- function(df, ...) {
+  
+  var_grupo &lt;- quos(...)
+
+  df %&gt;%
+    group_by(!!!var_grupo) %&gt;%
+    summarise(n = n())
+}
+
+conta_casos(df, g1, g2)</code></pre>
+<pre><code>## # A tibble: 4 x 3
+## # Groups:   g1 [?]
+##      g1    g2     n
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     1     1     1
+## 2     1     2     1
+## 3     2     1     2
+## 4     2     2     1</code></pre>
+<p>Se quisermos passar essas variáveis para <code>...</code> com aspas, basta utilizar a função <code>syms()</code> ao invés de <code>quos</code> na função. A diferença maior fica na chamada da função. Veja:</p>
+<pre class="r"><code>conta_casos_string &lt;- function(df, ...) {
+  
+  var_grupo &lt;- syms(...)
+
+  df %&gt;%
+    group_by(!!!var_grupo) %&gt;%
+    summarise(n = n())
+}
+
+conta_casos_string(df, list(&quot;g1&quot;, &quot;g2&quot;))</code></pre>
+<pre><code>## # A tibble: 4 x 3
+## # Groups:   g1 [?]
+##      g1    g2     n
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     1     1     1
+## 2     1     2     1
+## 3     2     1     2
+## 4     2     2     1</code></pre>
+<p>A diferença é que na hora de chamar a função precisamos passar os argumentos como uma <strong>lista</strong>.</p>
+<div id="checando-as-multiplas-variaveis" class="section level3">
+<h3>Checando as múltiplas variáveis</h3>
+<p>Podemos querer verificar se os múltiplos argumentos em <code>...</code> foram ou não passados pra função. Vamos fazer essa checagem com a função <code>conta_casos</code>, criada acima, utilizando apenas a função <code>length</code>.</p>
+<pre class="r"><code>conta_casos &lt;- function(df, ...) {
+  
+  var_grupo &lt;- quos(...)
+  
+  if(length(var_grupo) &gt; 0){
+    df %&gt;%
+      group_by(!!!var_grupo) %&gt;%
+      summarise(n = n())
+  }else{
+    warning(&quot;Colunas para agrupar não encontradas&quot;)
+    df %&gt;% 
+      summarise(n = n())
+  }
+}  
+
+conta_casos(df)</code></pre>
+<pre><code>## Warning in conta_casos(df): Colunas para agrupar não encontradas</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1     5</code></pre>
+</div>
+</div>
+<div id="fonte" class="section level2">
+<h2>Fonte</h2>
+<ul>
+<li><a href="http://dplyr.tidyverse.org/articles/programming.html">Programming with dplyr</a></li>
+<li><a href="https://www.youtube.com/watch?v=nERXS3ssntw">Tidy evaluation com Hadley Wickham</a></li>
+</ul>
+</div>
