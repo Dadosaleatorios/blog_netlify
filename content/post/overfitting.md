@@ -1,6 +1,6 @@
 +++
 date = "2019-04-26T20:41:40+00:00"
-undefined = "Aqui deveria entrar algo?"
+undefined = ""
 
 +++
 # Over-fitting: o que é e como evita-la.
