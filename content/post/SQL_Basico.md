@@ -6,7 +6,7 @@ undefined = ""
 +++
 # **SQL Básico – Parte I**
 
-Venho aqui hoje compartilhar com vocês um pouco do meu aprendizado do curso básico de SQL. Pra quem não conhece, SQL (Structured Query Language) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
+Venho aqui hoje compartilhar com vocês um pouco do meu aprendizado do curso básico de SQL. Pra quem não conhece, SQL (_Structured Query Language_) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
 
 Nessa primeira etapa, aprendi os comandos básicos e mais utilizados. São eles: **SELECT** e **FROM**.
 
