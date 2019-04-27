@@ -4,7 +4,7 @@ draft = true
 undefined = ""
 
 +++
-**SQL Básico – Parte I**
+# **SQL Básico – Parte I**
 
 Venho aqui hoje compartilhar com vocês um pouco do meu aprendizado do curso básico de SQL. Pra quem não conhece, SQL (Structured Query Language) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
 
