@@ -1,8 +1,0 @@
----
-label: template1
-hide_body: false
-fields:
-- type: text
-pages:
-- content/post/SQL_Basico.md
-- content/post/overfitting.md
