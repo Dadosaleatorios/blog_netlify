@@ -1,10 +1,14 @@
 +++
+author = "Larissa Lima"
+categories = ["SQL"]
 date = "2019-04-27T23:31:44+00:00"
 draft = true
+tags = ["datascience", "SQL"]
+title = "SQL Básico – Parte I"
 undefined = "SQL - Parte I"
 
 +++
-# **SQL Básico – Parte I**
+# 
 
 Venho aqui hoje compartilhar com vocês um pouco do meu aprendizado do curso básico de SQL. Pra quem não conhece, SQL (_Structured Query Language_) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
 
@@ -24,7 +28,7 @@ Onde, **SELECT** indica a variável a ser selecionada (neste caso, nome) e **FRO
     SELECT nome, idade, sexo 
     FROM pessoas;
 
-Supondo que a nossa tabela tenha 10 variáveis e desejo selecionar todas elas, basta colocar um asterisco (__*__), ao invés de listar o nome de todas as variáveis no comando SELECT. 
+Supondo que a nossa tabela tenha 10 variáveis e desejo selecionar todas elas, basta colocar um asterisco (__*__), ao invés de listar o nome de todas as variáveis no comando SELECT.
 
     SELECT * 
     FROM pessoas;
