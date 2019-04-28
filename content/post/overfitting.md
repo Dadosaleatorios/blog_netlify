@@ -1,10 +1,13 @@
 +++
+author = "Bruno Lucian"
 date = "2019-04-26T20:41:40+00:00"
 draft = true
+tags = ["datascience", "ML"]
+title = "Over-fitting: o que é e como evita-la."
 undefined = ""
 
 +++
-# Over-fitting: o que é e como evita-la.
+# 
 
 No aprendizado de máquina supervisionado, os modelos são treinados em um subconjunto de dados, também conhecidos como dados de treinamento. O objetivo é calcular a meta de cada exemplo de treinamento a partir dos dados de treinamento.
 
