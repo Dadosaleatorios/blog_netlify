@@ -11,13 +11,13 @@ undefined = "SQL - Parte I"
 +++
 # 
 
-Venho aqui hoje compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL. Pra quem não conhece, SQL (_Structured Query Language_) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
+E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL. Pra quem não conhece, SQL (_Structured Query Language_) é uma das linguagens mais utilizadas para manipulação de bancos de dados. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
 
 Nessa primeira etapa, aprendi os comandos básicos e mais utilizados. São eles: **SELECT** e **FROM**, os quais são chamados de _palavras-chave_. Vale ressaltar que as _palavras-chave_ não são _case-sensitive._ Ou seja, você pode escrevê-las com letras maiúsculas ou minúsculas.
 
 Para começar, vamos a um exemplo.
 
-Ex.: Suponha que temos uma tabela que contém informações de funcionários () de uma empresa multinacional, conforme ilustrado na tabela/figura abaixo. Nesta tabela está disponível variáveis como: identificação (id), nome (name), idade (age) e nacionalidade (nationality). Desejamos selecionar desta tabela o nome dos funcionários listados. 
+Ex.: Suponha que temos uma tabela que contém informações de funcionários () de uma empresa multinacional, conforme ilustrado na tabela/figura abaixo. Nesta tabela está disponível variáveis como: identificação (id), nome (name), idade (age) e nacionalidade (nationality). Desejamos selecionar desta tabela o nome dos funcionários listados.
 
 ![](/uploads/Tabela1.jpeg "Tabela 1: Funcionários")
 
