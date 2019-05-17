@@ -68,8 +68,8 @@ Pode ser que em algum momento você precise fazer comentários no seu código. P
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
    Ex.: _-- Comentário em uma linha._
-2. **Comentários em múltiplas linhas:** Utilizando o delimitador "/*" _o início e_ "*/" _do comentário._
+2. **Comentários em múltiplas linhas:** Utilizando o delimitador "/_" o início e_ "/" _do comentário._
 
    Ex.: _*/ (Comentário em múltiplas linhas) */._
 
-Pra você que está começando agora, é importante que leia sobre esse assunto
+Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Nos vemos no próximo post!
