@@ -74,4 +74,4 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
 
    Ex.: _/* (Comentário em múltiplas linhas) */._
 
-Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Nos vemos no próximo post!
+Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Aguardo vocês nos próximos posts!
