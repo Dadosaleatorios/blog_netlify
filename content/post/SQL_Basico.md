@@ -11,7 +11,7 @@ undefined = "SQL - Parte I"
 +++
 # 
 
-E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL. 
+E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL.
 
 Pra quem não conhece, SQL é uma das linguagens mais utilizadas para consulta, armazenamento e manipulação de bancos de dados e significa **_S_**_tructured **Q**uery **L**anguage_. E pra quem deseja atuar nessa área de dados, é fundamental o conhecimento dessa linguagem.
 
@@ -70,8 +70,10 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
    Ex.: _-- Comentário em uma linha._
-2. **Comentários em múltiplas linhas:__ Utilizando o delimitador "*_/" no início e "_*/" _no final do comentário._
+2. **Comentários em múltiplas linhas: 
 
-   Ex.: _/* (Comentário em múltiplas linhas) */._
+       Utilizando o delimitador "/*" no início e "*/" no final do comentário.
+       
+       /* (Comentário em múltiplas linhas) */.
 
 Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Aguardo vocês nos próximos posts!
