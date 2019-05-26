@@ -69,11 +69,16 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
 
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
-   Ex.: _-- Comentário em uma linha._
+       -- Comentário em uma linha.
 2. **Comentários em múltiplas linhas: 
 
        Utilizando o delimitador "/*" no início e "*/" no final do comentário.
        
-       /* (Comentário em múltiplas linhas) */.
+       /* 
+       (Comentário 
+       em 
+       múltiplas 
+       linhas) 
+       */.
 
 Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Aguardo vocês nos próximos posts!
