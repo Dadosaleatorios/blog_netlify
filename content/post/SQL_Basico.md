@@ -11,9 +11,11 @@ undefined = "SQL - Parte I"
 +++
 # 
 
-E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL. Fiz o curso pelo DataCamp e super recomendo. Pra quem não conhece, SQL é uma das linguagens mais utilizadas para consulta, armazenamento e manipulação de bancos de dados e significa **_S_**_tructured **Q**uery **L**anguage_. E pra quem deseja atuar nessa área, é fundamental o conhecimento dessa linguagem.
+E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL. 
 
-Nessa primeira etapa, aprendi os comandos básicos mais utilizados. São eles: **SELECT** e **FROM**, os quais são chamados de _palavras-chave_. Vale ressaltar que as _palavras-chave_ não são _case-sensitive._ Ou seja, você pode escrevê-las com letras maiúsculas ou minúsculas. Porém para uma melhor visualização e organização do código, é recomendado utilizar letras maiúsculas. Ao finalizar cada consulta utiliza-se **";"**.
+Pra quem não conhece, SQL é uma das linguagens mais utilizadas para consulta, armazenamento e manipulação de bancos de dados e significa **_S_**_tructured **Q**uery **L**anguage_. E pra quem deseja atuar nessa área de dados, é fundamental o conhecimento dessa linguagem.
+
+Nessa primeira etapa, aprendi os comandos mais utilizados. São eles: **SELECT** e **FROM**, os quais são chamados de _palavras-chave_. Vale ressaltar que as _palavras-chave_ não são _case-sensitive._ Ou seja, você pode escrevê-las com letras maiúsculas ou minúsculas. Porém para uma melhor visualização e organização do código, é recomendado utilizar letras maiúsculas. Ao finalizar cada consulta utiliza-se **";"**.
 
 Para começar, vamos a um exemplo.
 
