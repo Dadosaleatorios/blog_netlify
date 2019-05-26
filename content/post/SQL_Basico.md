@@ -73,7 +73,7 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
        
 2. **Comentários em múltiplas linhas**: 
 
-       Utilizando o delimitador "/*" no início e "*/" no final do comentário.
+       Utilizando o delimitador "/\*" no início e "\*/" no final do comentário.
        
        /* 
        
