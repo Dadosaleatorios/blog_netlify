@@ -77,10 +77,11 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
        
        /* 
        
-       (Comentário 
-       em 
-       múltiplas 
-       linhas) 
+       Comentário em múltiplaslinhas
+       
+       Outro comentário
+       
+       Mais outro comentário
        
        */.
 
