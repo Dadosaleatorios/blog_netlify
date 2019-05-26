@@ -70,7 +70,7 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
        -- Comentário em uma linha.
-2. **Comentários em múltiplas linhas: 
+2. **Comentários em múltiplas linhas**: 
 
        Utilizando o delimitador "/*" no início e "*/" no final do comentário.
        
