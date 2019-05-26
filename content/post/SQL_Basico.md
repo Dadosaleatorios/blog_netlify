@@ -1,5 +1,5 @@
 +++
-author = "Larissa Lima"
+author = "Larissa Lima, Bruno Lucian"
 categories = ["SQL"]
 date = "2019-04-27T23:31:44+00:00"
 draft = true
