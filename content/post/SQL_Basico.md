@@ -41,7 +41,7 @@ Agora pense no seguinte tabela que contém informações sobre filmes (films), c
 
 Esse comando irá retornar uma nova tabela, apenas com as varáveis especificadas no comando SELECT.
 
-Agora supondo que a nossa tabela tenha 10 variáveis e desejamos selecionar todas elas, basta colocar um asterisco (__*__), ao invés de listar o nome de todas as dez variáveis no comando SELECT.
+Agora supondo que a nossa tabela tenha 10 variáveis e desejamos selecionar todas elas, basta colocar um asterisco (__*__), ao invés de listar o nome de cada uma das dez variáveis no comando SELECT.
 
     SELECT * 
     FROM films;
@@ -65,13 +65,13 @@ Então voltando para a tabela _filmes_ ilustrada acima, se desejamos contar o n�
 
 É comum combinar o uso desses dois comandos, COUNT e DISTINC, a fim de contar o número de elementos diferentes que estão presentes naquela coluna.
 
-Pode ser que em algum momento você precise fazer comentários no seu código. Para isso existem duas possibilidades:
+Quando estamos manipulando grandes bases e com o crescimento do script gerado para essa manipulação, se faz necessária a utilização de comentários para facilitar o entendimento posterior do seu código. Para isso existem duas possibilidades:
 
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
    Ex.: _-- Comentário em uma linha._
-2. **Comentários em múltiplas linhas:** Utilizando o delimitador "/_" o início e_ "/" _do comentário._
+2. **Comentários em múltiplas linhas:__ Utilizando o delimitador "*_/" no início e "_*/" _no final do comentário._
 
-   Ex.: _*/ (Comentário em múltiplas linhas) */._
+   Ex.: _/* (Comentário em múltiplas linhas) */._
 
 Pra você que está começando agora, é importante ler sempre sobre o assunto para que possa estar sempre em contato e assim irá fixar os conceitos de forma mais descontraída. Nos próximos post iremos avançar na prática do SQL. Valeu pessoal! Nos vemos no próximo post!
