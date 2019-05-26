@@ -30,11 +30,11 @@ O comando para esta tarefa é dado por:
 
 Onde, **SELECT** indica a variável a ser selecionada (neste caso, _name_) e **FROM** indica a tabela a ser selecionada (_employees_).
 
-Agora pense no seguinte exemplo: temos uma nova tabela que contém informações sobre filmes (films), como o nome do filme (title), ano de lançamento (release_year), idioma (language), país de origem (country), duração (duration), entre outras variáveis como pode-se observar abaixo.
+Agora pense no seguinte tabela que contém informações sobre filmes (films), como o nome do filme (title), ano de lançamento (release_year), idioma (language), país de origem (country), duração (duration), entre outras variáveis como pode-se observar abaixo.
 
 ![](/uploads/Tabela2_Filmes.png)
 
-É possível selecionar _múltiplas colunas_ de uma tabela. Basta separar com vírgulas os nomes das variáveis a serem selecionadas. No próximo exemplo desejamos selecionar as váriáveis _title, release_year e country. Para isso devemos fazer:_
+É possível selecionar _múltiplas colunas_ de uma tabela. Basta separar com vírgulas os nomes das variáveis a serem selecionadas. No próximo exemplo desejamos selecionar as váriáveis _title, release_year e country._ Para realizar esta tarefa podemos fazer da forma abaixo:
 
     SELECT title, release_year, country 
     FROM films;
