@@ -47,7 +47,7 @@ Agora supondo que a nossa tabela tenha 10 variáveis e desejamos selecionar toda
 
 Esse comando é bastante útil quando não sabemos os nomes das colunas da nossa tabela. Mas é bom ter cuidado, pois se a tabela for muito grande pode demorar um pouco para retornar o resultado.
 
-* **Outros comandos importantes**
+### **Outros comandos importantes**
 
 Para este exemplo a seguir, pense que desejamos saber quais os idiomas que aparecem nessa tabela de filmes, **_sem repetição (duplicatas)_**. Iremos aproveitar e **_ordenar_**, em ordem alfabética, a tabela pelo título dos filmes. Para isso usamos os comandos DISTINCT e ORDER BY, respectivamente:
 
@@ -66,11 +66,11 @@ Então, pensando na tabela _filmes_ ilustrada acima, se desejamos contar o núme
 
 É comum combinar o uso desses dois comandos, COUNT e DISTINCT, a fim de contar o número de elementos diferentes que estão presentes naquela coluna.
 
-* **Acrescentando comentários**
+### **Acrescentando comentários**
 
-Quando estamos manipulando grandes bases e com o crescimento do script gerado para essa manipulação, se faz necessária a utilização de comentários para facilitar o entendimento posterior do seu código. Para isso existem duas possibilidades:
+Quando estamos manipulando grandes bancos de dados e com o crescimento do script gerado para essa manipulação, se faz necessária a utilização de comentários para facilitar o entendimento posterior do seu código. Para isso existem duas possibilidades:
 
-1. **Comentário em uma linha:** Utilizando 2 hífens no início do comentário a ser feito. 
+1. **Comentário em uma linha:** Utilizando 2 hífens no início do comentário a ser feito.
 
        -- Comentário em uma linha
 2. **Comentários em múltiplas linhas**:
