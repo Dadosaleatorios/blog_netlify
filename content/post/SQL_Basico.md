@@ -2,7 +2,6 @@
 author = "Larissa Lima, Bruno Lucian"
 categories = ["SQL"]
 date = "2019-04-27T23:31:44+00:00"
-draft = true
 slug = ""
 tags = ["datascience", "SQL"]
 title = "SQL - Primeiros Passos"
@@ -11,7 +10,7 @@ undefined = "SQL - Parte I"
 +++
 # 
 
-E aí galera! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL.
+E aí galera, tudo bem? Eu sou a [Larissa](https://www.linkedin.com/in/larissadossantoslima/ "linkedin")! É a minha primeira vez escrevendo para o blog e hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL.
 
 Pra quem não conhece, SQL é uma das linguagens mais utilizadas para consulta, armazenamento e manipulação de bancos de dados e significa **_S_**_tructured **Q**uery **L**anguage_. E pra quem deseja atuar nessa área de dados, é fundamental o conhecimento dessa linguagem.
 
@@ -70,8 +69,7 @@ Quando estamos manipulando grandes bases e com o crescimento do script gerado pa
 1. **Comentário em uma linha:** Utilizando 2 hífens.
 
        -- Comentário em uma linha.
-       
-2. **Comentários em múltiplas linhas**: 
+2. **Comentários em múltiplas linhas**:
 
        Utilizando o delimitador "/\*" no início e "\*/" no final do comentário.
        
