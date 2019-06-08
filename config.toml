@@ -1,53 +1,128 @@
 baseurl = "http://cranky-bassi-25da8f.netlify.com/"
 languageCode = "en-us"
 title = "Dados Aleatórios"
-theme = "blackburn"
+theme = "restaurant-hugo"
 author = "Bruno Lucian"
-copyright = "&copy; 2016. All rights reserved."
-canonifyurls = true
-paginate = 10
+#copyright = "&copy; 2016. All rights reserved."
+#canonifyurls = true
+#paginate = 10
 math = true
-relativeurls = true
-
-[indexes]
-  tag = "tags"
-  topic = "topics"
-
-[params]
-  # Shown in the home page
-  subtitle = "Dados Aleatórios"
-  brand = ""
-  googleAnalytics = "UA-46346743-1"
-  disqus = "www-dadosaleatorios-com-br"
-  # CSS name for highlight.js
-  highlightjs = "androidstudio"
-  dateFormat = "02 Jan 2006"
+#relativeurls = true
+summaryLength = "7"
 
 
+
+# Menu
 [menu]
-  # Shown in the side menu.
-  [[menu.main]]
+	
+	[[menu.nav]]
     name = "Home"
-    pre = "<i class='fa fa-home fa-fw'></i>"
+    URL = ""
     weight = 1
-    identifier = "home"
-    url = "/"
-  [[menu.main]]
-    name = "Posts"
-    pre = "<i class='fa fa-list fa-fw'></i>"
-    weight = 2
-    identifier = "post"
-    url = "/post/"
-  [[menu.main]]
-    name = "Sobre"
-    pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 3
-    identifier = "about"
-    url = "/about/"
 
-[social]
-  # Link your social networking accouns to the side menu
-  # by entering your username or ID.
-  twitter = "dadosaleatorios"
-  facebook = "dadosaleatorios"
-  github = "dadosaleatorios"
+    [[menu.nav]]
+    name = "About Us"
+    URL = "about-us"
+    weight = 2
+
+    [[menu.nav]]
+    name = "Blog"
+    URL = "blog"
+    weight = 3
+
+    [[menu.nav]]
+    name = "Contact Us"
+    URL = "contact-us"
+    weight = 6
+
+
+
+# Global Settings
+[params]
+logo = "images/logo.jpg"
+
+
+[params.heroArea]
+enable = true
+[params.heroImg ] 
+url =  "images/header.jpg" 
+
+
+#gallery item
+
+[params.gallery]
+enable = true
+title= "Integrantes do <span>Dados Aleatorios</span>"
+
+[[params.gallery.item]]
+img = "images/slider/bruno_perfil.jpeg"
+
+[[params.gallery.item]]
+img = "images/slider/leonardo_perfil.jpeg"
+
+[[params.gallery.item]]
+img = "images/slider/slider-img-3.jpg"
+
+[[params.gallery.item]]
+img = "images/slider/slider-img-4.jpg"
+
+[[params.gallery.item]]
+img = "images/slider/slider-img-1.jpg"
+
+[[params.gallery.item]]
+img = "images/slider/slider-img-2.jpg"
+
+[[params.gallery.item]]
+img = "images/slider/slider-img-3.jpg"
+
+
+[params.about]
+enable = true
+title= "Dados <span> Aleatórios</span> - Seu blog técnico de ciências de dados!"
+bgImage = "images/logo.jpg"
+description= "Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística."
+
+#Footer 
+
+[params.footer]
+enable = true
+contactInfoTitle = "Informação de <span>Contato</span> "
+blogTitle = "Últimos <span>blog Posts</span>"
+galleryTitle = "PHOTO <span>STREAM</span>"
+socialTitle = "Nos <span>Siga nas Redes :)</span>"
+
+[[params.footer.contactItem]]
+title="Telephone"
+icon = "fa fa-phone"
+content = "021 996917892"
+
+[[params.footer.contactItem]]
+title="Address"
+icon = "fa fa-map-marker"
+content = "Rio de Janeiro"
+
+[[params.footer.contactItem]]
+title="E mail"
+icon = "fa fa-envelope"
+content = "dadosaleatorios@gmail.com"
+
+[[params.footer.socialLink]]
+icon = "facebook"
+link = "https://fb.com/dadosaleatorios"
+
+
+[[params.footer.socialLink]]
+icon = "twitter"
+link = "@dadosaleatorios"
+
+#Footer Copyright
+#Footer Copyright Text
+[params.footerCopyright]
+enable = true
+Text = "Copyright 2019 - All Rights Reserved."
+
+#blog 
+[params.blog]
+enable = true
+title = "Últimas <span>Postagens</span> do <span>Blog</span>"
+

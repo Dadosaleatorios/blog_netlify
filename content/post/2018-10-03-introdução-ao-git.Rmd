@@ -7,6 +7,7 @@ categories:
   - Controle de versão
   - data science
   - github
+image: 'images/blog/post-git.png'
 ---
 
 ## O que é o GIT?  

@@ -5,6 +5,7 @@ date: '2014-10-09'
 categories:
   - linguagem R
 slug: ./2014-10-09-fazendo-multiplos-graficos-com-o-ggplot2
+image: 'images/blog/post-ggplot.png'
 ---
 
 Fazer múltiplos gráficos de acordo com o nível de uma ou mais variáveis categóricas no ggplot2 é fácil: basta utilizar as funções [facet_grid](http://docs.ggplot2.org/current/facet_grid.html) ou [facet_wrap](http://docs.ggplot2.org/current/facet_wrap.html). Com essas funções, tudo que você fizer para um gráfico valerá para todos (tema, títulos, rótulos dos eixos). E nos casos que eu preciso gráficos independentes - não só com configurações diferentes, mas também gráficos de tipos diferentes - como faço?

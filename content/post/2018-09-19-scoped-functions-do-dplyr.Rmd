@@ -6,6 +6,8 @@ slug: scoped-functions-do-dplyr
 categories:
   - data science
   - linguagem R
+image: 'images/blog/post-dplyr.png'
+
 ---
 
 ```{r echo = F}

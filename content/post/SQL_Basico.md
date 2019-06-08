@@ -6,6 +6,7 @@ slug = ""
 tags = ["datascience", "SQL"]
 title = "SQL - Primeiros Passos"
 undefined = "SQL - Parte I"
+image = 'images/blog/post-sql.png'
 
 +++
 # 

@@ -6,6 +6,7 @@ categories:
   - github
   - linguagem R
 slug: ./2014-05-16-usando-o-github-para-hospedar-codigos-r
+image: 'images/blog/post-github.png'
 ---
 
 Versionamento de arquivos é uma prática comum entre desenvolvedores de software, e a prática não é difícil de entender. Uma vez que existe uma equipe com muitas pessoas trabalhando em um mesmo projeto, necessita-se de algum tipo de sistema de gerenciamento de arquivos para checar as modificações de uma forma minimamente esperta, caso contrário seria uma verdadeira desordem duas pessoas trabalhem em cima de um mesmo arquivo.

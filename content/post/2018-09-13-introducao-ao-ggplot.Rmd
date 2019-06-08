@@ -9,6 +9,7 @@ categories:
 tags:
   - ggplot
 slug: introducao-ao-ggplot
+image: 'images/blog/post-ggplot.png'
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}

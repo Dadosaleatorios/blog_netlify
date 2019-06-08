@@ -6,9 +6,12 @@ categories:
   - novidade
   - tecnologia
 slug: ./2014-04-19-a-equipe-sas-lancara-versao-gratuita
+image: 'images/blog/post-sas.png'
 ---
 
-![](https://dadosaleatorios.files.wordpress.com/2014/04/sasau.jpg)O grupo SAS vai lançar a partir de Maio de 2014 (isso mesmo, no próximo mês) uma versão totalmente free destinada ao estudantes e professores universitários.
+![](https://dadosaleatorios.files.wordpress.com/2014/04/sasau.jpg)
+
+O grupo SAS vai lançar a partir de Maio de 2014 (isso mesmo, no próximo mês) uma versão totalmente free destinada ao estudantes e professores universitários.
 
 Essa é uma ótima oportunidade para todos poderem ter acesso a um dos software mais usados no mercado e sem custo.
 

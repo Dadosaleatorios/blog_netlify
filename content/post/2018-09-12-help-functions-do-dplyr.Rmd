@@ -3,6 +3,7 @@ title: Help functions do dplyr
 author: dadosaleatorios
 date: '2018-09-12'
 slug: help-functions-do-dplyr
+image: 'images/blog/post-dplyr.png'
 ---
 
 Este post supõe que estamos minimamente familiarizados com o pacote `dplyr` (se você não está, veja [este](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/) post), especialmente com a função `select` e com o *pipe*.

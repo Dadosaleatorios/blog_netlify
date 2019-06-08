@@ -9,6 +9,7 @@ categories:
   - iniciantes
   - linguagem R
 slug: introdução-ao-dplyr
+image: 'images/blog/post-dplyr.png'
 ---
 
 ## O que é o dplyr e por que usá-lo?

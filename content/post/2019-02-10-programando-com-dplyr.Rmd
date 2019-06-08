@@ -8,6 +8,7 @@ categories:
 tags:
   - dplyr
 slug: programando-com-dplyr
+image: 'images/blog/post-dplyr.png'
 ---
 
 E aí, pessoal! Depois de conhecer o `dplyr` (se ainda não conhece, veja [aqui](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/) nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o `dplyr` acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do `dplyr`. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre *tidy evaluation*. Com isso vamos conseguir escrever nossas primeiras funções usando `select`, `mutate`, ou outras funções do `dplyr`, aproveitando a facilidade e rapidez que o pacote nos oferece. 
@@ -42,7 +43,7 @@ seleciona(iris, Species)
 
 Veja que o erro nos diz que o objeto `Species` não foi encontrado. Isso acontece porque não criamos nenhum objeto com esse nome, e o R retorna um erro quando executamos o nome de um objeto que ainda não existe. 
 
-## Quosures
+### Quosures
 
 Iremos então capturar uma expressão ao invés de calculá-la. Para isso usaremos a função `quo()`. Essa função fará a captura da expressão e de seu *environment*. Dessa maneira, o R saberá de onde tirar o valor daquela expressão, por exemplo, do ambiente do nosso script principal e não do ambiente da nossa função. Vejamos um exemplo:
 
@@ -85,7 +86,7 @@ seleciona(iris_tibble, Species)
 
 Esse `print` foi colocado de propósito pra entendermos o que está acontecendo. A função `quo()` é muito literal, ou seja, ela armazemou `coluna`, não esperando ela receber o valor `Species` na chamada da função. Precisamos então de uma função que espere o argumento ser dado para capturar seu nome.
 
-## Enquo
+### Enquo
 
 Para fazer o que desejamos precisamos usar a função `enquo()`. Esta função irá primeiro tomar o valor de `coluna` e depois transformar esse valor num *quosure*. 
 
@@ -185,7 +186,7 @@ my_summarise3(df, a, media)
 
 **Observação**: Estas duas formas também funcionam dentro do `mutate()`.
 
-## Argumentos em `group_by, arrange, mutate` e `summarise`
+### Argumentos em `group_by, arrange, mutate` e `summarise`
 
 Ao passarmos o nome de uma coluna com aspas para ser usado em `group_by`, o `enquo()` (como vimos acima) não irá retornar o resultado desejado. Uma maneira de resolver esta questão é utilizar a função `sym()`. Vamos observar que o funcionamento dela é bem similar a função já mencionada `enquo()`.
 
@@ -237,7 +238,7 @@ summarise_by(df, g1, a)
 summarise_by(df, "g1", "a")
 ```
 
-## Capturando expressão para filtrar
+### Capturando expressão para filtrar
 
 Se quisermos capturar uma expressão a ser utilizada no filter, o procedimento é bem parecido:
 
@@ -254,7 +255,7 @@ meu_filtro(df, g1 == 1)
 ```
 
 
-## Joins
+### Joins
 
 Ao fazer algum dos joins do `dplyr`, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento `by` requer um vetor de caractere nomeado, ou seja, `c("c1" = "c2")`, mas também já sabemos que um `enquo` não é um caractere, e sim uma fórmula. Suponha as seguintes bases:
 
@@ -361,7 +362,7 @@ conta_casos <- function(df, ...) {
 conta_casos(df)
 ```
 
-## Fonte
+### Fonte
 
 - [Programming with dplyr](http://dplyr.tidyverse.org/articles/programming.html)
 - [Tidy evaluation com Hadley Wickham](https://www.youtube.com/watch?v=nERXS3ssntw)

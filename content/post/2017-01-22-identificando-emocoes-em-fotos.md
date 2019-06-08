@@ -6,6 +6,7 @@ categories:
   - API
   - machine learning
 slug: ./2017-01-22-identificando-emocoes-em-fotos
+image: 'images/blog/post-cognitivo.png'
 ---
 
 Não é novidade para nós que trabalhamos com análise de dados que a área de Machine Learning (ou no bom português, [aprendizado de máquina](https://pt.wikipedia.org/wiki/Aprendizado_de_m%C3%A1quina)) está evoluindo rapidamente, mas o que muitos podem desconhecer é que este conhecimento está ao alcance de todos, e muitos de forma gratuita (mesmo que limitada). Nesta postagem vamos falar um pouco sobre o [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/), mais especificamente sobre a [Emotion API](https://www.microsoft.com/cognitive-services/en-us/emotion-api), uma API que permite a análise de emoções em fotos e vídeos - mas vamos focar, por ora, só em fotos.

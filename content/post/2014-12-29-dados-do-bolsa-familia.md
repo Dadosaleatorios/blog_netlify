@@ -5,6 +5,7 @@ date: '2014-12-29'
 categories:
   - dados públicos
 slug: ./2014-12-29-dados-do-bolsa-familia
+image: 'images/blog/post-bolsafamilia.png'
 ---
 
 Muito se falou sobre o Bolsa Família esse ano, principalmente depois do [apertado] resultado das eleições, criticando o governo por "dar o peixe ao invés de ensinar a pescar" ou até mesmo acusando de compra de votos com dinheiro público. Mas você já parou para analisar os dados do Bolsa Família? Pois é o que vamos fazer nessa postagem!

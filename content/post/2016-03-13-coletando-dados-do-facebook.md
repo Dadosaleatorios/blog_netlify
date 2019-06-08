@@ -7,6 +7,7 @@ categories:
   - facebook
   - web scraper
 slug: ./2016-03-13-coletando-dados-do-facebook
+image: 'images/blog/post-facebook.png'
 ---
 
 Em nossas últimas postagens mostramos duas maneiras de extrair informações de sites: [através do código fonte do site, manipulando diretamente no R](http://www.dadosaleatorios.com.br/2016/01/baixando-e-interpretando-sites-ou-como.html) e [através do pacote RSelenium](http://www.dadosaleatorios.com.br/2016/02/primeiros-contatos-com-o-rselenium.html). Nesta postagem falaremos uma terceira maneira: o uso de [API](https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es), exemplificando com a API do Facebook.
