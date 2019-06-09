@@ -8,8 +8,6 @@ title = "SQL - Primeiros Passos"
 undefined = "SQL - Parte I"
 
 +++
-# 
-
 E aí galera, tudo bem? Eu sou [Larissa](https://www.linkedin.com/in/larissadossantoslima/ "linkedin") e é a minha primeira vez escrevendo para o blog. Hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL.
 
 Pra quem não conhece, SQL é uma das linguagens mais utilizadas para consulta, armazenamento e manipulação de bancos de dados e significa **_S_**_tructured **Q**uery **L**anguage_. E pra quem deseja atuar nessa área de dados, é fundamental o conhecimento dessa linguagem.
@@ -31,7 +29,7 @@ Onde, **SELECT** indica a variável a ser selecionada (neste caso, _name_) e **F
 
 Agora pense na seguinte tabela que contém informações sobre filmes (films), como o nome do filme (title), ano de lançamento (release_year), idioma (language), país de origem (country), duração (duration), entre outras variáveis como podemos observar abaixo.
 
-![](/uploads/Tabela2_Filmes.png)
+![](/uploads/Tabela2_Filmes.png =400)
 
 É possível selecionar _múltiplas colunas_ de uma tabela. Basta separar com vírgulas os nomes das variáveis a serem selecionadas. No próximo exemplo desejamos selecionar as variáveis _title, release year e country._ Para realizar esta tarefa podemos fazer da seguinte forma:
 
