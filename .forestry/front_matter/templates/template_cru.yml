@@ -5,6 +5,13 @@ fields:
 - type: text
   name: title
   label: title
+- name: post-image
+  type: file
+  config:
+    maxSize: 250
+  label: post-image
+  description: Imagem em PNG que será usada como chamada na home e topo na pagina
+    do post
 - type: text
   name: author
   label: author
@@ -21,5 +28,5 @@ fields:
   name: slug
   label: slug
 pages:
-- content/post/SQL_Basico.md
 - content/post/overfitting.md
+- content/post/SQL_Basico.md
