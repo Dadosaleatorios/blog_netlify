@@ -18,7 +18,7 @@ Para começar, vamos a um exemplo.
 
 Ex.: Suponha que temos uma tabela que contém informações de funcionários (employees) de uma empresa multinacional, conforme ilustrado na tabela abaixo. Nesta tabela está disponível variáveis como: identificação (id), nome (name), idade (age) e nacionalidade (nationality). Desejamos selecionar desta tabela o nome dos funcionários listados.
 
-![](/uploads/Tabela1.jpeg "Tabela 1: Funcionários")
+<img src="/uploads/Tabela1.jpeg" width="800">
 
 O comando para esta tarefa é dado por:
 
