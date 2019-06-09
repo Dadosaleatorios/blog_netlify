@@ -29,7 +29,8 @@ Onde, **SELECT** indica a variável a ser selecionada (neste caso, _name_) e **F
 
 Agora pense na seguinte tabela que contém informações sobre filmes (films), como o nome do filme (title), ano de lançamento (release_year), idioma (language), país de origem (country), duração (duration), entre outras variáveis como podemos observar abaixo.
 
-![](/uploads/Tabela2_Filmes.png=300x200)
+<img src="/uploads/Tabela2_Filmes.png" width="200">
+
 
 É possível selecionar _múltiplas colunas_ de uma tabela. Basta separar com vírgulas os nomes das variáveis a serem selecionadas. No próximo exemplo desejamos selecionar as variáveis _title, release year e country._ Para realizar esta tarefa podemos fazer da seguinte forma:
 
