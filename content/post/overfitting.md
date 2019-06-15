@@ -5,6 +5,7 @@ draft = true
 tags = ["datascience", "ML"]
 title = "Over-fitting: o que é e como evita-la."
 undefined = ""
+image = 'images/blog/overfit.png'
 
 +++
 # 
