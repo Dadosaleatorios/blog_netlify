@@ -10,3 +10,5 @@ title = "Como instalar o RStudio Server em uma instância do Google Cloud Platfo
 
 +++
 Já pensou em ter seu próprio servidor Rstudio para acessar de onde quiser?
+
+Pois muito bem, vamos aprender agora como instalar o Rstudio Server para você chamar de meu!
