@@ -29,7 +29,7 @@ Vamos supor que estamos usando o Ubuntu 18.04.
 
     sudo apt instala r-base r-base-dev
 
-* Instalar o RStudio Server
+Instalar o RStudio Server
 
     sudo apt instala gdebi-core
 
