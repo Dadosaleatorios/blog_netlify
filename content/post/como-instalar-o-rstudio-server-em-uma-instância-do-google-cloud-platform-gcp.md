@@ -19,7 +19,7 @@ Se você precisar de ajuda para criar uma instância do GCP, verifique aqui.
 
 Vamos supor que estamos usando o Ubuntu 18.04.
 
-* Instalar R
+Instalar R
 
     sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35 /” >> / etc / apt / sources.list`
 
