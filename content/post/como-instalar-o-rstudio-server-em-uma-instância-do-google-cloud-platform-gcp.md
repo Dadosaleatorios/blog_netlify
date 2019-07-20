@@ -19,7 +19,7 @@ Se você precisar de ajuda para criar uma instância do GCP, verifique aqui.
 
 Vamos supor que estamos usando o Ubuntu 18.04.
 
-Instalar R
+###### Instalar R
 
     sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35 /” >> / etc / apt / sources.list`
 
@@ -29,7 +29,7 @@ Instalar R
 
     sudo apt instala r-base r-base-dev
 
-Instalar o RStudio Server
+###### Instalar o RStudio Server
 
     sudo apt instala gdebi-core
 
@@ -37,11 +37,11 @@ Instalar o RStudio Server
 
     sudo gdebi rstudio-server-1.1.456-amd64.deb
 
-* Adicionar um usuário do RStudio
+###### Adicionar um usuário do RStudio
 
     sudo adduser newuser
 
-* Acessar o RStudio Server
+###### Acessar o RStudio Server
 
 Abrindo o RStudio em um navegador: Vá para
 
