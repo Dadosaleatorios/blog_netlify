@@ -21,19 +21,19 @@ Vamos supor que estamos usando o Ubuntu 18.04.
 
 ### Instalar R
 
-    sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35 /” >> / etc / apt / sources.list`
+    sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/” >> /etc/apt/sources.list`
     
-    sudo apt-key adv - servidor de chaves keyserver.ubuntu.com - recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+    sudo apt-key adv - keyserver keyserver.ubuntu.com - recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
     
     sudo apt update
     
-    sudo apt instala r-base r-base-dev
+    sudo apt-get install r-base
 
 ### Instalar o RStudio Server
 
 Podemos verificar a versão mais atual no site do[ Rstudio](https://www.rstudio.com/products/rstudio/download-server/ "Rstudio-server")
 
-    sudo apt instala gdebi-core
+    sudo apt-get install gdebi-core
     
     wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.1335-amd64.deb
     
@@ -45,6 +45,6 @@ Podemos verificar a versão mais atual no site do[ Rstudio](https://www.rstudio.
 
 ### Acessar o RStudio Server
 
-Abrindo o RStudio em um navegador: Vá para
+Para abrir o RStudio em um navegador: Vá para
 
-    http: // EXTERNAL-IP-ADDRESS:8787
+    http://EXTERNAL-IP-ADDRESS:8787
