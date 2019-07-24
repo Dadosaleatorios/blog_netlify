@@ -31,11 +31,13 @@ Vamos supor que estamos usando o Ubuntu 18.04.
 
 ### Instalar o RStudio Server
 
+Podemos verificar a versão mais atual no site do[ Rstudio](https://www.rstudio.com/products/rstudio/download-server/ "Rstudio-server")
+
     sudo apt instala gdebi-core
     
-    sudo wget https: // download2.rstudio.org / rstudio-server-1.1.456-amd64.deb
+    wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.1335-amd64.deb
     
-    sudo gdebi rstudio-server-1.1.456-amd64.deb
+    sudo gdebi rstudio-server-1.2.1335-amd64.deb
 
 ### Adicionar um usuário do RStudio
 
