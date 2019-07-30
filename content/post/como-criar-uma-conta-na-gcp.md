@@ -9,33 +9,37 @@ tags = ["cloud", "google", "gcp"]
 title = "Como criar uma conta no Google Cloud Platform"
 
 +++
-Você conhece o Google Cloud? Já ouviu falar? Possui uma conta para usufruir dos serviços? Não, então esse post é pra você. ;)
+Você conhece o Google Cloud? Já ouviu falar? Possui uma conta para usufruir dos serviços? Não?! Então esse post é pra você!  ;)
 
-Vamos nesse post descrever como criar um usuário no Google Cloud.  E no momento deste post o Google está dando 300 dinheiros para você testar a plataforma.
+Vamos nesse post descrever como criar um usuário no Google Cloud.  E no momento deste post o Google está dando 300 dinheiros para você testar a plataforma. Top né?!
 
 ![](/static/images/blog/uhul_lisa.gif)  
-Então vamos começar! 
+Então vamos começar!
 
 O que é o Google Cloud Platform (GCP)?
 
 Google Cloud Platform é uma suíte de computação em nuvem oferecida pelo Google, funcionando na mesma infraestrutura que a empresa usa para seus produtos dirigidos aos usuários, dentre eles o Buscador Google e o Youtube.
 
-Para criar uma conta no GCP podemos seguir uma série de passos simples e iremos obter exito. 
+Mas o que é Cloud??
+
+Em termos comparativos, imagine a Cloud como o computador de outra pessoa que você pode ter acesso e por ser mais potente nas configurações a realização das atividades se torna mais rápida.
+
+Para criar uma conta no GCP basta seguir os seguintes passos:
 
 1. Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/");
 2. Clicar em “Get started for free”;
 
-![](/static/images/blog/Screenshot from 2019-07-25 16-35-24.png) 
+![](/static/images/blog/Screenshot from 2019-07-25 16-35-24.png)
 
-3) Selecionar o país e concordar com os “Termos de Serviço”;
+1. Selecionar o país e concordar com os “Termos de Serviço”;
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-28-56.png)
 
-4) Preencher os campos com as suas informações;
+1. Preencher os campos com as suas informações;
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-30-15.png)
 
-5) Embora no primeiro cadastro ganhe **$300** gratuito, é necessário preencher os dados de pagamento;
+1. Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-31-27.png)
 
@@ -43,4 +47,6 @@ Para criar uma conta no GCP podemos seguir uma série de passos simples e iremos
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-48-18.png)
 
-No próximo post iremos mostrar o quão facil é criar uma máquina na nuvem
+Depois de criar sua conta, será preciso fazer algumas configurações para que você tenha uma máquina virtual. Mas no próximo post iremos mostrar o quão fácil é criar uma máquina na nuvem. Viu como é fácil criar sua conta? Corre lá e não perca essa oportunidade! 
+
+Valeu galera e até o próximo post! :D
