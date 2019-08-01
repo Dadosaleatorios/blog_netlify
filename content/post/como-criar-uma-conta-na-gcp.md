@@ -24,23 +24,23 @@ Para criar uma conta no GCP, você precisa ter uma conta de email do Google/Gmai
 1. Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/");
 2. Clicar em “Get started for free”;
 
-![](/images/blog/Screenshot from 2019-07-25 16-35-24.png)
+![](/images/blog/Screenshot from 2019-07-25 16-35-24.png =800x)
 
 1. Selecionar o país e concordar com os “Termos de Serviço”;
 
-![](/images/blog/Screenshot from 2019-07-25 16-28-56.png)
+![](/images/blog/Screenshot from 2019-07-25 16-28-56.png =800x)
 
 1. Preencher os campos com as suas informações;
 
-![](/images/blog/Screenshot from 2019-07-25 16-30-15.png)
+![](/images/blog/Screenshot from 2019-07-25 16-30-15.png =800x)
 
 1. Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
 
-![](/images/blog/Screenshot from 2019-07-25 16-31-27.png)
+![](/images/blog/Screenshot from 2019-07-25 16-31-27.png =800x)
 
 1. Pronto! Agora é só clicar em “Iniciar minha avaliação gratuita” e usurfruir dos benefícios do GCP.
 
-![](/images/blog/Screenshot from 2019-07-25 16-48-18.png)
+![](/images/blog/Screenshot from 2019-07-25 16-48-18.png =800x) 
 
 Depois de criar sua conta, será preciso fazer algumas configurações para que você tenha uma máquina virtual. Mas no próximo post iremos mostrar o quão fácil é criar uma máquina na nuvem. Viu como é fácil criar sua conta? Corre lá e não perca essa oportunidade!
 
