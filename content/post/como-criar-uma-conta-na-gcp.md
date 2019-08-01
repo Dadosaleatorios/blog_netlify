@@ -22,17 +22,17 @@ Google Cloud Platform é uma suíte de computação em nuvem oferecida pelo Goog
 
 Para criar uma conta no GCP, você precisa ter uma conta de email do Google/Gmail  e seguir os seguintes passos:
 
-### Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/");
+### Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/")
 
-### Clicar em “Get started for free”;
+#### Clicar em “Get started for free”
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-35-24.png" alt="Scr1" width="800"/>
 
-### Selecionar o país e concordar com os “Termos de Serviço”;
+### Selecionar o país e concordar com os “Termos de Serviço”
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-28-56.png" alt="Scr2" width="800"/>
 
-### Preencher os campos com as suas informações;
+### Preencher os campos com as suas informações
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-30-15.png" alt="Scr3" width="800"/>
 
