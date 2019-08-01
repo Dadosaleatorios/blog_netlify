@@ -22,7 +22,7 @@ Google Cloud Platform é uma suíte de computação em nuvem oferecida pelo Goog
 
 Mas o que é Cloud??
 
-Em termos comparativos, imagine a Cloud como o computador de outra pessoa(nesse caso o Google) que você pode ter acesso e por ser mais potente nas configurações a realização das atividades se torna mais rápida.
+Em termos comparativos, imagine a Cloud como o computador de outra pessoa (nesse caso o Google) que você pode ter acesso e por ser mais potente nas configurações a realização das atividades se torna mais rápida.
 
 Para criar uma conta no GCP basta seguir os seguintes passos:
 
@@ -31,19 +31,19 @@ Para criar uma conta no GCP basta seguir os seguintes passos:
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-35-24.png)
 
-1. Selecionar o país e concordar com os “Termos de Serviço”;
+3. Selecionar o país e concordar com os “Termos de Serviço”;
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-28-56.png)
 
-1. Preencher os campos com as suas informações;
+4. Preencher os campos com as suas informações;
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-30-15.png)
 
-1. Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
+5. Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-31-27.png)
 
-1. Pronto! Agora é só clicar em “Iniciar minha avaliação gratuita” e usurfruir dos benefícios do GCP.
+6. Pronto! Agora é só clicar em “Iniciar minha avaliação gratuita” e usurfruir dos benefícios do GCP.
 
 ![](/static/images/blog/Screenshot from 2019-07-25 16-48-18.png)
 
