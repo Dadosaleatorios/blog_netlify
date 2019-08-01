@@ -1,5 +1,5 @@
 +++
-author = "Larissa Lima"
+author = "Larissa Lima e Bruno Lucian"
 categories = []
 date = "2019-07-31T15:00:00+00:00"
 draft = true
