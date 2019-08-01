@@ -2,7 +2,6 @@
 author = "Larissa Lima e Bruno Lucian"
 categories = []
 date = "2019-07-31T15:00:00+00:00"
-draft = true
 post-image = "/static/images/blog/google-cloud-1200x565.png"
 slug = ""
 tags = ["cloud", "google", "gcp"]
