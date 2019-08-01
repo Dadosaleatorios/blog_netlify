@@ -3,6 +3,7 @@ author = "Larissa Lima e Bruno Lucian"
 categories = []
 date = "2019-07-31T15:00:00+00:00"
 image = "images/blog/google-cloud-1200x565.png"
+post-image = ""
 slug = ""
 tags = ["cloud", "google", "gcp"]
 title = "Como criar uma conta no Google Cloud Platform"
@@ -21,24 +22,25 @@ Google Cloud Platform é uma suíte de computação em nuvem oferecida pelo Goog
 
 Para criar uma conta no GCP, você precisa ter uma conta de email do Google/Gmail  e seguir os seguintes passos:
 
-1. Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/");
-2. Clicar em “Get started for free”;
+### Acessar o site [https://cloud.google.com/](https://cloud.google.com/ "https://cloud.google.com/");
+
+### Clicar em “Get started for free”;
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-35-24.png" alt="Scr1" width="800"/>
 
-3. Selecionar o país e concordar com os “Termos de Serviço”;
+### Selecionar o país e concordar com os “Termos de Serviço”;
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-28-56.png" alt="Scr2" width="800"/>
 
-4. Preencher os campos com as suas informações;
+### Preencher os campos com as suas informações;
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-30-15.png" alt="Scr3" width="800"/>
 
-5. Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
+### Você precisará preencher o campo com os dados de pagamento. Mas não se preocupe! Eles não irão cobrar nada neste momento. Isso acontecerá apenas se seus créditos acabarem ($300).
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-31-27.png" alt="Scr3" width="800"/>
 
-6. Pronto! Agora é só clicar em “Iniciar minha avaliação gratuita” e usurfruir dos benefícios do GCP.
+### Pronto! Agora é só clicar em “Iniciar minha avaliação gratuita” e usurfruir dos benefícios do GCP.
 
 <img src="/images/blog/Screenshot from 2019-07-25 16-48-18.png" alt="Scr3" width="800"/>
 
