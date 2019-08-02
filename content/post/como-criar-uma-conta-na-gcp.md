@@ -13,7 +13,8 @@ Você conhece o Google Cloud? Já ouviu falar? Possui uma conta para usufruir do
 
 Vamos nesse post descrever como criar um usuário no Google Cloud.  E no momento deste post o Google está dando 300 dinheiros para você testar a plataforma. Top né?!
 
-![](/images/blog/uhul_lisa.gif)  
+<img src="/images/blog/uhul_lisa.gif" alt="uhul" width="320"/>
+
 Então vamos começar!
 
 O que é o Google Cloud Platform (GCP)?
