@@ -1,9 +1,9 @@
 +++
 author = "Bruno Lucian"
 categories = ["Rstudio-server", "Rstudio", "GCP"]
-date = "2019-07-31T03:00:00+00:00"
+date = "2019-08-15T03:00:00+00:00"
 draft = true
-post-image = ""
+post-image = "images/blog/r_gcp.png"
 slug = ""
 tags = []
 title = "Como instalar o RStudio Server em uma instância do Google Cloud Platform (GCP)?"
@@ -13,11 +13,44 @@ Já pensou em ter seu próprio servidor Rstudio para acessar de onde quiser?
 
 Pois muito bem, vamos aprender agora como instalar o Rstudio Server para você chamar de meu!
 
-Para começar vamos supor que você já tenha criado uma instância do GCP.
+Para começar vamos supor que você já tenha criado uma conta do GCP(Google Cloud Plataform). Se ainda não fez temos esse [post aqui ](https://www.dadosaleatorios.com.br/post/como-criar-uma-conta-na-gcp/ "Como criar uma conta na GCP")explicando como fazer. 
 
-Se você precisar de ajuda para criar uma instância do GCP, verifique aqui.
+Se você vai precisar criar uma instância do GCP. Uma instância ou **compute engine** nada mais é que uma maquina virtual dentro da arquitetura do google. Sim você vai ter uma máquina junto com o Google. 
 
-Vamos supor que estamos usando o Ubuntu 18.04.
+![](images/blog/comemorar_hi5.gif)
+
+Dentro do projeto que vocẽ criou no post anterior de como criar sua conta na GCP, vamos criar uma VM para isso vamos precisar ir até a pagina do compute engine como na figura abaixo.
+
+![](images/blog/compute_engine.jpeg)
+
+Clicar em "create"
+
+![](images/blog/create_engine.jpeg)
+
+temos que entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir).   
+Selecione a zona. Estou selecionando o tipo básico de máquina.   
+Você pode alterar o sistema operacional clicando em Alterar.   
+Você tambḿ será capaz de selecionar o sistema operacional que você deseja inicializar. O custo será mostrado na medida que você vai mudando as configurações.   
+Você será cobrado pelo processamento do Compute Engine e custo de armazenamento em disco.   
+Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
+
+![](images/blog/config_engine.jpeg)
+
+![](images/blog/choose_ubuntu.jpeg)
+
+Clique em Selecionar e marque a opção "Allow full access to all Cloud 
+
+![](images/blog/allow_API.jpeg)
+
+![](images/blog/ssh_enter.jpeg)
+
+Você pode fazer o login em ssh selecionando “Open in browser window”.
+
+![](images/blog/ssh_show_.png)
+
+Agora que já temos nossa máquina propriamente configurada vamos começar a instalar nosso servidor Rstudio :)
+
+Vamos seguir os passos abaixo.
 
 ### Instalar R
 
