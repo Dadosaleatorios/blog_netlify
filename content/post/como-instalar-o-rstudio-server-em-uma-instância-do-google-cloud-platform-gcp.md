@@ -17,15 +17,15 @@ Para começar vamos supor que você já tenha criado uma conta do GCP(Google Clo
 
 Se você vai precisar criar uma instância do GCP. Uma instância ou **compute engine** nada mais é que uma maquina virtual dentro da arquitetura do google. Sim você vai ter uma máquina junto com o Google. 
 
-![](images/blog/comemorar_hi5.gif)
+![](/images/blog/comemorar_hi5.gif)
 
 Dentro do projeto que vocẽ criou no post anterior de como criar sua conta na GCP, vamos criar uma VM para isso vamos precisar ir até a pagina do compute engine como na figura abaixo.
 
-![](images/blog/compute_engine.jpeg)
+![](/images/blog/compute_engine.jpeg)
 
 Clicar em "create"
 
-![](images/blog/create_engine.jpeg)
+![](/images/blog/create_engine.jpeg)
 
 temos que entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir).   
 Selecione a zona. Estou selecionando o tipo básico de máquina.   
@@ -34,19 +34,20 @@ Você tambḿ será capaz de selecionar o sistema operacional que você deseja i
 Você será cobrado pelo processamento do Compute Engine e custo de armazenamento em disco.   
 Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
 
-![](images/blog/config_engine.jpeg)
+![](/images/blog/config_engine.jpeg)
 
-![](images/blog/choose_ubuntu.jpeg)
+![](/images/blog/choose_ubuntu.jpeg)
 
 Clique em Selecionar e marque a opção "Allow full access to all Cloud 
 
-![](images/blog/allow_API.jpeg)
+![](/images/blog/allow_API.jpeg)
 
-![](images/blog/ssh_enter.jpeg)
+![](/images/blog/ssh_enter.jpeg)
 
 Você pode fazer o login em ssh selecionando “Open in browser window”.
 
-![](images/blog/ssh_show_.png)
+ <img src="/images/blog/ssh_show_.png"  width="800px" />
+
 
 Agora que já temos nossa máquina propriamente configurada vamos começar a instalar nosso servidor Rstudio :)
 
