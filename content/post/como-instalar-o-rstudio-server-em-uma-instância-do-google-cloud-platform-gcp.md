@@ -23,7 +23,7 @@ Para criar uma instância, acesse seu projeto e no menu superior esquerdo, selec
 
 ![](/images/blog/compute_engine.jpeg)
 
-Um novo menu surgirá, com itens específicos para máquinas virtuais. Na opção “VM Instances” (selecionada por padrão), clicar no botão “Create”. 
+Um novo menu surgirá, com itens específicos para máquinas virtuais. Na opção “VM Instances” (selecionada por padrão), clicar no botão “Create”.
 
 ![](/images/blog/create_engine.jpeg)
 
@@ -93,3 +93,7 @@ Podemos verificar a versão mais atual no site do[ Rstudio](https://www.rstudio.
 Para abrir o RStudio em um navegador: Vá para
 
     http://EXTERNAL-IP-ADDRESS:8787
+
+Agora é só você desfrutar do seu novo servidor podendo acessar de qualquer lugar com acesso a internet e testar seus códigos. 
+
+Então galera por hoje é só, se ficou alguma dúvida comente ai que vamos tentar te ajudar.
