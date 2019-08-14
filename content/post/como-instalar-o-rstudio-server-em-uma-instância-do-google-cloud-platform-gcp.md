@@ -2,7 +2,6 @@
 author = "Bruno Lucian e Leandro Oliveira"
 categories = ["Rstudio-server", "Rstudio", "GCP"]
 date = "2019-08-15T03:00:00+00:00"
-draft = true
 image = "images/blog/r_gcp.png"
 post-image = ""
 slug = ""
