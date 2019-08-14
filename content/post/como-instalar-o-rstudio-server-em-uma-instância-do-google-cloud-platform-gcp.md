@@ -27,15 +27,14 @@ Clicar em "create"
 
 ![](/images/blog/create_engine.jpeg)
 
-Nesta próxima etapa é preciso entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir). Vale ressaltar que irei selecionar o tipo básico de máquina. Então faça o seguinte:
+Nesta próxima etapa é preciso entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir).  Então faça o seguinte:
 
-Selecione a zona.   
-Você pode alterar o sistema operacional clicando em Alterar.  
-Você tambḿ será capaz de selecionar o sistema operacional que você deseja inicializar. O custo será mostrado na medida que você vai mudando as configurações.  
-Você será cobrado pelo processamento do Compute Engine e custo de armazenamento em disco.  
-Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
+1) Selecione o tipo de máquina e a zona que ela vai estar, ou seja o local fisico que eles vão disponibilizar seus discos. 
 
 ![](/images/blog/config_engine.jpeg)
+
+2) Você pode alterar o sistema operacional clicando em "Change". O custo será mostrado na medida que você vai mudando as configurações. Você será cobrado pelo processamento e armazenamento em disco.  
+Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
 
 ![](/images/blog/choose_ubuntu.jpeg)
 
