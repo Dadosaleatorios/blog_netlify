@@ -33,7 +33,8 @@ Nesta próxima etapa é preciso entrar com um nome exclusivo (vai ser solicitado
 
 ![](/images/blog/config_engine.jpeg)
 
-2) Você pode alterar o sistema operacional clicando em "Change". O custo será mostrado na medida que você vai mudando as configurações. Você será cobrado pelo processamento e armazenamento em disco.  
+2) Você pode alterar o sistema operacional clicando em "Change". O custo será mostrado na medida que você vai mudando as configurações. Você será cobrado pelo processamento e armazenamento em disco.
+
 Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
 
 ![](/images/blog/choose_ubuntu.jpeg)
