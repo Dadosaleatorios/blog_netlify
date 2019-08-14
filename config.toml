@@ -61,10 +61,10 @@ img = "images/slider/bruno_perfil.jpeg"
 img = "images/slider/leonardo_perfil.jpeg"
 
 [[params.gallery.item]]
-img = "images/slider/slider-img-3.jpg"
+img = "images/slider/leandro_perfil.jpeg"
 
 [[params.gallery.item]]
-img = "images/slider/slider-img-4.jpg"
+img = "images/slider/larissa_perfil.jpeg"
 
 [[params.gallery.item]]
 img = "images/slider/slider-img-5.jpg"
