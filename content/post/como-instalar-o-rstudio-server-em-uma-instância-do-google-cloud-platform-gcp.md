@@ -29,27 +29,26 @@ Clicar em "create"
 
 Nesta próxima etapa é preciso entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir).  Então faça o seguinte:
 
-1) Selecione o tipo de máquina e a zona que ela vai estar, ou seja o local fisico que eles vão disponibilizar seus discos. 
+1) Selecione o tipo de máquina e a zona que ela vai estar, ou seja o local fisico que eles vão disponibilizar seus discos. Marque a opção "Allow full access to all Cloud APIs"
 
 ![](/images/blog/config_engine.jpeg)
 
-2) Você pode alterar o sistema operacional clicando em "Change". O custo será mostrado na medida que você vai mudando as configurações. Você será cobrado pelo processamento e armazenamento em disco.
-
-Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
+2) Você pode alterar o sistema operacional clicando em "Change".   
+O custo será mostrado na medida que você vai mudando as configurações. 
 
 ![](/images/blog/choose_ubuntu.jpeg)
 
-Clique em Selecionar e marque a opção "Allow full access to all Cloud
-
-![](/images/blog/allow_API.jpeg)
+3) Você pode fazer o login em ssh selecionando “Open in browser window”.
 
 ![](/images/blog/ssh_enter.jpeg)
 
-Você pode fazer o login em ssh selecionando “Open in browser window”.
+4) Agora já estamos dentro da máquina podemos dar início a instalação do nosso servidor R.
 
 <img src="/images/blog/ssh_show_.png"  width="800px" />
 
 Agora que já temos nossa máquina propriamente configurada vamos começar a instalar nosso servidor Rstudio :)
+
+> Lembrando que você será cobrado pelo processamento e armazenamento em disco. Devemos lembrar sempre de ligar e desligar a VM para minimizar os custos de utilização.
 
 Vamos seguir os passos abaixo.
 
