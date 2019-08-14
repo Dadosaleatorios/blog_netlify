@@ -23,7 +23,7 @@ Para criar uma instância, acesse seu projeto e no menu superior esquerdo, selec
 
 ![](/images/blog/compute_engine.jpeg)
 
-Um novo menu surgirá, com itens específicos para máquinas virtuais. Na opção “VM Instances” (selecionada por padrão), clicar no botão “Create”.
+Um novo menu surgirá, com itens específicos para máquinas virtuais. Na opção “VM Instances” (selecionada por padrão), clicar no botão “Create”. 
 
 ![](/images/blog/create_engine.jpeg)
 
