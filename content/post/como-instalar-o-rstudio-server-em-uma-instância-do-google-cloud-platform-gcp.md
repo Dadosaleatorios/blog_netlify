@@ -11,15 +11,15 @@ title = "Como instalar o RStudio Server em uma instância do Google Cloud Platfo
 +++
 Já pensou em ter seu próprio servidor Rstudio para acessar de onde quiser?
 
-Pois muito bem, vamos aprender agora como instalar o Rstudio Server para você chamar de meu!
+Pois bem, vamos aprender agora como instalar o Rstudio Server para você chamar de meu!
 
-Para começar vamos supor que você já tenha criado uma conta do GCP(Google Cloud Plataform). Se ainda não fez temos esse [post aqui ](https://www.dadosaleatorios.com.br/post/como-criar-uma-conta-na-gcp/ "Como criar uma conta na GCP")explicando como fazer. 
+Para começar vamos supor que você já tenha criado uma conta do GCP. Se ainda não fez, temos esse [post aqui ](https://www.dadosaleatorios.com.br/post/como-criar-uma-conta-na-gcp/ "Como criar uma conta na GCP")explicando como fazer.
 
-Se você vai precisar criar uma instância do GCP. Uma instância ou **compute engine** nada mais é que uma maquina virtual dentro da arquitetura do google. Sim você vai ter uma máquina junto com o Google. 
+Você vai precisar criar uma instância do GCP. Uma instância ou **compute engine** nada mais é que uma maquina virtual dentro da arquitetura do google. Sim! Você vai ter uma máquina junto com o Google.
 
 ![](/images/blog/comemorar_hi5.gif)
 
-Dentro do projeto que vocẽ criou no post anterior de como criar sua conta na GCP, vamos criar uma VM para isso vamos precisar ir até a pagina do compute engine como na figura abaixo.
+Dentro do projeto que vocẽ criou (no post anterior, de como criar sua conta na GCP) vamos criar uma VM. Agora vamos precisar ir até a página do compute engine como na figura abaixo.
 
 ![](/images/blog/compute_engine.jpeg)
 
@@ -27,18 +27,19 @@ Clicar em "create"
 
 ![](/images/blog/create_engine.jpeg)
 
-temos que entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir).   
-Selecione a zona. Estou selecionando o tipo básico de máquina.   
-Você pode alterar o sistema operacional clicando em Alterar.   
-Você tambḿ será capaz de selecionar o sistema operacional que você deseja inicializar. O custo será mostrado na medida que você vai mudando as configurações.   
-Você será cobrado pelo processamento do Compute Engine e custo de armazenamento em disco.   
+Nesta próxima etapa é preciso entrar com um nome exclusivo (vai ser solicitado que você escolha outro nome, se o nome já existir). Vale ressaltar que irei selecionar o tipo básico de máquina. Então faça o seguinte:
+
+Selecione a zona.   
+Você pode alterar o sistema operacional clicando em Alterar.  
+Você tambḿ será capaz de selecionar o sistema operacional que você deseja inicializar. O custo será mostrado na medida que você vai mudando as configurações.  
+Você será cobrado pelo processamento do Compute Engine e custo de armazenamento em disco.  
 Podemos ficar tranquilo, pois, com valor de crédito que você ganhou quando criou a conta (se você ganhou),  vamos utilizar por bastante tempo se desligarmos a máquina quando não tivermos trabalhando e nos atentarmos para a subutilização da máquina.
 
 ![](/images/blog/config_engine.jpeg)
 
 ![](/images/blog/choose_ubuntu.jpeg)
 
-Clique em Selecionar e marque a opção "Allow full access to all Cloud 
+Clique em Selecionar e marque a opção "Allow full access to all Cloud
 
 ![](/images/blog/allow_API.jpeg)
 
@@ -46,8 +47,7 @@ Clique em Selecionar e marque a opção "Allow full access to all Cloud
 
 Você pode fazer o login em ssh selecionando “Open in browser window”.
 
- <img src="/images/blog/ssh_show_.png"  width="800px" />
-
+<img src="/images/blog/ssh_show_.png"  width="800px" />
 
 Agora que já temos nossa máquina propriamente configurada vamos começar a instalar nosso servidor Rstudio :)
 
