@@ -33,7 +33,8 @@ Na sequência, devemos selecionar uma zona. A zona significa o local físico ond
 
 Agora devemos escolher o tipo de máquina que vamos utilizar. No exemplo abaixo, estou selecionando o tipo básico de máquina, mas é possível escolher entre as opções pré-definidas de vCPU e memória ou customizar conforme sua necessidade.
 
-![](/images/blog/Screenshot from 2019-08-14 00-09-13.png)Em Disco de Inicialização (Boot disk), é onde podemos alterar o sistema operacional e definir o tamanho do disco de inicialização. Existem várias distribuições de Linux. Basta clicar em Alterar (Change) e escolher a distribuição que mais te agrada. No tamanho do disco, por enquanto mantenha os 10 GB.
+![](/images/blog/Screenshot from 2019-08-14 00-09-13.png)  
+Em Disco de Inicialização (Boot disk), é onde podemos alterar o sistema operacional e definir o tamanho do disco de inicialização. Existem várias distribuições de Linux. Basta clicar em Alterar (Change) e escolher a distribuição que mais te agrada. No tamanho do disco, por enquanto mantenha os 10 GB.
 
 ![](/images/blog/choose_ubuntu.jpeg)
 
