@@ -11,11 +11,11 @@ title = "Como instalar o RStudio Server em uma instância do Google Cloud Platfo
 +++
 Já pensou em ter seu próprio servidor Rstudio para acessar de onde quiser?
 
-Pois bem, vamos aprender agora como instalar o Rstudio Server para você chamar de meu!
+Se sua resposta for **SIM**, vamos aprender agora como instalar o Rstudio Server para você chamar de seu!
 
-Para começar vamos supor que você já tenha criado uma conta do GCP. Se ainda não fez, temos esse [post aqui ](https://www.dadosaleatorios.com.br/post/como-criar-uma-conta-na-gcp/ "Como criar uma conta na GCP")explicando como fazer.
+Antes de começar, vamos supor que você já tenha criado uma conta na GCP (Google Cloud Platform) e tenha um projeto associado. Se ainda não tem uma conta ou projeto associado, temos esse [post aqui ](https://www.dadosaleatorios.com.br/post/como-criar-uma-conta-na-gcp/)explicando como fazer.
 
-Você vai precisar criar uma instância do GCP. Uma instância ou **compute engine** nada mais é que uma maquina virtual dentro da arquitetura do google. Sim! Você vai ter uma máquina junto com o Google.
+O próximo passo será criar uma instância na GCE (Google Compute Engine). Uma instância, significa uma máquina virtual dentro da arquitetura do Google Cloud Platform. Sim, você vai ter uma máquina dentro da infraestrutura da Google.
 
 ![](/images/blog/comemorar_hi5.gif)
 
