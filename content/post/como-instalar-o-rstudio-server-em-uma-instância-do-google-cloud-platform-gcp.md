@@ -46,10 +46,6 @@ Você será cobrado pelo processamento do Compute Engine e custo de armazenament
 
 Em Escopo de Acesso (Access scopes), selecione a opção “Allow full access to all Cloud APIs”. Essa opção garante acesso a todas as APIs disponíveis na GCP, ou seja, sem limitações de uso.
 
-![](/images/blog/allow_API.jpeg)
-
-Em Escopo de Acesso (Access scopes), selecione a opção “Allow full access to all Cloud APIs”. Essa opção garante acesso a todas as APIs disponíveis na GCP, ou seja, sem limitações de uso.
-
 ![](/images/blog/Screenshot from 2019-08-14 00-15-20.png)
 
 Para finalizar, clique em Create. Após alguns segundos, você verá a tela abaixo. A lista mostra todas as instâncias de VM existentes com seus respectivos status e algumas informações como zona, IP interno e externo e opções para se conectar a ela.
