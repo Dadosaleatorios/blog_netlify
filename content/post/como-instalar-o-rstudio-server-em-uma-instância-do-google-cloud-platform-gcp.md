@@ -66,9 +66,9 @@ Vamos seguir os passos abaixo.
 
 ### Instalar R
 
-    sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/” >> /etc/apt/sources.list`
-    
     sudo apt-key adv - keyserver keyserver.ubuntu.com - recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+    
+    sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
     
     sudo apt update
     
@@ -94,6 +94,6 @@ Para abrir o RStudio em um navegador: Vá para
 
     http://EXTERNAL-IP-ADDRESS:8787
 
-Agora é só você desfrutar do seu novo servidor podendo acessar de qualquer lugar com acesso a internet e testar seus códigos. 
+Agora é só você desfrutar do seu novo servidor podendo acessar de qualquer lugar com acesso a internet e testar seus códigos.
 
 Então galera por hoje é só, se ficou alguma dúvida comente ai que vamos tentar te ajudar.
