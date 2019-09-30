@@ -9,6 +9,8 @@ author = "Bruno Lucian"
 math = true
 #relativeurls = true
 summaryLength = "7"
+googleAnalytics = "UA-46346743-1"	
+disqus = "www-dadosaleatorios-com-br"
 
 
 
