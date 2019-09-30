@@ -1,9 +1,9 @@
 +++
 author = "Bruno Lucian e Leandro Oliveira"
 categories = ["Rstudio-server", "Rstudio", "GCP"]
-date = "2019-08-15T03:00:00+00:00"
+date = "2019-08-14T14:00:00+00:00"
 image = "images/blog/r_gcp.png"
-post-image = ""
+post-image = "/images/blog/r_gcp.png"
 slug = ""
 tags = []
 title = "Como instalar o RStudio Server em uma instância do Google Cloud Platform (GCP)?"
@@ -66,9 +66,9 @@ Vamos seguir os passos abaixo.
 
 ### Instalar R
 
-    sudo sh -c‘ echo “deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/” >> /etc/apt/sources.list`
+    sudo apt-key adv -- keyserver keyserver.ubuntu.com -- recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
     
-    sudo apt-key adv - keyserver keyserver.ubuntu.com - recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+    sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
     
     sudo apt update
     
@@ -93,3 +93,7 @@ Podemos verificar a versão mais atual no site do[ Rstudio](https://www.rstudio.
 Para abrir o RStudio em um navegador: Vá para
 
     http://EXTERNAL-IP-ADDRESS:8787
+
+Agora é só você desfrutar do seu novo servidor podendo acessar de qualquer lugar com acesso a internet e testar seus códigos.
+
+Então galera por hoje é só, se ficou alguma dúvida comente ai que vamos tentar te ajudar.
