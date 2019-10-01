@@ -1,6 +1,6 @@
 baseurl = "/"
 disqus = "www-dadosaleatorios-com-br"
-GoogleAnalytics = "UA-46346743-1"	
+googleAnalytics = "UA-46346743-1"	
 languageCode = "en-us"
 title = "Dados Aleatórios"
 theme = "restaurant-hugo"
