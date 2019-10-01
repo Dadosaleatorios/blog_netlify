@@ -1,4 +1,6 @@
 baseurl = "/"
+GoogleAnalytics = "UA-46346743-1"	
+disqus = "www-dadosaleatorios-com-br"
 languageCode = "en-us"
 title = "Dados Aleatórios"
 theme = "restaurant-hugo"
@@ -9,8 +11,6 @@ author = "Bruno Lucian"
 math = true
 #relativeurls = true
 summaryLength = "7"
-googleAnalytics = "UA-46346743-1"	
-disqus = "www-dadosaleatorios-com-br"
 
 
 
