@@ -11,7 +11,9 @@ title = "SQL - Primeiros Passos - Parte II"
 +++
 E aí galera!
 
-Hoje iremos falar sobre mecanismos para filtrar resultados. Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
+Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, clique aqui ([https://www.dadosaleatorios.com.br/post/sql_basico/](https://www.dadosaleatorios.com.br/post/sql_basico/ "https://www.dadosaleatorios.com.br/post/sql_basico/")). 
+
+Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
 
 * **=** : igual
 * **<>**: diferente
