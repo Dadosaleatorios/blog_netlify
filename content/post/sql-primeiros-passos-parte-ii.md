@@ -9,6 +9,8 @@ tags = []
 title = "SQL - Primeiros Passos - Parte II"
 
 +++
+E aí galera!
+
 Hoje iremos falar sobre mecanismos para filtrar resultados. Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
 
 * **=** : igual
@@ -26,7 +28,11 @@ Esta função permite filtrar baseado em números ou textos de uma tabela, que d
 
 _Por exemplo:_
 
-Pegando o exemplo do post anterior que tínhamos uma tabela que contém informações sobre filmes, como o nome do filme, ano de lançamento, idioma, país de origem, entre outras variáveis. Desejamos obter dessa tabela as informações do filme “Metropolis”. Para isso, fazemos:
+Usando a tabela do post anterior que contém informações sobre filmes, como o nome do filme (title), ano de lançamento (release_year), país de origem (country), idioma (language), entre outras variáveis.
+
+![](/images/blog/Screenshot from 2019-10-02 09-30-39.png)
+
+Desejamos obter dessa tabela as informações do filme “Metropolis”. Para isso, fazemos:
 
     SELECT title
     FROM films
@@ -67,7 +73,7 @@ Queremos obter todos os detalhes dos filmes em espanhol lançados entre 2000 e 2
 
 **_WHERE AND OR_**
 
-Queremos selecionar os títulos e o ano de lançamento dos filmes lançados nos anos 90 em francês ou espanhol e que arrecadaram mais de 2 milhões brutos. Para isso fazemos:
+Agora, queremos selecionar os títulos e o ano de lançamento dos filmes lançados nos anos 90 em francês ou espanhol e que arrecadaram mais de 2 milhões brutos. Para isso fazemos:
 
     SELECT title, release_year
     FROM films
@@ -80,7 +86,7 @@ Note que nesse exemplo, temos três condições: filmes lançados nos anos 90, f
 
 **_BETWEEN_**
 
-Nos permite selecionar valores em um intervalo, podendo ser números, texto, ou datas. Vale ressaltar que esse operador é inclusivo, ou seja, os valores inicial e final estão incluídos.
+Essa cláusula nos permite selecionar valores em um intervalo, podendo ser números, texto, ou datas. Vale ressaltar que esse operador é inclusivo, ou seja, os valores inicial e final serão incluídos.
 
 Neste exemplo, desejamos selecionar os títulos dos filmes e o ano dos que foram lançados entre 1990 e 2000 em espanhol ou francês com orçamento acima de 100 milhôes. Para isso, temos o seguinte código:
 
@@ -100,17 +106,17 @@ Ainda na tabela de filmes, pense que queremos selecionar o título e a certifica
     FROM films
     WHERE certification IN ('NC-17', 'R');
 
-Para o próximo exemplo, vamos utilizar a tabela ‘kids’, que tem informações sobre crianças como: nome, idade, altura, peso, local de moradia, entre outras. Queremos selecionar os nomes das crianças com idade de 2, 4, 6 ou 10 anos. Para isso, fazemos:
+Para o próximo exemplo, vamos selecionar o título e o ano de lançamento dos filmes que foram lançados entre os anos 1990 e 2000 (incluindo). Para isso, fazemos:
 
-    SELECT name
-    FROM kids
-    WHERE age IN (2, 4, 6, 8, 10);
+    SELECT title, release_year
+    FROM films
+    WHERE release_year BETWEEN 1990 AND 2000;
 
 **_NULL and IS NULL_**
 
 Um campo com o valor _‘NULL’_ é um campo sem valor.
 
-Então, voltando a tabela de filmes, vamos selecionar o título de todos os filmes que não tem nenhum orçamento associado (missing):
+Então, agora iremos selecionar o título de todos os filmes que não tem nenhum orçamento associado (missing):
 
     SELECT title
     FROM films
@@ -123,20 +129,22 @@ Este comando é usado para verificar um padrão especificado em uma coluna. Prec
 * **%**: relaciona um, dois ou mais caracteres no texto.
 * **_** : relaciona um único caractere.
 
-Para esse exemplo, teremos a tabela _‘companies’_ que possui informações sobre o nome da empresa, ano de fundação, número de funcionários, etc. Então, desejamos encontrar empresas em que a primeira palavra é _'Data'_. Como por exemplo: _'Data', 'DataC', 'DataCamp', 'DataMind'_. Para isso, faremos:
+Para esse exemplo, usaremos a tabela pessoas (_people)_ que possui informações sobre nome (name), data de nascimento (birthdate) e data de morte (deathdate). 
+
+![](/images/blog/Screenshot from 2019-10-02 10-34-26.png)Então, desejamos encontrar as pessoas que o nome começa com a letra B. Neste caso, o padrão ao ser pesquisado é **'B%'**. Para isso, faremos:
 
     SELECT name
-    FROM companies
-    WHERE name LIKE 'Data%';
+    FROM people
+    WHERE name LIKE 'B%';
 
-Nesse próximo exemplo, queremos encontrar nomes de empresas que diferem na sexta letra, como 'DataC**a**mp' e 'DataC**o**mp':
-
-    SELECT name
-    FROM companies
-    WHERE name LIKE 'DataC_mp';
-
-Caso desejamos selecionar os nomes das empresas que não iniciam com '_A'_, usamos:
+Nesse próximo exemplo, queremos encontrar os nomes das pessoas em que a segunda letra é "R". Neste caso o padrão a ser pesquisado é **'_r%'**:
 
     SELECT name
-    FROM companies
+    FROM people
+    WHERE name LIKE '_r%';
+
+E se desejamos selecionar os nomes das pessoas que **não** iniciam com '_A'_, usamos:
+
+    SELECT name
+    FROM people
     WHERE name NOT LIKE 'A%';
