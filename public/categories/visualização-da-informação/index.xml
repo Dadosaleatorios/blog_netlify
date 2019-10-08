@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>visualização da informação on </title>
+    <link>/categories/visualiza%C3%A7%C3%A3o-da-informa%C3%A7%C3%A3o/</link>
+    <description>Recent content in visualização da informação on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/visualiza%C3%A7%C3%A3o-da-informa%C3%A7%C3%A3o/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cartão de Natal com o R</title>
+      <link>/post/cartao-de-natal-com-o-r/</link>
+      <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cartao-de-natal-com-o-r/</guid>
+      <description>Já pensou em fazer um cartão de Natal utilizando a plataforma que os nerds dos dados mais gostam?Claro que estou falando do R, então aqui vamos montar uma “Árvore de Natal” utilizando o R com a possibilidade de escrever texto e adicionar quantas bolinhas de Natal desejar.
+Essa ideia surgiu para representar os participantes do grupo de ciencia de dados que temos no whatsApp e que foi de grande colaboração durante todo o ano.</description>
+    </item>
+    
+    <item>
+      <title>Como a Visualização de Dados pode nos ajudar?</title>
+      <link>/post/2014-04-10-como-a-visualizacao-de-dados-pode-nos-ajudar/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-04-10-como-a-visualizacao-de-dados-pode-nos-ajudar/</guid>
+      <description>Vivemos um momento em que nunca produzimos tanta informação. Há quem afirme que nos últimos dois anos produziu-se mais informação do que em toda a história da humanidade. Para ter noção da dimensão da coisa não é necessária uma situação complexa, basta parar e pensar na quantidade de dados gerados por você mesmo a cada dia. Vamos tentar: Acordo às 7:00h, 8:15h eu saio de casa, compro o jornal, pego um ônibus e pago com o Rio Card - provavelmente isto registra o horário que peguei o ônibus e quantas vezes faço com aquela linha - , acesso meus e-mails, rede social e se for quinta-feira pode ser que eu vá ao cinema.</description>
+    </item>
+    
+  </channel>
+</rss>

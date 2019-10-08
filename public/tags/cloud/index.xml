@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloud on </title>
+    <link>/tags/cloud/</link>
+    <description>Recent content in cloud on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Jul 2019 15:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Como criar uma conta no Google Cloud Platform</title>
+      <link>/post/como-criar-uma-conta-na-gcp/</link>
+      <pubDate>Wed, 31 Jul 2019 15:00:00 +0000</pubDate>
+      
+      <guid>/post/como-criar-uma-conta-na-gcp/</guid>
+      <description>Você conhece o Google Cloud? Já ouviu falar? Possui uma conta para usufruir dos serviços? Não?! Então esse post é pra você! ;)
+Vamos nesse post descrever como criar um usuário no Google Cloud. E no momento deste post o Google está dando 300 dinheiros para você testar a plataforma. Top né?!
+Então vamos começar!
+O que é o Google Cloud Platform (GCP)?
+Google Cloud Platform é uma suíte de computação em nuvem oferecida pelo Google, funcionando na mesma infraestrutura que a empresa usa para seus produtos dirigidos aos usuários, dentre eles o Buscador Google e o Youtube.</description>
+    </item>
+    
+  </channel>
+</rss>

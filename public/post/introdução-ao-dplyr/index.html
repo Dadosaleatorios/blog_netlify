@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" scroll-behavior="smooth"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="O que é o dplyr e por que usá-lo?dplyr é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do tidyverse. Se você nunca ouviu falar no tidyverse, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise.">
+    <meta name="author" content="dadosaleatorios">
+
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.58.3" />
+
+    <title>Introdução ao dplyr | Posts</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+    <!-- CSS -->
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+    <!-- Magnific popup css -->
+    <link rel="stylesheet" href="/plugins/magnific-popup/dist/magnific-popup.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+    <!-- Main Stylesheet -->
+    
+    <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="52">
+        <div id="content">
+
+<!-- Fixed Navigation -->
+<nav id="navigation" class="navbar navbar-expand-lg navigation sticky-top">
+        <div class="container">
+
+                <!-- logo -->
+                <a class="navbar-brand logo" href="/">
+                        <img src="/images/logo.png" alt="Dados Aleatórios" />
+                        <span class="pl-2 font-weight-bold"></span>
+                </a>
+                <!-- /logo -->
+
+                <!-- responsive nav button -->
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- /responsive nav button -->
+
+                <!-- main nav -->
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navigation-menu">
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#body">Home</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#nosso-time">Nosso Time</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#blog">Blog</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#contato">Contato</a></li>
+                                
+                        </ul>
+                </div>
+                
+                <!-- /main nav -->
+        </div>
+
+</nav>
+<!-- End Fixed Navigation -->
+
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <h1>Introdução ao dplyr</h1>
+                <ul class="list-inline mb-50">
+                    <li class="list-inline-item"><a href="/author/dadosaleatorios">dadosaleatorios</a></li>
+                    <li class="list-inline-item">Friday, Aug 31, 2018</li>
+                </ul>
+                <img class="img-fluid mb-50" src="/images/blog/post-dplyr.png" alt="blog-image">
+            </div>
+            <div class="col-lg-8 offset-lg-2">
+                <div class="post-single-content">
+                    
+
+
+<div id="o-que-é-o-dplyr-e-por-que-usá-lo" class="section level2">
+<h2>O que é o dplyr e por que usá-lo?</h2>
+<p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>. Se você nunca ouviu falar no <code>tidyverse</code>, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise. O <code>dplyr</code> tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.</p>
+<p>Um outro ponto é que o <code>dplyr</code> permite que façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o <code>data.table</code> (que não tem uma sintaxe tão amigável).</p>
+<p>As funções do <code>dplyr</code> podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.</p>
+</div>
+<div id="instalação" class="section level2">
+<h2>Instalação</h2>
+<p>Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recomendado):</p>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
+
+require(tidyerse)</code></pre>
+</div>
+<div id="dados" class="section level2">
+<h2>Dados</h2>
+<p>Neste post vamos apresentar as principais funções do pacote com exemplos, e para isso utilizaremos o dataset <code>starwars</code>, que pode ser utilizado ao ativar o <code>dplyr</code>. O dataset tem informações sobre personagens da saga, que foram coletados de uma <a href="http://swapi.co/">API de Star Wars</a>.</p>
+<center>
+<img src="/img/2018-08-31-introducao-ao-dplyr/starWars1.jpg" />
+</center>
+<p>Vamos dar uma olhada no dataset:</p>
+<pre class="r"><code>starwars</code></pre>
+<pre><code>## # A tibble: 87 x 13
+##    name  height  mass hair_color skin_color eye_color birth_year gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+##  1 Luke~    172    77 blond      fair       blue            19   male  
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;  
+##  4 Dart~    202   136 none       white      yellow          41.9 male  
+##  5 Leia~    150    49 brown      light      brown           19   female
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  
+##  7 Beru~    165    75 brown      light      blue            47   female
+##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  
+##  9 Bigg~    183    84 black      light      brown           24   male  
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
+## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>Já podemos ver que não estamos lidando com um <code>data.frame</code> tradicional. Este é um <code>tibble</code>, que é, basicamente, um data.frame com uma série de modificações. A propósito, <a href="https://tibble.tidyverse.org/"><code>tibble</code></a> é outro pacote do <code>tidyverse</code>. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final.</p>
+<p>Nesse <code>tibble</code> temos então, para 87 personagens de Star Wars, informações de nome, altura, massa, cor de cabelo, pele, dos olhos, idade na batalha de Yavin (quando os rebeldes destruíram a primeira estrela da morte), gênero, mundo natal, espécie, lista de filmes onde o personagem aparece, lista de veículos que o personagem pilotou e lista de naves que o personagem pilotou. Perceba que usei a palavra ‘lista’ nessas três ultimas informações, isso porque essas colunas são realmente listas. Podemos, então, ter um <code>tibble</code> onde colunas são listas.</p>
+<p>Também podemos utilizar a função <code>glimpse</code>, do pacote <code>tibble</code>, para visualizar a tabela de outra maneira. A função é carregada ao ativar o <code>dplyr</code>. Observe que o <code>glimpse</code> também mostra o número de linhas e colunas, além de mostrar a classe das colunas e alguns valores dessas colunas.</p>
+<pre class="r"><code>glimpse(starwars)</code></pre>
+<pre><code>## Observations: 87
+## Variables: 13
+## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, ...
+## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188...
+## $ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 8...
+## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;b...
+## $ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;l...
+## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;,...
+## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0...
+## $ gender     &lt;chr&gt; &quot;male&quot;, NA, NA, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;,...
+## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alder...
+## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human...
+## $ films      &lt;list&gt; [&lt;&quot;Revenge of the Sith&quot;, &quot;Return of the Jedi&quot;, &quot;Th...
+## $ vehicles   &lt;list&gt; [&lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;,...
+## $ starships  &lt;list&gt; [&lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Adva...</code></pre>
+<p>Apesar da concepção de <code>data.frame</code> do <code>tidyverse</code> ser o <code>tibble</code>, é perfeitamente possível utilizar suas funções com um <code>data.frame</code>. Porém para transformar um <code>data.frame</code> em um <code>tibble</code>, basta usar a função <code>as_tibble</code> (ou <code>as_data_frame</code>).</p>
+</div>
+<div id="funções-básicas-verbos" class="section level2">
+<h2>Funções básicas (verbos)</h2>
+<p>O <code>dplyr</code> oferece 5 verbos (funções) básicos, que resolvem alguns problemas comuns:</p>
+<ul>
+<li><code>select</code>: Seleciona colunas.</li>
+<li><code>filter</code>: Filtra registros (linhas).</li>
+<li><code>mutate</code>: Cria novas variáveis (colunas).</li>
+<li><code>summarise</code> (ou <code>summarize</code>): Reduz uma série de valores de uma coluna em um valor apenas.</li>
+<li><code>arrange</code>: Ordena o <code>data.frame</code> de acordo com os valores de uma(s) coluna(s).</li>
+</ul>
+<p>Além disso, existe a função <code>group_by</code>, que pode ser usada em conjunto com os verbos, de maneira a fazer operações por grupos de valores de coluna(s).</p>
+<p>Todas essas funções recebem pelo menos dois argumentos: o <code>data.frame</code> e o(s) argumento(s) pertinente(s) à função (nomes de colunas, funções, condições). A seguir vamos utilizar as funções para ficar mais clara sua sintaxe.</p>
+</div>
+<div id="uso" class="section level2">
+<h2>Uso</h2>
+<ul>
+<li><p>O <code>select</code> seleciona colunas, podendo ser indicadas pelos nomes (com ou sem aspas, embora seja preferível não usar aspas) ou pelo índice da coluna. Por exemplo, se quisermos selecionar as colunas <code>name</code>, <code>height</code> e <code>mass</code>, podemos selecioná-las das seguintes maneiras:</p>
+<pre class="r"><code>select(starwars, name, height, mass)
+# ou
+select(starwars, &quot;name&quot;, &quot;height&quot;, &quot;mass&quot;)
+# Ou, como as colunas são seguidas
+select(starwars, name:mass)
+# Utilizando os índices
+select(starwars, 1:3)</code></pre>
+<p>Gerando o seguinte output:</p>
+<pre><code>## # A tibble: 87 x 3
+##    name               height  mass
+##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;
+##  1 Luke Skywalker        172    77
+##  2 C-3PO                 167    75
+##  3 R2-D2                  96    32
+##  4 Darth Vader           202   136
+##  5 Leia Organa           150    49
+##  6 Owen Lars             178   120
+##  7 Beru Whitesun lars    165    75
+##  8 R5-D4                  97    32
+##  9 Biggs Darklighter     183    84
+## 10 Obi-Wan Kenobi        182    77
+## # ... with 77 more rows</code></pre>
+<p>Também podemos remover colunas. Por exemplo, queremos selecionar todas as colunas do nosso <code>tibble</code>, exceto a coluna <code>height</code>:</p>
+<pre class="r"><code>select(starwars, -height)</code></pre>
+<pre><code>## # A tibble: 87 x 12
+##    name   mass hair_color skin_color eye_color birth_year gender homeworld
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    
+##  1 Luke~    77 blond      fair       blue            19   male   Tatooine 
+##  2 C-3PO    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;   Tatooine 
+##  3 R2-D2    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;   Naboo    
+##  4 Dart~   136 none       white      yellow          41.9 male   Tatooine 
+##  5 Leia~    49 brown      light      brown           19   female Alderaan 
+##  6 Owen~   120 brown, gr~ light      blue            52   male   Tatooine 
+##  7 Beru~    75 brown      light      blue            47   female Tatooine 
+##  8 R5-D4    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;   Tatooine 
+##  9 Bigg~    84 black      light      brown           24   male   Tatooine 
+## 10 Obi-~    77 auburn, w~ fair       blue-gray       57   male   Stewjon  
+## # ... with 77 more rows, and 4 more variables: species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
+<li><p>A função <code>filter</code> recebe uma ou mais condições lógicas e retorna as linhas do <code>tibble</code> que atendam o solicitado. Vamos filtrar personagens que não têm cabelo, logo <code>hair_color</code> é <code>NA</code>:</p>
+<pre class="r"><code>filter(starwars, is.na(hair_color))</code></pre>
+<pre><code>## # A tibble: 5 x 13
+##   name  height  mass hair_color skin_color eye_color birth_year gender
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+## 1 C-3PO    167    75 &lt;NA&gt;       gold       yellow           112 &lt;NA&gt;  
+## 2 R2-D2     96    32 &lt;NA&gt;       white, bl~ red               33 &lt;NA&gt;  
+## 3 R5-D4     97    32 &lt;NA&gt;       white, red red               NA &lt;NA&gt;  
+## 4 Gree~    173    74 &lt;NA&gt;       green      black             44 male  
+## 5 Jabb~    175  1358 &lt;NA&gt;       green-tan~ orange           600 herma~
+## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>Podemos também utilizar mais de uma condição (usando &amp; ou |). Se quisermos registros que atendam a todas as condições, podemos utilizar &amp; (E) ou separar as condições por vírgulas. E quando for necessário registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:</p>
+<pre class="r"><code>filter(starwars, is.na(hair_color), species == &quot;Droid&quot;)</code></pre>
+<pre><code>## # A tibble: 3 x 13
+##   name  height  mass hair_color skin_color eye_color birth_year gender
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+## 1 C-3PO    167    75 &lt;NA&gt;       gold       yellow           112 &lt;NA&gt;  
+## 2 R2-D2     96    32 &lt;NA&gt;       white, bl~ red               33 &lt;NA&gt;  
+## 3 R5-D4     97    32 &lt;NA&gt;       white, red red               NA &lt;NA&gt;  
+## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<center>
+<img src="/img/2018-08-31-introducao-ao-dplyr/starWars2.png" />
+</center></li>
+</ul>
+<p>Vamos agora filtrar por personagens com mais de 130 kg e selecionar <code>name</code>, <code>height</code>, <code>mass</code> e <code>homeworld</code>:</p>
+<pre class="r"><code>select(filter(starwars, mass &gt; 130), name:mass, homeworld)</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##   name                  height  mass homeworld
+##   &lt;chr&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;    
+## 1 Darth Vader              202   136 Tatooine 
+## 2 Jabba Desilijic Tiure    175  1358 Nal Hutta
+## 3 IG-88                    200   140 &lt;NA&gt;     
+## 4 Grievous                 216   159 Kalee    
+## 5 Tarfful                  234   136 Kashyyyk</code></pre>
+<p>Apesar de termos só duas funções envolvidas, veja que começa a não ser tão simples de ler o que o R irá fazer com esse comando. Quando o número de funções aumenta, isso fica bem pior de ler. Para resolver esse problema, o <code>tidyverse</code> propõe uma maneira de encadear o código:</p>
+<ul>
+<li><p><strong>pipe</strong> (<code>%&gt;%</code>): O <strong>pipe</strong> é o operador que faz o encadeamento das funções do <code>tidyverse</code>. Este operador é do pacote <a href="https://magrittr.tidyverse.org/"><code>magrittr</code></a>, mas ao carregar o <code>dplyr</code> já poderemos usá-lo. Seu atalho, no RStudio, é <em>(Cmd)Ctrl + Shift + M</em>. O <em>pipe</em> irá pegar o resultado da expressão a sua esquerda e colocar como primeiro argumento (por padrão) da expressão da direita. Como as funções do <code>dplyr</code> recebem um <code>tibble</code> no primeiro argumento, então isso vai facilitar a escrita. Vejamos o exemplo anterior com o pipe:</p>
+<pre class="r"><code>starwars %&gt;% 
+  filter(mass &gt; 130) %&gt;% 
+  select(name:mass, homeworld)</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##   name                  height  mass homeworld
+##   &lt;chr&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;    
+## 1 Darth Vader              202   136 Tatooine 
+## 2 Jabba Desilijic Tiure    175  1358 Nal Hutta
+## 3 IG-88                    200   140 &lt;NA&gt;     
+## 4 Grievous                 216   159 Kalee    
+## 5 Tarfful                  234   136 Kashyyyk</code></pre>
+<p>Perceba que agora o código fica muito mais simples de entender: Pegamos o <code>tibble</code> starwars, filtramos personagens com mais de 130 kg e do <code>tibble</code> resultante do filtro selecionamos as colunas desejadas.</p></li>
+<li><p>Com o <code>mutate</code> podemos criar novas colunas e essas novas colunas podem ser criadas em função das já existentes. Vamos calcular o IMC dos personagens, mas para isso precisamos da altura em metros. Vamos então criar uma coluna com a altura em metros e usar esse coluna recém criada para o cálculo do IMC:</p>
+<pre class="r"><code>starwars %&gt;% 
+  mutate(altura_metros = height/100,
+         IMC = mass/(altura_metros^2)) %&gt;% 
+  select(name, IMC) </code></pre>
+<pre><code>## # A tibble: 87 x 2
+##    name                 IMC
+##    &lt;chr&gt;              &lt;dbl&gt;
+##  1 Luke Skywalker      26.0
+##  2 C-3PO               26.9
+##  3 R2-D2               34.7
+##  4 Darth Vader         33.3
+##  5 Leia Organa         21.8
+##  6 Owen Lars           37.9
+##  7 Beru Whitesun lars  27.5
+##  8 R5-D4               34.0
+##  9 Biggs Darklighter   25.1
+## 10 Obi-Wan Kenobi      23.2
+## # ... with 77 more rows</code></pre></li>
+<li><p>O <code>summarise</code> (ou <code>summarize</code>) permite que usemos funções de sumarização, ou seja, funções que recebem <span class="math inline">\(n\)</span> elementos e retornam apenas <span class="math inline">\(1\)</span> valor. Vamos calcular a maior altura e a massa média:</p>
+<pre class="r"><code>starwars %&gt;% 
+  summarise(max_altura = max(height, na.rm = T),
+            massa_media = mean(mass, na.rm = T))</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   max_altura massa_media
+##        &lt;int&gt;       &lt;dbl&gt;
+## 1        264        97.3</code></pre></li>
+<li><p>Usamos o <code>arrange</code> para ordenar o <code>tibble</code>, de maneira crescente ou decrescente. Vamos refazer o cálculo do IMC e usar essa coluna para ordenar, em ordem crescente, o <code>tibble</code> resultante:</p>
+<pre class="r"><code>starwars %&gt;%
+  mutate(altura_metros = height/100,
+         IMC = mass/(altura_metros^2)) %&gt;% 
+  select(name, height, mass, IMC) %&gt;% 
+  arrange(IMC)</code></pre>
+<pre><code>## # A tibble: 87 x 4
+##    name          height  mass   IMC
+##    &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Wat Tambor       193    48  12.9
+##  2 Adi Gallia       184    50  14.8
+##  3 Sly Moore        178    48  15.1
+##  4 Roos Tarpals     224    82  16.3
+##  5 Padmé Amidala    165    45  16.5
+##  6 Lama Su          229    88  16.8
+##  7 Jar Jar Binks    196    66  17.2
+##  8 Ayla Secura      178    55  17.4
+##  9 Shaak Ti         178    57  18.0
+## 10 Barriss Offee    166    50  18.1
+## # ... with 77 more rows</code></pre>
+<p>Para que a ordenação seja feita de maneira decrescente basta utilizar o símbolo <code>-</code>, ou então a função <code>desc</code></p>
+<pre class="r"><code>starwars %&gt;%
+  mutate(altura_metros = height/100,
+         IMC = mass/(altura_metros^2)) %&gt;% 
+  select(name, height, mass, IMC) %&gt;% 
+  arrange(-IMC) # Ou arrange(desc(IMC))</code></pre>
+<pre><code>## # A tibble: 87 x 4
+##    name                  height  mass   IMC
+##    &lt;chr&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Jabba Desilijic Tiure    175  1358 443. 
+##  2 Dud Bolt                  94    45  50.9
+##  3 Yoda                      66    17  39.0
+##  4 Owen Lars                178   120  37.9
+##  5 IG-88                    200   140  35  
+##  6 R2-D2                     96    32  34.7
+##  7 Grievous                 216   159  34.1
+##  8 R5-D4                     97    32  34.0
+##  9 Jek Tono Porkins         180   110  34.0
+## 10 Darth Vader              202   136  33.3
+## # ... with 77 more rows</code></pre>
+<p>Também podemos reordenar o <code>tibble</code> de acordo com mais de uma coluna.</p>
+<pre class="r"><code>starwars %&gt;% 
+  arrange(hair_color, name, -mass, -birth_year)</code></pre>
+<pre><code>## # A tibble: 87 x 13
+##    name  height  mass hair_color skin_color eye_color birth_year gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+##  1 Mon ~    150  NA   auburn     fair       blue            48   female
+##  2 Wilh~    180  NA   auburn, g~ fair       blue            64   male  
+##  3 Obi-~    182  77   auburn, w~ fair       blue-gray       57   male  
+##  4 Bail~    191  NA   black      tan        brown           67   male  
+##  5 Barr~    166  50   black      yellow     blue            40   female
+##  6 Bigg~    183  84   black      light      brown           24   male  
+##  7 Boba~    183  78.2 black      fair       brown           31.5 male  
+##  8 Eeth~    171  NA   black      brown      brown           NA   male  
+##  9 Finn      NA  NA   black      dark       dark            NA   male  
+## 10 Greg~    185  85   black      dark       brown           NA   male  
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
+## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
+<li><p>Por fim, podemos realizar todas as operações por grupos. Para isso existe a função <code>group_by</code>. Faremos então o cálculo da maior altura e a massa média por espécie:</p>
+<pre class="r"><code>starwars %&gt;% 
+  group_by(species) %&gt;% 
+  summarise(max_altura = max(height, na.rm = T),
+            massa_media = mean(mass, na.rm = T))</code></pre>
+<pre><code>## # A tibble: 38 x 3
+##    species   max_altura massa_media
+##    &lt;chr&gt;          &lt;int&gt;       &lt;dbl&gt;
+##  1 Aleena            79        15  
+##  2 Besalisk         198       102  
+##  3 Cerean           198        82  
+##  4 Chagrian         196       NaN  
+##  5 Clawdite         168        55  
+##  6 Droid            200        69.8
+##  7 Dug              112        40  
+##  8 Ewok              88        20  
+##  9 Geonosian        183        80  
+## 10 Gungan           224        74  
+## # ... with 28 more rows</code></pre>
+<p>Todos os outros verbos têm (ou podem ter) seu comportamento alterado ao usar <code>group_by</code>. Nessa <a href="https://dplyr.tidyverse.org/articles/dplyr.html#grouped-operations">página</a> os comportamentos são descritos.</p></li>
+</ul>
+</div>
+<div id="fonte" class="section level2">
+<h2>Fonte</h2>
+<p><a href="https://dplyr.tidyverse.org/articles/dplyr.html">Vignette de Introdução ao <code>dplyr</code></a></p>
+</div>
+
+                    
+                        
+
+<div class="social-share pt-4">
+        <h4>Share:</h4>
+        
+        <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+            </div>
+        </div>
+    </a>
+
+    
+    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Introdu%c3%a7%c3%a3o%20ao%20dplyr&amp;url=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+        <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+        </div>
+    </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://plus.google.com/share?url=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.37 12.93c-.73-.52-1.4-1.27-1.4-1.5 0-.43.03-.63.98-1.37 1.23-.97 1.9-2.23 1.9-3.57 0-1.22-.36-2.3-1-3.05h.5c.1 0 .2-.04.28-.1l1.36-.98c.16-.12.23-.34.17-.54-.07-.2-.25-.33-.46-.33H7.6c-.66 0-1.34.12-2 .35-2.23.76-3.78 2.66-3.78 4.6 0 2.76 2.13 4.85 5 4.9-.07.23-.1.45-.1.66 0 .43.1.83.33 1.22h-.08c-2.72 0-5.17 1.34-6.1 3.32-.25.52-.37 1.04-.37 1.56 0 .5.13.98.38 1.44.6 1.04 1.84 1.86 3.55 2.28.87.23 1.82.34 2.8.34.88 0 1.7-.1 2.5-.34 2.4-.7 3.97-2.48 3.97-4.54 0-1.97-.63-3.15-2.33-4.35zm-7.7 4.5c0-1.42 1.8-2.68 3.9-2.68h.05c.45 0 .9.07 1.3.2l.42.28c.96.66 1.6 1.1 1.77 1.8.05.16.07.33.07.5 0 1.8-1.33 2.7-3.96 2.7-1.98 0-3.54-1.23-3.54-2.8zM5.54 3.9c.33-.38.75-.58 1.23-.58h.05c1.35.05 2.64 1.55 2.88 3.35.14 1.02-.08 1.97-.6 2.55-.32.37-.74.56-1.23.56h-.03c-1.32-.04-2.63-1.6-2.87-3.4-.13-1 .08-1.92.58-2.5zM23.5 9.5h-3v-3h-2v3h-3v2h3v3h2v-3h3"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Introdu%c3%a7%c3%a3o%20ao%20dplyr&amp;body=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_self" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f&amp;resubmit=true&amp;title=Introdu%c3%a7%c3%a3o%20ao%20dplyr" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Introdu%c3%a7%c3%a3o%20ao%20dplyr%20%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Introdu%c3%a7%c3%a3o%20ao%20dplyr&amp;url=%2fpost%2fintrodu%25C3%25A7%25C3%25A3o-ao-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
+    </div>
+</div>
+</a>
+
+</div>
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div><!-- end Contact Area -->
+<footer id="footer" class="bg-one">
+	<div class="container">
+		<div class="row wow fadeInUp" data-wow-duration="500ms">
+			<div class="col-xl-12">
+
+				<!-- Footer Social Links -->
+				<div class="social-icon">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-facebook"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-twitter"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-google-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-youtube"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-linkedin"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-dribbble-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-pinterest-outline"></i></a></li>
+						
+					</ul>
+				</div>
+
+				<!-- copyright -->
+				<div class="copyright text-center">
+					
+					<br>
+					<p>Design And Developed by <a href="http://www.themefisher.com">  Themefisher  </a>. Copyright &copy; <script>
+							document.write(new Date().getFullYear())
+						</script>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- /footer -->
+
+<!-- Essential Scripts -->
+
+		<!-- Main jQuery -->
+		<script type="text/javascript" src="/plugins/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap 4.3 + Popper -->
+		<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Slick Carousel -->
+		<script type="text/javascript" src="/plugins/slick-carousel/slick/slick.min.js"></script>
+		<!-- Portfolio Filtering -->
+		<script type="text/javascript" src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+		<!-- Magnific popup -->
+		<script type="text/javascript" src="/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+		<!-- Google Map API -->
+		<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&amp;libraries=places"></script>
+		<!-- Number Counter Script -->
+		<script type="text/javascript" src="/plugins/count-to/jquery.countTo.js"></script>
+		<!-- wow.min Script -->
+		<script type="text/javascript" src="/plugins/wow/dist/wow.min.js"></script>
+		<!-- Scroll behavior polyfill -->
+		
+		<script src="/js/scroll-behavior-polyfill.min.js"></script>
+		<!-- Sweet Alert -->
+		<script type="text/javascript" src="/plugins/sweet-alert/sweetalert.min.js"></script>
+		<!-- Custom js -->
+		
+		<script src="/js/script.min.js"></script>
+		<!-- google analitycs -->
+		<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				ga('create', 'Your ID', 'auto');
+				ga('send', 'pageview');
+		</script>
+</body>
+</html>

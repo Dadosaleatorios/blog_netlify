@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>avancado on </title>
+    <link>/categories/avancado/</link>
+    <description>Recent content in avancado on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Mar 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/avancado/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Aprendendo a usar o argumento &#39;...&#39; no R</title>
+      <link>/post/2014-03-25-aprendendo-a-usar-o-argumento-no-r/</link>
+      <pubDate>Tue, 25 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-03-25-aprendendo-a-usar-o-argumento-no-r/</guid>
+      <description>A utilização do parâmetro &amp;rsquo;&amp;hellip;&amp;rsquo; é algo que sempre me gera dúvidas, pois sempre me questiono por qual motivo ninguém nunca me falou sobre antes. Esta foi uma das minhas recentes descobertas no R e ajudou a entender muitas coisas que até então passavam despercebidas. Caso você seja um usuário recorrente da linguagem, bem provavelmente vai entender do que estou falando, afinal quem nunca topou com o argumento &amp;rsquo;&amp;hellip;&amp;rsquo; ao ler o help de uma função qualquer?</description>
+    </item>
+    
+  </channel>
+</rss>

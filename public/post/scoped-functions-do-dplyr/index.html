@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" scroll-behavior="smooth"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Este post faz parte da série de post que estamos criando sobre o dplyr. Caso ainda não conheça o pacote, veja o post de introdução ao dplyr.
+O dplyr apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos _if, _at e _all são utilizados com as funções do dplyr de forma a realizar uma mesma operação a várias colunas, simultaneamente.">
+    <meta name="author" content="dadosaleatorios">
+
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.58.3" />
+
+    <title>Scoped functions do dplyr | Posts</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+    <!-- CSS -->
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+    <!-- Magnific popup css -->
+    <link rel="stylesheet" href="/plugins/magnific-popup/dist/magnific-popup.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+    <!-- Main Stylesheet -->
+    
+    <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="52">
+        <div id="content">
+
+<!-- Fixed Navigation -->
+<nav id="navigation" class="navbar navbar-expand-lg navigation sticky-top">
+        <div class="container">
+
+                <!-- logo -->
+                <a class="navbar-brand logo" href="/">
+                        <img src="/images/logo.png" alt="Dados Aleatórios" />
+                        <span class="pl-2 font-weight-bold"></span>
+                </a>
+                <!-- /logo -->
+
+                <!-- responsive nav button -->
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- /responsive nav button -->
+
+                <!-- main nav -->
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navigation-menu">
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#body">Home</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#nosso-time">Nosso Time</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#blog">Blog</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#contato">Contato</a></li>
+                                
+                        </ul>
+                </div>
+                
+                <!-- /main nav -->
+        </div>
+
+</nav>
+<!-- End Fixed Navigation -->
+
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <h1>Scoped functions do dplyr</h1>
+                <ul class="list-inline mb-50">
+                    <li class="list-inline-item"><a href="/author/dadosaleatorios">dadosaleatorios</a></li>
+                    <li class="list-inline-item">Wednesday, Sep 19, 2018</li>
+                </ul>
+                <img class="img-fluid mb-50" src="/images/blog/post-dplyr.png" alt="blog-image">
+            </div>
+            <div class="col-lg-8 offset-lg-2">
+                <div class="post-single-content">
+                    
+
+
+<p>Este post faz parte da série de post que estamos criando sobre o <code>dplyr</code>. Caso ainda não conheça o pacote, veja o post de <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">introdução ao dplyr</a>.</p>
+<p>O <code>dplyr</code> apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos <code>_if</code>, <code>_at</code> e <code>_all</code> são utilizados com as funções do <code>dplyr</code> de forma a realizar uma mesma operação a várias colunas, simultaneamente.</p>
+<ul>
+<li><p><code>_all</code>: Realiza as operações para todas as colunas do <code>tibble</code> ou <code>dataframe</code>.</p></li>
+<li><p><code>_at</code>: Realiza operações sobre um conjunto de variáveis com nomes específicos ou índices das colunas.</p></li>
+<li><p><code>_if</code>: Realiza operações sobre um conjunto de colunas para os quais a condição lógica é verdadeira.</p></li>
+</ul>
+<p>As funções que podem ser utilizadas com o sufixo são:</p>
+<ul>
+<li><code>mutate e transmute</code>.</li>
+<li><code>summarise</code>.</li>
+<li><code>filter</code>.</li>
+<li><code>group_by</code>.</li>
+<li><code>select e rename</code>.</li>
+<li><code>arrange</code>.</li>
+</ul>
+<p>Agora vamos mostrar alguns exemplos de aplicações dessas funções.</p>
+<div id="aprendendo-por-exemplo" class="section level3">
+<h3>Aprendendo por exemplo:</h3>
+<p>Iremos utilizar o famoso conjunto de dados <code>iris</code>.</p>
+<center>
+<img src="/img/2018-09-19-scoped-functions-do-dplyr/iris_img.png" width="600" />
+</center>
+</center>
+<pre class="r"><code>require(dplyr)
+
+as_tibble(x = iris)</code></pre>
+<pre><code># A tibble: 150 x 5
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1          5.1         3.5          1.4         0.2 setosa 
+ 2          4.9         3            1.4         0.2 setosa 
+ 3          4.7         3.2          1.3         0.2 setosa 
+ 4          4.6         3.1          1.5         0.2 setosa 
+ 5          5           3.6          1.4         0.2 setosa 
+ 6          5.4         3.9          1.7         0.4 setosa 
+ 7          4.6         3.4          1.4         0.3 setosa 
+ 8          5           3.4          1.5         0.2 setosa 
+ 9          4.4         2.9          1.4         0.2 setosa 
+10          4.9         3.1          1.5         0.1 setosa 
+# ... with 140 more rows</code></pre>
+<div id="sufixo-_all" class="section level4">
+<h4>Sufixo <code>_all</code></h4>
+<p>Vamos agrupar por espécie e calcular a média de todas as colunas (note que os argumentos adicionais da função são colocados depois da função):</p>
+<pre class="r"><code>iris %&gt;% 
+  group_by(Species) %&gt;% 
+  summarise_all(.funs = mean, na.rm = T)</code></pre>
+<pre><code># A tibble: 3 x 5
+  Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+  &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1 setosa             5.01        3.43         1.46       0.246
+2 versicolor         5.94        2.77         4.26       1.33 
+3 virginica          6.59        2.97         5.55       2.03 </code></pre>
+<p>Agora iremos transformar todas as colunas de maneira a estarem na escala <span class="math inline">\([0, 1]\)</span>. Como a coluna de espécies não é numérica, então vamos tranformá-la numa variável de grupo. Assim a função <code>_all</code> não se aplicará para ela. Note que poderemos criar uma função para fazer a tarefa desejada.</p>
+<pre class="r"><code>iris %&gt;% 
+  group_by(Species) %&gt;% 
+  mutate_all(.funs = function(x){ x / max(x) })</code></pre>
+<pre><code>`mutate_all()` ignored the following grouping variables:
+Column `Species`
+Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</code></pre>
+<pre><code># A tibble: 150 x 5
+# Groups:   Species [3]
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1        0.879       0.795        0.737       0.333 setosa 
+ 2        0.845       0.682        0.737       0.333 setosa 
+ 3        0.810       0.727        0.684       0.333 setosa 
+ 4        0.793       0.705        0.789       0.333 setosa 
+ 5        0.862       0.818        0.737       0.333 setosa 
+ 6        0.931       0.886        0.895       0.667 setosa 
+ 7        0.793       0.773        0.737       0.5   setosa 
+ 8        0.862       0.773        0.789       0.333 setosa 
+ 9        0.759       0.659        0.737       0.333 setosa 
+10        0.845       0.705        0.789       0.167 setosa 
+# ... with 140 more rows</code></pre>
+<p>Para o <code>summarise_all</code> e <code>mutate_all</code>, a função só será aplicada para as colunas que não sejam de grupos. Já o <code>filter_all</code>, faz o filtro para todas as variáveis. Sendo assim, iremos descartar a variável <code>Species</code> antes de fazer o filtro.</p>
+<p>Vamos filtrar para que todas as variáveis sejam maiores que <span class="math inline">\(1,5\)</span>:</p>
+<pre class="r"><code>iris %&gt;% 
+  select(-Species) %&gt;% 
+  filter_all(.vars_predicate = all_vars(. &gt; 1.5))</code></pre>
+<pre><code># A tibble: 52 x 4
+   Sepal.Length Sepal.Width Petal.Length Petal.Width
+          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+ 1          6.3         3.3          4.7         1.6
+ 2          5.9         3.2          4.8         1.8
+ 3          6.7         3            5           1.7
+ 4          6           2.7          5.1         1.6
+ 5          6           3.4          4.5         1.6
+ 6          6.3         3.3          6           2.5
+ 7          5.8         2.7          5.1         1.9
+ 8          7.1         3            5.9         2.1
+ 9          6.3         2.9          5.6         1.8
+10          6.5         3            5.8         2.2
+# ... with 42 more rows</code></pre>
+<p>Agora filtraremos para que pelo menos uma das variáveis sejam maiores que <span class="math inline">\(7,5\)</span>:</p>
+<pre class="r"><code>iris %&gt;% 
+  select(-Species) %&gt;% 
+  filter_all(.vars_predicate = any_vars(. &gt; 7.5))</code></pre>
+<pre><code># A tibble: 6 x 4
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+         &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1          7.6         3            6.6         2.1
+2          7.7         3.8          6.7         2.2
+3          7.7         2.6          6.9         2.3
+4          7.7         2.8          6.7         2  
+5          7.9         3.8          6.4         2  
+6          7.7         3            6.1         2.3</code></pre>
+<p>Podemos, de duas maneiras, modificar os nomes de todas as colunas:</p>
+<pre class="r"><code>iris %&gt;% 
+  select_all(.funs = toupper) # ou rename_all(toupper)</code></pre>
+<pre><code># A tibble: 150 x 5
+   SEPAL.LENGTH SEPAL.WIDTH PETAL.LENGTH PETAL.WIDTH SPECIES
+          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1          5.1         3.5          1.4         0.2 setosa 
+ 2          4.9         3            1.4         0.2 setosa 
+ 3          4.7         3.2          1.3         0.2 setosa 
+ 4          4.6         3.1          1.5         0.2 setosa 
+ 5          5           3.6          1.4         0.2 setosa 
+ 6          5.4         3.9          1.7         0.4 setosa 
+ 7          4.6         3.4          1.4         0.3 setosa 
+ 8          5           3.4          1.5         0.2 setosa 
+ 9          4.4         2.9          1.4         0.2 setosa 
+10          4.9         3.1          1.5         0.1 setosa 
+# ... with 140 more rows</code></pre>
+<p>O <code>group_by_all</code> torna todas as colunas do <code>tibble</code> em colunas de grupos. Já o <code>arrange_all</code> irá ordenar os dados de acordo com os valores de todas as colunas, em ordem crescente. Caso desejemos a ordenação descrescente, basta adicionar <code>desc</code> no segundo argumento.</p>
+</div>
+<div id="sufixo-_at" class="section level4">
+<h4>Sufixo <code>_at</code></h4>
+<p>Utilizando o sufixo <code>_at</code>, podemos selecionar as colunas para as quais as funções serão aplicadas, da mesma maneira como podemos escrever no <code>select</code>. Basta utilizar a função <code>vars</code>. Desta maneira, podemos calcular a média de todas as variáveis, exceto <code>Species</code>.</p>
+<pre class="r"><code>iris %&gt;% 
+  summarise_at(.vars = vars(-Species), .funs = mean)</code></pre>
+<pre><code># A tibble: 1 x 4
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+         &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1         5.84        3.06         3.76        1.20</code></pre>
+<p>Também podemos utilizar as <em>help functions</em>. Neste caso multiplicaremos por <span class="math inline">\(100\)</span> as colunas que terminam com “Length”:</p>
+<pre class="r"><code>iris %&gt;% 
+  mutate_at(.vars = vars(ends_with(&quot;Length&quot;)), .funs =  funs(. * 100))</code></pre>
+<pre><code># A tibble: 150 x 5
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1         510.         3.5          140         0.2 setosa 
+ 2         490.         3            140         0.2 setosa 
+ 3         470          3.2          130         0.2 setosa 
+ 4         460.         3.1          150         0.2 setosa 
+ 5         500          3.6          140         0.2 setosa 
+ 6         540          3.9          170         0.4 setosa 
+ 7         460.         3.4          140         0.3 setosa 
+ 8         500          3.4          150         0.2 setosa 
+ 9         440.         2.9          140         0.2 setosa 
+10         490.         3.1          150         0.1 setosa 
+# ... with 140 more rows</code></pre>
+<p>Note que ao invés de criar uma função que recebe <code>x</code> e retorna <code>x * 100</code>, nós utilizamos a função <code>funs</code>. O ponto funciona como cada uma das colunas, que, neste caso, é multiplicada por <span class="math inline">\(100\)</span>.</p>
+<p>O mesmo raciocínio se aplica às outras funções: <code>filter</code>, <code>arrange</code> e <code>group_by</code>. Não foi encontrado uso de <code>select_at</code> e <code>rename_at</code>.</p>
+</div>
+<div id="sufixo-_if" class="section level4">
+<h4>Sufixo <code>_if</code></h4>
+<p>O sufixo <code>_if</code> permite que nós apliquemos as funções para colunas que tenham algum predicado.</p>
+<p>Vamos calcular o máximo de todas as variáveis que são numéricas:</p>
+<pre class="r"><code>iris %&gt;% 
+  summarise_if(.predicate = is.numeric, .funs = max)</code></pre>
+<pre><code># A tibble: 1 x 4
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+         &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+1          7.9         4.4          6.9         2.5</code></pre>
+<p>Da mesma maneira acontece com todas as outras funções.</p>
+</div>
+<div id="select-vs-rename" class="section level4">
+<h4>Select <em>vs</em> Rename</h4>
+<p>As funções <code>select_ e rename_</code>, com algum dos sufixos, se diferenciam pelo fato de que com o <code>select</code> não é necessário passar uma função que mude os nomes, já com o <code>rename</code> é necessário incluir uma função que modifique os nomes das colunas.</p>
+</div>
+</div>
+<div id="fonte" class="section level3">
+<h3>Fonte</h3>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/index.html" class="uri">https://dplyr.tidyverse.org/reference/index.html</a></li>
+</ul>
+</div>
+
+                    
+                        
+
+<div class="social-share pt-4">
+        <h4>Share:</h4>
+        
+        <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=%2fpost%2fscoped-functions-do-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+            </div>
+        </div>
+    </a>
+
+    
+    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Scoped%20functions%20do%20dplyr&amp;url=%2fpost%2fscoped-functions-do-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+        <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+        </div>
+    </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://plus.google.com/share?url=%2fpost%2fscoped-functions-do-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.37 12.93c-.73-.52-1.4-1.27-1.4-1.5 0-.43.03-.63.98-1.37 1.23-.97 1.9-2.23 1.9-3.57 0-1.22-.36-2.3-1-3.05h.5c.1 0 .2-.04.28-.1l1.36-.98c.16-.12.23-.34.17-.54-.07-.2-.25-.33-.46-.33H7.6c-.66 0-1.34.12-2 .35-2.23.76-3.78 2.66-3.78 4.6 0 2.76 2.13 4.85 5 4.9-.07.23-.1.45-.1.66 0 .43.1.83.33 1.22h-.08c-2.72 0-5.17 1.34-6.1 3.32-.25.52-.37 1.04-.37 1.56 0 .5.13.98.38 1.44.6 1.04 1.84 1.86 3.55 2.28.87.23 1.82.34 2.8.34.88 0 1.7-.1 2.5-.34 2.4-.7 3.97-2.48 3.97-4.54 0-1.97-.63-3.15-2.33-4.35zm-7.7 4.5c0-1.42 1.8-2.68 3.9-2.68h.05c.45 0 .9.07 1.3.2l.42.28c.96.66 1.6 1.1 1.77 1.8.05.16.07.33.07.5 0 1.8-1.33 2.7-3.96 2.7-1.98 0-3.54-1.23-3.54-2.8zM5.54 3.9c.33-.38.75-.58 1.23-.58h.05c1.35.05 2.64 1.55 2.88 3.35.14 1.02-.08 1.97-.6 2.55-.32.37-.74.56-1.23.56h-.03c-1.32-.04-2.63-1.6-2.87-3.4-.13-1 .08-1.92.58-2.5zM23.5 9.5h-3v-3h-2v3h-3v2h3v3h2v-3h3"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Scoped%20functions%20do%20dplyr&amp;body=%2fpost%2fscoped-functions-do-dplyr%2f" target="_self" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=%2fpost%2fscoped-functions-do-dplyr%2f&amp;resubmit=true&amp;title=Scoped%20functions%20do%20dplyr" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Scoped%20functions%20do%20dplyr%20%2fpost%2fscoped-functions-do-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Scoped%20functions%20do%20dplyr&amp;url=%2fpost%2fscoped-functions-do-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
+    </div>
+</div>
+</a>
+
+</div>
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div><!-- end Contact Area -->
+<footer id="footer" class="bg-one">
+	<div class="container">
+		<div class="row wow fadeInUp" data-wow-duration="500ms">
+			<div class="col-xl-12">
+
+				<!-- Footer Social Links -->
+				<div class="social-icon">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-facebook"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-twitter"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-google-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-youtube"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-linkedin"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-dribbble-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-pinterest-outline"></i></a></li>
+						
+					</ul>
+				</div>
+
+				<!-- copyright -->
+				<div class="copyright text-center">
+					
+					<br>
+					<p>Design And Developed by <a href="http://www.themefisher.com">  Themefisher  </a>. Copyright &copy; <script>
+							document.write(new Date().getFullYear())
+						</script>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- /footer -->
+
+<!-- Essential Scripts -->
+
+		<!-- Main jQuery -->
+		<script type="text/javascript" src="/plugins/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap 4.3 + Popper -->
+		<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Slick Carousel -->
+		<script type="text/javascript" src="/plugins/slick-carousel/slick/slick.min.js"></script>
+		<!-- Portfolio Filtering -->
+		<script type="text/javascript" src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+		<!-- Magnific popup -->
+		<script type="text/javascript" src="/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+		<!-- Google Map API -->
+		<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&amp;libraries=places"></script>
+		<!-- Number Counter Script -->
+		<script type="text/javascript" src="/plugins/count-to/jquery.countTo.js"></script>
+		<!-- wow.min Script -->
+		<script type="text/javascript" src="/plugins/wow/dist/wow.min.js"></script>
+		<!-- Scroll behavior polyfill -->
+		
+		<script src="/js/scroll-behavior-polyfill.min.js"></script>
+		<!-- Sweet Alert -->
+		<script type="text/javascript" src="/plugins/sweet-alert/sweetalert.min.js"></script>
+		<!-- Custom js -->
+		
+		<script src="/js/script.min.js"></script>
+		<!-- google analitycs -->
+		<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				ga('create', 'Your ID', 'auto');
+				ga('send', 'pageview');
+		</script>
+</body>
+</html>

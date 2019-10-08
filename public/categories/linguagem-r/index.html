@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" scroll-behavior="smooth"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Seu blog técnico de ciências de dados!">
+    <meta name="author" content="Themefisher">
+
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.58.3" />
+
+    <title>linguagem R</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+    <!-- CSS -->
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+    <!-- Magnific popup css -->
+    <link rel="stylesheet" href="/plugins/magnific-popup/dist/magnific-popup.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+    <!-- Main Stylesheet -->
+    
+    <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="52">
+        <div id="content">
+
+<!-- Fixed Navigation -->
+<nav id="navigation" class="navbar navbar-expand-lg navigation sticky-top">
+        <div class="container">
+
+                <!-- logo -->
+                <a class="navbar-brand logo" href="/">
+                        <img src="/images/logo.png" alt="Dados Aleatórios" />
+                        <span class="pl-2 font-weight-bold"></span>
+                </a>
+                <!-- /logo -->
+
+                <!-- responsive nav button -->
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- /responsive nav button -->
+
+                <!-- main nav -->
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navigation-menu">
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#body">Home</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#nosso-time">Nosso Time</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#blog">Blog</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#contato">Contato</a></li>
+                                
+                        </ul>
+                </div>
+                
+                <!-- /main nav -->
+        </div>
+
+</nav>
+<!-- End Fixed Navigation -->
+
+
+<!-- Start Blog Section -->
+<section id="blog" class="section">
+    <div class="container">
+        <div class="row">
+
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-dplyr.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/programando-com-dplyr/">Programando com dplyr (tidy eval)</a></h3>
+            <p>E aí, pessoal! Depois de conhecer o dplyr (se ainda não conhece, veja aqui nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o dplyr acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do dplyr. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre tidy evaluation. Com isso vamos conseguir escrever nossas primeiras funções usando select, mutate, ou outras funções do dplyr, aproveitando a facilidade e rapidez que o pacote nos oferece.</p>
+            <a class="btn btn-transparent" href="/post/programando-com-dplyr/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-tidyr.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/introducao-ao-tidyr/">Introdução ao tidyr</a></h3>
+            <p>O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo. Segundo a filosofia do tidyverse, um dado limpo é o que apresenta as seguintes propriedades:
+Cada variável é uma coluna.Cada linha é uma observação.Cada valor é uma célula.Ilustração de dados no formato tidy
+A seguir vamos apresentar dois tibbles. Dê uma olhada e pense qual dos dois está no formato tidy, de acordo com a filosofia tidyverse:</p>
+            <a class="btn btn-transparent" href="/post/introducao-ao-tidyr/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-ggplot.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/introducao-ao-ggplot/">Introdução ao ggplot</a></h3>
+            <p>Este material tem por objetivo passar uma ideia inicial das funcionalidades do pacote ggplot2 na visualização de dados.
+O ggplot2 é um pacote de visualização de dados do R criado por Hadley Wickham. É uma implementação das ideias do livro Grammar of Graphics de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas.
+O ggplot2 pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.</p>
+            <a class="btn btn-transparent" href="/post/introducao-ao-ggplot/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-dplyr.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/scoped-functions-do-dplyr/">Scoped functions do dplyr</a></h3>
+            <p>Este post faz parte da série de post que estamos criando sobre o dplyr. Caso ainda não conheça o pacote, veja o post de introdução ao dplyr.
+O dplyr apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos _if, _at e _all são utilizados com as funções do dplyr de forma a realizar uma mesma operação a várias colunas, simultaneamente.</p>
+            <a class="btn btn-transparent" href="/post/scoped-functions-do-dplyr/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-dplyr.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/introdu%C3%A7%C3%A3o-ao-dplyr/">Introdução ao dplyr</a></h3>
+            <p>O que é o dplyr e por que usá-lo?dplyr é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do tidyverse. Se você nunca ouviu falar no tidyverse, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise.</p>
+            <a class="btn btn-transparent" href="/post/introdu%C3%A7%C3%A3o-ao-dplyr/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-fotolog.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2016-01-29-baixando-e-interpretando-sites-ou-como-fazer-backup-do-seu-fotolog-com-r/">Baixando e interpretando sites (ou: como fazer backup do seu fotolog) com R.</a></h3>
+            <p>Se você usava a internet no início dos anos 2000, muito provavelmente teve - ou quis ter - um Fotolog. Como o próprio nome diz, era um blog voltado a fotografia, onde as pessoas podiam postar 1 foto por dia (ou 6, caso pagasse). Em 01/01/2016, o Fotolog encerrou suas atividades sem aviso prévio, gerando uma comoção nos mais saudosistas, voltando ao em final de janeiro com um aviso de que o site ficaria mais um mês online, permitindo que as pessoas fizessem backup.</p>
+            <a class="btn btn-transparent" href="/post/2016-01-29-baixando-e-interpretando-sites-ou-como-fazer-backup-do-seu-fotolog-com-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-readr.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2015-10-28-uma-nova-maneira-de-ler-dados-externos/">Uma nova maneira de ler dados externos</a></h3>
+            <p>Há cerca de 2 anos atrás postei uma pergunta no StackOverflow (caso não conheça, leia esta postagem nossa) perguntando como podia fazer para ler grandes bancos de dados, de cerca de 600mb - esse era meu primeiro contato com bancos grandes, provenientes do Censo Escolar. Das duas respostas dadas na época, a que mais me agradou usava o pacote sqldf, que utiliza SQL para fazer a leitura e manipulação de fontes externas de dados.</p>
+            <a class="btn btn-transparent" href="/post/2015-10-28-uma-nova-maneira-de-ler-dados-externos/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2015-04-27-carregando-automaticamente-funcoes-e-outras-variaveis-no-r/">Carregando automaticamente funções e outras variáveis no R</a></h3>
+            <p>Quem trabalha com R sabe que é necessário, sempre que se abre o R, recarregar todos pacotes e funções que se deseja. E isso pode se tornar trabalhoso e repetitivo, especialmente quando se utiliza sempre os mesmos. Mas existe uma maneira de automatizar isso - e bem simples até!
+Sempre que o R é iniciado ele irá executar o arquivo Rprofile.site (ele fica na pasta R\x.x.x\etc, e pode ser aberto com o bloco de notas).</p>
+            <a class="btn btn-transparent" href="/post/2015-04-27-carregando-automaticamente-funcoes-e-outras-variaveis-no-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-cores.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-11-24-cores-nos-graficos-do-r/">Cores nos gráficos do R</a></h3>
+            <p>Muitas vezes queremos demonstrar mais de um objeto em um gráfico e, para isso, recorremos à cores diferentes. Quando são poucos elementos fica fácil escolher as cores, geralmente ficamos com &lsquo;black&rsquo;, &lsquo;red&rsquo;, &lsquo;green&rsquo; e &lsquo;blue&rsquo;. Mas e quando queremos mais cores, ou até mesmo, sair da mesmice? O R, geralmente, permite dois tipos de entrada de cor: RGB em hexadecimal e através do nome das cores.
+Ao total, o R possui 657 cores pré-definidas (isso é, com algum nome) que podem ser vistas através do comando colours().</p>
+            <a class="btn btn-transparent" href="/post/2014-11-24-cores-nos-graficos-do-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-11-14-input-manual-de-dados-no-r/">Input manual de dados no R</a></h3>
+            <p>Vamos utilizar um editor, como a vizualização de folha de dados do excel para inputar nossos dados ao R.
+dados &lt;- data.frame(Idade=numeric(0), Sexo=character(0), Peso=numeric(0)) dados &lt;- edit(dados)
+Após entrar com todos os dados que necessitar, podemos simplesmente fechar o editor e teremos um data.frame salvo na variável dados =)
+Depois de fechar o editor podemos chamar a variável dados e vamos obter o seguinte resultado.
+Bom essa é a dica, bem simples e rápida.</p>
+            <a class="btn btn-transparent" href="/post/2014-11-14-input-manual-de-dados-no-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-ggplot.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-11-05-ordenando-o-grafico-de-barras-no-ggplot/">Ordenando o gráfico de barras no ggplot</a></h3>
+            <p>Anteriormente já abordamos dois posts sobre o ggplot: o primeiro deles falava sobre a personalização das escalas dos eixos e outro sobre como fazer gráficos múltiplos no ggplot. Hoje vamos continuar abordando o tema e o post será sobre a ordenação do gráfico de barras. Naturalmente a ordem das barras é controlada através de fatores, que são uma estrutura de dados utilizada para representar categorias - que é diferente do caractere.</p>
+            <a class="btn btn-transparent" href="/post/2014-11-05-ordenando-o-grafico-de-barras-no-ggplot/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-ggplot.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-10-09-fazendo-multiplos-graficos-com-o-ggplot2/">Fazendo múltiplos gráficos com o ggplot2</a></h3>
+            <p>Fazer múltiplos gráficos de acordo com o nível de uma ou mais variáveis categóricas no ggplot2 é fácil: basta utilizar as funções facet_grid ou facet_wrap. Com essas funções, tudo que você fizer para um gráfico valerá para todos (tema, títulos, rótulos dos eixos). E nos casos que eu preciso gráficos independentes - não só com configurações diferentes, mas também gráficos de tipos diferentes - como faço?
+Infelizmente, o ggplot2 não possui suporte para esse tipo de gráfico.</p>
+            <a class="btn btn-transparent" href="/post/2014-10-09-fazendo-multiplos-graficos-com-o-ggplot2/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-ggplot.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-10-08-alterando-a-escala-dos-eixos-no-ggplot2/">Alterando a escala dos eixos no ggplot2</a></h3>
+            <p>Muitas vezes precisamos mexer na escala de um gráfico - seja para mais ou para menos. No pacote base é bastante fácil fazer isso, as principais funções gráficas possuem os parâmetros xlim e ylim para informarmos os limites dos eixos. O pacote ggplot2 até apresenta as funções xlim e ylim, mas elas não funcionam exatamente igual aos parâmetros do pacote base. A diferença está que, além de alterar os limites do gráfico, ele descarta todos os dados que estão fora desse intervalo.</p>
+            <a class="btn btn-transparent" href="/post/2014-10-08-alterando-a-escala-dos-eixos-no-ggplot2/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-09-02-programando-no-r-com-notepad/">Programando no R com Notepad&#43;&#43;</a></h3>
+            <p>Dentre os vários editores de código existentes (aqui tem uma lista com 10), o que escolhi utilizar foi o Notepad++. Antes dele, utilizava o tradicional bloco de notas do Windows e fui bastante resistente em abandonar ele, trocando apenas quando meus códigos começaram a ficar grandes. Com o tempo fui descobrindo as funcionalidades dele, como a indentação em bloco, a identificação dos pares de {} e () - o que me fez abandonar o bloco de notas - e a busca e substituição por expressões regulares.</p>
+            <a class="btn btn-transparent" href="/post/2014-09-02-programando-no-r-com-notepad/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-github.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-05-16-usando-o-github-para-hospedar-codigos-r/">Usando o github para hospedar códigos R</a></h3>
+            <p>Versionamento de arquivos é uma prática comum entre desenvolvedores de software, e a prática não é difícil de entender. Uma vez que existe uma equipe com muitas pessoas trabalhando em um mesmo projeto, necessita-se de algum tipo de sistema de gerenciamento de arquivos para checar as modificações de uma forma minimamente esperta, caso contrário seria uma verdadeira desordem duas pessoas trabalhem em cima de um mesmo arquivo.
+Pode-se argumentar que não é necessária a utilização de uma ferramente de versionamento de arquivos uma vez que podemos utilizar o Dropbox, por exemplo.</p>
+            <a class="btn btn-transparent" href="/post/2014-05-16-usando-o-github-para-hospedar-codigos-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-04-15-review-do-livro-social-media-mining-with-r/">Review do livro Social Media Mining with R</a></h3>
+            <p>Introdução Mídias sociais são o verdadeiro assunto do momento. Se antes a informação era centralizada por veículos de comunicação, hoje a coisa é um pouco diferente, seja por desconfiança da população nos veículos mais tradicionais ou pela velocidade com que as coisas acontecem e são passadas aos leitores. Logo percebeu-se a complexidade e riqueza das informações geradas pelas mídias sociais - livre, independente e rápida - e a real necessidade de utilizar métodos computacionais e estatísticos para analisar tais informações.</p>
+            <a class="btn btn-transparent" href="/post/2014-04-15-review-do-livro-social-media-mining-with-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-03-25-aprendendo-a-usar-o-argumento-no-r/">Aprendendo a usar o argumento &#39;...&#39; no R</a></h3>
+            <p>A utilização do parâmetro &rsquo;&hellip;&rsquo; é algo que sempre me gera dúvidas, pois sempre me questiono por qual motivo ninguém nunca me falou sobre antes. Esta foi uma das minhas recentes descobertas no R e ajudou a entender muitas coisas que até então passavam despercebidas. Caso você seja um usuário recorrente da linguagem, bem provavelmente vai entender do que estou falando, afinal quem nunca topou com o argumento &rsquo;&hellip;&rsquo; ao ler o help de uma função qualquer?</p>
+            <a class="btn btn-transparent" href="/post/2014-03-25-aprendendo-a-usar-o-argumento-no-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-02-10-esquecendo-o-pdd-e-aprendendo-a-debugar/">Esquecendo o PDD e aprendendo a debugar</a></h3>
+            <p>Já faz algum tempo em que eu via as pessoas programaram em C++ com a utilização do Visual Studio, famosa IDE da Microsoft. Nesta época eu tinha a tarefa de transcrever algumas metodologias estatística em pseudo-código para que as mesmas fossem implementadas por algum desenvolvedor em C++. Até aí nada demais, mas volta e meia o código quebrava e lá começava-se o ciclo vicioso na procura de onde estava o erro - e um detalhe importante: o código era complexo, grande parte das ferramentas tinham sido implementadas - e pensando assim, achar onde estava o erro seria um verdadeiro pesadelo.</p>
+            <a class="btn btn-transparent" href="/post/2014-02-10-esquecendo-o-pdd-e-aprendendo-a-debugar/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-02-04-r-e-a-15a-linguagem-mais-utilizada-segundo-redmonk/">R é a 15ª linguagem mais utilizada, segundo RedMonk</a></h3>
+            <p>Segundo o ranking publicado pela RedMonk, a linguagem R ocupa a 15ª posição entre as mais utilizadas. O ranking é baseado na popularidade das linguagens em dois sites: Stackoverflow e Github. O primeiro é um site de dúvidas muito popular com uma comunidade extremamente ativa (acredite, é extremamente) e o segundo é provavelmnte o repositório de códigos mais popular do momento. Segundo os analistas da própria RedMonk, a escolha por estas duas comunidades como base para o ranking é simples: O tamanho da comunidade e transparência sobre números que a envolvem.</p>
+            <a class="btn btn-transparent" href="/post/2014-02-04-r-e-a-15a-linguagem-mais-utilizada-segundo-redmonk/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-01-17-apply-lapply-sapply-tapply-mapply-como-e-que-e-mesmo/">apply, lapply, sapply, tapply, mapply.. Como é que é mesmo?</a></h3>
+            <p>Acredito que a esta altura do campeonato todos já devem se questionar sobre a performance do R. Existe um Carma que é carregado de que não é eficiente em termos de gerenciamento de memória e velocidade. Tudo bem, temos que cofessar que estes itens não podem ser classificados como os pontos fortes da linguagem, porém nem tudo está perdido e dependendo da situação, contorná-la pode ser mais simples do que parece, em especial quando o assunto é velocidade.</p>
+            <a class="btn btn-transparent" href="/post/2014-01-17-apply-lapply-sapply-tapply-mapply-como-e-que-e-mesmo/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-01-14-entendendo-as-diferentes-mensagens-de-aviso-no-r/">Entendendo as diferentes mensagens de aviso no R</a></h3>
+            <p>Comumente ao utilizar funções escritas por terceiros no ambiente R, algumas mensagens de aviso podem ser exibidas com o objetivo de alertar sobre algum acontecimento interno daquela função. Suponha que você tenha criado uma função que calcula o logaritmo de um número em uma determinada base. Caso o usuário passe algum número que seja menor que 0, algo de estranho tem de acontecer, afinal não existe o logaritmo de números negativos e estar atento a estas mensagens pode ser uma importante tarefa de alerta na utilização do R no dia a dia.</p>
+            <a class="btn btn-transparent" href="/post/2014-01-14-entendendo-as-diferentes-mensagens-de-aviso-no-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-latex.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2014-01-07-ferramentas-para-criacao-de-tabelas-latex-a-partir-do-r/">Ferramentas para criação de tabelas LaTex a partir do R</a></h3>
+            <p>Sair do ambiente R para exportar resultados e tabelas nem sempre é uma tarefa fácil, em especial quando deseja-se exportar estes resultados para o ambiente LaTex. O motivo é simples de ser entendido, afinal nem nem sempre os resultados possuem uma estrutura simples e como acontece, as vezes este é demasiadamente grande. Neste post, vamos discutir algumas soluções para tornar esta tarefa mais simples e é claro, mais divertida. Além disso, vamos ilustrar exemplos da utilização de tais pacotes.</p>
+            <a class="btn btn-transparent" href="/post/2014-01-07-ferramentas-para-criacao-de-tabelas-latex-a-partir-do-r/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+            <!-- single blog post -->
+            
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+    <div class="post-block">
+        <div class="media-wrapper">
+            <img src="/images/blog/post-latex.png" alt="post-image" class="img-fluid">
+        </div>
+
+        <div class="content">
+            <h3><a href="/post/2013-12-17-inserindo-tabelas-no-latex-de-forma-dinamica/">Inserindo tabelas no LaTex de forma dinâmica</a></h3>
+            <p>Para aqueles que já trabalharam com geração de números aleatórios, a situação a seguir pode ser rotineira: Você escreve um script e sempre que o executa gera outputs diferentes. Caso esteja usando uma semente para a geração destes número aleatórios talvez o problema não seja tão grave, mas se por algum motivo a aleatoriedade for importante então escrever resultados sobre isso pode ser um problema.
+Imagine a seguinte situação: Você gera um bocado de números aleatórios, calcula uma série de estatísticas e escreve um belo texto sobre todas elas.</p>
+            <a class="btn btn-transparent" href="/post/2013-12-17-inserindo-tabelas-no-latex-de-forma-dinamica/">Read more</a>
+        </div>
+    </div>
+</article>
+
+            <!-- /single blog post -->
+            
+        </div>
+    </div>
+</section>
+<!-- /blog -->
+
+
+        </div><!-- end Contact Area -->
+<footer id="footer" class="bg-one">
+	<div class="container">
+		<div class="row wow fadeInUp" data-wow-duration="500ms">
+			<div class="col-xl-12">
+
+				<!-- Footer Social Links -->
+				<div class="social-icon">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-facebook"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-twitter"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-google-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-youtube"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-linkedin"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-dribbble-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-pinterest-outline"></i></a></li>
+						
+					</ul>
+				</div>
+
+				<!-- copyright -->
+				<div class="copyright text-center">
+					
+					<br>
+					<p>Design And Developed by <a href="http://www.themefisher.com">  Themefisher  </a>. Copyright &copy; <script>
+							document.write(new Date().getFullYear())
+						</script>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- /footer -->
+
+<!-- Essential Scripts -->
+
+		<!-- Main jQuery -->
+		<script type="text/javascript" src="/plugins/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap 4.3 + Popper -->
+		<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Slick Carousel -->
+		<script type="text/javascript" src="/plugins/slick-carousel/slick/slick.min.js"></script>
+		<!-- Portfolio Filtering -->
+		<script type="text/javascript" src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+		<!-- Magnific popup -->
+		<script type="text/javascript" src="/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+		<!-- Google Map API -->
+		<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&amp;libraries=places"></script>
+		<!-- Number Counter Script -->
+		<script type="text/javascript" src="/plugins/count-to/jquery.countTo.js"></script>
+		<!-- wow.min Script -->
+		<script type="text/javascript" src="/plugins/wow/dist/wow.min.js"></script>
+		<!-- Scroll behavior polyfill -->
+		
+		<script src="/js/scroll-behavior-polyfill.min.js"></script>
+		<!-- Sweet Alert -->
+		<script type="text/javascript" src="/plugins/sweet-alert/sweetalert.min.js"></script>
+		<!-- Custom js -->
+		
+		<script src="/js/script.min.js"></script>
+		<!-- google analitycs -->
+		<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				ga('create', 'Your ID', 'auto');
+				ga('send', 'pageview');
+		</script>
+</body>
+</html>

@@ -52,7 +52,7 @@ as_tibble(x = iris)</code></pre>
  8          5           3.4          1.5         0.2 setosa 
  9          4.4         2.9          1.4         0.2 setosa 
 10          4.9         3.1          1.5         0.1 setosa 
-# … with 140 more rows</code></pre>
+# ... with 140 more rows</code></pre>
 <div id="sufixo-_all" class="section level4">
 <h4>Sufixo <code>_all</code></h4>
 <p>Vamos agrupar por espécie e calcular a média de todas as colunas (note que os argumentos adicionais da função são colocados depois da função):</p>
@@ -86,7 +86,7 @@ Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</c
  8        0.862       0.773        0.789       0.333 setosa 
  9        0.759       0.659        0.737       0.333 setosa 
 10        0.845       0.705        0.789       0.167 setosa 
-# … with 140 more rows</code></pre>
+# ... with 140 more rows</code></pre>
 <p>Para o <code>summarise_all</code> e <code>mutate_all</code>, a função só será aplicada para as colunas que não sejam de grupos. Já o <code>filter_all</code>, faz o filtro para todas as variáveis. Sendo assim, iremos descartar a variável <code>Species</code> antes de fazer o filtro.</p>
 <p>Vamos filtrar para que todas as variáveis sejam maiores que <span class="math inline">\(1,5\)</span>:</p>
 <pre class="r"><code>iris %&gt;% 
@@ -105,7 +105,7 @@ Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</c
  8          7.1         3            5.9         2.1
  9          6.3         2.9          5.6         1.8
 10          6.5         3            5.8         2.2
-# … with 42 more rows</code></pre>
+# ... with 42 more rows</code></pre>
 <p>Agora filtraremos para que pelo menos uma das variáveis sejam maiores que <span class="math inline">\(7,5\)</span>:</p>
 <pre class="r"><code>iris %&gt;% 
   select(-Species) %&gt;% 
@@ -135,7 +135,7 @@ Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</c
  8          5           3.4          1.5         0.2 setosa 
  9          4.4         2.9          1.4         0.2 setosa 
 10          4.9         3.1          1.5         0.1 setosa 
-# … with 140 more rows</code></pre>
+# ... with 140 more rows</code></pre>
 <p>O <code>group_by_all</code> torna todas as colunas do <code>tibble</code> em colunas de grupos. Já o <code>arrange_all</code> irá ordenar os dados de acordo com os valores de todas as colunas, em ordem crescente. Caso desejemos a ordenação descrescente, basta adicionar <code>desc</code> no segundo argumento.</p>
 </div>
 <div id="sufixo-_at" class="section level4">
@@ -163,7 +163,7 @@ Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</c
  8         500          3.4          150         0.2 setosa 
  9         440.         2.9          140         0.2 setosa 
 10         490.         3.1          150         0.1 setosa 
-# … with 140 more rows</code></pre>
+# ... with 140 more rows</code></pre>
 <p>Note que ao invés de criar uma função que recebe <code>x</code> e retorna <code>x * 100</code>, nós utilizamos a função <code>funs</code>. O ponto funciona como cada uma das colunas, que, neste caso, é multiplicada por <span class="math inline">\(100\)</span>.</p>
 <p>O mesmo raciocínio se aplica às outras funções: <code>filter</code>, <code>arrange</code> e <code>group_by</code>. Não foi encontrado uso de <code>select_at</code> e <code>rename_at</code>.</p>
 </div>

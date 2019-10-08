@@ -1,0 +1,21 @@
+enable : true
+heading : 
+headingSpan : Contato
+title : Sobre Nós
+content : Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística.
+enable_maps : false
+mapLatitude : 51.5223477
+mapLongitude: -0.1622023
+contactDetails :
+  - icon : tf-map-pin
+    info : "Khaja Road, Bayzid, Chittagong, Bangladesh"
+    
+  - icon : tf-ion-ios-telephone-outline
+    info : "Phone: +880-31-000-000"
+    
+  - icon : tf-ion-iphone
+    info : "Fax: +880-31-000-000"
+    
+  - icon : tf-ion-ios-email-outline
+    info : "Email: dadosaleatorios@gmail.com"
+    

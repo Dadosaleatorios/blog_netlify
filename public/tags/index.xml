@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on </title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Jul 2019 15:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cloud</title>
+      <link>/tags/cloud/</link>
+      <pubDate>Wed, 31 Jul 2019 15:00:00 +0000</pubDate>
+      
+      <guid>/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gcp</title>
+      <link>/tags/gcp/</link>
+      <pubDate>Wed, 31 Jul 2019 15:00:00 +0000</pubDate>
+      
+      <guid>/tags/gcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google</title>
+      <link>/tags/google/</link>
+      <pubDate>Wed, 31 Jul 2019 15:00:00 +0000</pubDate>
+      
+      <guid>/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>datascience</title>
+      <link>/tags/datascience/</link>
+      <pubDate>Sat, 27 Apr 2019 23:31:44 +0000</pubDate>
+      
+      <guid>/tags/datascience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>/tags/sql/</link>
+      <pubDate>Sat, 27 Apr 2019 23:31:44 +0000</pubDate>
+      
+      <guid>/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ML</title>
+      <link>/tags/ml/</link>
+      <pubDate>Fri, 26 Apr 2019 20:41:40 +0000</pubDate>
+      
+      <guid>/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dplyr</title>
+      <link>/tags/dplyr/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dplyr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ggplot</title>
+      <link>/tags/ggplot/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ggplot/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

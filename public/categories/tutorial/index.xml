@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutorial on </title>
+    <link>/categories/tutorial/</link>
+    <description>Recent content in tutorial on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 21 Feb 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Quer aprender a programar em python? Veja aqui 8 dicas que irão lhe ajudar</title>
+      <link>/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/</link>
+      <pubDate>Fri, 21 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/</guid>
+      <description>Python é uma linguagem de programação muito utilizada por todo o mundo devido a sua simplicidade e apesar de ser interpretada, apresenta um bom desempenho, sendo utilizada amplamente tanto no meio científico quanto no profissional. Não tem como foco um nicho específico, servindo assim para absolutamente qualquer coisa. Como características podemos citar os fatos de que é uma linguagem de alto nível, funcional e orientada a objetos.
+####
+ Leia os tutoriais básicos de python  !</description>
+    </item>
+    
+    <item>
+      <title>Esquecendo o PDD e aprendendo a debugar</title>
+      <link>/post/2014-02-10-esquecendo-o-pdd-e-aprendendo-a-debugar/</link>
+      <pubDate>Mon, 10 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-02-10-esquecendo-o-pdd-e-aprendendo-a-debugar/</guid>
+      <description>Já faz algum tempo em que eu via as pessoas programaram em C++ com a utilização do Visual Studio, famosa IDE da Microsoft. Nesta época eu tinha a tarefa de transcrever algumas metodologias estatística em pseudo-código para que as mesmas fossem implementadas por algum desenvolvedor em C++. Até aí nada demais, mas volta e meia o código quebrava e lá começava-se o ciclo vicioso na procura de onde estava o erro - e um detalhe importante: o código era complexo, grande parte das ferramentas tinham sido implementadas - e pensando assim, achar onde estava o erro seria um verdadeiro pesadelo.</description>
+    </item>
+    
+    <item>
+      <title>apply, lapply, sapply, tapply, mapply.. Como é que é mesmo?</title>
+      <link>/post/2014-01-17-apply-lapply-sapply-tapply-mapply-como-e-que-e-mesmo/</link>
+      <pubDate>Fri, 17 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-01-17-apply-lapply-sapply-tapply-mapply-como-e-que-e-mesmo/</guid>
+      <description>Acredito que a esta altura do campeonato todos já devem se questionar sobre a performance do R. Existe um Carma que é carregado de que não é eficiente em termos de gerenciamento de memória e velocidade. Tudo bem, temos que cofessar que estes itens não podem ser classificados como os pontos fortes da linguagem, porém nem tudo está perdido e dependendo da situação, contorná-la pode ser mais simples do que parece, em especial quando o assunto é velocidade.</description>
+    </item>
+    
+  </channel>
+</rss>

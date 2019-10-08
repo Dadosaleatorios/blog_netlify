@@ -14,13 +14,13 @@ image: 'images/blog/post-dplyr.png'
 
 
 
-<div id="o-que-e-o-dplyr-e-por-que-usa-lo" class="section level2">
+<div id="o-que-é-o-dplyr-e-por-que-usá-lo" class="section level2">
 <h2>O que é o dplyr e por que usá-lo?</h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>. Se você nunca ouviu falar no <code>tidyverse</code>, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise. O <code>dplyr</code> tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.</p>
 <p>Um outro ponto é que o <code>dplyr</code> permite que façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o <code>data.table</code> (que não tem uma sintaxe tão amigável).</p>
 <p>As funções do <code>dplyr</code> podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.</p>
 </div>
-<div id="instalacao" class="section level2">
+<div id="instalação" class="section level2">
 <h2>Instalação</h2>
 <p>Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recomendado):</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)
@@ -38,17 +38,17 @@ require(tidyerse)</code></pre>
 <pre><code>## # A tibble: 87 x 13
 ##    name  height  mass hair_color skin_color eye_color birth_year gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-##  1 Luke…    172    77 blond      fair       blue            19   male  
+##  1 Luke~    172    77 blond      fair       blue            19   male  
 ##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
-##  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  
-##  4 Dart…    202   136 none       white      yellow          41.9 male  
-##  5 Leia…    150    49 brown      light      brown           19   female
-##  6 Owen…    178   120 brown, gr… light      blue            52   male  
-##  7 Beru…    165    75 brown      light      blue            47   female
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;  
+##  4 Dart~    202   136 none       white      yellow          41.9 male  
+##  5 Leia~    150    49 brown      light      brown           19   female
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  
+##  7 Beru~    165    75 brown      light      blue            47   female
 ##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  
-##  9 Bigg…    183    84 black      light      brown           24   male  
-## 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  
-## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
+##  9 Bigg~    183    84 black      light      brown           24   male  
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
 ## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Já podemos ver que não estamos lidando com um <code>data.frame</code> tradicional. Este é um <code>tibble</code>, que é, basicamente, um data.frame com uma série de modificações. A propósito, <a href="https://tibble.tidyverse.org/"><code>tibble</code></a> é outro pacote do <code>tidyverse</code>. Note que são mostradas as quantidades de linhas e colunas, apenas as 10 primeiras linhas são printadas, a classe das colunas é indicada, e, caso haja coluna(s) cujo conteúdo exceda o tamanho da janela, elas não são printadas, mas apenas listadas ao final.</p>
 <p>Nesse <code>tibble</code> temos então, para 87 personagens de Star Wars, informações de nome, altura, massa, cor de cabelo, pele, dos olhos, idade na batalha de Yavin (quando os rebeldes destruíram a primeira estrela da morte), gênero, mundo natal, espécie, lista de filmes onde o personagem aparece, lista de veículos que o personagem pilotou e lista de naves que o personagem pilotou. Perceba que usei a palavra ‘lista’ nessas três ultimas informações, isso porque essas colunas são realmente listas. Podemos, então, ter um <code>tibble</code> onde colunas são listas.</p>
@@ -56,22 +56,22 @@ require(tidyerse)</code></pre>
 <pre class="r"><code>glimpse(starwars)</code></pre>
 <pre><code>## Observations: 87
 ## Variables: 13
-## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, &quot;L…
-## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, …
-## $ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.…
-## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;bro…
-## $ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;lig…
-## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;…
-## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, …
-## $ gender     &lt;chr&gt; &quot;male&quot;, NA, NA, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, N…
-## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alderaa…
-## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human&quot;,…
-## $ films      &lt;list&gt; [&lt;&quot;Revenge of the Sith&quot;, &quot;Return of the Jedi&quot;, &quot;The …
-## $ vehicles   &lt;list&gt; [&lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;, &lt;…
-## $ starships  &lt;list&gt; [&lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanc…</code></pre>
+## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, ...
+## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188...
+## $ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 8...
+## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;b...
+## $ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;l...
+## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;,...
+## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0...
+## $ gender     &lt;chr&gt; &quot;male&quot;, NA, NA, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;,...
+## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alder...
+## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human...
+## $ films      &lt;list&gt; [&lt;&quot;Revenge of the Sith&quot;, &quot;Return of the Jedi&quot;, &quot;Th...
+## $ vehicles   &lt;list&gt; [&lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;,...
+## $ starships  &lt;list&gt; [&lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Adva...</code></pre>
 <p>Apesar da concepção de <code>data.frame</code> do <code>tidyverse</code> ser o <code>tibble</code>, é perfeitamente possível utilizar suas funções com um <code>data.frame</code>. Porém para transformar um <code>data.frame</code> em um <code>tibble</code>, basta usar a função <code>as_tibble</code> (ou <code>as_data_frame</code>).</p>
 </div>
-<div id="funcoes-basicas-verbos" class="section level2">
+<div id="funções-básicas-verbos" class="section level2">
 <h2>Funções básicas (verbos)</h2>
 <p>O <code>dplyr</code> oferece 5 verbos (funções) básicos, que resolvem alguns problemas comuns:</p>
 <ul>
@@ -109,35 +109,35 @@ select(starwars, 1:3)</code></pre>
 ##  8 R5-D4                  97    32
 ##  9 Biggs Darklighter     183    84
 ## 10 Obi-Wan Kenobi        182    77
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>Também podemos remover colunas. Por exemplo, queremos selecionar todas as colunas do nosso <code>tibble</code>, exceto a coluna <code>height</code>:</p>
 <pre class="r"><code>select(starwars, -height)</code></pre>
 <pre><code>## # A tibble: 87 x 12
 ##    name   mass hair_color skin_color eye_color birth_year gender homeworld
 ##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    
-##  1 Luke…    77 blond      fair       blue            19   male   Tatooine 
+##  1 Luke~    77 blond      fair       blue            19   male   Tatooine 
 ##  2 C-3PO    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;   Tatooine 
-##  3 R2-D2    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;   Naboo    
-##  4 Dart…   136 none       white      yellow          41.9 male   Tatooine 
-##  5 Leia…    49 brown      light      brown           19   female Alderaan 
-##  6 Owen…   120 brown, gr… light      blue            52   male   Tatooine 
-##  7 Beru…    75 brown      light      blue            47   female Tatooine 
+##  3 R2-D2    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;   Naboo    
+##  4 Dart~   136 none       white      yellow          41.9 male   Tatooine 
+##  5 Leia~    49 brown      light      brown           19   female Alderaan 
+##  6 Owen~   120 brown, gr~ light      blue            52   male   Tatooine 
+##  7 Beru~    75 brown      light      blue            47   female Tatooine 
 ##  8 R5-D4    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;   Tatooine 
-##  9 Bigg…    84 black      light      brown           24   male   Tatooine 
-## 10 Obi-…    77 auburn, w… fair       blue-gray       57   male   Stewjon  
-## # … with 77 more rows, and 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
-## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
+##  9 Bigg~    84 black      light      brown           24   male   Tatooine 
+## 10 Obi-~    77 auburn, w~ fair       blue-gray       57   male   Stewjon  
+## # ... with 77 more rows, and 4 more variables: species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
 <li><p>A função <code>filter</code> recebe uma ou mais condições lógicas e retorna as linhas do <code>tibble</code> que atendam o solicitado. Vamos filtrar personagens que não têm cabelo, logo <code>hair_color</code> é <code>NA</code>:</p>
 <pre class="r"><code>filter(starwars, is.na(hair_color))</code></pre>
 <pre><code>## # A tibble: 5 x 13
 ##   name  height  mass hair_color skin_color eye_color birth_year gender
 ##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
 ## 1 C-3PO    167    75 &lt;NA&gt;       gold       yellow           112 &lt;NA&gt;  
-## 2 R2-D2     96    32 &lt;NA&gt;       white, bl… red               33 &lt;NA&gt;  
+## 2 R2-D2     96    32 &lt;NA&gt;       white, bl~ red               33 &lt;NA&gt;  
 ## 3 R5-D4     97    32 &lt;NA&gt;       white, red red               NA &lt;NA&gt;  
-## 4 Gree…    173    74 &lt;NA&gt;       green      black             44 male  
-## 5 Jabb…    175  1358 &lt;NA&gt;       green-tan… orange           600 herma…
-## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## 4 Gree~    173    74 &lt;NA&gt;       green      black             44 male  
+## 5 Jabb~    175  1358 &lt;NA&gt;       green-tan~ orange           600 herma~
+## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Podemos também utilizar mais de uma condição (usando &amp; ou |). Se quisermos registros que atendam a todas as condições, podemos utilizar &amp; (E) ou separar as condições por vírgulas. E quando for necessário registros que atendam a pelo menos uma condição, devemos utilizar o operador | (OU). Vamos agora filtrar personagens sem cabelo e Droids:</p>
 <pre class="r"><code>filter(starwars, is.na(hair_color), species == &quot;Droid&quot;)</code></pre>
@@ -145,9 +145,9 @@ select(starwars, 1:3)</code></pre>
 ##   name  height  mass hair_color skin_color eye_color birth_year gender
 ##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
 ## 1 C-3PO    167    75 &lt;NA&gt;       gold       yellow           112 &lt;NA&gt;  
-## 2 R2-D2     96    32 &lt;NA&gt;       white, bl… red               33 &lt;NA&gt;  
+## 2 R2-D2     96    32 &lt;NA&gt;       white, bl~ red               33 &lt;NA&gt;  
 ## 3 R5-D4     97    32 &lt;NA&gt;       white, red red               NA &lt;NA&gt;  
-## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <center>
 <img src="/img/2018-08-31-introducao-ao-dplyr/starWars2.png" />
@@ -196,7 +196,7 @@ select(starwars, 1:3)</code></pre>
 ##  8 R5-D4               34.0
 ##  9 Biggs Darklighter   25.1
 ## 10 Obi-Wan Kenobi      23.2
-## # … with 77 more rows</code></pre></li>
+## # ... with 77 more rows</code></pre></li>
 <li><p>O <code>summarise</code> (ou <code>summarize</code>) permite que usemos funções de sumarização, ou seja, funções que recebem <span class="math inline">\(n\)</span> elementos e retornam apenas <span class="math inline">\(1\)</span> valor. Vamos calcular a maior altura e a massa média:</p>
 <pre class="r"><code>starwars %&gt;% 
   summarise(max_altura = max(height, na.rm = T),
@@ -224,7 +224,7 @@ select(starwars, 1:3)</code></pre>
 ##  8 Ayla Secura      178    55  17.4
 ##  9 Shaak Ti         178    57  18.0
 ## 10 Barriss Offee    166    50  18.1
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>Para que a ordenação seja feita de maneira decrescente basta utilizar o símbolo <code>-</code>, ou então a função <code>desc</code></p>
 <pre class="r"><code>starwars %&gt;%
   mutate(altura_metros = height/100,
@@ -244,24 +244,24 @@ select(starwars, 1:3)</code></pre>
 ##  8 R5-D4                     97    32  34.0
 ##  9 Jek Tono Porkins         180   110  34.0
 ## 10 Darth Vader              202   136  33.3
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>Também podemos reordenar o <code>tibble</code> de acordo com mais de uma coluna.</p>
 <pre class="r"><code>starwars %&gt;% 
   arrange(hair_color, name, -mass, -birth_year)</code></pre>
 <pre><code>## # A tibble: 87 x 13
 ##    name  height  mass hair_color skin_color eye_color birth_year gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-##  1 Mon …    150  NA   auburn     fair       blue            48   female
-##  2 Wilh…    180  NA   auburn, g… fair       blue            64   male  
-##  3 Obi-…    182  77   auburn, w… fair       blue-gray       57   male  
-##  4 Bail…    191  NA   black      tan        brown           67   male  
-##  5 Barr…    166  50   black      yellow     blue            40   female
-##  6 Bigg…    183  84   black      light      brown           24   male  
-##  7 Boba…    183  78.2 black      fair       brown           31.5 male  
-##  8 Eeth…    171  NA   black      brown      brown           NA   male  
+##  1 Mon ~    150  NA   auburn     fair       blue            48   female
+##  2 Wilh~    180  NA   auburn, g~ fair       blue            64   male  
+##  3 Obi-~    182  77   auburn, w~ fair       blue-gray       57   male  
+##  4 Bail~    191  NA   black      tan        brown           67   male  
+##  5 Barr~    166  50   black      yellow     blue            40   female
+##  6 Bigg~    183  84   black      light      brown           24   male  
+##  7 Boba~    183  78.2 black      fair       brown           31.5 male  
+##  8 Eeth~    171  NA   black      brown      brown           NA   male  
 ##  9 Finn      NA  NA   black      dark       dark            NA   male  
-## 10 Greg…    185  85   black      dark       brown           NA   male  
-## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
+## 10 Greg~    185  85   black      dark       brown           NA   male  
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
 ## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre></li>
 <li><p>Por fim, podemos realizar todas as operações por grupos. Para isso existe a função <code>group_by</code>. Faremos então o cálculo da maior altura e a massa média por espécie:</p>
 <pre class="r"><code>starwars %&gt;% 
@@ -271,17 +271,17 @@ select(starwars, 1:3)</code></pre>
 <pre><code>## # A tibble: 38 x 3
 ##    species   max_altura massa_media
 ##    &lt;chr&gt;          &lt;int&gt;       &lt;dbl&gt;
-##  1 &lt;NA&gt;             183        48  
-##  2 Aleena            79        15  
-##  3 Besalisk         198       102  
-##  4 Cerean           198        82  
-##  5 Chagrian         196       NaN  
-##  6 Clawdite         168        55  
-##  7 Droid            200        69.8
-##  8 Dug              112        40  
-##  9 Ewok              88        20  
-## 10 Geonosian        183        80  
-## # … with 28 more rows</code></pre>
+##  1 Aleena            79        15  
+##  2 Besalisk         198       102  
+##  3 Cerean           198        82  
+##  4 Chagrian         196       NaN  
+##  5 Clawdite         168        55  
+##  6 Droid            200        69.8
+##  7 Dug              112        40  
+##  8 Ewok              88        20  
+##  9 Geonosian        183        80  
+## 10 Gungan           224        74  
+## # ... with 28 more rows</code></pre>
 <p>Todos os outros verbos têm (ou podem ter) seu comportamento alterado ao usar <code>group_by</code>. Nessa <a href="https://dplyr.tidyverse.org/articles/dplyr.html#grouped-operations">página</a> os comportamentos são descritos.</p></li>
 </ul>
 </div>

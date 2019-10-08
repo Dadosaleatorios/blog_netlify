@@ -1,0 +1,1 @@
+cut -d ';' -f 2 $@ | grep -v var1 | sort | uniq -c

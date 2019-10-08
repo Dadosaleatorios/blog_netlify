@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linguagem julia on </title>
+    <link>/categories/linguagem-julia/</link>
+    <description>Recent content in linguagem julia on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 07 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/linguagem-julia/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Integrando R e Julia em um mesmo ambiente</title>
+      <link>/post/2013-12-07-integrando-r-e-julia-em-um-mesmo-ambiente/</link>
+      <pubDate>Sat, 07 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2013-12-07-integrando-r-e-julia-em-um-mesmo-ambiente/</guid>
+      <description>Já faz algum tempo que muito se fala sobre a performance da linguagem Julia. Volta e meia são apresentados benchmarks de algoritmos implementados em Julia e, comparados a outras linguagens, apresenta uma performace bem superior, sendo até mesmo comparado as compilações feitas em C. Em contrapartida, pobre R, sempre sendo associado a baixa performance e alto consumo de memória, entretanto é uma das linguagens mais simples de se aprender com grande facilidade de manipulação das estruturas de dados presentes.</description>
+    </item>
+    
+    <item>
+      <title>Uma primeira experiência com a linguagem Julia</title>
+      <link>/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/</link>
+      <pubDate>Tue, 03 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/</guid>
+      <description>Imaginem a seguinte situação: Existe um grilo no jardim e o mesmo pula de forma aleatória. Basicamente ele escolhe um ângulo e pula. Escolhe outro ângulo e pula mais uma vez. E assim segue, até o momento que ele cansa. Desejamos responder a pergunta sobre qual a localização do grilo após os muitos pulos dados por ele.
+Uma das muitas opções de resolver este problema (e acredito que a mais simples) é simular os respectivos pulos do grilo muitas vezes e ver onde foi a posição final.</description>
+    </item>
+    
+  </channel>
+</rss>

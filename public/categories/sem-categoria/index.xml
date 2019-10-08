@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sem categoria on </title>
+    <link>/categories/sem-categoria/</link>
+    <description>Recent content in Sem categoria on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 14 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/sem-categoria/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lendo arquivos OFX no R</title>
+      <link>/post/2016-09-14-lendo-arquivos-ofx-no-r/</link>
+      <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016-09-14-lendo-arquivos-ofx-no-r/</guid>
+      <description>Há um tempo atrás, a Nubank (se você não sabe o que é Nubank, deveria) postou em sua página que era possível exportar as faturas fechadas, para serem levadas a programas de organização financeira. Apesar de não usar nenhum programa do tipo, resolvi dar uma olhada no arquivo disponibilizado. Admito que esperava encontrar um arquivo amigável e de fácil manipulação no R, ou até mesmo no Excel. Mas o que encontrei foi um arquivo no formato OFX.</description>
+    </item>
+    
+    <item>
+      <title>É possível aumentar as chances na loteria?</title>
+      <link>/post/2015-12-09-e-possivel-aumentar-as-chances-na-loteria/</link>
+      <pubDate>Wed, 09 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-12-09-e-possivel-aumentar-as-chances-na-loteria/</guid>
+      <description>Sempre que o final do ano se aproxima boa parte dos brasileiros começa a pensar em uma coisa: a mega da virada. E não é a toa que isso acontece: o prêmio do ano passado chegou a R$ 264 milhões - e foi dividido entre 4 apostas. E sempre que se fala em megasena vem a pergunta: será que tem como aumentar as chances de ganhar? Existem diversos sites que dão dicas de como aumentar as chances de ganhar.</description>
+    </item>
+    
+    <item>
+      <title>R também pode ser diversão!</title>
+      <link>/post/2015-10-05-r-tambem-pode-ser-diversao/</link>
+      <pubDate>Mon, 05 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-10-05-r-tambem-pode-ser-diversao/</guid>
+      <description>O R, assim como toda linguagem de programação, permite que seja feita uma grande gama de coisas, mesmo quando elas não possuem nada a ver com estatística. Dois exemplos disso podem ser encontrados no próprio site do R: os pacotes fun e sudoku, que possuem algumas funções para passar o tempo, inclusive jogos. Sim, você leu certo: jogos no R.
+Para passar o tempo livre que eu tinha na época de graduação (que meus professores não vejam isso&amp;hellip;) e inspirado nos pacotes citados anteriormente, me desafiava a fazer alguns jogos no R também.</description>
+    </item>
+    
+    <item>
+      <title>Factors são... Números?</title>
+      <link>/post/2015-02-11-factors-sao-numeros/</link>
+      <pubDate>Wed, 11 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-02-11-factors-sao-numeros/</guid>
+      <description>A utilização de objetos da classe factor no R pode surpreender usuários novos, uma vez que a representação e manipulação destes sugere que são similares a manipulação de strings, porém muitas das vezes o usuário acaba tendo uma surpresa desagradável, assim como um comportamento não esperado de objetos deste tipo. Mas antes de tudo, vamos esclarecer uma coisa: Factors não são e nem devem ser vistos como strings e sim como objetos numéricos (para ser mais preciso, inteiros).</description>
+    </item>
+    
+    <item>
+      <title>StackExchange</title>
+      <link>/post/2014-12-09-stackexchange/</link>
+      <pubDate>Tue, 09 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-12-09-stackexchange/</guid>
+      <description>Sabe aquela dúvida que você tem sobre um determinado assunto, mas que nunca conseguiu sanar? Talvez o StackExchange seja a solução! O StackExchange é uma rede de sites onde os usuários podem fazer e responder perguntas. Os usuários que fizerem boas perguntas ou darem boas respostas são &amp;lsquo;premiados&amp;rsquo; com pontos conforme vão recebendo votos dos usuários, e esses votos são os critério de ordenamento das respostas. Além da pontuação, o usuário que fez a pergunta pode escolher uma resposta como a correta (ou a melhor), que ficará destacada.</description>
+    </item>
+    
+    <item>
+      <title>Criando classes de objetos e métodos</title>
+      <link>/post/2014-09-16-criando-classes-de-objetos-e-metodos/</link>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-09-16-criando-classes-de-objetos-e-metodos/</guid>
+      <description>Muitos dos objetos que manuseamos no R possuem mais informações do que costumamos ver. Por exemplo, em uma regressão linear tudo que o R mostra são os coeficientes do modelo e o comando utilizado, mas ao utilizarmos o comando str() vemos que na verdade o resultado é uma lista com pelo menos 12 elementos (sendo que alguns elementos também são listas). Então, o que diferencia essa lista das listas criadas pelo list()?</description>
+    </item>
+    
+    <item>
+      <title>Importando dados do clipboard (área de transferência)</title>
+      <link>/post/2014-07-26-importando-dados-do-clipboard-area-de-transferencia/</link>
+      <pubDate>Sat, 26 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-07-26-importando-dados-do-clipboard-area-de-transferencia/</guid>
+      <description>Hoje vamos com uma dica rápida e que pode ser útil em algumas situações onde estamos com pressa. Vamos imaginar que temos a seguinte planilha em algum formato qualquer, como por exemplo &amp;ldquo;xls&amp;rdquo;.
+Gênero Porte Salário &amp;ldquo;F&amp;rdquo; &amp;ldquo;P&amp;rdquo; &amp;ldquo;5732.45&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;P&amp;rdquo; &amp;ldquo;3327.05&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;2488.7&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;G&amp;rdquo; &amp;ldquo;3182.89&amp;rdquo; &amp;ldquo;F&amp;rdquo; &amp;ldquo;G&amp;rdquo; &amp;ldquo;4203.08&amp;rdquo; &amp;ldquo;F&amp;rdquo; &amp;ldquo;P&amp;rdquo; &amp;ldquo;13576.38&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;6842.34&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;P&amp;rdquo; &amp;ldquo;5380.48&amp;rdquo; &amp;ldquo;F&amp;rdquo; &amp;ldquo;G&amp;rdquo; &amp;ldquo;6870.55&amp;rdquo; &amp;ldquo;F&amp;rdquo; &amp;ldquo;M&amp;rdquo; &amp;ldquo;1547.23&amp;rdquo; &amp;ldquo;F&amp;rdquo; &amp;ldquo;G&amp;rdquo; &amp;ldquo;5732.45&amp;rdquo;
+Bom agora pense nas maneiras que você conhece para importar estes dados.</description>
+    </item>
+    
+    <item>
+      <title>Interagindo com o usuário no R</title>
+      <link>/post/2014-05-30-interagindo-com-o-usuario-no-r/</link>
+      <pubDate>Fri, 30 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-05-30-interagindo-com-o-usuario-no-r/</guid>
+      <description>A interação com o usuário é fundamental em diversos processos, e pode ocorrer de muitas maneiras: desde uma simples janela de Continuar/Parar até a seleção de diversos valores em uma lista. Nessa postagem vou mostrar algumas das principais possibilidades de interagir com os usuários.
+menu A função menu é a mais simples das funções que irei apresentar por trabalhar no console do R e não por janelas (com os parâmetros padrões).</description>
+    </item>
+    
+  </channel>
+</rss>

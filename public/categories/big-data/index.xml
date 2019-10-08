@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>big data on </title>
+    <link>/categories/big-data/</link>
+    <description>Recent content in big data on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Jan 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/big-data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Afinal, quanto ganha um cientista de dados?</title>
+      <link>/post/2014-01-31-afinal-quanto-ganha-um-cientista-de-dados/</link>
+      <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-01-31-afinal-quanto-ganha-um-cientista-de-dados/</guid>
+      <description>Foi publicado pela O&amp;rsquo;Reilly um relatório sobre o salário e ferramentas mais utilizadas pelos cientistas de dados. A pesquisa aconteceu entre 2012 e 2013 durante o Strata Conference, que é uma conferência realizada pela própria O&amp;rsquo;Reilly sobre Data Science. No total, pessoas de 33 países responderam a pesquisa, contemplando todos os setores profissionais, desde o governamental até o setor privado. O objetivo da pesquisa era entender melhor quais ferramentas os cientistas de dados utilizam e como as mesmas se correlacionam com o salário recebido e apesar de nem todos afirmarem trabalhar diretamente com análise de dados, quase todos afirmaram estar exposto a este ambiente.</description>
+    </item>
+    
+  </channel>
+</rss>

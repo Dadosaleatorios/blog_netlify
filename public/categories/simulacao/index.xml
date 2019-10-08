@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>simulacao on </title>
+    <link>/categories/simulacao/</link>
+    <description>Recent content in simulacao on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 03 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/simulacao/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uma primeira experiência com a linguagem Julia</title>
+      <link>/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/</link>
+      <pubDate>Tue, 03 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia/</guid>
+      <description>Imaginem a seguinte situação: Existe um grilo no jardim e o mesmo pula de forma aleatória. Basicamente ele escolhe um ângulo e pula. Escolhe outro ângulo e pula mais uma vez. E assim segue, até o momento que ele cansa. Desejamos responder a pergunta sobre qual a localização do grilo após os muitos pulos dados por ele.
+Uma das muitas opções de resolver este problema (e acredito que a mais simples) é simular os respectivos pulos do grilo muitas vezes e ver onde foi a posição final.</description>
+    </item>
+    
+  </channel>
+</rss>

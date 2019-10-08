@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on </title>
+    <link>/categories/python/</link>
+    <description>Recent content in python on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 19 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Medindo a semelhança (ou diferença) entre duas palavras distintas</title>
+      <link>/post/2014-08-19-medindo-a-semelhanca-ou-diferenca-entre-duas-palavras-distintas/</link>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-08-19-medindo-a-semelhanca-ou-diferenca-entre-duas-palavras-distintas/</guid>
+      <description>Há quem diga que, caso existam opções de não se trabalhar com strings, deve-se optar por estas escolhas. Como problemas podemos citar falta de estruturas/padrões a serem seguidos, difícil manipulação, erros de tabulação e por aí vai. Sim, é uma lista grande. Porém existem alguns algoritmos que prometem acabar com algumas destas dificuldades (ou ao menos tornar o problema um pouco mais simples, pelo menos ao ponto de ser trabalhável) e hoje falaremos de um deles, que é o cálculo da distância de edição ou distância de Levenshtein.</description>
+    </item>
+    
+    <item>
+      <title>Quer aprender a programar em python? Veja aqui 8 dicas que irão lhe ajudar</title>
+      <link>/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/</link>
+      <pubDate>Fri, 21 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-02-21-quer-aprender-a-programar-em-python-veja-aqui-8-dicas-que-irao-lhe-ajudar/</guid>
+      <description>Python é uma linguagem de programação muito utilizada por todo o mundo devido a sua simplicidade e apesar de ser interpretada, apresenta um bom desempenho, sendo utilizada amplamente tanto no meio científico quanto no profissional. Não tem como foco um nicho específico, servindo assim para absolutamente qualquer coisa. Como características podemos citar os fatos de que é uma linguagem de alto nível, funcional e orientada a objetos.
+####
+ Leia os tutoriais básicos de python  !</description>
+    </item>
+    
+    <item>
+      <title>Enviando mensagens automáticas para o seu amigo oculto</title>
+      <link>/post/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-01-04-enviando-mensagens-automaticas-para-o-seu-amigo-oculto/</guid>
+      <description>O mês de Dezembro passou, e como de costume aconteceram as tão esperadas festas. Comidas, bebidas, confraternizações e é claro, não poderia faltar a tão esperada brincadeira de amigo oculto. Comumente já é difícil decidir uma data que consiga agradar a todos, então reunir todos apenas para a realização do sorteio é praticamente impossível. Neste contexto surgiram algumas possibilidade para evitar este problema, que nada mais é que fazer a realização do sorteio em algum ambiente online, cada um dos participantes se cadastra em um site, que realiza o sorteio e envia os resultados por e-mail.</description>
+    </item>
+    
+  </channel>
+</rss>

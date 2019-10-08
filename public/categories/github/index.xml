@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on </title>
+    <link>/categories/github/</link>
+    <description>Recent content in github on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introdução ao GIT</title>
+      <link>/post/introdu%C3%A7%C3%A3o-ao-git/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introdu%C3%A7%C3%A3o-ao-git/</guid>
+      <description>O que é o GIT?No cotidiano de nossas tarefas acabamos por criar varias “versões finais” dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
+Git é um sistema de controle de versão. Mas o que é controle de versão?
+Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde.</description>
+    </item>
+    
+    <item>
+      <title>Usando o github para hospedar códigos R</title>
+      <link>/post/2014-05-16-usando-o-github-para-hospedar-codigos-r/</link>
+      <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-05-16-usando-o-github-para-hospedar-codigos-r/</guid>
+      <description>Versionamento de arquivos é uma prática comum entre desenvolvedores de software, e a prática não é difícil de entender. Uma vez que existe uma equipe com muitas pessoas trabalhando em um mesmo projeto, necessita-se de algum tipo de sistema de gerenciamento de arquivos para checar as modificações de uma forma minimamente esperta, caso contrário seria uma verdadeira desordem duas pessoas trabalhem em cima de um mesmo arquivo.
+Pode-se argumentar que não é necessária a utilização de uma ferramente de versionamento de arquivos uma vez que podemos utilizar o Dropbox, por exemplo.</description>
+    </item>
+    
+  </channel>
+</rss>

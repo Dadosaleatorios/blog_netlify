@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cursos on </title>
+    <link>/categories/cursos/</link>
+    <description>Recent content in cursos on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 29 Sep 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/cursos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Curso de Data Science</title>
+      <link>/post/2015-09-29-curso-de-data-science/</link>
+      <pubDate>Tue, 29 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-09-29-curso-de-data-science/</guid>
+      <description>Venho aqui apresentar a Elixir Data Science, uma empresa com um modelo de Data Science As a Service que possibilita, oferecendo um custo acessível, tanto empresas grandes quanto pequenas de tomar melhores decisões baseadas em dados. A empresa atua em todo o workflow de análise de dados, desde aquisição e manutenção dos dados até a disponibilização de modelos preditivos em ambiente de produção.
+Os cursos oferecidos pela Elixir Data Science focam em utilizar cases reais para estimular o pensamento crítico e analítico, sem deixar de lado a metodologia necessária para o entendimento sólido dos conceitos apresentados.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>microdados on </title>
+    <link>/categories/microdados/</link>
+    <description>Recent content in microdados on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 13 Jun 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/microdados/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Trabalhando com amostras complexas no R: usando o pacote survey</title>
+      <link>/post/2014-06-13-trabalhando-com-amostras-complexas-no-r-usando-o-pacote-survey/</link>
+      <pubDate>Fri, 13 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-06-13-trabalhando-com-amostras-complexas-no-r-usando-o-pacote-survey/</guid>
+      <description>Ao contrário da amostra aleatória simples, nos planos amostrais complexos as unidades amostrais (geralmente, pessoas) possuem probabilidades diferentes de serem amostradas quando comparadas com outras unidades amostrais e, devido a isso, todas as análises realizadas sobre amostras complexas devem levar em consideração a probabilidade de cada um dos indivíduos amostrados. Nessa postagem, mostrarei como utilizar o pacote survey, que permite a realização de inferências e análises em amostras complexas. Para tal, utilizarei os dados da amostra do Censo de 2010.</description>
+    </item>
+    
+    <item>
+      <title>Microdados da RAIS</title>
+      <link>/post/2014-05-09-microdados-da-rais/</link>
+      <pubDate>Fri, 09 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-05-09-microdados-da-rais/</guid>
+      <description>Dando início à minha série de postagens aqui no Dados Aleatórios, irei falar sobre os microdados da RAIS - Relação Anual de Informações Sociais - disponibilizados pelo Ministério do Trabalho e Emprego. A RAIS é, como o nome já diz, uma relação de informações que todo empregador é obrigado a informar anualmente sobre os seus trabalhadores do ano base (ou seja, inclui quem foi demitido). Essas informações vão desde informações trabalhistas (tempo de serviço, salário recebido, motivos de licenças/demissão, entre outras) até informações pessoais (idade, escolaridade, raça/cor).</description>
+    </item>
+    
+  </channel>
+</rss>

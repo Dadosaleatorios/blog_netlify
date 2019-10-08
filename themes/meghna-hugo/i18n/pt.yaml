@@ -1,0 +1,50 @@
+- id: comments
+  translation: Comentários
+- id: permalinkComment
+  translation: Permalink para esse comentário
+- id: replyTo
+  translation: Responder para
+- id: replyToThread
+  translation: Responder para thread
+- id: noComments
+  translation: Sem comentários ainda. Seu comentário deve ser o primeiro.
+- id: emailUseGravatarNotifications
+  translation: Seu email é usado para <a href="https://gravatar.com" target="_blank" rel="noopener">Gravatar</a> image and notifications about new comments only.
+- id: emailUseGravatar
+  translation: Your email address is used for <a href="https://gravatar.com" target="_blank" rel="noopener">Gravatar</a> image only.
+- id: tellSomething
+  translation: Fale algo
+- id: thanksForComment
+  translation: Obrigado
+- id: commentSent
+  translation: Seu comentário foi enviado e será publicado após a aprovação
+- id: nickname
+  translation: Apelido
+- id: comment
+  translation: Comentário
+- id: commentPlaceholder
+  translation: Feel free to use Markdown.
+- id: commentNotify
+  translation: Notify me of new comments on this post
+- id: addComment
+  translation: Adicionar comentário
+- id: readMore
+  translation: Leia mais
+- id: viewAllPost
+  translation: Veja todos os posts
+- id: share
+  translation: Compartilhar
+- id: aboutAuthor
+  translation: Sobre o autor
+- id: contact
+  translation: Contato
+- id: authorsPosts
+  translation: Posts do autor
+- id: authorsOfPosts
+  translation: Authors of posts
+- id: authorOfPostsOnBlog
+  translation: Author of posts on the blog
+- id: authorsOfPostsOnBlog
+  translation: Authors of posts on the blog
+- id: blogs
+  translation: Blogs

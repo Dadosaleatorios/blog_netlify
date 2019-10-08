@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data science on </title>
+    <link>/categories/data-science/</link>
+    <description>Recent content in data science on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Programando com dplyr (tidy eval)</title>
+      <link>/post/programando-com-dplyr/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/programando-com-dplyr/</guid>
+      <description>E aí, pessoal! Depois de conhecer o dplyr (se ainda não conhece, veja aqui nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o dplyr acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do dplyr. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre tidy evaluation. Com isso vamos conseguir escrever nossas primeiras funções usando select, mutate, ou outras funções do dplyr, aproveitando a facilidade e rapidez que o pacote nos oferece.</description>
+    </item>
+    
+    <item>
+      <title>Introdução ao tidyr</title>
+      <link>/post/introducao-ao-tidyr/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introducao-ao-tidyr/</guid>
+      <description>O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo. Segundo a filosofia do tidyverse, um dado limpo é o que apresenta as seguintes propriedades:
+Cada variável é uma coluna.Cada linha é uma observação.Cada valor é uma célula.Ilustração de dados no formato tidy
+A seguir vamos apresentar dois tibbles. Dê uma olhada e pense qual dos dois está no formato tidy, de acordo com a filosofia tidyverse:</description>
+    </item>
+    
+    <item>
+      <title>Introdução ao GIT</title>
+      <link>/post/introdu%C3%A7%C3%A3o-ao-git/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introdu%C3%A7%C3%A3o-ao-git/</guid>
+      <description>O que é o GIT?No cotidiano de nossas tarefas acabamos por criar varias “versões finais” dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
+Git é um sistema de controle de versão. Mas o que é controle de versão?
+Os sistemas de controle de versão (VCS) registram alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa recuperar versões específicas mais tarde.</description>
+    </item>
+    
+    <item>
+      <title>Scoped functions do dplyr</title>
+      <link>/post/scoped-functions-do-dplyr/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/scoped-functions-do-dplyr/</guid>
+      <description>Este post faz parte da série de post que estamos criando sobre o dplyr. Caso ainda não conheça o pacote, veja o post de introdução ao dplyr.
+O dplyr apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos _if, _at e _all são utilizados com as funções do dplyr de forma a realizar uma mesma operação a várias colunas, simultaneamente.</description>
+    </item>
+    
+    <item>
+      <title>Introdução ao dplyr</title>
+      <link>/post/introdu%C3%A7%C3%A3o-ao-dplyr/</link>
+      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introdu%C3%A7%C3%A3o-ao-dplyr/</guid>
+      <description>O que é o dplyr e por que usá-lo?dplyr é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do tidyverse. Se você nunca ouviu falar no tidyverse, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise.</description>
+    </item>
+    
+    <item>
+      <title>Modelagem Preditiva: Aprendendo a partir dos dados</title>
+      <link>/post/2016-01-02-modelagem-preditiva-aprendendo-a-partir-dos-dados/</link>
+      <pubDate>Sat, 02 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016-01-02-modelagem-preditiva-aprendendo-a-partir-dos-dados/</guid>
+      <description>Mas então a máquina faz tudo e não é necessária nenhum tipo de intervenção humana? Ok, parece legal, mas como isso pode me ajudar?        Em 2013 foi publicada uma reportagem pela Forbes onde era afirmado que machine learning era a disciplina mais popular de Stanford com 760 alunos inscritos. E o motivo pelo qual esta disciplina se tornou popular é simples: porquê machine learning funciona bem no mundo real.</description>
+    </item>
+    
+    <item>
+      <title>Review do livro Social Media Mining with R</title>
+      <link>/post/2014-04-15-review-do-livro-social-media-mining-with-r/</link>
+      <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-04-15-review-do-livro-social-media-mining-with-r/</guid>
+      <description>Introdução Mídias sociais são o verdadeiro assunto do momento. Se antes a informação era centralizada por veículos de comunicação, hoje a coisa é um pouco diferente, seja por desconfiança da população nos veículos mais tradicionais ou pela velocidade com que as coisas acontecem e são passadas aos leitores. Logo percebeu-se a complexidade e riqueza das informações geradas pelas mídias sociais - livre, independente e rápida - e a real necessidade de utilizar métodos computacionais e estatísticos para analisar tais informações.</description>
+    </item>
+    
+    <item>
+      <title>Prefeitura do Rio lança portal sobre dados abertos</title>
+      <link>/post/2014-04-01-prefeitura-do-rio-lanca-portal-sobre-dados-abertos/</link>
+      <pubDate>Tue, 01 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-04-01-prefeitura-do-rio-lanca-portal-sobre-dados-abertos/</guid>
+      <description>Foi lançado pela Prefeitura do Rio de Janeiro um portal sobre dados abertos e segundo o site são disponibilizados mais de 1200 arquivos com informações sobre a cidade. O portal é dividido nas seguintes áreas: Central 1746, Administração Pública, Desenvolvimento Social, Educação, Entretenimento, Esportes, Impostos e Taxas, Meio Ambiente, Receita e Despesa, Saúde, Transporte e Mobilidade, Turismo e Urbanismo. E não podemos esquecer que os dados podem ser utilizados e redistribuídos livremente por qualquer pessoa.</description>
+    </item>
+    
+    <item>
+      <title>Afinal, quanto ganha um cientista de dados?</title>
+      <link>/post/2014-01-31-afinal-quanto-ganha-um-cientista-de-dados/</link>
+      <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-01-31-afinal-quanto-ganha-um-cientista-de-dados/</guid>
+      <description>Foi publicado pela O&amp;rsquo;Reilly um relatório sobre o salário e ferramentas mais utilizadas pelos cientistas de dados. A pesquisa aconteceu entre 2012 e 2013 durante o Strata Conference, que é uma conferência realizada pela própria O&amp;rsquo;Reilly sobre Data Science. No total, pessoas de 33 países responderam a pesquisa, contemplando todos os setores profissionais, desde o governamental até o setor privado. O objetivo da pesquisa era entender melhor quais ferramentas os cientistas de dados utilizam e como as mesmas se correlacionam com o salário recebido e apesar de nem todos afirmarem trabalhar diretamente com análise de dados, quase todos afirmaram estar exposto a este ambiente.</description>
+    </item>
+    
+  </channel>
+</rss>

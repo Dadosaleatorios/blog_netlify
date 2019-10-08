@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tabplot on </title>
+    <link>/categories/tabplot/</link>
+    <description>Recent content in tabplot on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/tabplot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Visualizando grandes bancos de dados</title>
+      <link>/post/2014-08-07-visualizando-grandes-bancos-de-dados/</link>
+      <pubDate>Thu, 07 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014-08-07-visualizando-grandes-bancos-de-dados/</guid>
+      <description>Já comentamos aqui no blog a importância da visualização dos dados antes de se fazer qualquer análise. Entretanto, nem sempre essa visualização é trivial, seja pelo grande número de variáveis ou pelo grande número de observações. Ao dar plot() em um data.frame com n variáveis, o R gera n² gráficos de dispersão de todas combinações das variáveis. Apesar de ser prático e funcional para variáveis contínuas, ele fica devendo uma maneira funcional de visualizar as variáveis categóricas.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" scroll-behavior="smooth"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="E aí, pessoal! Depois de conhecer o dplyr (se ainda não conhece, veja aqui nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o dplyr acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do dplyr. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre tidy evaluation. Com isso vamos conseguir escrever nossas primeiras funções usando select, mutate, ou outras funções do dplyr, aproveitando a facilidade e rapidez que o pacote nos oferece.">
+    <meta name="author" content="Bruno Lucian, Leonardo Filgueira">
+
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.58.3" />
+
+    <title>Programando com dplyr (tidy eval) | Posts</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+    <!-- CSS -->
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+    <!-- Magnific popup css -->
+    <link rel="stylesheet" href="/plugins/magnific-popup/dist/magnific-popup.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+    <!-- Main Stylesheet -->
+    
+    <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="52">
+        <div id="content">
+
+<!-- Fixed Navigation -->
+<nav id="navigation" class="navbar navbar-expand-lg navigation sticky-top">
+        <div class="container">
+
+                <!-- logo -->
+                <a class="navbar-brand logo" href="/">
+                        <img src="/images/logo.png" alt="Dados Aleatórios" />
+                        <span class="pl-2 font-weight-bold"></span>
+                </a>
+                <!-- /logo -->
+
+                <!-- responsive nav button -->
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- /responsive nav button -->
+
+                <!-- main nav -->
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navigation-menu">
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#body">Home</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#nosso-time">Nosso Time</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#blog">Blog</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" data-scroll href="/#contato">Contato</a></li>
+                                
+                        </ul>
+                </div>
+                
+                <!-- /main nav -->
+        </div>
+
+</nav>
+<!-- End Fixed Navigation -->
+
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <h1>Programando com dplyr (tidy eval)</h1>
+                <ul class="list-inline mb-50">
+                    <li class="list-inline-item"><a href="/author/bruno-lucian-leonardo-filgueira">Bruno Lucian, Leonardo Filgueira</a></li>
+                    <li class="list-inline-item">Thursday, Feb 14, 2019</li>
+                </ul>
+                <img class="img-fluid mb-50" src="/images/blog/post-dplyr.png" alt="blog-image">
+            </div>
+            <div class="col-lg-8 offset-lg-2">
+                <div class="post-single-content">
+                    
+
+
+<p>E aí, pessoal! Depois de conhecer o <code>dplyr</code> (se ainda não conhece, veja <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">aqui</a> nosso post de introdução), começamos a escrever nossos códigos usando as funções desse pacote, e o costume de usar o <code>dplyr</code> acaba nos fazendo pensar em escrever nossas próprias funções usando alguns comandos do <code>dplyr</code>. Você já tentou escrever e teve algum problema? Nós também, e por isso estudamos um pouco sobre <em>tidy evaluation</em>. Com isso vamos conseguir escrever nossas primeiras funções usando <code>select</code>, <code>mutate</code>, ou outras funções do <code>dplyr</code>, aproveitando a facilidade e rapidez que o pacote nos oferece.</p>
+<p>Pra ilustrar esse primeiro exemplo, vamos usar o famoso <em>dataset</em> <code>iris</code>, mas vamos antes transformá-lo num <code>tibble</code>, apenas para facilitar na visualização:</p>
+<pre class="r"><code>require(dplyr)
+
+iris_tibble &lt;- as_tibble(iris)</code></pre>
+<p>Começamos fazendo uma função muito simples, que apenas seleciona uma coluna passada como argumento. Vamos usar essa nossa função para selecionar a coluna <code>Species</code>, mas iremos passar o nome dessa coluna entre aspas.</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  dados %&gt;% 
+    select(coluna)
+}
+
+seleciona(iris_tibble, &quot;Species&quot;)</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Da mesma forma funciona com o <code>pull</code>, ao invés do select. Faça o teste!</p>
+<p>Mas e se quisermos passar o nome da coluna <code>Species</code> sem aspas, como acontece em todos os verbos do <code>dplyr</code>? Vamos tentar passar a coluna sem aspas pra nossa função:</p>
+<pre class="r"><code>seleciona(iris, Species)</code></pre>
+<pre><code>## Error in .f(.x[[i]], ...): objeto &#39;Species&#39; não encontrado</code></pre>
+<p>Veja que o erro nos diz que o objeto <code>Species</code> não foi encontrado. Isso acontece porque não criamos nenhum objeto com esse nome, e o R retorna um erro quando executamos o nome de um objeto que ainda não existe.</p>
+<div id="quosures" class="section level3">
+<h3>Quosures</h3>
+<p>Iremos então capturar uma expressão ao invés de calculá-la. Para isso usaremos a função <code>quo()</code>. Essa função fará a captura da expressão e de seu <em>environment</em>. Dessa maneira, o R saberá de onde tirar o valor daquela expressão, por exemplo, do ambiente do nosso script principal e não do ambiente da nossa função. Vejamos um exemplo:</p>
+<pre class="r"><code># O R fará a conta
+1 + 1</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code># O R retornará a expressão sem fazer a conta
+quo(1 + 1)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^1 + 1
+## env:  global</code></pre>
+<p>Assim nós temos um objeto do tipo <em>quosure</em>. Então, aplicando no nosso problema, iremos precisar passar um <em>quosure</em> como argumento para a função, mas também teremos que dizer quando substituir a expressão da <em>quosure</em> por seu valor. Para isto, utilizaremos <code>!!</code>:</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, quo(Species))</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Dessa maneira podemos passar <code>Species</code> com ou sem aspas. Testa aí!</p>
+<p>Mas ficar usando <code>quo</code> ao passar os argumentos pra função pode ser um pouco chato. Podemos pensar em usar esse comando dentro da nossa função:</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  
+  coluna &lt;- quo(coluna)
+  
+  print(coluna)
+  
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, Species)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^coluna
+## env:  0000000018EE6C88</code></pre>
+<pre><code>## `coluna` must evaluate to column positions or names, not a formula</code></pre>
+<p>Esse <code>print</code> foi colocado de propósito pra entendermos o que está acontecendo. A função <code>quo()</code> é muito literal, ou seja, ela armazemou <code>coluna</code>, não esperando ela receber o valor <code>Species</code> na chamada da função. Precisamos então de uma função que espere o argumento ser dado para capturar seu nome.</p>
+</div>
+<div id="enquo" class="section level3">
+<h3>Enquo</h3>
+<p>Para fazer o que desejamos precisamos usar a função <code>enquo()</code>. Esta função irá primeiro tomar o valor de <code>coluna</code> e depois transformar esse valor num <em>quosure</em>.</p>
+<p><strong>Observação</strong>: Esta função serve apenas para utilizarmos dentro de uma função. Se quisermos testar a função rodando linha a linha, devemos substituir <code>enquo()</code> por <code>quo()</code>.</p>
+<pre class="r"><code>seleciona &lt;- function(dados, coluna){
+  
+  coluna &lt;- enquo(coluna)
+  
+  print(coluna)
+  
+  dados %&gt;% 
+    select(!!coluna)
+}
+
+seleciona(iris_tibble, Species)</code></pre>
+<pre><code>## &lt;quosure&gt;
+## expr: ^Species
+## env:  global</code></pre>
+<pre><code>## # A tibble: 150 x 1
+##    Species
+##    &lt;fct&gt;  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows</code></pre>
+<p>Neste caso também podemos passar <code>Species</code> com aspas, sem problemas. A partir de agora vamos construir um outro <code>tibble</code>, que nos ajudará a continuar entendendo <em>tidy eval</em>.</p>
+<pre class="r"><code>(df &lt;- tibble(
+  g1 = c(1, 1, 2, 2, 2),
+  g2 = c(1, 2, 1, 2, 1),
+  a = sample(5), 
+  b = sample(5)
+))</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##      g1    g2     a     b
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+## 1     1     1     4     1
+## 2     1     2     3     3
+## 3     2     1     2     5
+## 4     2     2     1     4
+## 5     2     1     5     2</code></pre>
+<p>Iremos construir uma função que recebe o <code>tibble</code>, a coluna a ser usada para agrupamento e a coluna para calcular a média:</p>
+<pre class="r"><code>my_summarise &lt;- function(df, var_grupo, var_summarise){
+  
+  var_grupo &lt;- enquo(var_grupo)
+  var_summarise &lt;- enquo(var_summarise)
+  
+  df %&gt;%
+    group_by(!!var_grupo) %&gt;%
+    summarise(media = mean(!!var_summarise))
+}</code></pre>
+<p>Agora vamos usar a função utilizando como argumentos <code>df</code>, <code>g1</code> e <code>a</code>, ou seja, queremos calcular a média de <code>a</code>, agrupando pelos valores de <code>g1</code>.</p>
+<pre class="r"><code>my_summarise(df, g1, a)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1 media
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1  3.5 
+## 2     2  2.67</code></pre>
+<p>Assim como estávamos fazendo quando o <code>quosure</code> era passado para o <code>select</code>, vamos tentar passar os nomes de colunas com aspas:</p>
+<pre class="r"><code>my_summarise(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## Warning in mean.default(~&quot;a&quot;): argumento não é numérico nem lógico:
+## retornando NA</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   `&quot;g1&quot;` media
+##   &lt;chr&gt;  &lt;dbl&gt;
+## 1 g1        NA</code></pre>
+<p>Temos dois problemas aqui. O primeiro é que o <code>group_by</code> na verdade criou uma variável <code>"g1"</code>, com aspas, com um único valor: <code>"g1"</code>. Além disso, sabemos que não é possível calcular a média de <code>"a"</code>, então temos um <code>NA</code> na coluna <code>media</code>. Mais a frente vamos tentar solucionar essa questão.</p>
+</div>
+<div id="mudar-nomes-de-variáveis" class="section level2">
+<h2>Mudar nomes de variáveis</h2>
+<p>Suponha que queiramos retornar a média das colunas <code>a</code> e <code>b</code> e, para diferenciar os nomes, as colunas terão os nomes <code>media_a</code> e <code>media_b</code>. Para isso iremos utilizar <code>quo_name()</code>, que converte o <em>quosure</em> num string, e o operador <code>:=</code></p>
+<pre class="r"><code>my_summarise2 &lt;- function(df, var1, var2) {
+  
+  var1 &lt;- enquo(var1)
+  var2 &lt;- enquo(var2)
+  
+  mean_name1 &lt;- paste0(&quot;media_&quot;, quo_name(var1))
+  mean_name2 &lt;- paste0(&quot;media_&quot;, quo_name(var2))
+  
+  summarise(df, 
+    !!mean_name1 := mean(!!var1), 
+    !!mean_name2 := mean(!!var2)
+  )
+}
+
+my_summarise2(df, a, b)</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   media_a media_b
+##     &lt;dbl&gt;   &lt;dbl&gt;
+## 1       3       3</code></pre>
+<p>Da mesma maneira, podemos receber o nome da coluna que vai ser criada no <code>summarise()</code> como argumento da função.</p>
+<pre class="r"><code>my_summarise3 &lt;- function(df, coluna, nome){
+  
+  coluna &lt;- enquo(coluna)
+  nome &lt;- enquo(nome)
+  
+  df %&gt;%
+  summarise(
+    !!quo_name(nome) := mean(!!coluna)
+  )
+}
+
+my_summarise3(df, a, media)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   media
+##   &lt;dbl&gt;
+## 1     3</code></pre>
+<p><strong>Observação</strong>: Estas duas formas também funcionam dentro do <code>mutate()</code>.</p>
+<div id="argumentos-em-group_by-arrange-mutate-e-summarise" class="section level3">
+<h3>Argumentos em <code>group_by, arrange, mutate</code> e <code>summarise</code></h3>
+<p>Ao passarmos o nome de uma coluna com aspas para ser usado em <code>group_by</code>, o <code>enquo()</code> (como vimos acima) não irá retornar o resultado desejado. Uma maneira de resolver esta questão é utilizar a função <code>sym()</code>. Vamos observar que o funcionamento dela é bem similar a função já mencionada <code>enquo()</code>.</p>
+<pre class="r"><code>my_summarise_string &lt;- function(df, var_grupo, var_summarise) {
+  
+  var_grupo &lt;- sym(var_grupo)
+  var_summarise &lt;- sym(var_summarise)
+  
+  df %&gt;%
+    group_by(!!var_grupo) %&gt;%
+    summarise(media = mean(!!var_summarise))
+}
+
+my_summarise_string(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1 media
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1  3.5 
+## 2     2  2.67</code></pre>
+<p>Da mesma maneira fazemos se os parâmetros forem usados em <code>arrange()</code>, <code>summarise()</code> e <code>mutate()</code>. O ponto é que desta maneira a função só irá conseguir fazer os cálculos se passarmos <code>var_grupo</code> e <code>var_summarise</code> com aspas. Se quisermos uma função que aceite os parâmetros com ou sem aspas, uma alternativa será utilizar <code>try()</code> e, com isso, utilizar <code>if()</code>. Veja na função a seguir:</p>
+<pre class="r"><code>summarise_by &lt;- function(df, var_grupo, var_soma){
+  
+  teste_1 &lt;- try(is.character(var_grupo), silent = T)
+  teste_2 &lt;- try(is.character(var_soma), silent = T)
+
+  if(teste_1 == T &amp; teste_2 == T){
+    summ_sym &lt;- sym(var_soma)
+    group_syms &lt;- sym(var_grupo)
+
+    return(df %&gt;%
+      group_by(!!group_syms) %&gt;%
+      summarise(soma = sum(!!summ_sym)) %&gt;%
+      arrange(!!group_syms))
+
+  }else if(teste_1 != T &amp; teste_2 != T){
+
+    summ_sym &lt;- enquo(var_soma)
+    group_syms &lt;- enquo(var_grupo)
+    
+    return(df %&gt;%
+      group_by(!!group_syms) %&gt;%
+      summarise(soma = sum(!!summ_sym)) %&gt;% 
+      arrange(!!group_syms))
+   }
+}
+
+summarise_by(df, g1, a)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1  soma
+##   &lt;dbl&gt; &lt;int&gt;
+## 1     1     7
+## 2     2     8</code></pre>
+<pre class="r"><code># Ou
+summarise_by(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##      g1  soma
+##   &lt;dbl&gt; &lt;int&gt;
+## 1     1     7
+## 2     2     8</code></pre>
+</div>
+<div id="capturando-expressão-para-filtrar" class="section level3">
+<h3>Capturando expressão para filtrar</h3>
+<p>Se quisermos capturar uma expressão a ser utilizada no filter, o procedimento é bem parecido:</p>
+<pre class="r"><code>meu_filtro &lt;- function(df, filtro){
+  
+  filtro &lt;- enquo(filtro)
+  
+  df %&gt;% 
+    filter(!!filtro)
+}
+
+meu_filtro(df, g1 == 1)</code></pre>
+<pre><code>## # A tibble: 2 x 4
+##      g1    g2     a     b
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+## 1     1     1     4     1
+## 2     1     2     3     3</code></pre>
+</div>
+<div id="joins" class="section level3">
+<h3>Joins</h3>
+<p>Ao fazer algum dos joins do <code>dplyr</code>, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento <code>by</code> requer um vetor de caractere nomeado, ou seja, <code>c("c1" = "c2")</code>, mas também já sabemos que um <code>enquo</code> não é um caractere, e sim uma fórmula. Suponha as seguintes bases:</p>
+<pre class="r"><code>base1 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
+base1</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##      id   val
+##   &lt;int&gt; &lt;int&gt;
+## 1     5     1
+## 2     4     5
+## 3     1     2</code></pre>
+<pre class="r"><code>base2 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
+base2</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##      id   val
+##   &lt;int&gt; &lt;int&gt;
+## 1     2     9
+## 2     4     3
+## 3     5     6</code></pre>
+<p>Suponha uma função que vai simplesmente fazer um <code>full_join</code> entre as bases. Para fazer isso, precisaremos das funções <code>set_names</code> e <code>quo_name</code>. (vamos ativar o pacote <code>rlang</code> para utilizar <code>set_names</code>):</p>
+<pre class="r"><code>require(rlang)
+
+meu_full_join &lt;- function(b1, b2, id1, id2){
+  
+  id1 &lt;- enquo(id1)
+  id2 &lt;- enquo(id2)
+  
+  by &lt;- set_names(quo_name(id2), quo_name(id1))
+  
+  b1 %&gt;% 
+    full_join(b2, by = by)
+}
+
+meu_full_join(base1, base2, id, id)</code></pre>
+<pre><code>## # A tibble: 4 x 3
+##      id val.x val.y
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     5     1     6
+## 2     4     5     3
+## 3     1     2    NA
+## 4     2    NA     9</code></pre>
+<p>Note que a função <code>set_names</code> funciona da seguinte forma, ela cria um vetor nomeado utilizando o primeiro argumento como valor e o segundo argumento como nome deste nosso novo vetor.</p>
+<pre class="r"><code>set_names(1:4, letters[1:4])</code></pre>
+<pre><code>## a b c d 
+## 1 2 3 4</code></pre>
+<p>que é o mesmo de criar vetores nomeados utilizando a função base <code>c</code>, como vamos ver abaixo:</p>
+<pre class="r"><code>c(&quot;a&quot; = 1, &quot;b&quot; = 2 , &quot;c&quot; = 3, &quot;d&quot; = 4 )</code></pre>
+<pre><code>## a b c d 
+## 1 2 3 4</code></pre>
+<p>voltando ao nosso objetivo principal, por isso que é colocado o <code>quo_name</code> da segunda base primeiro e depois o <code>quo_name</code> da primeira base.</p>
+</div>
+</div>
+<div id="função-com-múltiplas-variáveis" class="section level2">
+<h2>Função com múltiplas variáveis</h2>
+<p>Vamos criar uma função que conta o número de casos para todas as combinações de valores dos grupos que serão passados como argumentos, mas não vamos fixar o número de variáveis, vamos aceitar quantas variáveis forem passadas. Precisamos fazer três mudanças:</p>
+<ul>
+<li>Usar <code>...</code> na definição da função;</li>
+<li>Usar <code>quos()</code> ao invés de <code>enquo()</code>;</li>
+<li>Usar <code>!!!</code> ao invés de <code>!!</code>.</li>
+</ul>
+<pre class="r"><code>conta_casos &lt;- function(df, ...) {
+  
+  var_grupo &lt;- quos(...)
+
+  df %&gt;%
+    group_by(!!!var_grupo) %&gt;%
+    summarise(n = n())
+}
+
+conta_casos(df, g1, g2)</code></pre>
+<pre><code>## # A tibble: 4 x 3
+## # Groups:   g1 [2]
+##      g1    g2     n
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     1     1     1
+## 2     1     2     1
+## 3     2     1     2
+## 4     2     2     1</code></pre>
+<p>Se quisermos passar essas variáveis para <code>...</code> com aspas, basta utilizar a função <code>syms()</code> ao invés de <code>quos</code> na função. A diferença maior fica na chamada da função. Veja:</p>
+<pre class="r"><code>conta_casos_string &lt;- function(df, ...) {
+  
+  var_grupo &lt;- syms(...)
+
+  df %&gt;%
+    group_by(!!!var_grupo) %&gt;%
+    summarise(n = n())
+}
+
+conta_casos_string(df, list(&quot;g1&quot;, &quot;g2&quot;))</code></pre>
+<pre><code>## # A tibble: 4 x 3
+## # Groups:   g1 [2]
+##      g1    g2     n
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     1     1     1
+## 2     1     2     1
+## 3     2     1     2
+## 4     2     2     1</code></pre>
+<p>A diferença é que na hora de chamar a função precisamos passar os argumentos como uma <strong>lista</strong>.</p>
+<div id="checando-as-múltiplas-variáveis" class="section level3">
+<h3>Checando as múltiplas variáveis</h3>
+<p>Podemos querer verificar se os múltiplos argumentos em <code>...</code> foram ou não passados pra função. Vamos fazer essa checagem com a função <code>conta_casos</code>, criada acima, utilizando apenas a função <code>length</code>.</p>
+<pre class="r"><code>conta_casos &lt;- function(df, ...) {
+  
+  var_grupo &lt;- quos(...)
+  
+  if(length(var_grupo) &gt; 0){
+    df %&gt;%
+      group_by(!!!var_grupo) %&gt;%
+      summarise(n = n())
+  }else{
+    warning(&quot;Colunas para agrupar não encontradas&quot;)
+    df %&gt;% 
+      summarise(n = n())
+  }
+}  
+
+conta_casos(df)</code></pre>
+<pre><code>## Warning in conta_casos(df): Colunas para agrupar não encontradas</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1     5</code></pre>
+</div>
+<div id="fonte" class="section level3">
+<h3>Fonte</h3>
+<ul>
+<li><a href="http://dplyr.tidyverse.org/articles/programming.html">Programming with dplyr</a></li>
+<li><a href="https://www.youtube.com/watch?v=nERXS3ssntw">Tidy evaluation com Hadley Wickham</a></li>
+</ul>
+</div>
+</div>
+
+                    
+                        
+
+<div class="social-share pt-4">
+        <h4>Share:</h4>
+        
+        <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=%2fpost%2fprogramando-com-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+            </div>
+        </div>
+    </a>
+
+    
+    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Programando%20com%20dplyr%20%28tidy%20eval%29&amp;url=%2fpost%2fprogramando-com-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+        <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+        </div>
+    </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://plus.google.com/share?url=%2fpost%2fprogramando-com-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.37 12.93c-.73-.52-1.4-1.27-1.4-1.5 0-.43.03-.63.98-1.37 1.23-.97 1.9-2.23 1.9-3.57 0-1.22-.36-2.3-1-3.05h.5c.1 0 .2-.04.28-.1l1.36-.98c.16-.12.23-.34.17-.54-.07-.2-.25-.33-.46-.33H7.6c-.66 0-1.34.12-2 .35-2.23.76-3.78 2.66-3.78 4.6 0 2.76 2.13 4.85 5 4.9-.07.23-.1.45-.1.66 0 .43.1.83.33 1.22h-.08c-2.72 0-5.17 1.34-6.1 3.32-.25.52-.37 1.04-.37 1.56 0 .5.13.98.38 1.44.6 1.04 1.84 1.86 3.55 2.28.87.23 1.82.34 2.8.34.88 0 1.7-.1 2.5-.34 2.4-.7 3.97-2.48 3.97-4.54 0-1.97-.63-3.15-2.33-4.35zm-7.7 4.5c0-1.42 1.8-2.68 3.9-2.68h.05c.45 0 .9.07 1.3.2l.42.28c.96.66 1.6 1.1 1.77 1.8.05.16.07.33.07.5 0 1.8-1.33 2.7-3.96 2.7-1.98 0-3.54-1.23-3.54-2.8zM5.54 3.9c.33-.38.75-.58 1.23-.58h.05c1.35.05 2.64 1.55 2.88 3.35.14 1.02-.08 1.97-.6 2.55-.32.37-.74.56-1.23.56h-.03c-1.32-.04-2.63-1.6-2.87-3.4-.13-1 .08-1.92.58-2.5zM23.5 9.5h-3v-3h-2v3h-3v2h3v3h2v-3h3"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Programando%20com%20dplyr%20%28tidy%20eval%29&amp;body=%2fpost%2fprogramando-com-dplyr%2f" target="_self" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=%2fpost%2fprogramando-com-dplyr%2f&amp;resubmit=true&amp;title=Programando%20com%20dplyr%20%28tidy%20eval%29" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Programando%20com%20dplyr%20%28tidy%20eval%29%20%2fpost%2fprogramando-com-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
+    </div>
+</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Programando%20com%20dplyr%20%28tidy%20eval%29&amp;url=%2fpost%2fprogramando-com-dplyr%2f" target="_blank" rel="noopener" aria-label="">
+    <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
+    </div>
+</div>
+</a>
+
+</div>
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div><!-- end Contact Area -->
+<footer id="footer" class="bg-one">
+	<div class="container">
+		<div class="row wow fadeInUp" data-wow-duration="500ms">
+			<div class="col-xl-12">
+
+				<!-- Footer Social Links -->
+				<div class="social-icon">
+					<ul class="list-inline">
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-facebook"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-twitter"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-google-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-youtube"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-linkedin"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-dribbble-outline"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="tf-ion-social-pinterest-outline"></i></a></li>
+						
+					</ul>
+				</div>
+
+				<!-- copyright -->
+				<div class="copyright text-center">
+					
+					<br>
+					<p>Design And Developed by <a href="http://www.themefisher.com">  Themefisher  </a>. Copyright &copy; <script>
+							document.write(new Date().getFullYear())
+						</script>. All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- /footer -->
+
+<!-- Essential Scripts -->
+
+		<!-- Main jQuery -->
+		<script type="text/javascript" src="/plugins/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap 4.3 + Popper -->
+		<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Slick Carousel -->
+		<script type="text/javascript" src="/plugins/slick-carousel/slick/slick.min.js"></script>
+		<!-- Portfolio Filtering -->
+		<script type="text/javascript" src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+		<!-- Magnific popup -->
+		<script type="text/javascript" src="/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+		<!-- Google Map API -->
+		<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&amp;libraries=places"></script>
+		<!-- Number Counter Script -->
+		<script type="text/javascript" src="/plugins/count-to/jquery.countTo.js"></script>
+		<!-- wow.min Script -->
+		<script type="text/javascript" src="/plugins/wow/dist/wow.min.js"></script>
+		<!-- Scroll behavior polyfill -->
+		
+		<script src="/js/scroll-behavior-polyfill.min.js"></script>
+		<!-- Sweet Alert -->
+		<script type="text/javascript" src="/plugins/sweet-alert/sweetalert.min.js"></script>
+		<!-- Custom js -->
+		
+		<script src="/js/script.min.js"></script>
+		<!-- google analitycs -->
+		<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				ga('create', 'Your ID', 'auto');
+				ga('send', 'pageview');
+		</script>
+</body>
+</html>

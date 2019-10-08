@@ -26,17 +26,17 @@ starwars</code></pre>
 <pre><code>## # A tibble: 87 x 13
 ##    name  height  mass hair_color skin_color eye_color birth_year gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-##  1 Luke…    172    77 blond      fair       blue            19   male  
+##  1 Luke~    172    77 blond      fair       blue            19   male  
 ##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
-##  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   &lt;NA&gt;  
-##  4 Dart…    202   136 none       white      yellow          41.9 male  
-##  5 Leia…    150    49 brown      light      brown           19   female
-##  6 Owen…    178   120 brown, gr… light      blue            52   male  
-##  7 Beru…    165    75 brown      light      blue            47   female
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   &lt;NA&gt;  
+##  4 Dart~    202   136 none       white      yellow          41.9 male  
+##  5 Leia~    150    49 brown      light      brown           19   female
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  
+##  7 Beru~    165    75 brown      light      blue            47   female
 ##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   &lt;NA&gt;  
-##  9 Bigg…    183    84 black      light      brown           24   male  
-## 10 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  
-## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
+##  9 Bigg~    183    84 black      light      brown           24   male  
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;,
 ## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Podemos selecionar colunas que comecem com a letra “h”:</p>
 <pre class="r"><code>starwars %&gt;% 
@@ -54,7 +54,7 @@ starwars</code></pre>
 ##  8     97 &lt;NA&gt;          Tatooine 
 ##  9    183 black         Tatooine 
 ## 10    182 auburn, white Stewjon  
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>Selecionaremos agora colunas que terminem com a palavra “color”:</p>
 <pre class="r"><code>starwars %&gt;% 
   select(ends_with(&quot;color&quot;))</code></pre>
@@ -71,8 +71,8 @@ starwars</code></pre>
 ##  8 &lt;NA&gt;          white, red  red      
 ##  9 black         light       brown    
 ## 10 auburn, white fair        blue-gray
-## # … with 77 more rows</code></pre>
-<p>Vamos selecionar colunas que contenham algum caracter + “t” + algum caracter, através da regex <code>&quot;.t.&quot;</code>:</p>
+## # ... with 77 more rows</code></pre>
+<p>Vamos selecionar colunas que contenham algum caracter + “t” + algum caracter, através da regex <code>".t."</code>:</p>
 <pre class="r"><code>starwars %&gt;% 
   select(matches(&quot;.t.&quot;))</code></pre>
 <pre><code>## # A tibble: 87 x 2
@@ -88,7 +88,7 @@ starwars</code></pre>
 ##  8       NA   &lt;chr [0]&gt;
 ##  9       24   &lt;chr [1]&gt;
 ## 10       57   &lt;chr [5]&gt;
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>Se tivermos um vetor com os nomes das colunas a serem selecionadas, utilizamos <code>one_of</code>:</p>
 <pre class="r"><code>nomes &lt;- names(starwars)[1:5]
 
@@ -107,25 +107,25 @@ starwars %&gt;%
 ##  8 R5-D4                  97    32 &lt;NA&gt;          white, red 
 ##  9 Biggs Darklighter     183    84 black         light      
 ## 10 Obi-Wan Kenobi        182    77 auburn, white fair       
-## # … with 77 more rows</code></pre>
+## # ... with 77 more rows</code></pre>
 <p>A função <code>everything</code> pode ser útil se quisermos colocar alguma coluna como a primeira de nosso <code>tibble</code>:</p>
 <pre class="r"><code>starwars %&gt;% 
   select(homeworld, everything())</code></pre>
 <pre><code>## # A tibble: 87 x 13
 ##    homeworld name  height  mass hair_color skin_color eye_color birth_year
 ##    &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
-##  1 Tatooine  Luke…    172    77 blond      fair       blue            19  
+##  1 Tatooine  Luke~    172    77 blond      fair       blue            19  
 ##  2 Tatooine  C-3PO    167    75 &lt;NA&gt;       gold       yellow         112  
-##  3 Naboo     R2-D2     96    32 &lt;NA&gt;       white, bl… red             33  
-##  4 Tatooine  Dart…    202   136 none       white      yellow          41.9
-##  5 Alderaan  Leia…    150    49 brown      light      brown           19  
-##  6 Tatooine  Owen…    178   120 brown, gr… light      blue            52  
-##  7 Tatooine  Beru…    165    75 brown      light      blue            47  
+##  3 Naboo     R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33  
+##  4 Tatooine  Dart~    202   136 none       white      yellow          41.9
+##  5 Alderaan  Leia~    150    49 brown      light      brown           19  
+##  6 Tatooine  Owen~    178   120 brown, gr~ light      blue            52  
+##  7 Tatooine  Beru~    165    75 brown      light      blue            47  
 ##  8 Tatooine  R5-D4     97    32 &lt;NA&gt;       white, red red             NA  
-##  9 Tatooine  Bigg…    183    84 black      light      brown           24  
-## 10 Stewjon   Obi-…    182    77 auburn, w… fair       blue-gray       57  
-## # … with 77 more rows, and 5 more variables: gender &lt;chr&gt;, species &lt;chr&gt;,
-## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+##  9 Tatooine  Bigg~    183    84 black      light      brown           24  
+## 10 Stewjon   Obi-~    182    77 auburn, w~ fair       blue-gray       57  
+## # ... with 77 more rows, and 5 more variables: gender &lt;chr&gt;,
+## #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Iremos criar um <code>tibble</code> para poder mostrar o uso de <code>num_range</code>:</p>
 <pre class="r"><code>dados &lt;- tibble(x1 = 1:10, x2 = letters[1:10], valor = 11:20)
 
@@ -150,17 +150,17 @@ dados %&gt;%
 <pre><code>## # A tibble: 87 x 13
 ##    name  hair_color skin_color eye_color species vehicles height  mass
 ##    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt;    &lt;int&gt; &lt;dbl&gt;
-##  1 Luke… blond      fair       blue      Human   &lt;chr [2…    172    77
-##  2 C-3PO &lt;NA&gt;       gold       yellow    Droid   &lt;chr [0…    167    75
-##  3 R2-D2 &lt;NA&gt;       white, bl… red       Droid   &lt;chr [0…     96    32
-##  4 Dart… none       white      yellow    Human   &lt;chr [0…    202   136
-##  5 Leia… brown      light      brown     Human   &lt;chr [1…    150    49
-##  6 Owen… brown, gr… light      blue      Human   &lt;chr [0…    178   120
-##  7 Beru… brown      light      blue      Human   &lt;chr [0…    165    75
-##  8 R5-D4 &lt;NA&gt;       white, red red       Droid   &lt;chr [0…     97    32
-##  9 Bigg… black      light      brown     Human   &lt;chr [0…    183    84
-## 10 Obi-… auburn, w… fair       blue-gray Human   &lt;chr [1…    182    77
-## # … with 77 more rows, and 5 more variables: birth_year &lt;dbl&gt;,
+##  1 Luke~ blond      fair       blue      Human   &lt;chr [2~    172    77
+##  2 C-3PO &lt;NA&gt;       gold       yellow    Droid   &lt;chr [0~    167    75
+##  3 R2-D2 &lt;NA&gt;       white, bl~ red       Droid   &lt;chr [0~     96    32
+##  4 Dart~ none       white      yellow    Human   &lt;chr [0~    202   136
+##  5 Leia~ brown      light      brown     Human   &lt;chr [1~    150    49
+##  6 Owen~ brown, gr~ light      blue      Human   &lt;chr [0~    178   120
+##  7 Beru~ brown      light      blue      Human   &lt;chr [0~    165    75
+##  8 R5-D4 &lt;NA&gt;       white, red red       Droid   &lt;chr [0~     97    32
+##  9 Bigg~ black      light      brown     Human   &lt;chr [0~    183    84
+## 10 Obi-~ auburn, w~ fair       blue-gray Human   &lt;chr [1~    182    77
+## # ... with 77 more rows, and 5 more variables: birth_year &lt;dbl&gt;,
 ## #   gender &lt;chr&gt;, homeworld &lt;chr&gt;, films &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>De se tornar um novo jedi<code>R</code>, um passo mais próximo você está!</p>
 <p><img src="/img/2018-09-12-help-functions-do-dplyr/jedis.jpg" /></p>

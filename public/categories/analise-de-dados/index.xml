@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>analise de dados on </title>
+    <link>/categories/analise-de-dados/</link>
+    <description>Recent content in analise de dados on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/analise-de-dados/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introdução ao dplyr</title>
+      <link>/post/introdu%C3%A7%C3%A3o-ao-dplyr/</link>
+      <pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introdu%C3%A7%C3%A3o-ao-dplyr/</guid>
+      <description>O que é o dplyr e por que usá-lo?dplyr é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do tidyverse. Se você nunca ouviu falar no tidyverse, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise.</description>
+    </item>
+    
+    <item>
+      <title>5 Curiosidades sobre o brasileirão 2014</title>
+      <link>/post/2015-02-05-5-curiosidades-sobre-o-brasileirao-2014/</link>
+      <pubDate>Thu, 05 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-02-05-5-curiosidades-sobre-o-brasileirao-2014/</guid>
+      <description>Campeonato brasileiro acabou ano passado, mas há quem diga que brasileiro nunca cansa de futebol, não é? Então seguem algumas curiosidades sobre o campeonato brasileiro 2014.
+ Se olharmos para cada uma das posições, os que mais pontuam em média são os técnicos (média de 3.18 pontos por rodada), seguido dos laterais (média de 1.1 pontos por rodada). Já entre os que menos pontuam são os meias (média de 0.77 por rodada) seguindo dos goleiros (média de 0.</description>
+    </item>
+    
+  </channel>
+</rss>
