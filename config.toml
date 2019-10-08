@@ -12,14 +12,14 @@ summaryLength = 10
 
 # Menu
 [menu]
-    [[menu.nav]]
-   name = "Nosso Time"
-    URL = "nosso-time"
+		[[menu.nav]]
+    name = "Blog"
+    URL = "blog"
     weight = 2
 
     [[menu.nav]]
-    name = "Blog"
-    URL = "blog"
+   name = "Nosso Time"
+    URL = "nosso-time"
     weight = 3
 
     [[menu.nav]]
@@ -43,12 +43,13 @@ custom_css = ["css/custom.css"]
     [params.banner]
     enable = true
     bgImage = "images/slider/hero-area.jpg"
-    icon = "tf-ion-play"
-    heading = "Seu blog técnico de ciências de dados!"
+    icon = ""
+    heading = ""
+    imgLogo= "images/slider/logo.png"
     content= "Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística."
     btn = true
-    btnText="Explore Us"
-    btnURL="#services"
+    btnText="Saiba Mais"
+    btnURL="#blog"
 
     # call to action
     [params.cta]
