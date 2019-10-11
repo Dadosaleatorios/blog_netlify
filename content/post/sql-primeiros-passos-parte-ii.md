@@ -11,7 +11,7 @@ title = "SQL - Primeiros Passos - Parte II"
 +++
 E aí galera!
 
-Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, clique aqui ([https://www.dadosaleatorios.com.br/post/sql_basico/](https://www.dadosaleatorios.com.br/post/sql_basico/ "https://www.dadosaleatorios.com.br/post/sql_basico/")). 
+Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, clique \[aqui\]([https://www.dadosaleatorios.com.br/post/sql_basico/](https://www.dadosaleatorios.com.br/post/sql_basico/ "https://www.dadosaleatorios.com.br/post/sql_basico/")).
 
 Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
 
@@ -131,7 +131,7 @@ Este comando é usado para verificar um padrão especificado em uma coluna. Prec
 * **%**: relaciona um, dois ou mais caracteres no texto.
 * **_** : relaciona um único caractere.
 
-Para esse exemplo, usaremos a tabela pessoas (_people)_ que possui informações sobre nome (name), data de nascimento (birthdate) e data de morte (deathdate). 
+Para esse exemplo, usaremos a tabela pessoas (_people)_ que possui informações sobre nome (name), data de nascimento (birthdate) e data de morte (deathdate).
 
 ![](/images/blog/Screenshot from 2019-10-02 10-34-26.png)Então, desejamos encontrar as pessoas que o nome começa com a letra B. Neste caso, o padrão ao ser pesquisado é **'B%'**. Para isso, faremos:
 
