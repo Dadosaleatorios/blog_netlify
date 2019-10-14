@@ -28,6 +28,7 @@ fields:
   name: slug
   label: slug
 pages:
+- content/post/conheça-o-google-colab.md
 - content/post/sql-primeiros-passos-parte-ii.md
 - content/post/como-instalar-o-rstudio-server-em-uma-instância-do-google-cloud-platform-gcp.md
 - content/post/como-criar-uma-conta-na-gcp.md
