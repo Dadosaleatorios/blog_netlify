@@ -13,4 +13,4 @@ O Google Colab ou “Colaboratório” é um serviço de nuvem gratuito hospedad
 
 # Os benefícios de se usar o Colab
 
-O Colab é bastante flexível em sua configuração e faz muito do trabalho pesado para você. Ele vem com suporte para python 2.7 e 3.6, opção para ativar a aceleração por GPU de forma gratuita,  
+O Colab é bastante flexível em sua configuração e faz muito do trabalho pesado para você. Ele vem com suporte para python 2.7 e 3.6, opção para ativar a aceleração por GPU de forma gratuita,todos os notebooks do colab são salvos no drive. Para mais informações acesse [a documentação do Google Colab e os Snippets de código](https://colab.research.google.com/notebooks/welcome.ipynb).
