@@ -29,7 +29,7 @@ image: 'images/blog/post-ggplot.png'
 </ul>
 <p>Veja abaixo modelo de gráfico, utilizando a função do pacote <code>graphics</code> (pacote do R básico) e utilizando o pacote <code>ggplot2</code>:</p>
 <p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="432" /><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-2.png" width="432" /></p>
-<div id="intalação-do-pacote" class="section level2">
+<div id="intalacao-do-pacote" class="section level2">
 <h2>Intalação do pacote</h2>
 <p>Para a utilização do pacote, devemos fazer a intalação e requisição do mesmo:</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)
@@ -52,7 +52,7 @@ require(ggplot2)</code></pre>
 </center>
 <p>Fotos de outros carros podem ser encontradas <a href="https://twitter.com/i/moments/1001619000827228160">aqui</a>.</p>
 </div>
-<div id="atributos-estéticos" class="section level2">
+<div id="atributos-esteticos" class="section level2">
 <h2>Atributos estéticos</h2>
 <p>Os atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos <code>geoms</code>. Os mapeamentos estéticos podem ser definidos em <code>ggplot2</code> e em camadas individuais.</p>
 <p>Argumentos utilizados no <code>aes( )</code>:</p>
@@ -67,7 +67,7 @@ require(ggplot2)</code></pre>
 <li><code>shape</code>: altera o estilo das formas</li>
 </ul>
 </div>
-<div id="objetos-geométricos" class="section level2">
+<div id="objetos-geometricos" class="section level2">
 <h2>Objetos geométricos</h2>
 <p>Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos <em>geoms</em> disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:</p>
 <pre><code>## # A tibble: 4 x 3
@@ -77,7 +77,7 @@ require(ggplot2)</code></pre>
 ## 2 barchart (barras)       geom_bar()     FALSE           
 ## 3 boxplot                 geom_boxplot() FALSE           
 ## 4 smooth (suavizada)      geom_smooth()  FALSE</code></pre>
-<div id="gráficos-de-dispersão" class="section level3">
+<div id="graficos-de-dispersao" class="section level3">
 <h3>Gráficos de Dispersão</h3>
 <pre class="r"><code>p &lt;- ggplot(mtcars, aes(wt, mpg))
 
@@ -90,7 +90,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 <pre class="r"><code>p + geom_point(aes(colour = factor(cyl), size = qsec, shape = factor(cyl))) + ggtitle(&quot;Utilizando todos&quot;)</code></pre>
 <p><img src="/post/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
 </div>
-<div id="gráficos-de-barras" class="section level3">
+<div id="graficos-de-barras" class="section level3">
 <h3>Gráficos de Barras</h3>
 <p>Posição - Stack, Fill e Dodge</p>
 <p><strong>Stack</strong>: coloca as barras em cima umas das outras. Contagens são usadas. Esta é a posição padrão.</p>
@@ -133,7 +133,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 </ul>
 </div>
 </div>
-<div id="transformações-estatísticas" class="section level2">
+<div id="transformacoes-estatisticas" class="section level2">
 <h2>Transformações estatísticas</h2>
 <p>Um punhado de camadas é mais facilmente especificado com uma função <code>stat_</code>, chamando a atenção para a transformação estatística em vez da aparência visual. Dentre suas funcionalidades, estão a de computar a distribuição cumulativa empírica, sumarizar os valores da variável, remover duplicadas, entre outros.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
@@ -198,7 +198,7 @@ thin.bar +
 <div id="coord_flip" class="section level3">
 <h3><code>coord_flip()</code></h3>
 <p>Inverte coordenadas cartesianas para que a horizontal se torne vertical e vertical, horizontal.</p>
-<div id="mudando-a-coordenada-do-gráfico-de-boxplot-gerado-anteriormente" class="section level4">
+<div id="mudando-a-coordenada-do-grafico-de-boxplot-gerado-anteriormente" class="section level4">
 <h4>Mudando a coordenada do gráfico de boxplot, gerado anteriormente</h4>
 <pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot() +
@@ -309,7 +309,7 @@ p2 + theme(legend.position = &quot;none&quot;)</code></pre>
 </ul>
 </div>
 </div>
-<div id="referências" class="section level2">
+<div id="referencias" class="section level2">
 <h2>Referências</h2>
 <ul>
 <li><p><a href="https://www.datacamp.com/" class="uri">https://www.datacamp.com/</a></p></li>

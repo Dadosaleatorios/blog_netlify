@@ -38,11 +38,11 @@ seleciona(iris_tibble, &quot;Species&quot;)</code></pre>
 ##  8 setosa 
 ##  9 setosa 
 ## 10 setosa 
-## # ... with 140 more rows</code></pre>
+## # … with 140 more rows</code></pre>
 <p>Da mesma forma funciona com o <code>pull</code>, ao invés do select. Faça o teste!</p>
 <p>Mas e se quisermos passar o nome da coluna <code>Species</code> sem aspas, como acontece em todos os verbos do <code>dplyr</code>? Vamos tentar passar a coluna sem aspas pra nossa função:</p>
 <pre class="r"><code>seleciona(iris, Species)</code></pre>
-<pre><code>## Error in .f(.x[[i]], ...): objeto &#39;Species&#39; não encontrado</code></pre>
+<pre><code>## Error in .f(.x[[i]], ...): object &#39;Species&#39; not found</code></pre>
 <p>Veja que o erro nos diz que o objeto <code>Species</code> não foi encontrado. Isso acontece porque não criamos nenhum objeto com esse nome, e o R retorna um erro quando executamos o nome de um objeto que ainda não existe.</p>
 <div id="quosures" class="section level3">
 <h3>Quosures</h3>
@@ -75,7 +75,7 @@ seleciona(iris_tibble, quo(Species))</code></pre>
 ##  8 setosa 
 ##  9 setosa 
 ## 10 setosa 
-## # ... with 140 more rows</code></pre>
+## # … with 140 more rows</code></pre>
 <p>Dessa maneira podemos passar <code>Species</code> com ou sem aspas. Testa aí!</p>
 <p>Mas ficar usando <code>quo</code> ao passar os argumentos pra função pode ser um pouco chato. Podemos pensar em usar esse comando dentro da nossa função:</p>
 <pre class="r"><code>seleciona &lt;- function(dados, coluna){
@@ -91,8 +91,8 @@ seleciona(iris_tibble, quo(Species))</code></pre>
 seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## &lt;quosure&gt;
 ## expr: ^coluna
-## env:  0000000018EE6C88</code></pre>
-<pre><code>## `coluna` must evaluate to column positions or names, not a formula</code></pre>
+## env:  0x4bb4fd8</code></pre>
+<pre><code>## Error: `coluna` must evaluate to column positions or names, not a formula</code></pre>
 <p>Esse <code>print</code> foi colocado de propósito pra entendermos o que está acontecendo. A função <code>quo()</code> é muito literal, ou seja, ela armazemou <code>coluna</code>, não esperando ela receber o valor <code>Species</code> na chamada da função. Precisamos então de uma função que espere o argumento ser dado para capturar seu nome.</p>
 </div>
 <div id="enquo" class="section level3">
@@ -126,7 +126,7 @@ seleciona(iris_tibble, Species)</code></pre>
 ##  8 setosa 
 ##  9 setosa 
 ## 10 setosa 
-## # ... with 140 more rows</code></pre>
+## # … with 140 more rows</code></pre>
 <p>Neste caso também podemos passar <code>Species</code> com aspas, sem problemas. A partir de agora vamos construir um outro <code>tibble</code>, que nos ajudará a continuar entendendo <em>tidy eval</em>.</p>
 <pre class="r"><code>(df &lt;- tibble(
   g1 = c(1, 1, 2, 2, 2),
@@ -137,11 +137,11 @@ seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ##      g1    g2     a     b
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-## 1     1     1     4     1
-## 2     1     2     3     3
-## 3     2     1     2     5
-## 4     2     2     1     4
-## 5     2     1     5     2</code></pre>
+## 1     1     1     4     5
+## 2     1     2     1     2
+## 3     2     1     2     4
+## 4     2     2     5     3
+## 5     2     1     3     1</code></pre>
 <p>Iremos construir uma função que recebe o <code>tibble</code>, a coluna a ser usada para agrupamento e a coluna para calcular a média:</p>
 <pre class="r"><code>my_summarise &lt;- function(df, var_grupo, var_summarise){
   
@@ -157,19 +157,19 @@ seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1 media
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1     1  3.5 
-## 2     2  2.67</code></pre>
+## 1     1  2.5 
+## 2     2  3.33</code></pre>
 <p>Assim como estávamos fazendo quando o <code>quosure</code> era passado para o <code>select</code>, vamos tentar passar os nomes de colunas com aspas:</p>
 <pre class="r"><code>my_summarise(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
-<pre><code>## Warning in mean.default(~&quot;a&quot;): argumento não é numérico nem lógico:
-## retornando NA</code></pre>
+<pre><code>## Warning in mean.default(~&quot;a&quot;): argument is not numeric or logical:
+## returning NA</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##   `&quot;g1&quot;` media
 ##   &lt;chr&gt;  &lt;dbl&gt;
 ## 1 g1        NA</code></pre>
-<p>Temos dois problemas aqui. O primeiro é que o <code>group_by</code> na verdade criou uma variável <code>"g1"</code>, com aspas, com um único valor: <code>"g1"</code>. Além disso, sabemos que não é possível calcular a média de <code>"a"</code>, então temos um <code>NA</code> na coluna <code>media</code>. Mais a frente vamos tentar solucionar essa questão.</p>
+<p>Temos dois problemas aqui. O primeiro é que o <code>group_by</code> na verdade criou uma variável <code>&quot;g1&quot;</code>, com aspas, com um único valor: <code>&quot;g1&quot;</code>. Além disso, sabemos que não é possível calcular a média de <code>&quot;a&quot;</code>, então temos um <code>NA</code> na coluna <code>media</code>. Mais a frente vamos tentar solucionar essa questão.</p>
 </div>
-<div id="mudar-nomes-de-variáveis" class="section level2">
+<div id="mudar-nomes-de-variaveis" class="section level2">
 <h2>Mudar nomes de variáveis</h2>
 <p>Suponha que queiramos retornar a média das colunas <code>a</code> e <code>b</code> e, para diferenciar os nomes, as colunas terão os nomes <code>media_a</code> e <code>media_b</code>. Para isso iremos utilizar <code>quo_name()</code>, que converte o <em>quosure</em> num string, e o operador <code>:=</code></p>
 <pre class="r"><code>my_summarise2 &lt;- function(df, var1, var2) {
@@ -226,8 +226,8 @@ my_summarise_string(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1 media
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1     1  3.5 
-## 2     2  2.67</code></pre>
+## 1     1  2.5 
+## 2     2  3.33</code></pre>
 <p>Da mesma maneira fazemos se os parâmetros forem usados em <code>arrange()</code>, <code>summarise()</code> e <code>mutate()</code>. O ponto é que desta maneira a função só irá conseguir fazer os cálculos se passarmos <code>var_grupo</code> e <code>var_summarise</code> com aspas. Se quisermos uma função que aceite os parâmetros com ou sem aspas, uma alternativa será utilizar <code>try()</code> e, com isso, utilizar <code>if()</code>. Veja na função a seguir:</p>
 <pre class="r"><code>summarise_by &lt;- function(df, var_grupo, var_soma){
   
@@ -259,17 +259,17 @@ summarise_by(df, g1, a)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1  soma
 ##   &lt;dbl&gt; &lt;int&gt;
-## 1     1     7
-## 2     2     8</code></pre>
+## 1     1     5
+## 2     2    10</code></pre>
 <pre class="r"><code># Ou
 summarise_by(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1  soma
 ##   &lt;dbl&gt; &lt;int&gt;
-## 1     1     7
-## 2     2     8</code></pre>
+## 1     1     5
+## 2     2    10</code></pre>
 </div>
-<div id="capturando-expressão-para-filtrar" class="section level3">
+<div id="capturando-expressao-para-filtrar" class="section level3">
 <h3>Capturando expressão para filtrar</h3>
 <p>Se quisermos capturar uma expressão a ser utilizada no filter, o procedimento é bem parecido:</p>
 <pre class="r"><code>meu_filtro &lt;- function(df, filtro){
@@ -284,28 +284,28 @@ meu_filtro(df, g1 == 1)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##      g1    g2     a     b
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-## 1     1     1     4     1
-## 2     1     2     3     3</code></pre>
+## 1     1     1     4     5
+## 2     1     2     1     2</code></pre>
 </div>
 <div id="joins" class="section level3">
 <h3>Joins</h3>
-<p>Ao fazer algum dos joins do <code>dplyr</code>, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento <code>by</code> requer um vetor de caractere nomeado, ou seja, <code>c("c1" = "c2")</code>, mas também já sabemos que um <code>enquo</code> não é um caractere, e sim uma fórmula. Suponha as seguintes bases:</p>
+<p>Ao fazer algum dos joins do <code>dplyr</code>, existe a necessidade de explicitar a(s) variável(is) que será(ão) utilizada(s) ao juntar as duas bases. Porém sabemos que o argumento <code>by</code> requer um vetor de caractere nomeado, ou seja, <code>c(&quot;c1&quot; = &quot;c2&quot;)</code>, mas também já sabemos que um <code>enquo</code> não é um caractere, e sim uma fórmula. Suponha as seguintes bases:</p>
 <pre class="r"><code>base1 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
 base1</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##      id   val
 ##   &lt;int&gt; &lt;int&gt;
-## 1     5     1
-## 2     4     5
-## 3     1     2</code></pre>
+## 1     4     5
+## 2     5     2
+## 3     1     3</code></pre>
 <pre class="r"><code>base2 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
 base2</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##      id   val
 ##   &lt;int&gt; &lt;int&gt;
-## 1     2     9
-## 2     4     3
-## 3     5     6</code></pre>
+## 1     5     4
+## 2     4     7
+## 3     1     2</code></pre>
 <p>Suponha uma função que vai simplesmente fazer um <code>full_join</code> entre as bases. Para fazer isso, precisaremos das funções <code>set_names</code> e <code>quo_name</code>. (vamos ativar o pacote <code>rlang</code> para utilizar <code>set_names</code>):</p>
 <pre class="r"><code>require(rlang)
 
@@ -321,13 +321,12 @@ meu_full_join &lt;- function(b1, b2, id1, id2){
 }
 
 meu_full_join(base1, base2, id, id)</code></pre>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 3 x 3
 ##      id val.x val.y
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1     5     1     6
-## 2     4     5     3
-## 3     1     2    NA
-## 4     2    NA     9</code></pre>
+## 1     4     5     7
+## 2     5     2     4
+## 3     1     3     2</code></pre>
 <p>Note que a função <code>set_names</code> funciona da seguinte forma, ela cria um vetor nomeado utilizando o primeiro argumento como valor e o segundo argumento como nome deste nosso novo vetor.</p>
 <pre class="r"><code>set_names(1:4, letters[1:4])</code></pre>
 <pre><code>## a b c d 
@@ -339,7 +338,7 @@ meu_full_join(base1, base2, id, id)</code></pre>
 <p>voltando ao nosso objetivo principal, por isso que é colocado o <code>quo_name</code> da segunda base primeiro e depois o <code>quo_name</code> da primeira base.</p>
 </div>
 </div>
-<div id="função-com-múltiplas-variáveis" class="section level2">
+<div id="funcao-com-multiplas-variaveis" class="section level2">
 <h2>Função com múltiplas variáveis</h2>
 <p>Vamos criar uma função que conta o número de casos para todas as combinações de valores dos grupos que serão passados como argumentos, mas não vamos fixar o número de variáveis, vamos aceitar quantas variáveis forem passadas. Precisamos fazer três mudanças:</p>
 <ul>
@@ -358,7 +357,7 @@ meu_full_join(base1, base2, id, id)</code></pre>
 
 conta_casos(df, g1, g2)</code></pre>
 <pre><code>## # A tibble: 4 x 3
-## # Groups:   g1 [2]
+## # Groups:   g1 [?]
 ##      g1    g2     n
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
 ## 1     1     1     1
@@ -377,7 +376,7 @@ conta_casos(df, g1, g2)</code></pre>
 
 conta_casos_string(df, list(&quot;g1&quot;, &quot;g2&quot;))</code></pre>
 <pre><code>## # A tibble: 4 x 3
-## # Groups:   g1 [2]
+## # Groups:   g1 [?]
 ##      g1    g2     n
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
 ## 1     1     1     1
@@ -385,7 +384,7 @@ conta_casos_string(df, list(&quot;g1&quot;, &quot;g2&quot;))</code></pre>
 ## 3     2     1     2
 ## 4     2     2     1</code></pre>
 <p>A diferença é que na hora de chamar a função precisamos passar os argumentos como uma <strong>lista</strong>.</p>
-<div id="checando-as-múltiplas-variáveis" class="section level3">
+<div id="checando-as-multiplas-variaveis" class="section level3">
 <h3>Checando as múltiplas variáveis</h3>
 <p>Podemos querer verificar se os múltiplos argumentos em <code>...</code> foram ou não passados pra função. Vamos fazer essa checagem com a função <code>conta_casos</code>, criada acima, utilizando apenas a função <code>length</code>.</p>
 <pre class="r"><code>conta_casos &lt;- function(df, ...) {

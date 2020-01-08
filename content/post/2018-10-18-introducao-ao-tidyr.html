@@ -45,7 +45,7 @@ image: 'images/blog/post-tidyr.png'
 <li><p><code>spread</code>: Transforma um <code>tibble</code> <em>long</em> em <em>wide</em>, ou seja, transforma dados que estão no formato <em>tidy</em> em formato não <em>tidy</em>.</p></li>
 </ul>
 <p>Além disso, existem duas funções que podem ser importantes na nossa análise: <code>separate</code> e <code>unite</code>, que separa uma coluna em duas e vice versa.</p>
-<div id="instalação" class="section level2">
+<div id="instalacao" class="section level2">
 <h2>Instalação</h2>
 <p>Podemos instalar o <code>tidyr</code> isoladamente ou instalar todo o <code>tidyverse</code>.</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;) # Ou install.packages(&quot;tidyr&quot;)
@@ -63,7 +63,7 @@ dados_wide</code></pre>
   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 1 RJ        10     11
 2 SP        11     10</code></pre>
-<p>Por padrão, a função <code>gather</code> irá retornar um <code>tibble</code> com duas colunas, isso se não inserirmos nenhum parâmetro além do <code>tibble</code>. O primeiro parâmetro será o <code>tibble</code>, assim como nas funções do <code>dplyr</code>. Em seguida iremos informar os nomes das duas coluna a serem criadas: <code>key</code> e <code>value</code> (chave e valor). Além disso, podemos selecionar colunas que devam (ou não) ser transformadas para <em>long</em>. Por padrão todas as colunas são consideradas para a transformação. No nosso caso, a coluna <code>uf</code> não deve ser transformada, ou seja, ela deve continuar com <code>"RJ"</code> e <code>"SP"</code>, as duas UFs que estão na base de dados. Então vamos informar que essa coluna não deve ser transformada.</p>
+<p>Por padrão, a função <code>gather</code> irá retornar um <code>tibble</code> com duas colunas, isso se não inserirmos nenhum parâmetro além do <code>tibble</code>. O primeiro parâmetro será o <code>tibble</code>, assim como nas funções do <code>dplyr</code>. Em seguida iremos informar os nomes das duas coluna a serem criadas: <code>key</code> e <code>value</code> (chave e valor). Além disso, podemos selecionar colunas que devam (ou não) ser transformadas para <em>long</em>. Por padrão todas as colunas são consideradas para a transformação. No nosso caso, a coluna <code>uf</code> não deve ser transformada, ou seja, ela deve continuar com <code>&quot;RJ&quot;</code> e <code>&quot;SP&quot;</code>, as duas UFs que estão na base de dados. Então vamos informar que essa coluna não deve ser transformada.</p>
 <pre class="r"><code>dados_wide %&gt;% 
   gather(key = Ano, value = valor, -uf)</code></pre>
 <pre><code># A tibble: 4 x 3
@@ -153,7 +153,7 @@ dados_separate</code></pre>
 3 RJ    valor_2018    11
 4 SP    valor_2018    10</code></pre>
 </div>
-<div id="veja-também" class="section level2">
+<div id="veja-tambem" class="section level2">
 <h2>Veja também</h2>
 <ul>
 <li><a href="https://blog.rstudio.com/2014/07/22/introducing-tidyr/">Introdução ao tidyr do RStudio</a></li>
