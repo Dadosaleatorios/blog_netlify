@@ -1,0 +1,162 @@
+---
+title: Introdução ao tidyr
+author: dadosaleatorios
+date: '2018-10-18'
+slug: introducao-ao-tidyr
+categories:
+  - data science
+  - linguagem R
+image: 'images/blog/post-tidyr.png'
+---
+
+
+
+<center>
+<img src="/img/2018-10-18-introducao-ao-tidyr/tidyr.png" style="width:25.0%" />
+</center>
+<p>O pacote <a href="https://tidyr.tidyverse.org/"><code>tidyr</code></a> tem como principal objetivo transformar um data frame para o formato <em>tidy</em>, ou limpo. Segundo a filosofia do <code>tidyverse</code>, um dado limpo é o que apresenta as seguintes propriedades:</p>
+<ul>
+<li>Cada variável é uma coluna.</li>
+<li>Cada linha é uma observação.</li>
+<li>Cada valor é uma célula.</li>
+</ul>
+<div class="figure">
+<img src="/img/2018-10-18-introducao-ao-tidyr/tidy_data.png" alt="Ilustração de dados no formato tidy" style="width:100.0%" />
+<p class="caption">Ilustração de dados no formato <em>tidy</em></p>
+</div>
+<p>A seguir vamos apresentar dois tibbles. Dê uma olhada e pense qual dos dois está no formato <code>tidy</code>, de acordo com a filosofia <code>tidyverse</code>:</p>
+<pre><code># A tibble: 2 x 3
+  uf    `2017` `2018`
+  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 RJ        10     11
+2 SP        11     10</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf    Ano   valor
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+1 RJ    2017     10
+2 SP    2017     11
+3 RJ    2018     11
+4 SP    2018     10</code></pre>
+<p>De acordo com a filosofia do pacote, um dado limpo é aquele com formato <em>long</em>, ou seja, com mais linhas. O outro formato é chamado de <em>wide</em>, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.</p>
+<p>Todo o pacote <code>dplyr</code> (caso não conheça, veja <a href="http://shiny.dtmsp.com.br:3838/Tutoriais/Intro_dplyr.html">este tutorial</a>) se baseia na suposição de que o <code>tibble</code> utilizado está no formato <em>tidy</em>.</p>
+<p>O <code>tidyr</code> possui duas funções principais:</p>
+<ul>
+<li><p><code>gather</code>: Transforma um <code>tibble</code> <em>wide</em> em <em>long</em>, ou seja, transforma os dados no formato <em>tidy</em>.</p></li>
+<li><p><code>spread</code>: Transforma um <code>tibble</code> <em>long</em> em <em>wide</em>, ou seja, transforma dados que estão no formato <em>tidy</em> em formato não <em>tidy</em>.</p></li>
+</ul>
+<p>Além disso, existem duas funções que podem ser importantes na nossa análise: <code>separate</code> e <code>unite</code>, que separa uma coluna em duas e vice versa.</p>
+<div id="instalacao" class="section level2">
+<h2>Instalação</h2>
+<p>Podemos instalar o <code>tidyr</code> isoladamente ou instalar todo o <code>tidyverse</code>.</p>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;) # Ou install.packages(&quot;tidyr&quot;)
+
+require(tidyverse) # ou require(tidyr)</code></pre>
+<p>Para este tutorial utilizaremos o <code>pipe</code> e outras funções que são carregadas ao ativar o <code>dplyr</code>. Então, caso tenhamos carregado apenas o <code>tidyr</code>, será necessário também ativar o <code>dplyr</code>.</p>
+</div>
+<div id="gather" class="section level2">
+<h2><code>gather</code></h2>
+<p>Vamos criar um <code>tibble</code> no formato <em>wide</em> e transformá-lo em um dado <em>tidy</em>:</p>
+<pre class="r"><code>dados_wide &lt;- tibble(uf = c(&quot;RJ&quot;, &quot;SP&quot;), `2017` = c(10, 11), `2018` = c(11, 10))
+dados_wide</code></pre>
+<pre><code># A tibble: 2 x 3
+  uf    `2017` `2018`
+  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 RJ        10     11
+2 SP        11     10</code></pre>
+<p>Por padrão, a função <code>gather</code> irá retornar um <code>tibble</code> com duas colunas, isso se não inserirmos nenhum parâmetro além do <code>tibble</code>. O primeiro parâmetro será o <code>tibble</code>, assim como nas funções do <code>dplyr</code>. Em seguida iremos informar os nomes das duas coluna a serem criadas: <code>key</code> e <code>value</code> (chave e valor). Além disso, podemos selecionar colunas que devam (ou não) ser transformadas para <em>long</em>. Por padrão todas as colunas são consideradas para a transformação. No nosso caso, a coluna <code>uf</code> não deve ser transformada, ou seja, ela deve continuar com <code>&quot;RJ&quot;</code> e <code>&quot;SP&quot;</code>, as duas UFs que estão na base de dados. Então vamos informar que essa coluna não deve ser transformada.</p>
+<pre class="r"><code>dados_wide %&gt;% 
+  gather(key = Ano, value = valor, -uf)</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf    Ano   valor
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+1 RJ    2017     10
+2 SP    2017     11
+3 RJ    2018     11
+4 SP    2018     10</code></pre>
+<p>Também podemos usar as <em>help functions</em> na hora de selecionar as colunas. Caso não conheça essas funções, veja <a href="http://shiny.dtmsp.com.br:3838/Tutoriais/Help_functions.html">este outro tutorial</a>. Então o seguinte código retorna o mesmo resultado mostrado acima:</p>
+<pre class="r"><code>dados_wide %&gt;% 
+  gather(key = Ano, value = valor, -contains(&quot;uf&quot;))</code></pre>
+</div>
+<div id="spread" class="section level2">
+<h2><code>spread</code></h2>
+<p>Agora vamos criar um <code>tibble</code> com o formato <em>long</em> para transformá-lo em <em>wide</em>.</p>
+<pre class="r"><code>dados_long &lt;- tibble(uf = rep(c(&quot;RJ&quot;, &quot;SP&quot;), 2), Ano = rep(2017:2018, each = 2), valor = c(10, 11, 11, 10))
+
+dados_long</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf      Ano valor
+  &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;
+1 RJ     2017    10
+2 SP     2017    11
+3 RJ     2018    11
+4 SP     2018    10</code></pre>
+<p>Basicamente teremos de informar qual coluna tem os valores que se tornarão colunas e qual a coluna tem os valores que preencherão as novas colunas:</p>
+<pre class="r"><code>dados_long %&gt;% 
+  spread(key = Ano, value = valor)</code></pre>
+<pre><code># A tibble: 2 x 3
+  uf    `2017` `2018`
+  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 RJ        10     11
+2 SP        11     10</code></pre>
+<p>Perceba que se dermos um <code>gather</code> nesse <code>tibble</code> resultante, voltaremos a obter <code>dados_long</code>.</p>
+</div>
+<div id="unite-e-separate" class="section level2">
+<h2><code>unite</code> e <code>separate</code></h2>
+<p>Suponha que aquele primeiro <code>tibble</code>, no começo deste tutorial, ao invés de ter <code>2017</code> e <code>2018</code> como nomes de colunas, tivesse os nomes <code>valor_2017</code> e <code>valor_2018</code>.</p>
+<pre class="r"><code>dados_wide</code></pre>
+<pre><code># A tibble: 2 x 3
+  uf    valor_2017 valor_2018
+  &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+1 RJ            10         11
+2 SP            11         10</code></pre>
+<p>Dessa maneira, ao fazermos o <code>gather</code>, nossa coluna <code>ano</code> ficará da seguinte maneira:</p>
+<pre class="r"><code>dados_wide %&gt;% 
+  gather(Ano, valor, -uf)</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf    Ano        valor
+  &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+1 RJ    valor_2017    10
+2 SP    valor_2017    11
+3 RJ    valor_2018    11
+4 SP    valor_2018    10</code></pre>
+<p>Temos, então, que remover esse prefixo “valor_”, para que o <code>tibble</code> tenha apenas o ano, de fato. Existem várias maneiras de fazer isso, mas usaremos aqui a função <code>separate</code>, além do <code>select</code> para terminar de resolver nosso problema. Passaremos como argumentos para a função <code>separate</code> o <code>tibble</code> gerado acima (<code>data</code>), o nome da coluna que queremos separar (<code>col</code>), as colunas que serão criadas com a separação de <code>col</code> (<code>into</code>) e o padrão que deve separar o conteúdo de <code>col</code> (<code>sep</code>). O argumento <code>sep</code> é interpretado como uma expressão regular (<em>regex</em>). No nosso caso, o separador é um <em>underline</em>.</p>
+<pre class="r"><code>dados_separate &lt;- dados_wide %&gt;% 
+  gather(Ano, valor, -uf) %&gt;% 
+  separate(col = Ano, into = c(&quot;val&quot;, &quot;Ano2&quot;))
+
+dados_separate</code></pre>
+<pre><code># A tibble: 4 x 4
+  uf    val   Ano2  valor
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+1 RJ    valor 2017     10
+2 SP    valor 2017     11
+3 RJ    valor 2018     11
+4 SP    valor 2018     10</code></pre>
+<p>Nessa situação a coluna <code>val</code> não tem valor pra gente, então vamos descartá-la com o select. Também vamos chamar <code>Ano2</code> de <code>Ano</code>, apenas:</p>
+<pre class="r"><code>dados_separate %&gt;% 
+  select(uf, Ano = Ano2, valor)</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf    Ano   valor
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+1 RJ    2017     10
+2 SP    2017     11
+3 RJ    2018     11
+4 SP    2018     10</code></pre>
+<p>Suponha agora que tenhamos duas colunas que desejamos juntar em apenas uma. Para isso utilizamos a função <code>unite</code>. Vamos juntar novamente o prefixo “valor_” com o ano. O primeiro argumento da função é o <code>tibble</code>. Em seguida passamos o nome da nova coluna (<code>col</code>), que será a junção de outras colunas. Além disso precisamos informar os nomes das colunas que serão unidas (<code>...</code>) e o caractere que será utilizado para separar as informações das colunas (<code>sep</code>). Vamos, então, unir as colunas <code>val</code> e <code>Ano2</code> na coluna <code>Ano</code>.</p>
+<pre class="r"><code>dados_separate %&gt;% 
+  unite(col = Ano, val, Ano2, sep = &quot;_&quot;)</code></pre>
+<pre><code># A tibble: 4 x 3
+  uf    Ano        valor
+  &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+1 RJ    valor_2017    10
+2 SP    valor_2017    11
+3 RJ    valor_2018    11
+4 SP    valor_2018    10</code></pre>
+</div>
+<div id="veja-tambem" class="section level2">
+<h2>Veja também</h2>
+<ul>
+<li><a href="https://blog.rstudio.com/2014/07/22/introducing-tidyr/">Introdução ao tidyr do RStudio</a></li>
+<li><a href="https://tidyr.tidyverse.org/">Site do tidyr</a></li>
+</ul>
+</div>
