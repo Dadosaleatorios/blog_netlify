@@ -2,9 +2,9 @@ enable : true
 heading : Nosso
 headingSpan : Time
 teamMember :
-  - image : /images/team/client-1.jpg
+  - image : /images/team/team-1.jpg
     name : Bruno Lucian
-    designation : CEO/Founder
+    designation : Cientista de dados na Loggi
     description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus ullam, culpa odio.
     socialIcon :
       - icon : tf-ion-social-facebook
@@ -17,8 +17,8 @@ teamMember :
         url : "#"
       
   - image : /images/team/team-2.jpg
-    name : Frank Miller
-    designation : Manager
+    name : Leonardo Filgueira
+    designation : Cientista de dados no Ibope DTM
     description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus ullam, culpa odio.
     socialIcon :
       - icon : tf-ion-social-facebook
@@ -32,7 +32,7 @@ teamMember :
       
   - image : /images/team/team-3.jpg
     name : Leandro Oliveira
-    designation : Web Developer
+    designation : Especialista em Tecnologia no Grupo Globo
     description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus ullam, culpa odio.
     socialIcon :
       - icon : tf-ion-social-facebook
@@ -45,8 +45,8 @@ teamMember :
         url : "#"
       
   - image : /images/team/team-4.jpg
-    name : Mo. Kha. Alamgir
-    designation : SEO Specialist
+    name : Larissa Lima
+    designation : Mestre em Estatística pela UFPE
     description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus ullam, culpa odio.
     socialIcon :
       - icon : tf-ion-social-facebook
