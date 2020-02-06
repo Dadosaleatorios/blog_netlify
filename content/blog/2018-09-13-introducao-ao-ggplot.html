@@ -28,8 +28,8 @@ image: 'images/blog/post-ggplot.png'
 <li>Demais ajustes.</li>
 </ul>
 <p>Veja abaixo modelo de gráfico, utilizando a função do pacote <code>graphics</code> (pacote do R básico) e utilizando o pacote <code>ggplot2</code>:</p>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="432" /><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-2.png" width="432" /></p>
-<div id="intalacao-do-pacote" class="section level2">
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="432" /><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-2.png" width="432" /></p>
+<div id="intalação-do-pacote" class="section level2">
 <h2>Intalação do pacote</h2>
 <p>Para a utilização do pacote, devemos fazer a intalação e requisição do mesmo:</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)
@@ -52,7 +52,7 @@ require(ggplot2)</code></pre>
 </center>
 <p>Fotos de outros carros podem ser encontradas <a href="https://twitter.com/i/moments/1001619000827228160">aqui</a>.</p>
 </div>
-<div id="atributos-esteticos" class="section level2">
+<div id="atributos-estéticos" class="section level2">
 <h2>Atributos estéticos</h2>
 <p>Os atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos <code>geoms</code>. Os mapeamentos estéticos podem ser definidos em <code>ggplot2</code> e em camadas individuais.</p>
 <p>Argumentos utilizados no <code>aes( )</code>:</p>
@@ -67,7 +67,7 @@ require(ggplot2)</code></pre>
 <li><code>shape</code>: altera o estilo das formas</li>
 </ul>
 </div>
-<div id="objetos-geometricos" class="section level2">
+<div id="objetos-geométricos" class="section level2">
 <h2>Objetos geométricos</h2>
 <p>Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos <em>geoms</em> disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:</p>
 <pre><code>## # A tibble: 4 x 3
@@ -77,37 +77,37 @@ require(ggplot2)</code></pre>
 ## 2 barchart (barras)       geom_bar()     FALSE           
 ## 3 boxplot                 geom_boxplot() FALSE           
 ## 4 smooth (suavizada)      geom_smooth()  FALSE</code></pre>
-<div id="graficos-de-dispersao" class="section level3">
+<div id="gráficos-de-dispersão" class="section level3">
 <h3>Gráficos de Dispersão</h3>
 <pre class="r"><code>p &lt;- ggplot(mtcars, aes(wt, mpg))
 
 p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>p + geom_point(aes(shape = factor(cyl))) + ggtitle(&quot;Utilizando Shape&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 <pre class="r"><code>p + geom_point(aes(size = qsec)) + ggtitle(&quot;Utilizando Size&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
 <pre class="r"><code>p + geom_point(aes(colour = factor(cyl), size = qsec, shape = factor(cyl))) + ggtitle(&quot;Utilizando todos&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
 </div>
-<div id="graficos-de-barras" class="section level3">
+<div id="gráficos-de-barras" class="section level3">
 <h3>Gráficos de Barras</h3>
 <p>Posição - Stack, Fill e Dodge</p>
 <p><strong>Stack</strong>: coloca as barras em cima umas das outras. Contagens são usadas. Esta é a posição padrão.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
   geom_bar(position = &quot;stack&quot;)+
   ggtitle(&quot;Posição Stack&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p><strong>Fill</strong>: coloca as barras umas sobre as outras, mas desta vez usa proporções.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
   geom_bar(position = &quot;fill&quot;)+
   ggtitle(&quot;Posição Fill&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><strong>Dodge</strong>: coloca as barras uma ao lado da outra. Contagens são usadas.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
   geom_bar(position = &quot;dodge&quot;) +
   ggtitle(&quot;Posição Dodge&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="boxplot" class="section level3">
 <h3>Boxplot</h3>
@@ -115,7 +115,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 <pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot() +
   labs(x = &quot;Cyl&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="smooth-curva-suavizada" class="section level3">
 <h3>smooth (Curva suavizada)</h3>
@@ -123,7 +123,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 <pre class="r"><code>ggplot(mtcars, aes(y = mpg, x = disp)) + 
   geom_point() +
   geom_smooth()</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Outros <em>geoms</em> utilizados:</p>
 <ul>
 <li><p><code>geom_abline()</code>, <code>geom_hline()</code>, <code>geom_vline()</code> - Adiciona linhas de referência: horizontal, vertical e diagonal.</p></li>
@@ -133,7 +133,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 </ul>
 </div>
 </div>
-<div id="transformacoes-estatisticas" class="section level2">
+<div id="transformações-estatísticas" class="section level2">
 <h2>Transformações estatísticas</h2>
 <p>Um punhado de camadas é mais facilmente especificado com uma função <code>stat_</code>, chamando a atenção para a transformação estatística em vez da aparência visual. Dentre suas funcionalidades, estão a de computar a distribuição cumulativa empírica, sumarizar os valores da variável, remover duplicadas, entre outros.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
@@ -143,7 +143,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
                width = .2, # define largura
                col = &quot;red&quot;) + # Define cor
   scale_y_log10()</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Cada <strong>stat</strong> cria, se necessário, uma variável adicional que é mapeada para a estética (<code>aes()</code>). A sintaxe utilizada para a criação dessa nova variável é <strong>..nome..</strong></p>
 <p>Há várias outras funções para transformações estatísticas que podem ser utilizadas.</p>
 </div>
@@ -169,7 +169,7 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
   geom_point() + 
   geom_smooth() +
   coord_cartesian(xlim = c(3, 6)) </code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="coord_fixed" class="section level3">
 <h3><code>coord_fixed()</code></h3>
@@ -178,12 +178,12 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
   geom_point() + 
   coord_fixed(ratio = 1) +
   ggtitle(&quot;Definindo escala igual a 1&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(mtcars, aes(mpg, wt)) + 
   geom_point() + 
   coord_fixed(ratio = 5) +
   ggtitle(&quot;Definindo escala igual a 5&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="coord_polar" class="section level3">
 <h3><code>coord_polar()</code></h3>
@@ -193,18 +193,18 @@ p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)<
 
 thin.bar +
   coord_polar(theta = &quot;y&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 <div id="coord_flip" class="section level3">
 <h3><code>coord_flip()</code></h3>
 <p>Inverte coordenadas cartesianas para que a horizontal se torne vertical e vertical, horizontal.</p>
-<div id="mudando-a-coordenada-do-grafico-de-boxplot-gerado-anteriormente" class="section level4">
+<div id="mudando-a-coordenada-do-gráfico-de-boxplot-gerado-anteriormente" class="section level4">
 <h4>Mudando a coordenada do gráfico de boxplot, gerado anteriormente</h4>
 <pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot() +
   coord_flip() +
   labs(x = &quot;Cyl&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 </div>
 <div id="coord_map" class="section level3">
@@ -214,12 +214,12 @@ thin.bar +
 ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
   geom_polygon(col = &quot;white&quot;) +
   theme_nothing()</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
   geom_polygon(col = &quot;white&quot;) +
   coord_map() +
   theme_nothing()</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
 </div>
 </div>
 <div id="facets" class="section level2">
@@ -235,13 +235,13 @@ ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
 
 p + facet_grid(am ~ .) +
   ggtitle(&quot;Separa linha de acordo com o tipo de transmissão, am&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <pre class="r"><code>p + facet_grid(. ~ cyl)+
   ggtitle(&quot;Separa coluna de acordo com o cilindro&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
 <pre class="r"><code>p + facet_grid(am ~ cyl) +
   ggtitle(&quot;Separa linha e coluna, de acordo com am e cilindro&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
 </div>
 <div id="temas" class="section level2">
 <h2>Temas</h2>
@@ -260,16 +260,16 @@ p + facet_grid(am ~ .) +
 <pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
   geom_point() 
 p1 + theme(panel.background = element_rect(fill = &quot;white&quot;, colour = &quot;grey50&quot;))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(panel.border = element_rect(linetype = &quot;dashed&quot;, fill = NA))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(panel.grid.major = element_line(colour = &quot;black&quot;))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-3.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-3.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(
   panel.grid.major.y = element_blank(),
   panel.grid.minor.y = element_blank()
 )</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-4.png" width="672" /></p></li>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-4.png" width="672" /></p></li>
 <li><p>Podemos acrescentar grid</p>
 <pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
   geom_point() 
@@ -279,18 +279,18 @@ p1 + theme(panel.background = element_rect(fill = &quot;white&quot;, colour = &q
   panel.grid.major = element_line(colour = &quot;grey50&quot;),
   panel.ontop = TRUE
 )</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p></li>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p></li>
 <li><p>Podemos modificar os eixos</p>
 <pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
   geom_point() 
 p1 + theme(axis.line = element_line(size = 3, colour = &quot;grey80&quot;))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(axis.text = element_text(colour = &quot;blue&quot;))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(axis.ticks = element_line(size = 2))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
 <pre class="r"><code>p1 + theme(axis.ticks.length = unit(.25, &quot;cm&quot;))</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p></li>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p></li>
 <li><p>Podemos também modificar a legenda, quanto a sua posição</p>
 <pre class="r"><code>p2 &lt;- ggplot(mtcars, aes(wt, mpg)) +
   geom_point(aes(colour = factor(cyl), shape = factor(vs))) +
@@ -301,15 +301,15 @@ p1 + theme(axis.line = element_line(size = 3, colour = &quot;grey80&quot;))</cod
     shape = &quot;Transmission&quot;
   )
 p2 + theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre class="r"><code>p2 + theme(legend.justification = &quot;top&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
 <pre class="r"><code>p2 + theme(legend.position = &quot;bottom&quot;)</code></pre>
-<p><img src="/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-3.png" width="672" /></p></li>
+<p><img src="/blog/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-3.png" width="672" /></p></li>
 </ul>
 </div>
 </div>
-<div id="referencias" class="section level2">
+<div id="referências" class="section level2">
 <h2>Referências</h2>
 <ul>
 <li><p><a href="https://www.datacamp.com/" class="uri">https://www.datacamp.com/</a></p></li>

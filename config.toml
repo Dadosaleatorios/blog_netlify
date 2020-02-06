@@ -4,11 +4,15 @@ DefaultContentLanguage = "pt"
 title = "Dados Aleatórios"
 theme = "meghna-hugo"
 summaryLength = 10
+contentDir = "content/blog/"
 
 [taxonomies]
   author = "author"
   category = "categories"
   tag = "tags"
+
+[permalinks]
+  posts = "/:year/:month/:title/"
 
 # Menu
 [menu]

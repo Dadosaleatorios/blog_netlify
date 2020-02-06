@@ -6,7 +6,7 @@ slug = ""
 tags = ["datascience", "SQL"]
 title = "SQL - Primeiros Passos"
 undefined = "SQL - Parte I"
-image = 'images/blog/post-sql.png'
+image = 'images/blog/calltoaction_conceito.png'
 
 +++
 E aí galera, tudo bem? Eu sou [Larissa](https://www.linkedin.com/in/larissadossantoslima/ "linkedin") e é a minha primeira vez escrevendo para o blog. Hoje venho aqui compartilhar com vocês um pouco do meu aprendizado no curso básico de SQL.

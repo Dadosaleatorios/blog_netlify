@@ -14,13 +14,13 @@ image: 'images/blog/post-dplyr.png'
 
 
 
-<div id="o-que-e-o-dplyr-e-por-que-usa-lo" class="section level2">
+<div id="o-que-é-o-dplyr-e-por-que-usá-lo" class="section level2">
 <h2>O que é o dplyr e por que usá-lo?</h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> é um pacote do R para manipulação de dados, sendo um dos pacotes que forma o núcleo do <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>. Se você nunca ouviu falar no <code>tidyverse</code>, ele é basicamente um pacote de pacotes que tem uma filosofia em comum, sendo cada pacote especializado em um tipo de tarefa, com a intenção de integrar todos eles facilmente no nosso fluxo de análise. O <code>dplyr</code> tem como base poucos verbos que resolvem boa parte dos problemas envolvendo manipulação de dados.</p>
 <p>Um outro ponto é que o <code>dplyr</code> permite que façamos um código facilmente legível e compreensível, justamente pelo fato de usar verbos e também de permitir o encadeamento, que faz com que a sequência do código seja mais próxima da maneira com que pensamos. Além disso, o pacote é bem rápido, ainda que não seja tão rápido quanto o <code>data.table</code> (que não tem uma sintaxe tão amigável).</p>
 <p>As funções do <code>dplyr</code> podem ser utilizadas para manipular tabelas do SQL, sem importar a tabela para o R (utilizando lazy query), mas isso é assunto para um post futuro. Existe também uma comunidade grande de programadores do R que utilizam o pacote.</p>
 </div>
-<div id="instalacao" class="section level2">
+<div id="instalação" class="section level2">
 <h2>Instalação</h2>
 <p>Temos duas opções: Podemos instalar apenas o dplyr ou todo o tidyverse (recomendado):</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)
@@ -71,7 +71,7 @@ require(tidyerse)</code></pre>
 ## $ starships  &lt;list&gt; [&lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanced x1…</code></pre>
 <p>Apesar da concepção de <code>data.frame</code> do <code>tidyverse</code> ser o <code>tibble</code>, é perfeitamente possível utilizar suas funções com um <code>data.frame</code>. Porém para transformar um <code>data.frame</code> em um <code>tibble</code>, basta usar a função <code>as_tibble</code> (ou <code>as_data_frame</code>).</p>
 </div>
-<div id="funcoes-basicas-verbos" class="section level2">
+<div id="funções-básicas-verbos" class="section level2">
 <h2>Funções básicas (verbos)</h2>
 <p>O <code>dplyr</code> oferece 5 verbos (funções) básicos, que resolvem alguns problemas comuns:</p>
 <ul>
@@ -183,8 +183,6 @@ select(starwars, 1:3)</code></pre>
   mutate(altura_metros = height/100,
          IMC = mass/(altura_metros^2)) %&gt;% 
   select(name, IMC) </code></pre>
-<pre><code>## Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-## This warning is displayed once per session.</code></pre>
 <pre><code>## # A tibble: 87 x 2
 ##    name                 IMC
 ##    &lt;chr&gt;              &lt;dbl&gt;

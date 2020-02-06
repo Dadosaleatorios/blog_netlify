@@ -12,7 +12,7 @@ image: 'images/blog/post-git.png'
 
 
 
-<div id="o-que-e-o-git" class="section level2">
+<div id="o-que-é-o-git" class="section level2">
 <h2>O que é o GIT?</h2>
 <p>No cotidiano de nossas tarefas acabamos por criar varias “versões finais” dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.</p>
 <center>
@@ -33,9 +33,10 @@ image: 'images/blog/post-git.png'
 <img src="/img/2018-10-03-introducao-ao-git/git_download.png" width="800" />
 </center>
 </div>
-<div id="o-que-e-o-github" class="section level2">
+<div id="o-que-é-o-github" class="section level2">
 <h2>O que é o <a href="https://github.com/">GitHub</a>?</h2>
-<p>Serviço de Web Hosting compartilhado para projetos que usam o controle de versionamento Git. Além do <a href="https://github.com/">GitHub</a> podemos citar também o <a href="https://about.gitlab.com/">GitLab</a> e o <a href="https://bitbucket.org/">Bitbucket</a>. Nesse tutorial vamos focar no GitHub</p>
+<p>Serviço de Web Hosting compartilhado para projetos que usam o controle de versionamento Git.
+Além do <a href="https://github.com/">GitHub</a> podemos citar também o <a href="https://about.gitlab.com/">GitLab</a> e o <a href="https://bitbucket.org/">Bitbucket</a>. Nesse tutorial vamos focar no GitHub</p>
 <p>Com ele podemos criar e manter repositórios, com vários tipos de arquivos possíveis. Um dos objetivos é incentivar a colaboração na construção de código.</p>
 <p>A idéia é que o repositório remoto fique sempre com a versão mais atualizada que se queira compartilhar. Podemos ver como funciona na imagem a seguir:</p>
 <center>
@@ -60,7 +61,8 @@ image: 'images/blog/post-git.png'
 <div id="configurando-o-git" class="section level2">
 <h2>Configurando o GIT</h2>
 <p><strong>Definindo a identidade:</strong></p>
-<p>Obviamente, é necessário criar uma conta no GitHub (é gratuito). No terminal, digitamos as informações de usuário do GitHub:</p>
+<p>Obviamente, é necessário criar uma conta no GitHub (é gratuito).
+No terminal, digitamos as informações de usuário do GitHub:</p>
 <pre class="bash"><code>git config --global user.name &quot;nome_de_usuario&quot;
 git config --global user.email user@exemplo.com</code></pre>
 <p>A flag <code>--global</code> pode ser usada ao fazer a configuração no seu computador pessoal. Caso contrário recomendamos omitir essa flag.</p>
@@ -70,7 +72,7 @@ git config --global user.email user@exemplo.com</code></pre>
 <p>No RStudio, vamos em tools &gt; Global Options &gt; Git/SVN, clicamos em <em>Create RSA Key</em>. Clique em <em>View public key</em> e copie a key.</p>
 <p>No GitHub, clique na sua foto &gt; Settings &gt; SSH and GPG Keys e cole a key copiada na caixa de texto. Coloque um título que lhe ajude a identificar de onde é a key, cole a key e confirme.</p>
 </div>
-<div id="clonando-repositorio" class="section level2">
+<div id="clonando-repositório" class="section level2">
 <h2>Clonando <a href="https://github.com/tidyverse/dplyr">repositório</a></h2>
 <p>Basta abrir a página do repositório no GitLab e copiar o endereço destacado:</p>
 <center>
@@ -78,7 +80,7 @@ git config --global user.email user@exemplo.com</code></pre>
 </center>
 <p>Com essa informação copiada, abrimos o RStudio, File &gt; New Project. Selecionamos <em>Version Control</em>, escolhemos <em>Git</em> e colamos a <em>url</em> do repositório.</p>
 </div>
-<div id="fazendo-e-obtendo-modificacoes" class="section level2">
+<div id="fazendo-e-obtendo-modificações" class="section level2">
 <h2>Fazendo e obtendo modificações</h2>
 <p>Tendo clonado o projeto com sucesso, irá aparecer esta nova aba no RStudio, chamada Git:</p>
 <center>
@@ -114,7 +116,7 @@ git config --global user.email user@exemplo.com</code></pre>
 </center>
 </div>
 </div>
-<div id="veja-tambem" class="section level2">
+<div id="veja-também" class="section level2">
 <h2>Veja também:</h2>
 <p><a href="http://rogerdudler.github.io/git-guide/index.pt_BR.html" class="uri">http://rogerdudler.github.io/git-guide/index.pt_BR.html</a></p>
 <p>Gostou do post? Diga o que achou nos comentários. Comente também suas dúvidas e sugestões.</p>

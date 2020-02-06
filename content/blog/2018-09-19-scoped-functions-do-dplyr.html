@@ -12,12 +12,6 @@ image: 'images/blog/post-dplyr.png'
 
 
 
-<pre><code>## Registered S3 method overwritten by &#39;dplyr&#39;:
-##   method               from  
-##   as.data.frame.tbl_df tibble</code></pre>
-<pre><code>## Warning: As of rlang 0.4.0, dplyr must be at least version 0.8.0.
-## x dplyr 0.7.7 is too old for rlang 0.4.3.
-## ℹ Please update dplyr with `install.packages(&quot;dplyr&quot;)` and restart R.</code></pre>
 <p>Este post faz parte da série de post que estamos criando sobre o <code>dplyr</code>. Caso ainda não conheça o pacote, veja o post de <a href="https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/">introdução ao dplyr</a>.</p>
 <p>O <code>dplyr</code> apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos <code>_if</code>, <code>_at</code> e <code>_all</code> são utilizados com as funções do <code>dplyr</code> de forma a realizar uma mesma operação a várias colunas, simultaneamente.</p>
 <ul>
@@ -75,6 +69,9 @@ as_tibble(x = iris)</code></pre>
 <pre class="r"><code>iris %&gt;% 
   group_by(Species) %&gt;% 
   mutate_all(.funs = function(x){ x / max(x) })</code></pre>
+<pre><code>`mutate_all()` ignored the following grouping variables:
+Column `Species`
+Use `mutate_at(df, vars(-group_cols()), myoperation)` to silence the message.</code></pre>
 <pre><code># A tibble: 150 x 5
 # Groups:   Species [3]
    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
