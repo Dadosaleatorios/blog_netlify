@@ -4,8 +4,8 @@ DefaultContentLanguage = "pt"
 title = "Dados Aleatórios"
 theme = "meghna-hugo"
 summaryLength = 10
-contentDir = "content/blog/"
-
+contentDir = "content/posts"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [taxonomies]
   author = "author"
   category = "categories"
