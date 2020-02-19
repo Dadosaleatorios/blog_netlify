@@ -11,6 +11,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   category = "categories"
   tag = "tags"
 
+
 [permalinks]
   posts = "/:year/:month/:title/"
 
