@@ -24,12 +24,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
     [[menu.nav]]
    name = "Nosso Time"
-    URL = "nosso-time"
+    URL = "our-team"
     weight = 3
 
     [[menu.nav]]
     name = "Contato"
-    URL = "contato"
+    URL = "contact-us"
     weight = 4
 
 # Site params
