@@ -95,7 +95,7 @@ seleciona(iris_tibble, quo(Species))</code></pre>
 seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## &lt;quosure&gt;
 ## expr: ^coluna
-## env:  0x74a94c0</code></pre>
+## env:  0x68334c0</code></pre>
 <pre><code>## Error: Must subset columns with a valid subscript vector.
 ## [31mx[39m The subscript has the wrong type `quosure/formula`.
 ## [34mℹ[39m It must be numeric or character.</code></pre>
@@ -143,11 +143,11 @@ seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ##      g1    g2     a     b
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-## 1     1     1     1     1
-## 2     1     2     4     3
-## 3     2     1     5     5
-## 4     2     2     2     2
-## 5     2     1     3     4</code></pre>
+## 1     1     1     3     1
+## 2     1     2     5     4
+## 3     2     1     2     3
+## 4     2     2     1     5
+## 5     2     1     4     2</code></pre>
 <p>Iremos construir uma função que recebe o <code>tibble</code>, a coluna a ser usada para agrupamento e a coluna para calcular a média:</p>
 <pre class="r"><code>my_summarise &lt;- function(df, var_grupo, var_summarise){
   
@@ -163,8 +163,8 @@ seleciona(iris_tibble, Species)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1 media
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1     1  2.5 
-## 2     2  3.33</code></pre>
+## 1     1  4   
+## 2     2  2.33</code></pre>
 <p>Assim como estávamos fazendo quando o <code>quosure</code> era passado para o <code>select</code>, vamos tentar passar os nomes de colunas com aspas:</p>
 <pre class="r"><code>my_summarise(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
 <pre><code>## Warning in mean.default(~&quot;a&quot;): argument is not numeric or logical: returning NA</code></pre>
@@ -231,8 +231,8 @@ my_summarise_string(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1 media
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1     1  2.5 
-## 2     2  3.33</code></pre>
+## 1     1  4   
+## 2     2  2.33</code></pre>
 <p>Da mesma maneira fazemos se os parâmetros forem usados em <code>arrange()</code>, <code>summarise()</code> e <code>mutate()</code>. O ponto é que desta maneira a função só irá conseguir fazer os cálculos se passarmos <code>var_grupo</code> e <code>var_summarise</code> com aspas. Se quisermos uma função que aceite os parâmetros com ou sem aspas, uma alternativa será utilizar <code>try()</code> e, com isso, utilizar <code>if()</code>. Veja na função a seguir:</p>
 <pre class="r"><code>summarise_by &lt;- function(df, var_grupo, var_soma){
   
@@ -264,15 +264,15 @@ summarise_by(df, g1, a)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1  soma
 ##   &lt;dbl&gt; &lt;int&gt;
-## 1     1     5
-## 2     2    10</code></pre>
+## 1     1     8
+## 2     2     7</code></pre>
 <pre class="r"><code># Ou
 summarise_by(df, &quot;g1&quot;, &quot;a&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##      g1  soma
 ##   &lt;dbl&gt; &lt;int&gt;
-## 1     1     5
-## 2     2    10</code></pre>
+## 1     1     8
+## 2     2     7</code></pre>
 </div>
 <div id="capturando-expressão-para-filtrar" class="section level3">
 <h3>Capturando expressão para filtrar</h3>
@@ -289,8 +289,8 @@ meu_filtro(df, g1 == 1)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##      g1    g2     a     b
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-## 1     1     1     1     1
-## 2     1     2     4     3</code></pre>
+## 1     1     1     3     1
+## 2     1     2     5     4</code></pre>
 </div>
 <div id="joins" class="section level3">
 <h3>Joins</h3>
@@ -300,17 +300,17 @@ base1</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##      id   val
 ##   &lt;int&gt; &lt;int&gt;
-## 1     4     4
-## 2     1     8
-## 3     5     6</code></pre>
+## 1     2     2
+## 2     4     7
+## 3     3     1</code></pre>
 <pre class="r"><code>base2 &lt;- tibble(id = sample(1:5, 3), val = sample(1:10, 3))
 base2</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##      id   val
 ##   &lt;int&gt; &lt;int&gt;
-## 1     2     3
-## 2     1     5
-## 3     4     2</code></pre>
+## 1     5     3
+## 2     4     1
+## 3     3    10</code></pre>
 <p>Suponha uma função que vai simplesmente fazer um <code>full_join</code> entre as bases. Para fazer isso, precisaremos das funções <code>set_names</code> e <code>quo_name</code>. (vamos ativar o pacote <code>rlang</code> para utilizar <code>set_names</code>):</p>
 <pre class="r"><code>require(rlang)
 
@@ -329,10 +329,10 @@ meu_full_join(base1, base2, id, id)</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ##      id val.x val.y
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1     4     4     2
-## 2     1     8     5
-## 3     5     6    NA
-## 4     2    NA     3</code></pre>
+## 1     2     2    NA
+## 2     4     7     1
+## 3     3     1    10
+## 4     5    NA     3</code></pre>
 <p>Note que a função <code>set_names</code> funciona da seguinte forma, ela cria um vetor nomeado utilizando o primeiro argumento como valor e o segundo argumento como nome deste nosso novo vetor.</p>
 <pre class="r"><code>set_names(1:4, letters[1:4])</code></pre>
 <pre><code>## a b c d 
