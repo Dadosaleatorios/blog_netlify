@@ -31,9 +31,15 @@
             {{"<!-- /single blog post -->" | safeHTML}}
             {{ end }}
 
-            <div class="all-post text-center col-lg-12">
+
+			<div class="all-post text-center col-lg-12">
+				<a class="btn btn-main"
+					href="{{ `posts` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
+			</div>
+
+<!--            <div class="all-post text-center col-lg-12">
                 <a class="btn btn-main" href="{{ if .Site.GetPage "/blog" }}/blog{{ else }}/posts{{end}}">{{ i18n "viewAllPost" }}</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
