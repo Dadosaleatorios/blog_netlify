@@ -1,0 +1,318 @@
+---
+title: Introdução ao ggplot
+author: dadosaleatorios
+date: '2018-09-26'
+categories:
+  - ggplot
+  - iniciantes
+  - linguagem R
+tags:
+  - ggplot
+slug: introducao-ao-ggplot
+image: 'images/blog/post-ggplot.png'
+---
+
+
+
+<p>Este material tem por objetivo passar uma ideia inicial das funcionalidades do pacote <code>ggplot2</code> na visualização de dados.</p>
+<p>O <code>ggplot2</code> é um pacote de visualização de dados do R criado por Hadley Wickham. É uma implementação das ideias do livro <em>Grammar of Graphics</em> de Leland Wilkinson - que define a visualização de dados como a criação de gráficos estatísticos a partir de componentes semânticos como escalas e camadas.</p>
+<p>O <code>ggplot2</code> pode servir como um substituto para o gráfico base do R e contém vários padrões para exibição na web e impressão de escalas comuns.</p>
+<p>Esses componentes semânticos (camadas) podem ser organizados conforme a descrição abaixo:</p>
+<ul>
+<li>Uma base de dados</li>
+<li>Atributos estéticos (aesthetics);</li>
+<li>Objetos geométricos;</li>
+<li>Transformações estatísticas;</li>
+<li>Escalas;</li>
+<li>Facetas; e,</li>
+<li>Demais ajustes.</li>
+</ul>
+<p>Veja abaixo modelo de gráfico, utilizando a função do pacote <code>graphics</code> (pacote do R básico) e utilizando o pacote <code>ggplot2</code>:</p>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="432" /><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-2-2.png" width="432" /></p>
+<div id="intalação-do-pacote" class="section level2">
+<h2>Intalação do pacote</h2>
+<p>Para a utilização do pacote, devemos fazer a intalação e requisição do mesmo:</p>
+<pre class="r"><code>install.packages(&quot;ggplot2&quot;)
+require(ggplot2)</code></pre>
+<p>Além disso, para alguns dos comandos aqui apresentados funcionarem, será necessário ter instalado os pacotes <code>Hmisc</code> e <code>maps</code>.</p>
+</div>
+<div id="base-de-dados" class="section level2">
+<h2>Base de dados</h2>
+<p>A base de dados utilizada para exemplificar as funções do pacote é a base <code>mtcars</code>, dataset já existente no R, que traz informações de desempenho de 32 carros, do ano de 1974. Veja as primeiras linhas dessa base:</p>
+<pre class="r"><code>head(mtcars)</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<center>
+<img src="/img/2018-09-26-introducao-ao-ggplot/mtcars.jpg" width="600" />
+</center>
+<p>Fotos de outros carros podem ser encontradas <a href="https://twitter.com/i/moments/1001619000827228160">aqui</a>.</p>
+</div>
+<div id="atributos-estéticos" class="section level2">
+<h2>Atributos estéticos</h2>
+<p>Os atributos estéticos descrevem como as variáveis serão mapeadas nos dados para propriedades visuais (estéticas) dos <code>geoms</code>. Os mapeamentos estéticos podem ser definidos em <code>ggplot2</code> e em camadas individuais.</p>
+<p>Argumentos utilizados no <code>aes( )</code>:</p>
+<ul>
+<li><code>x</code> e <code>y</code>: Observações que serão mapeadas<br />
+</li>
+<li><code>color</code>: Altera a cor das formas que não tem área (como retas e pontos)</li>
+<li><code>fill</code>: altera a cor dos preenchimentos das formas com área</li>
+<li><code>size</code>: altera o tamanho das formas</li>
+<li><code>alpha</code>: altera a trasparência das formas</li>
+<li><code>labels</code>: altera o nome das observações</li>
+<li><code>shape</code>: altera o estilo das formas</li>
+</ul>
+</div>
+<div id="objetos-geométricos" class="section level2">
+<h2>Objetos geométricos</h2>
+<p>Essa camada é utilizada para representar os pontos dos dados no gráfico. Existem muitos <em>geoms</em> disponíveis para representação dos dados. Aqui vamos explicitar os mais comumente utilizados:</p>
+<pre><code>## # A tibble: 4 x 3
+##   `Tipo de Gráfico`       Geom           stringsAsFactors
+##   &lt;chr&gt;                   &lt;chr&gt;          &lt;lgl&gt;           
+## 1 scatterplot (dispersão) geom_point()   FALSE           
+## 2 barchart (barras)       geom_bar()     FALSE           
+## 3 boxplot                 geom_boxplot() FALSE           
+## 4 smooth (suavizada)      geom_smooth()  FALSE</code></pre>
+<div id="gráficos-de-dispersão" class="section level3">
+<h3>Gráficos de Dispersão</h3>
+<pre class="r"><code>p &lt;- ggplot(mtcars, aes(wt, mpg))
+
+p + geom_point(aes(colour = factor(cyl))) + ggtitle(&quot;Utilizando Cor&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>p + geom_point(aes(shape = factor(cyl))) + ggtitle(&quot;Utilizando Shape&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre class="r"><code>p + geom_point(aes(size = qsec)) + ggtitle(&quot;Utilizando Size&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<pre class="r"><code>p + geom_point(aes(colour = factor(cyl), size = qsec, shape = factor(cyl))) + ggtitle(&quot;Utilizando todos&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+</div>
+<div id="gráficos-de-barras" class="section level3">
+<h3>Gráficos de Barras</h3>
+<p>Posição - Stack, Fill e Dodge</p>
+<p><strong>Stack</strong>: coloca as barras em cima umas das outras. Contagens são usadas. Esta é a posição padrão.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = &quot;stack&quot;)+
+  ggtitle(&quot;Posição Stack&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><strong>Fill</strong>: coloca as barras umas sobre as outras, mas desta vez usa proporções.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = &quot;fill&quot;)+
+  ggtitle(&quot;Posição Fill&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><strong>Dodge</strong>: coloca as barras uma ao lado da outra. Contagens são usadas.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
+  geom_bar(position = &quot;dodge&quot;) +
+  ggtitle(&quot;Posição Dodge&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="boxplot" class="section level3">
+<h3>Boxplot</h3>
+<p>Gráfico utilizado para visualizar compactamente a distribuição de uma variável contínua.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
+  geom_boxplot() +
+  labs(x = &quot;Cyl&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="smooth-curva-suavizada" class="section level3">
+<h3>smooth (Curva suavizada)</h3>
+<p>Gráfico utilizado para analisar padrões de comportamento de uma variável, através da curva suavizada.</p>
+<pre class="r"><code>ggplot(mtcars, aes(y = mpg, x = disp)) + 
+  geom_point() +
+  geom_smooth()</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Outros <em>geoms</em> utilizados:</p>
+<ul>
+<li><p><code>geom_abline()</code>, <code>geom_hline()</code>, <code>geom_vline()</code> - Adiciona linhas de referência: horizontal, vertical e diagonal.</p></li>
+<li><p><code>geom_label()</code>, <code>geom_text()</code> - Adiciona e ajusta textos na plotagem.</p></li>
+<li><p><code>geom_polygon()</code> - Plota polígonos, preenchendo o interior (cores).</p></li>
+<li><p>Entre outros</p></li>
+</ul>
+</div>
+</div>
+<div id="transformações-estatísticas" class="section level2">
+<h2>Transformações estatísticas</h2>
+<p>Um punhado de camadas é mais facilmente especificado com uma função <code>stat_</code>, chamando a atenção para a transformação estatística em vez da aparência visual. Dentre suas funcionalidades, estão a de computar a distribuição cumulativa empírica, sumarizar os valores da variável, remover duplicadas, entre outros.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_point() +
+  stat_summary(fun.data = &quot;mean_cl_normal&quot;, # função que retorna informações sumarizadas (resumo)
+               geom = &quot;crossbar&quot;, # Define o formato
+               width = .2, # define largura
+               col = &quot;red&quot;) + # Define cor
+  scale_y_log10()</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Cada <strong>stat</strong> cria, se necessário, uma variável adicional que é mapeada para a estética (<code>aes()</code>). A sintaxe utilizada para a criação dessa nova variável é <strong>..nome..</strong></p>
+<p>Há várias outras funções para transformações estatísticas que podem ser utilizadas.</p>
+</div>
+<div id="escalas" class="section level2">
+<h2>Escalas</h2>
+<p>Bastante utilizada para substituir as escalas padrão e ajustar detalhes, como os rótulos dos eixos ou as chaves de legenda, ou para usar uma tradução completamente diferente dos dados para a estética.</p>
+<p>Algumas funções que trabalham com a escala do gráfico:</p>
+<ul>
+<li><p><code>labs()</code>, <code>xlab()</code>, <code>ylab()</code>, <code>ggtitle()</code> - Modificar rótulos de eixo, legenda e Título</p></li>
+<li><p><code>lims()</code>, <code>xlim()</code>, <code>ylim()</code> - Definem os limites de escala do gráfico</p></li>
+<li><p><code>scale_x_continuous()</code>, <code>scale_y_continuous()</code> - Escalas de dados para dados contínuos</p></li>
+<li><p><code>scale_x_discrete()</code>, <code>scale_y_discrete()</code> - Escalas de posição para dados discretos</p></li>
+<li><p>Além de outros tipos de escala, como de cores, preenchimento, transparência.</p></li>
+</ul>
+</div>
+<div id="coordenadas" class="section level2">
+<h2>Coordenadas</h2>
+<p>Camada utilizada para modificar as estruturas dos eixos, seja delimitando-os ou o modificando sua visualização.</p>
+<div id="coord_cartesian" class="section level3">
+<h3><code>coord_cartesian()</code></h3>
+<p>Define limites no sistema de coordenadas, aumentando o tamanho do gráfico, sem alteração nos dados.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = hp, col = am)) + 
+  geom_point() + 
+  geom_smooth() +
+  coord_cartesian(xlim = c(3, 6)) </code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="coord_fixed" class="section level3">
+<h3><code>coord_fixed()</code></h3>
+<p>Sistema de coordenada de escala fixa. representa o número de unidades no eixo y equivalente a uma unidade no eixo x. Garante que os intervalos de eixos sejam iguais.</p>
+<pre class="r"><code>ggplot(mtcars, aes(mpg, wt)) + 
+  geom_point() + 
+  coord_fixed(ratio = 1) +
+  ggtitle(&quot;Definindo escala igual a 1&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(mpg, wt)) + 
+  geom_point() + 
+  coord_fixed(ratio = 5) +
+  ggtitle(&quot;Definindo escala igual a 5&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="coord_polar" class="section level3">
+<h3><code>coord_polar()</code></h3>
+<p>Converte um gráfico cartesiano planar x-y em coordenadas polares. Útil para produzir gráficos de setores.</p>
+<pre class="r"><code>thin.bar &lt;- ggplot(mtcars, aes(x=1, fill = factor(cyl))) +
+              geom_bar()
+
+thin.bar +
+  coord_polar(theta = &quot;y&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="coord_flip" class="section level3">
+<h3><code>coord_flip()</code></h3>
+<p>Inverte coordenadas cartesianas para que a horizontal se torne vertical e vertical, horizontal.</p>
+<div id="mudando-a-coordenada-do-gráfico-de-boxplot-gerado-anteriormente" class="section level4">
+<h4>Mudando a coordenada do gráfico de boxplot, gerado anteriormente</h4>
+<pre class="r"><code>ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
+  geom_boxplot() +
+  coord_flip() +
+  labs(x = &quot;Cyl&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+</div>
+<div id="coord_map" class="section level3">
+<h3><code>coord_map()</code></h3>
+<p>Utilizada para fazer projeções de mapas. Ajusta a imagem para projetar uma porção da terra, aproximadamente esférica.</p>
+<pre class="r"><code>state &lt;- map_data(&quot;state&quot;)
+ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
+  geom_polygon(col = &quot;white&quot;) +
+  theme_nothing()</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(state, aes(x = long, y = lat, fill = region, group = group)) +
+  geom_polygon(col = &quot;white&quot;) +
+  coord_map() +
+  theme_nothing()</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+</div>
+</div>
+<div id="facets" class="section level2">
+<h2>Facets</h2>
+<p>Função utilizada para visualizar subconjuntos de dados em gráficos separados.</p>
+<p>Tipos de facetas:</p>
+<ul>
+<li><p><strong>Facet grid</strong> - Forma uma matriz de painéis definidos por variáveis na forma de linhas e colunas. É mais útil quando você tem duas variáveis discretas e todas as combinações das variáveis existem nos dados.</p></li>
+<li><p><strong>Facet wrap</strong> - envolve uma sequência de painéis de 1d em 2d. Geralmente, esse é um uso melhor do espaço da tela do que <code>facet_grid</code>, porque a maioria dos plots é aproximadamente retangular.</p></li>
+</ul>
+<pre class="r"><code>p &lt;- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+
+p + facet_grid(am ~ .) +
+  ggtitle(&quot;Separa linha de acordo com o tipo de transmissão, am&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre class="r"><code>p + facet_grid(. ~ cyl)+
+  ggtitle(&quot;Separa coluna de acordo com o cilindro&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<pre class="r"><code>p + facet_grid(am ~ cyl) +
+  ggtitle(&quot;Separa linha e coluna, de acordo com am e cilindro&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
+</div>
+<div id="temas" class="section level2">
+<h2>Temas</h2>
+<p>Os temas controlam a exibição de todos os elementos que não são de dados da plotagem. Você pode substituir todas as configurações por um tema completo como <code>theme_bw()</code> ou optar por ajustar configurações individuais usando <code>theme()</code> e as funções <code>element_</code>. Use <code>theme_set()</code> para modificar o tema ativo, afetando todos os gráficos futuros.</p>
+<p>As funções mais utilizadas nas criações/modificações de temas são:</p>
+<ul>
+<li><code>element_line( )</code> - Modifica a aparência das linhas;</li>
+<li><code>element_text( )</code> - Modificar estrutura do texto;</li>
+<li><code>element_blank( )</code> - Não desenha nada e não atribui espaços</li>
+<li><code>theme( )</code> - Modifica o Layout da plotagem</li>
+</ul>
+<div id="exemplos" class="section level3">
+<h3>Exemplos</h3>
+<ul>
+<li><p>Dentro do Tema, podemos modificar os painéis do gráfico:</p>
+<pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+p1 + theme(panel.background = element_rect(fill = &quot;white&quot;, colour = &quot;grey50&quot;))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(panel.border = element_rect(linetype = &quot;dashed&quot;, fill = NA))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(panel.grid.major = element_line(colour = &quot;black&quot;))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-3.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(
+  panel.grid.major.y = element_blank(),
+  panel.grid.minor.y = element_blank()
+)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-20-4.png" width="672" /></p></li>
+<li><p>Podemos acrescentar grid</p>
+<pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+
+  p1 + theme(
+  panel.background = element_rect(fill = NA),
+  panel.grid.major = element_line(colour = &quot;grey50&quot;),
+  panel.ontop = TRUE
+)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p></li>
+<li><p>Podemos modificar os eixos</p>
+<pre class="r"><code>p1 &lt;- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() 
+p1 + theme(axis.line = element_line(size = 3, colour = &quot;grey80&quot;))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(axis.text = element_text(colour = &quot;blue&quot;))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(axis.ticks = element_line(size = 2))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
+<pre class="r"><code>p1 + theme(axis.ticks.length = unit(.25, &quot;cm&quot;))</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p></li>
+<li><p>Podemos também modificar a legenda, quanto a sua posição</p>
+<pre class="r"><code>p2 &lt;- ggplot(mtcars, aes(wt, mpg)) +
+  geom_point(aes(colour = factor(cyl), shape = factor(vs))) +
+  labs(
+    x = &quot;Weight (1000 lbs)&quot;,
+    y = &quot;Fuel economy (mpg)&quot;,
+    colour = &quot;Cylinders&quot;,
+    shape = &quot;Transmission&quot;
+  )
+p2 + theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<pre class="r"><code>p2 + theme(legend.justification = &quot;top&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
+<pre class="r"><code>p2 + theme(legend.position = &quot;bottom&quot;)</code></pre>
+<p><img src="/posts/2018-09-13-introducao-ao-ggplot_files/figure-html/unnamed-chunk-23-3.png" width="672" /></p></li>
+</ul>
+</div>
+</div>
+<div id="referências" class="section level2">
+<h2>Referências</h2>
+<ul>
+<li><p><a href="https://www.datacamp.com/" class="uri">https://www.datacamp.com/</a></p></li>
+<li><p><a href="http://ggplot2.tidyverse.org/index.html" class="uri">http://ggplot2.tidyverse.org/index.html</a></p></li>
+</ul>
+</div>

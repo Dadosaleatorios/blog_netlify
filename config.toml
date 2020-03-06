@@ -1,131 +1,123 @@
-baseurl = "/"
-disqus = "www-dadosaleatorios-com-br"
-# googleAnalytics = "UA-149258744-1"
-googleAnalytics = "UA-46346743-1"	
+baseURL = "/"
 languageCode = "en-us"
+DefaultContentLanguage = "pt"
 title = "Dados Aleatórios"
-theme = "restaurant-hugo"
-author = "Bruno Lucian"
-#copyright = "&copy; 2016. All rights reserved."
-#canonifyurls = true
-#paginate = 10
-math = true
-#relativeurls = true
-summaryLength = "7"
+theme = "meghna-hugo"
+summaryLength = 10
+contentDir = "content/posts"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+[taxonomies]
+  author = "author"
+  category = "categories"
+  tag = "tags"
 
 
+[permalinks]
+  posts = "/:year/:month/:title/"
 
 # Menu
 [menu]
-	
-	[[menu.nav]]
-    name = "Home"
-    URL = ""
-    weight = 1
-
-    [[menu.nav]]
-    name = "About Us"
-    URL = "about-us"
+		[[menu.nav]]
+    name = "Blog"
+    URL = "blog"
     weight = 2
 
     [[menu.nav]]
-    name = "Blog"
-    URL = "blog"
+   name = "Nosso Time"
+    URL = "our-team"
     weight = 3
 
     [[menu.nav]]
-    name = "Contact Us"
+    name = "Contato"
     URL = "contact-us"
-    weight = 6
+    weight = 4
 
-
-
-# Global Settings
+# Site params
 [params]
-logo = "images/logo.jpg"
+home= "Home"
+logo = "images/logo.png"
+gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"
+# Meta data
+description = "Seu blog técnico de ciências de dados!"
+author = "Themefisher"
+# Google Analitycs
+googleAnalitycsID = "Your ID"
+custom_css = ["css/custom.css"]
 
+    # Banner Section
+    [params.banner]
+    enable = true
+    bgImage = "images/slider/hero-area.jpg"
+    icon = ""
+    heading = ""
+    imgLogo= "images/slider/logo.png"
+    content= "Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística."
+    btn = true
+    btnText="Saiba Mais"
+    btnURL="#blog"
 
-[params.heroArea]
-enable = true
-[params.heroImg ] 
-url =  "images/header.jpg" 
+    # call to action
+    [params.cta]
+    enable = false
+    title = "Great Design & Incredible Features"
+    content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis tenetur odio impedit incidunt? Omnis accusantium ea reiciendis, fugit commodi nostrum."
+    btnURL = "#"
+    btnText = "Start a project with us"
 
+    # counter
+    [params.counter]
+    enable = true
+    bgImage = "images/backgrounds/bg-1.jpg"
+        [[params.counter.counterItem]]
+        title = "Happy Clients"
+        icon = "tf-ion-android-happy"
+        count = "320"
 
-#gallery item
+        [[params.counter.counterItem]]
+        title = "Projects completed"
+        icon = "tf-ion-archive"
+        count = "565"
 
-[params.gallery]
-enable = true
-title= "Integrantes do <span>Dados Aleatorios</span>"
+        [[params.counter.counterItem]]
+        title = "Positive feedback"
+        icon = "tf-ion-thumbsup"
+        count = "95"
 
-[[params.gallery.item]]
-img = "images/slider/bruno_perfil.jpeg"
+        [[params.counter.counterItem]]
+        title = "Cups of Coffee"
+        icon = "tf-ion-coffee"
+        count = "2500"
 
-[[params.gallery.item]]
-img = "images/slider/leonardo_perfil.jpeg"
+    # footer
+    [params.footer]
+        copyright = "Themefisher"
+        copyrightURL = "http://www.themefisher.com"
 
-[[params.gallery.item]]
-img = "images/slider/leandro_perfil.jpeg"
+        # social Icons
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-facebook"
+        url = "#"
 
-[[params.gallery.item]]
-img = "images/slider/larissa_perfil.jpeg"
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-twitter"
+        url = "#"
 
-[[params.gallery.item]]
-img = "images/slider/slider-img-5.jpg"
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-google-outline"
+        url = "#"
 
-[[params.gallery.item]]
-img = "images/slider/slider-img-6.jpg"
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-youtube"
+        url = "#"
 
-[[params.gallery.item]]
-img = "images/slider/slider-img-7.jpg"
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-linkedin"
+        url = "#"
 
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-dribbble-outline"
+        url = "#"
 
-[params.about]
-enable = true
-title= "Dados <span> Aleatórios</span> - Seu blog técnico de ciências de dados!"
-bgImage = "images/logo.jpg"
-description= "Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística."
-
-#Footer 
-
-[params.footer]
-enable = true
-contactInfoTitle = "Informação de <span>Contato</span> "
-blogTitle = "Últimos <span>blog Posts</span>"
-galleryTitle = "PHOTO <span>STREAM</span>"
-socialTitle = "Nos <span>Siga nas Redes :)</span>"
-
-[[params.footer.contactItem]]
-title="Telephone"
-icon = "fa fa-phone"
-content = "021 996917892"
-
-[[params.footer.contactItem]]
-title="Address"
-icon = "fa fa-map-marker"
-content = "Rio de Janeiro"
-
-[[params.footer.contactItem]]
-title="E mail"
-icon = "fa fa-envelope"
-content = "dadosaleatorios@gmail.com"
-
-[[params.footer.socialLink]]
-icon = "facebook"
-link = "https://fb.com/dadosaleatorios"
-
-
-[[params.footer.socialLink]]
-icon = "twitter"
-link = "@dadosaleatorios"
-
-#Footer Copyright
-#Footer Copyright Text
-[params.footerCopyright]
-enable = true
-Text = "Copyright 2019 - All Rights Reserved."
-
-#blog 
-[params.blog]
-enable = true
-title = "Últimas <span>Postagens</span> do <span>Blog</span>"
-
+        [[params.footer.socialIcon]]
+        icon = "tf-ion-social-pinterest-outline"
+        url = "#"
