@@ -12,7 +12,7 @@ teamMember :
       - icon : tf-ion-social-twitter
         url : "https://twitter.com/brunolucian"
       - icon : tf-ion-social-linkedin
-        url : https://www.linkedin.com/in/brunolucian/
+        url : "https://www.linkedin.com/in/brunolucian/"
       
   - image : /images/team/team-2.jpg
     name : Leonardo Filgueira
