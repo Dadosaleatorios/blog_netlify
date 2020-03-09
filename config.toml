@@ -41,7 +41,7 @@ gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSp
 description = "Seu blog técnico de ciências de dados!"
 author = "Themefisher"
 # Google Analitycs
-googleAnalitycsID = "Your ID"
+googleAnalitycsID = "UA-46346743-1"
 custom_css = ["css/custom.css"]
 
     # Banner Section
