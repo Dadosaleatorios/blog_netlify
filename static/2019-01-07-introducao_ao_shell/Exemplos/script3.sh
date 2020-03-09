@@ -1,1 +1,0 @@
-cut -d ';' -f $2 $1 | grep -v $3 | sort | uniq -c
