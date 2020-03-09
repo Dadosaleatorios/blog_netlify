@@ -42,7 +42,8 @@ p {
 }
 
 pre {
-  color: #afbac4;
+    color: white;
+    background-color: gray;
 }
 
 
