@@ -1,4 +1,4 @@
-baseURL = "www.dadosaleatorios.com.br/"
+baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "pt"
 title = "Dados Aleatórios"
@@ -7,8 +7,6 @@ summaryLength = 10
 contentDir = "content/posts"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 paginate = 12
-relativeURLs = true
-uglyURLs = true 
 [taxonomies]
   author = "author"
   category = "categories"
