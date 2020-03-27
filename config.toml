@@ -6,10 +6,14 @@ theme = "meghna-hugo"
 summaryLength = 10
 contentDir = "content/posts"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+paginate = 12
+relativeURLs = true
+uglyURLs = true 
 [taxonomies]
   author = "author"
   category = "categories"
   tag = "tags"
+  type = "content/posts"
 
 
 [permalinks]
