@@ -13,11 +13,8 @@
 			</div>
 			{{"<!-- /section title -->" | safeHTML}}
 
-<<<<<<< HEAD
 			{{ range first 9 (where .Site.RegularPages "Section" "==" "blog")}}
-=======
-			{{ range first 3 (where .Site.RegularPages "Section" "==" "blog")}}
->>>>>>> 56825ee9417bd00b7f76c834b944a760854f4ae1
+
 			{{ .Render "article"}}
 			{{ end }}
 
