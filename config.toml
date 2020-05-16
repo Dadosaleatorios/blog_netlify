@@ -4,14 +4,14 @@ DefaultContentLanguage = "pt"
 title = "Dados Aleatórios"
 theme = "meghna-hugo"
 summaryLength = 10
-contentDir = "content/posts"
+#contentDir = "content/posts"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 paginate = 12
 [taxonomies]
   author = "author"
   category = "categories"
   tag = "tags"
-  type = "content/posts"
+#  type = "content/posts"
 
 
 [permalinks]
