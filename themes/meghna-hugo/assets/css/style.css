@@ -67,8 +67,8 @@ hr {
 }
 
 figure {
-  float: right;
-  width: 30%;
+  float: center;
+  width: 100%;
   text-align: center;
   font-style: italic;
   font-size: smaller;
@@ -222,7 +222,15 @@ a:hover {
 
 
 figure {
-  margin: 0;
+  float: center;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 a {
@@ -757,190 +765,6 @@ a:hover {
 .about .block .icon-box h3 {
   color: #afbac4;
 }
-
-/*=================================================================
-  About us 2 section
-==================================================================*/
-.about-2 .content-block {
-  padding: 40px;
-}
-
-.about-2 .content-block .media {
-  margin-top: 25px;
-}
-
-.about-2 .content-block .media .pull-left {
-  padding-right: 15px;
-}
-
-.about-2 .content-block .media i {
-  font-size: 30px;
-  color: #57cbcc;
-}
-
-.about-2 .content-block .media h4 {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-/*=================================================================
- Call To Action 1
-==================================================================*/
-.call-to-action {
-  background-attachment: fixed;
-}
-
-.call-to-action h2 {
-  font-weight: 700;
-  color: #444;
-}
-
-.call-to-action p {
-  font-size: 16px;
-  color: #666;
-}
-
-.call-to-action .btn-main {
-  margin-top: 20px;
-}
-
-/*=================================================================
- Call To Action 2
-==================================================================*/
-.call-to-action-2 {
-  padding: 100px 0;
-  background-image: url("../images/call-to-action/call-to-action-bg.jpg");
-  background-size: cover;
-  color: #fff;
-}
-
-.call-to-action-2 h2 {
-  line-height: 1.5;
-}
-
-.call-to-action-2 p {
-  color: #fff;
-}
-
-.call-to-action-2 .btn-main {
-  margin-top: 20px;
-}
-
-.contact-us {
-  padding-top: 50px;
-}
-
-@media (max-width: 768px)
-{
-  .contact-us {
-    padding-top: 80px;
-  }
-}
-
-.contact-form {
-  margin-bottom: 60px;
-}
-
-.form-meghna .form-control {
-  background-color: transparent;
-  border-radius: 0;
-  padding: 5px 10px;
-  color: #ddd;
-  border: 1px solid rgba(236, 239, 241, 0.07);
-}
-
-.form-meghna .form-control:focus
-{
-  border-color: none;
-  box-shadow: none;
-}
-
-.form-meghna input:hover,
-.form-meghna textarea:hover,
-#contact-submit:hover {
-  border-color: #57cbcc;
-}
-
-.form-meghna ::placeholder
-{
-  color: #ddd !important;
-}
-
-#contact-submit {
-  border: 1px solid rgba(236, 239, 241, 0.07);
-  background: #57cbcc;
-  padding: 12px 0;
-  width: 100%;
-  margin: 0;
-}
-
-.google-map #map-canvas {
-  height: 400px;
-}
-
-.contact-info p {
-  margin-bottom: 25px;
-}
-
-.con-info {
-  margin-bottom: 20px;
-}
-
-.con-info i,
-.con-info span {
-  padding-right: 5px;
-}
-
-.error {
-  display: none;
-  padding: 10px;
-  color: #D8000C;
-  border-radius: 4px;
-  font-size: 13px;
-  background-color: #FFBABA;
-}
-
-.success {
-  background-color: #6cb670;
-  border-radius: 4px;
-  color: #fff;
-  display: none;
-  font-size: 13px;
-  padding: 10px;
-}
-
-#map {
-  height: 370px;
-  width: 100%;
-}
-
-/*=================================================================
-  Item counter section
-==================================================================*/
-.counters-item {
-  padding: 25px 0;
-  margin-bottom: 10px;
-  background: #292F36;
-}
-
-.counters-item i {
-  margin-bottom: 10px;
-  font-size: 40px;
-  display: inline-block;
-}
-
-.counters-item span {
-  display: block;
-  font-weight: bold;
-  font-size: 35px;
-  line-height: 50px;
-}
-
-.counters-item h3 {
-  font-size: 20px;
-  margin: 0;
-}
-
 
 
 /*=================================================================
@@ -1851,8 +1675,15 @@ blockquote {
 }
 
 figure img {
-  display: block;
-  margin: 0 auto 5px;
+  float: center;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 figcaption {
