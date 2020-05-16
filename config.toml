@@ -58,29 +58,7 @@ custom_css = ["css/custom.css"]
     btnText="Saiba Mais"
     btnURL="#blog"
 
-    # counter
-    [params.counter]
-    enable = true
-    bgImage = "images/backgrounds/bg-1.jpg"
-        [[params.counter.counterItem]]
-        title = "Happy Clients"
-        icon = "tf-ion-android-happy"
-        count = "320"
 
-        [[params.counter.counterItem]]
-        title = "Projects completed"
-        icon = "tf-ion-archive"
-        count = "565"
-
-        [[params.counter.counterItem]]
-        title = "Positive feedback"
-        icon = "tf-ion-thumbsup"
-        count = "95"
-
-        [[params.counter.counterItem]]
-        title = "Cups of Coffee"
-        icon = "tf-ion-coffee"
-        count = "2500"
 
     # footer
     [params.footer]
@@ -96,22 +74,9 @@ custom_css = ["css/custom.css"]
         icon = "tf-ion-social-twitter"
         url = "#"
 
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-google-outline"
-        url = "#"
 
         [[params.footer.socialIcon]]
         icon = "tf-ion-social-youtube"
         url = "#"
 
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-linkedin"
-        url = "#"
 
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-dribbble-outline"
-        url = "#"
-
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-pinterest-outline"
-        url = "#"
