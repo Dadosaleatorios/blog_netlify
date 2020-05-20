@@ -1,7 +1,7 @@
 +++
 author = "Larissa Lima"
 categories = []
-date = ""
+date = 2020-05-28T03:00:00Z
 draft = true
 post-image = ""
 slug = ""
@@ -152,4 +152,4 @@ Então, com o código abaixo o gráfico proposto no projeto será gerado:
       theme(axis.title.x = element_blank(), axis.title.y = element_blank()) #retirando o título de cada eixo
       
 
-Pronto, agora já temos nosso gráfico! 
+Pronto, agora já temos nosso gráfico!
