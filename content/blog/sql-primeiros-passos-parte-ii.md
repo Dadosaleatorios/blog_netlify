@@ -2,7 +2,6 @@
 author = "Larissa Lima"
 categories = []
 date = 2020-05-21T03:00:00Z
-draft = true
 image = "images/blog/calltoaction_conceito.png"
 slug = ""
 tags = []
@@ -15,12 +14,12 @@ Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos p
 
 Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
 
-* **=** : igual
-* **<>**: diferente
-* **<**: menor que
-* **>**: maior que
-* **<=**: menor igual
-* **>=**: maior igual
+* **=**  (igual)
+* **<>** (diferente)
+* **<** (menor que)
+* **>** (maior que)
+* **<=**  (menor igual)
+* **>=**  (maior igual)
 
 Para fazer tais filtros, podemos usar as cláusulas: _where, where and, where and or, between, where in, null e is null, like e not like_. Vamos falar separadamente de cada um.
 
