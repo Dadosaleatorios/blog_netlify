@@ -12,7 +12,7 @@ E aí galera!
 
 Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, clique [aqui](https://www.dadosaleatorios.com.br/post/sql_basico).
 
-Os operadores comparativos nos auxiliam na especificação do filtro. São eles:
+Os operadores comparativos nos auxiliam na  especificação do filtro. São eles:
 
 * **=**  (igual)
 * **<>** (diferente)
