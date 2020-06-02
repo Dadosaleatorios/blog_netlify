@@ -33,7 +33,7 @@ _Por exemplo:_
 
 Usaremos a tabela do post anterior que contém informações sobre filmes, como o nome do filme (title), ano de lançamento (release_year), país de origem (country), idioma (language), entre outras variáveis.
 
-![](/images/blog/Screenshot from 2019-10-02 09-30-39.png)
+![](/images/blog/tab1_blog.png)
 
 Desejamos obter dessa tabela as informações do filme “Metropolis”. Para isso, fazemos:
 
@@ -134,7 +134,7 @@ Este comando é usado para verificar um padrão especificado em uma coluna. Prec
 
 Para esse exemplo, usaremos a tabela pessoas (_people)_ que possui informações sobre nome (name), data de nascimento (birthdate) e data de morte (deathdate).
 
-![](/images/blog/Screenshot from 2019-10-02 10-34-26.png)
+![](/images/blog/tab2_blog.png)
 
 Então, desejamos encontrar as pessoas que o nome começa com a letra B. Neste caso, o padrão ao ser pesquisado é **'B%'**. Para isso, faremos:
 
