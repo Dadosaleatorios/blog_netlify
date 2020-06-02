@@ -10,7 +10,7 @@ title = "SQL - Primeiros Passos - Parte II"
 +++
 E aí galera!
 
-Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, clique [aqui](https://www.dadosaleatorios.com.br/post/sql_basico).
+Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, é só clicar [aqui](https://www.dadosaleatorios.com.br/post/sql_basico).
 
 Os operadores comparativos nos auxiliam na  especificação do filtro. São eles:
 
@@ -21,15 +21,17 @@ Os operadores comparativos nos auxiliam na  especificação do filtro. São eles
 * **<=**  (menor igual)
 * **>=**  (maior igual)
 
-Para fazer tais filtros, podemos usar as cláusulas: _where, where and, where and or, between, where in, null e is null, like e not like_. Vamos falar separadamente de cada um.
+Para fazer tais filtros, podemos usar as cláusulas: _where, where and, where and or, between, where in, null e is null, like e not like_. Vamos falar separadamente de cada uma.
 
 **_WHERE_**
 
-Esta função permite filtrar baseado em números ou textos de uma tabela, que deve ser seguida de uma expressão lógica. Mas o que é uma expressão lógica? Uma expressão lógica é o conjunto de uma ou mais condições a serem verificadas.
+Esta função permite filtrar baseada em números ou textos de uma tabela, que deve ser seguida de uma expressão lógica. 
+
+Mas o que é uma expressão lógica? Uma expressão lógica é o conjunto de uma ou mais condições a serem verificadas.
 
 _Por exemplo:_
 
-Usando a tabela do post anterior que contém informações sobre filmes, como o nome do filme (title), ano de lançamento (release_year), país de origem (country), idioma (language), entre outras variáveis.
+Usaremos a tabela do post anterior que contém informações sobre filmes, como o nome do filme (title), ano de lançamento (release_year), país de origem (country), idioma (language), entre outras variáveis.
 
 ![](/images/blog/Screenshot from 2019-10-02 09-30-39.png)
 
@@ -39,13 +41,13 @@ Desejamos obter dessa tabela as informações do filme “Metropolis”. Para is
     FROM films
     WHERE title = 'Metropolis';
 
-Agora suponha que desejamos selecionar todos os filmes lançados em 2016:
+Agora, suponha que desejamos selecionar todos os filmes lançados em 2016:
 
     SELECT *
     FROM films
     WHERE release_year = 2016;
 
-No exemplo abaixo, queremos verificar o nº de filmes lançados antes de 2000:
+No exemplo abaixo, queremos verificar o nº de filmes lançados antes do ano 2000:
 
     SELECT COUNT(*)
     FROM films
