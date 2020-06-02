@@ -25,7 +25,7 @@ Para fazer tais filtros, podemos usar as cláusulas: _where, where and, where an
 
 **_WHERE_**
 
-Esta função permite filtrar baseada em números ou textos de uma tabela, que deve ser seguida de uma expressão lógica. 
+Esta função permite filtrar baseada em números ou textos de uma tabela, que deve ser seguida de uma expressão lógica.
 
 Mas o que é uma expressão lógica? Uma expressão lógica é o conjunto de uma ou mais condições a serem verificadas.
 
