@@ -10,7 +10,7 @@ title = "SQL - Primeiros Passos - Parte II"
 +++
 E aí galera!
 
-Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, é só clicar [aqui](https://www.dadosaleatorios.com.br/post/sql_basico).
+Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, é só clicar [aqui](https://www.dadosaleatorios.com.br/blog/sql_basico/).
 
 Os operadores comparativos nos auxiliam na  especificação do filtro. São eles:
 
