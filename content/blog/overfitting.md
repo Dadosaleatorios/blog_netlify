@@ -1,6 +1,6 @@
 +++
 author = "Bruno Lucian"
-date = 2020-05-28T20:41:40Z
+date = 2020-06-17T20:41:40Z
 draft = true
 image = "images/blog/calltoaction_conceito.png"
 tags = ["datascience", "ML"]
