@@ -12,6 +12,8 @@ undefined = ""
 
 **Underfitting** e **Overfitting** são termos muito importantes no ramo em machine learning. **Um bom modelo não deveria sofrer de Underfitting nem de Overfitting**, por isso precisamos entender estes conceitos, e saber identificar suas ocorrências.
 
+![](/images/blog/overfitting-1.png)
+
 ![](/uploads/fig-2-underfit-optimum-overfit.png)
 
 No aprendizado supervisionado, os modelos são treinados em um subconjunto de dados com labels. Com a intenção de generalizar o aprendizado para fora desse subconjunto.
