@@ -58,4 +58,4 @@ A **regularização** basicamente adiciona a penalidade à medida que a complexi
 
 **Conclusão**:
 
-A aplicação direta do modelo de machine learning em conjuntos de dados não irá prever com a precisão que esperamos e pode estar repleta de representação de overfitting ou underfitting em nossos dados de treinamento. Neste artigo mostramos como identificar e algumas tecnicas a ser usadas para resolver estes problemas quando isso ocorrer!
+A aplicação direta do modelo de machine learning em conjuntos de dados não irá prever com a precisão que esperamos e pode estar repleta de representação de overfitting ou underfitting em nossos dados de treinamento. Neste artigo mostramos como identificar e algumas tecnicas a ser usadas para resolver estes problemas quando isso ocorrer.
