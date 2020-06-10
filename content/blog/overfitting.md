@@ -39,7 +39,7 @@ Não existe um método de **validação cruzada** único que funcione em todos o
 * _5x2CV paired t-test_
 * _5x2CV combined F test_
 
-O processo de r**edução do número de variáveis** pode ser feito de diversas formas, cada qual com sua peculiariedade, a seguir vamos pontuar os mais conhecidos.
+O processo de r**edução do número de variáveis** pode ser feito de diversas formas, cada qual com sua peculiaridade, a seguir vamos pontuar os mais conhecidos.
 
 * _Missing Values Ratio_
 * _Low Variance Filter_
