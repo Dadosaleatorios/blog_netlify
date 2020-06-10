@@ -14,7 +14,7 @@ undefined = ""
 
 ![](/images/blog/overfitting_2.jpg)
 
-No aprendizado supervisionado, os modelos são treinados em um subconjunto de dados xccom labels. Com a intenção de generalizar o aprendizado para fora desse subconjunto.
+No aprendizado supervisionado, os modelos são treinados em um subconjunto de dados com labels. Com a intenção de generalizar o aprendizado para fora desse subconjunto.
 
 O **underfitting** pode ser visto quando nosso modelo é muito simples para explicar a variação apresentada pelos dados. Como podemos ver no ultimo gráfico da imagem acima. Esse modelo também é visto como um modelo de grande _viés_ (high bias).
 
