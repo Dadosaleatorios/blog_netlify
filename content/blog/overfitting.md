@@ -18,7 +18,7 @@ No aprendizado supervisionado, os modelos são treinados em um subconjunto de da
 
 O **underfitting** pode ser visto quando nosso modelo é muito simples para explicar a variação apresentada pelos dados. Como podemos ver no ultimo gráfico da imagem acima. Esse modelo também é visto como um modelo de grande viés (high bias).
 
-O **overfitting**  como podemos observar no primeiro gráfico, mostra a linha prevista cobre todos os pontos no gráfico. Nessa condição, podemos pensar que é um bom modelo, pois, cobre todos os pontos sem erro algum. Mas isso não é verdade, a linha prevista no gráfico abrange todos os pontos que são ruídos e discrepantes. Esse modelo também é responsável por prever resultados ruins devido à sua alta complexidade, também chamado de alta variância (high variance). 
+O **overfitting**  como podemos observar no primeiro gráfico, mostra a linha prevista cobre todos os pontos no gráfico. Nessa condição, podemos pensar que é um bom modelo, pois, cobre todos os pontos sem erro algum. Mas isso não é verdade, a linha prevista no gráfico abrange todos os pontos que são ruídos e discrepantes. Esse modelo também é responsável por prever resultados ruins devido à sua alta complexidade, também chamado de alta variância (high variance).
 
 Quando o modelo aprende sinais e ruídos nos dados de treinamento e não tem um bom desempenho em novos dados sobre os quais o modelo não foi treinado.
 
@@ -58,4 +58,4 @@ A **regularização** basicamente adiciona a penalidade à medida que a complexi
 
 **Conclusão**:
 
-A aplicação direta do modelo demachine learning em conjuntos de dados não irá prever com a precisão que esperamos e pode estar repleta de representação de overfitting ou underfitting em nossos dados de treinamento. Neste artigo mostramos como identificar e algumas tecnicas a ser usadas para resolver estes problemas quando isso ocorrer.
+A aplicação direta do modelo de machine learning em conjuntos de dados não irá prever com a precisão que esperamos e pode estar repleta de representação de overfitting ou underfitting em nossos dados de treinamento. Neste artigo mostramos como identificar e algumas tecnicas a ser usadas para resolver estes problemas quando isso ocorrer.
