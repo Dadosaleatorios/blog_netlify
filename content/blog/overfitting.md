@@ -55,3 +55,7 @@ A **regularização** basicamente adiciona a penalidade à medida que a complexi
 * _Lasso (L1 Norm)_
 * _Ridge Regression (L2 Norm)_
 * _Dropout_
+
+**Conclusão**:
+
+A aplicação direta do modelo demachine learning em conjuntos de dados não irá prever com a precisão que esperamos e pode estar repleta de representação de overfitting ou underfitting em nossos dados de treinamento. Neste artigo mostramos como identificar e algumas tecnicas a ser usadas para resolver estes problemas quando isso ocorrer.
