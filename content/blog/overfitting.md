@@ -10,7 +10,7 @@ undefined = ""
 +++
 # **Overfitting e Underfitting**
 
-**Underfitting** e **Overfitting** são termos muito importantes no ramo do machine learning. **Um bom modelo não deveria sofrer de Underfitting nem de Overfitting**, por isso precisamos entender estes conceitos, e saber identificar suas ocorrências.
+**Underfitting** e **Overfitting** são termos muito importantes no ramo em machine learning. **Um bom modelo não deveria sofrer de Underfitting nem de Overfitting**, por isso precisamos entender estes conceitos, e saber identificar suas ocorrências.
 
 ![](/uploads/fig-2-underfit-optimum-overfit.png)
 
