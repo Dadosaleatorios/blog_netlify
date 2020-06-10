@@ -24,7 +24,7 @@ Quando o modelo aprende sinais e ruídos nos dados de treinamento e não tem um 
 
 Na relaçao viés e variância temos que, o viés é reduzido e a variação aumenta em relação à complexidade do modelo. Quanto mais parâmetros são adicionados a um modelo, a complexidade do modelo aumenta e a variação se torna nossa principal preocupação, enquanto o viés diminui constantemente.
 
-Agora que já sabemos identificar o que é **under** e **over fitting**, há algumas maneiras de evitar o **overfitting** de seu modelo em dados de treinamento, como amostragem em **validação cruzada**, **redução do número de variáveis**, **regularização**, etc. E vamos a seguir elencar uma série de tecnicas que podemos aplicar afim de diminiur nossas chances de criar modelos que não são possiveis de generalizar para dados fora do conjunto de treino.
+Agora que já sabemos identificar o que é **under** e **overfitting**, há algumas maneiras de evitar o **overfitting** de seu modelo em dados de treinamento, como amostragem em **validação cruzada**, **redução do número de variáveis**, **regularização**, etc. E vamos, a seguir, elencar uma série de técnicas que podemos aplicar afim de diminuir nossas chances de criar modelos que não são possiveis de generalizar para dados fora do conjunto de treino.
 
 Não existe um método de **validação cruzada** único que funcione em todos os cenários. É importante entender se você está lidando com grupos, dados indexados por tempo ou se está vazando dados no seu procedimento de validação. Abaixo podemos ver alguns dos principais métodos disponíveis:
 
