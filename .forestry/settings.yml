@@ -14,7 +14,7 @@ sections:
   label: Post
   create: all
   match: "*"
-upload_dir: static/images/blog
+upload_dir: content/images
 public_path: "/images/blog"
 front_matter_path: ''
 use_front_matter_path: false
