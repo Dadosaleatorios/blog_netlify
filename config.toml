@@ -1,37 +1,32 @@
-title = "Dados Aleatórios"
+DefaultContentLanguage = "en"
+MetaDataFormat = "yaml"
+Paginate = 9
+SectionPagesMenu = "main"
 baseURL = "https://example.com"
+enableRobotsTXT = true
+googleAnalytics = ""
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
-
-
-MetaDataFormat = "yaml"
-DefaultContentLanguage = "en"
-SectionPagesMenu = "main"
-Paginate = 9 # this is set low for demonstrating with dummy content. Set to a higher number
-googleAnalytics = ""
-enableRobotsTXT = true
-
-[sitemap]
-  changefreq = "monthly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
+title = "Dados Aleatórios"
 [params]
-  favicon = ""
-  site_logo = ""
-  description = "The last theme you'll ever need. Maybe."
-  facebook = ""
-  twitter = "https://twitter.com/GoHugoIO"
-  instagram = ""
-  youtube = ""
-  github = ""
-  gitlab = ""
-  linkedin = ""
-  mastodon = ""
-  slack = ""
-  stackoverflow = ""
-  rss = ""
-  # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-  background_color_class = "bg-black"
-  featured_image = "/images/header_ananke.jpg"
-  recent_posts_number = 5
+background_color_class = "bg-black"
+description = "The last theme you'll ever need. Maybe."
+facebook = ""
+favicon = ""
+featured_image = "/images/header_ananke.jpg"
+github = ""
+gitlab = ""
+instagram = ""
+linkedin = ""
+mastodon = ""
+recent_posts_number = 5
+rss = ""
+site_logo = ""
+slack = ""
+stackoverflow = ""
+twitter = "https://twitter.com/GoHugoIO"
+youtube = ""
+[sitemap]
+changefreq = "monthly"
+filename = "sitemap.xml"
+priority = 0.5
