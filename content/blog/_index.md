@@ -1,10 +1,8 @@
 
 ---
-title: My Go Journey
+title: Posts
 date: 2017-03-23
 publishdate: 2017-03-24
 ---
 
-I decided to start learning Go in March 2017.
-
-Follow my journey through this new blog.
+Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística.
