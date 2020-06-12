@@ -6,7 +6,7 @@ categories:
   - linguagem julia
   - simulacao
 slug: ./2013-12-03-uma-primeira-experiencia-com-a-linguagem-julia
-image: 'images/blog/post-julia.png'
+featured_image: 'images/blog/post-julia.png'
 ---
 
 Imaginem a seguinte situação: Existe um grilo no jardim e o mesmo pula de forma aleatória. Basicamente ele escolhe um ângulo e pula. Escolhe outro ângulo e pula mais uma vez. E assim segue, até o momento que ele cansa. Desejamos responder a pergunta sobre qual a localização do grilo após os muitos pulos dados por ele.

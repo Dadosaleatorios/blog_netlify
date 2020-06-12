@@ -6,7 +6,7 @@ categories:
   - API
   - machine learning
 slug: ./2017-01-29-identificando-pessoas-em-fotos
-image: 'images/blog/post-cognitivo.png'
+featured_image: 'images/blog/post-cognitivo.png'
 ---
 
 Dando sequência à [postagem anterior](http://www.dadosaleatorios.com.br/2017/01/identificando-emocoes-em-fotos.html), vamos falar um pouco agora sobre outra API do [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/): a [Face API](https://www.microsoft.com/cognitive-services/en-us/face-api). Esta API tem como finalidade detectar rotos em fotos e analisa-los, podendo descrever características do rosto (como gênero, idade estimada, se a pessoa está de óculos, ...), informar localização de elementos faciais (olhos, boca, nariz, ...) até identificar a pessoa, comparando com rostos previamente cadastrados. Nesta postagem vamos mostrar essas 3 funcionalidades, mas dando mais ênfase na identificação de rostos.

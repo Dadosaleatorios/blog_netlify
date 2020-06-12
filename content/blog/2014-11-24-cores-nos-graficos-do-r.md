@@ -5,7 +5,7 @@ date: '2014-11-24'
 categories:
   - linguagem R
 slug: ./2014-11-24-cores-nos-graficos-do-r
-image: 'images/blog/post-cores.png'
+featured_image: 'images/blog/post-cores.png'
 ---
 
 Muitas vezes queremos demonstrar mais de um objeto em um gráfico e, para isso, recorremos à cores diferentes. Quando são poucos elementos fica fácil escolher as cores, geralmente ficamos com 'black', 'red', 'green' e 'blue'. Mas e quando queremos mais cores, ou até mesmo, sair da mesmice? O R, geralmente, permite dois tipos de entrada de cor: RGB em [hexadecimal](http://pt.wikipedia.org/wiki/Sistema_de_numera%C3%A7%C3%A3o_hexadecimal) e através do nome das cores.

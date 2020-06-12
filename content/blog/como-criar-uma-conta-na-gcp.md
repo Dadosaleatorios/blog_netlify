@@ -2,7 +2,7 @@
 author = "Larissa Lima e Bruno Lucian"
 categories = []
 date = "2019-07-31T15:00:00+00:00"
-image = "images/blog/calltoaction_tutorial.png"
+featured_image = "images/blog/calltoaction_tutorial.png"
 post-image = ""
 slug = ""
 tags = ["cloud", "google", "gcp"]

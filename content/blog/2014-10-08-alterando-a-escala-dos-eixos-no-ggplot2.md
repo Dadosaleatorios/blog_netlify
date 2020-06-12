@@ -5,7 +5,7 @@ date: '2014-10-08'
 categories:
   - linguagem R
 slug: ./2014-10-08-alterando-a-escala-dos-eixos-no-ggplot2
-image: 'images/blog/post-ggplot.png'
+featured_image: 'images/blog/post-ggplot.png'
 ---
 
 Muitas vezes precisamos mexer na escala de um gráfico - seja para mais ou para menos. No pacote base é bastante fácil fazer isso, as principais funções gráficas possuem os parâmetros **xlim** e **ylim** para informarmos os limites dos eixos. O pacote [ggplot2](http://ggplot2.org/) até apresenta as funções [xlim e ylim](http://docs.ggplot2.org/current/xylim.html), mas elas não funcionam exatamente igual aos parâmetros do pacote base. A diferença está que, além de alterar os limites do gráfico, ele descarta todos os dados que estão fora desse intervalo.

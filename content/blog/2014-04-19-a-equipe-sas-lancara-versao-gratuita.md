@@ -6,7 +6,7 @@ categories:
   - novidade
   - tecnologia
 slug: ./2014-04-19-a-equipe-sas-lancara-versao-gratuita
-image: 'images/blog/post-sas.png'
+featured_image: 'images/blog/post-sas.png'
 ---
 
 ![](https://dadosaleatorios.files.wordpress.com/2014/04/sasau.jpg)

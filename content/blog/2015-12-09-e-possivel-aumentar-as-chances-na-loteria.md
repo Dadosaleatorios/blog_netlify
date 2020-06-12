@@ -5,7 +5,7 @@ date: '2015-12-09'
 categories:
   - Sem categoria
 slug: ./2015-12-09-e-possivel-aumentar-as-chances-na-loteria
-image: 'images/blog/post-loteria.png'
+featured_image: 'images/blog/post-loteria.png'
 ---
 
 Sempre que o final do ano se aproxima boa parte dos brasileiros começa a pensar em uma coisa: a mega da virada. E não é a toa que isso acontece: o prêmio do ano passado chegou a R$ 264 milhões - e foi dividido entre 4 apostas. E sempre que se fala em megasena vem a pergunta: será que tem como aumentar as chances de ganhar? Existem [diversos sites](http://dicas mega sena) que dão dicas de como aumentar as chances de ganhar. Mas será que essas dicas realmente funcionam?

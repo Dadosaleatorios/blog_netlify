@@ -2,7 +2,7 @@
 author = "Bruno Lucian e Leandro Oliveira"
 categories = ["Rstudio-server", "Rstudio", "GCP"]
 date = "2019-08-14T14:00:00+00:00"
-image = "images/blog/calltoaction_tutorial.png"
+featured_image = "images/blog/calltoaction_tutorial.png"
 slug = ""
 tags = []
 title = "Como instalar o RStudio Server em uma instância do Google Cloud Platform (GCP)?"

@@ -5,7 +5,7 @@ date: '2014-11-05'
 categories:
   - linguagem R
 slug: ./2014-11-05-ordenando-o-grafico-de-barras-no-ggplot
-image: 'images/blog/post-ggplot.png'
+featured_image: 'images/blog/post-ggplot.png'
 ---
 
 Anteriormente já abordamos dois posts sobre o [ggplot](http://ggplot2.org/): o primeiro deles falava sobre a [personalização das escalas dos eixos](http://www.dadosaleatorios.com.br/2014/10/alterando-escala-dos-eixos-no-ggplot2.html) e outro sobre como fazer [gráficos múltiplos](http://www.dadosaleatorios.com.br/2014/10/fazendo-multiplos-graficos-com-o-ggplot2.html) no ggplot. Hoje vamos continuar abordando o tema e o post será sobre a ordenação do gráfico de barras. Naturalmente a ordem das barras é controlada através de fatores, que são uma estrutura de dados utilizada para representar categorias - que é diferente do caractere.

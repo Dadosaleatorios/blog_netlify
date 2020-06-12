@@ -5,7 +5,7 @@ date: '2014-09-21'
 categories:
   - latex
 slug: ./2014-09-21-facilitando-a-criacao-de-posters-banners-com-latex
-image: 'images/blog/post-latex.png'
+featured_image: 'images/blog/post-latex.png'
 ---
 
 Muitas vezes quando precisamos expor nossos estudos e análises, precisamos fazer em forma de poster ou banner para apresentações em congressos e eventos.

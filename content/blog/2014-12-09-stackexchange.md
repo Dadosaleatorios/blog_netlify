@@ -5,7 +5,7 @@ date: '2014-12-09'
 categories:
   - Sem categoria
 slug: ./2014-12-09-stackexchange
-image: 'images/blog/post-stackexchange.png'
+featured_image: 'images/blog/post-stackexchange.png'
 ---
 
 Sabe aquela dúvida que você tem sobre um determinado assunto, mas que nunca conseguiu sanar? Talvez o [StackExchange](http://stackexchange.com/) seja a solução! O StackExchange é uma rede de sites onde os usuários podem fazer e responder perguntas. Os usuários que fizerem boas perguntas ou darem boas respostas são 'premiados' com pontos conforme vão recebendo votos dos usuários, e esses votos são os critério de ordenamento das respostas. Além da pontuação, o usuário que fez a pergunta pode escolher uma resposta como a correta (ou a melhor), que ficará destacada. E a gama de assuntos é bem variada, como por exemplo [sustentabilidade](http://sustainability.stackexchange.com/), [jardinagem](http://gardening.stackexchange.com/) até [cerveja](http://beer.stackexchange.com/).

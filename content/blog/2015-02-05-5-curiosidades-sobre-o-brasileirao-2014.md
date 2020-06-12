@@ -6,7 +6,7 @@ categories:
   - analise de dados
   - futebol
 slug: ./2015-02-05-5-curiosidades-sobre-o-brasileirao-2014
-image: 'images/blog/post-cartola.png'
+featured_image: 'images/blog/post-cartola.png'
 ---
 
 Campeonato brasileiro acabou ano passado, mas há quem diga que brasileiro nunca cansa de futebol, não é? Então seguem algumas curiosidades sobre o campeonato brasileiro 2014.

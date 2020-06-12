@@ -5,7 +5,7 @@ date: '2015-10-28'
 categories:
   - linguagem R
 slug: ./2015-10-28-uma-nova-maneira-de-ler-dados-externos
-image: 'images/blog/post-readr.png'
+featured_image: 'images/blog/post-readr.png'
 ---
 
 Há cerca de 2 anos atrás [postei uma pergunta no StackOverflow](http://stackoverflow.com/questions/18720036/reading-big-data-with-fixed-width) (caso não conheça, leia [esta postagem nossa](http://www.dadosaleatorios.com.br/2014/12/stackexchange.html)) perguntando como podia fazer para ler grandes bancos de dados, de cerca de 600mb - esse era meu primeiro contato com bancos grandes, provenientes do Censo Escolar. Das duas respostas dadas na época, a que mais me agradou usava o pacote [sqldf](https://cran.r-project.org/web/packages/sqldf/index.html), que utiliza SQL para fazer a leitura e manipulação de fontes externas de dados.

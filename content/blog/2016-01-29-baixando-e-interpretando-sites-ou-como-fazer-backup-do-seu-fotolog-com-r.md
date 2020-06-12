@@ -6,7 +6,7 @@ date: '2016-01-29'
 categories:
   - linguagem R
 slug: ./2016-01-29-baixando-e-interpretando-sites-ou-como-fazer-backup-do-seu-fotolog-com-r
-image: 'images/blog/post-fotolog.png'
+featured_image: 'images/blog/post-fotolog.png'
 ---
 
 Se você usava a internet no início dos anos 2000, muito provavelmente teve - ou quis ter - um [Fotolog](https://en.wikipedia.org/wiki/Fotolog). Como o próprio nome diz, era um blog voltado a fotografia, onde as pessoas podiam postar 1 foto por dia (ou 6, caso pagasse). Em 01/01/2016, o Fotolog encerrou suas atividades sem aviso prévio, gerando uma comoção nos mais saudosistas, voltando ao em final de janeiro com um aviso de que o site ficaria mais um mês online, permitindo que as pessoas fizessem backup. E agora que entra a parte de R da postagem.

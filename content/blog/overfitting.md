@@ -2,7 +2,7 @@
 author = "Bruno Lucian"
 date = 2020-06-17T20:41:40Z
 draft = true
-image = "images/blog/calltoaction_conceito.png"
+featured_image = "images/blog/calltoaction_conceito.png"
 tags = ["datascience", "ML"]
 title = "Overfitting: o que é e como evitar."
 undefined = ""

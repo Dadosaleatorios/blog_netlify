@@ -6,7 +6,7 @@ categories:
   - latex
   - linguagem R
 slug: ./2014-01-07-ferramentas-para-criacao-de-tabelas-latex-a-partir-do-r
-image: 'images/blog/post-latex.png'
+featured_image: 'images/blog/post-latex.png'
 ---
 
 Sair do ambiente R para exportar resultados e tabelas nem sempre é uma tarefa fácil, em especial quando deseja-se exportar estes resultados para o ambiente LaTex. O motivo é simples de ser entendido, afinal nem nem sempre os resultados possuem uma estrutura simples e como acontece, as vezes este é demasiadamente grande. Neste post, vamos discutir algumas soluções para tornar esta tarefa mais simples e é claro, mais divertida. Além disso, vamos ilustrar exemplos da utilização de tais pacotes.

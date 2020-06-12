@@ -6,7 +6,7 @@ categories:
   - API
   - machine learning
 slug: ./2017-02-05-google-vision-api
-image: 'images/blog/post-vision.png'
+featured_image: 'images/blog/post-vision.png'
 ---
 
 Continuando as postagens relacionadas a _machine learning_, agora vamos falar sobre a identificação de objetos em fotos. Para tal, vamos utilizar uma API do [Google Cloud Plataform](https://cloud.google.com/): a [Cloud Vision API](https://cloud.google.com/vision/). Diferente do que acontece com o [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/) (MCS), onde temos APIs diferentes para cada tipo de objetivo, o Google agrupou tudo em uma única API, permitindo detectar faces (mas não identifica-los), descrever imagens e até mesmo dizer o local onde a foto foi tirada. Na postagem, vamos dar uma visão geral das principais funcionalidades da API.

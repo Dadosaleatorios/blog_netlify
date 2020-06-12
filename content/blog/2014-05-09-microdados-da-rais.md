@@ -6,7 +6,7 @@ categories:
   - dados públicos
   - microdados
 slug: ./2014-05-09-microdados-da-rais
-image: 'images/blog/post-rais.png'
+featured_image: 'images/blog/post-rais.png'
 ---
 
 Dando início à minha série de postagens aqui no Dados Aleatórios, irei falar sobre os microdados da RAIS - Relação Anual de Informações Sociais - disponibilizados pelo Ministério do Trabalho e Emprego. A RAIS é, como o nome já diz, uma relação de informações que todo empregador é obrigado a informar anualmente sobre os seus trabalhadores do ano base (ou seja, inclui quem foi demitido). Essas informações vão desde informações trabalhistas (tempo de serviço, salário recebido, motivos de licenças/demissão, entre outras) até informações pessoais (idade, escolaridade, raça/cor).

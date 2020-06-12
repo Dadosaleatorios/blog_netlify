@@ -6,7 +6,7 @@ categories:
   - latex
   - linguagem R
 slug: ./2013-12-17-inserindo-tabelas-no-latex-de-forma-dinamica
-image: 'images/blog/post-latex.png'
+featured_image: 'images/blog/post-latex.png'
 ---
 
 Para aqueles que já trabalharam com geração de números aleatórios, a situação a seguir pode ser rotineira: Você escreve um script e sempre que o executa gera outputs diferentes. Caso esteja usando uma semente para a geração destes número aleatórios talvez o problema não seja tão grave, mas se por algum motivo a aleatoriedade for importante então escrever resultados sobre isso pode ser um problema.

@@ -5,7 +5,7 @@ date: '2013-12-07'
 categories:
   - linguagem julia
 slug: ./2013-12-07-integrando-r-e-julia-em-um-mesmo-ambiente
-image: 'images/blog/post-julia.png'
+featured_image: 'images/blog/post-julia.png'
 ---
 
 Já faz algum tempo que muito se fala sobre a performance da linguagem Julia. Volta e meia são apresentados benchmarks de algoritmos implementados em Julia e, comparados a outras linguagens, apresenta uma performace bem superior, sendo até mesmo comparado as compilações feitas em C. Em contrapartida, pobre R, sempre sendo associado a baixa performance e alto consumo de memória, entretanto é uma das linguagens mais simples de se aprender com grande facilidade de manipulação das estruturas de dados presentes. Será que não seria possível unir as duas linguagens (alta performace de Julia e facilidade de manipulação do R) em um mesmo ambiente?
