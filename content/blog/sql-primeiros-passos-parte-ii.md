@@ -2,7 +2,7 @@
 author = "Larissa Lima"
 categories = []
 date = 2020-05-21T03:00:00Z
-featured_image = "images/blog/calltoaction_conceito.png"
+featured_image = "images/blog/bruno_lucian_titulos_site_v1_conceito_cinza.png"
 slug = "SQL"
 tags = []
 title = "SQL - Primeiros Passos - Parte II"
