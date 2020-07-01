@@ -1,82 +1,72 @@
-baseURL = "/"
-languageCode = "en-us"
-DefaultContentLanguage = "pt"
+# Configuration of Academic
+# Documentation: https://sourcethemes.com/academic/
+#
+# This file is formatted using TOML syntax - learn more at https://learnxinyminutes.com/docs/toml/
+# Each configuration section is defined by a name in square brackets (e.g. `[outputs]`).
+
+# Title of your site
 title = "Dados Aleatórios"
-theme = "meghna-hugo"
-summaryLength = 10
-#contentDir = "content/posts"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-paginate = 12
+
+# The URL of your site.
+# End your URL with a `/` trailing slash, e.g. `https://example.com/`.
+baseurl = "/"
+
+# Enter a copyright notice to display in the site footer.
+# To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
+copyright = "&copy; Bruno Lucian {year}"
+
+############################
+## Advanced options below ##
+############################
+
+# Name of Academic theme folder in `themes/`.
+theme = "hugo-academic"
+
+# Get last modified date for content from Git?
+enableGitInfo = false
+
+# Default language to use (if you setup multilingual support)
+defaultContentLanguage = "en"
+hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
+defaultContentLanguageInSubdir = false
+removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
+
+summaryLength = 30  # Listing summary length in words. Also, see `abstract_length` in `params.toml`.
+paginate = 10  # Number of items per page in paginated lists.
+enableEmoji = true
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON", "WebAppManifest" ]
+  section = [ "HTML", "RSS" ]
+
+[mediaTypes."application/manifest+json"]
+  suffixes = ["webmanifest"]
+
+[outputFormats.WebAppManifest]
+  mediaType = "application/manifest+json"
+  rel = "manifest"
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark.renderer]
+    unsafe = true  # Enable user to embed HTML snippets in Markdown content.
+  [markup.highlight]
+    style = "pygments"
+    codeFences = false  # Disable Hugo's code highlighter as it conflicts with Academic's highligher.
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 90
+  anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
+
+# Taxonomies.
 [taxonomies]
-  author = "author"
-  category = "categories"
   tag = "tags"
-#  type = "content/posts"
-
-
-[permalinks]
-  posts = "/:year/:month/:title/"
-
-# Menu
-[menu]
-		[[menu.nav]]
-    name = "Blog"
-    URL = "blog"
-    weight = 2
-
-    [[menu.nav]]
-   name = "Nosso Time"
-    URL = "our-team"
-    weight = 3
-
-    [[menu.nav]]
-    name = "Contato"
-    URL = "contact-us"
-    weight = 4
-
-# Site params
-[params]
-home= "Home"
-logo = "images/logo.png"
-gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"
-# Meta data
-description = "Seu blog técnico de ciências de dados!"
-author = "Themefisher"
-# Google Analitycs
-googleAnalitycsID = "UA-46346743-1"
-custom_css = ["css/custom.css"]
-
-    # Banner Section
-    [params.banner]
-    enable = true
-    bgImage = "images/slider/hero-area.jpg"
-    icon = ""
-    heading = ""
-    imgLogo= "images/slider/logo.png"
-    content= "Dados Aleatórios é um projeto que visa divulgar e tornar acessível ao público em geral informações técnicas sobre diversas áreas do conhecimento, em particular, programação e as mais diversas aplicações de estatística."
-    btn = true
-    btnText="Saiba Mais"
-    btnURL="#blog"
-
-
-
-    # footer
-    [params.footer]
-        copyright = "Themefisher"
-        copyrightURL = "http://www.themefisher.com"
-
-        # social Icons
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-facebook"
-        url = "#"
-
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-twitter"
-        url = "#"
-
-
-        [[params.footer.socialIcon]]
-        icon = "tf-ion-social-youtube"
-        url = "#"
-
-
+  category = "categories"
+  publication_type = "publication_types"
+  author = "authors"
