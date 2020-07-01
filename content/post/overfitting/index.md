@@ -18,6 +18,8 @@ No aprendizado supervisionado, os modelos são treinados em um subconjunto de da
 
 O **underfitting** pode ser visto quando nosso modelo é muito simples para explicar a variação apresentada pelos dados. Como podemos ver no ultimo gráfico da imagem acima. Esse modelo também é visto como um modelo de grande _viés_ (high bias).
 
+![](./fig-2-underfit-optimum-overfit.png)
+
 O **overfitting**  como podemos observar no primeiro gráfico, mostra a linha prevista cobre todos os pontos no gráfico. Nessa condição, podemos pensar que é um bom modelo, pois, cobre todos os pontos sem erro algum. Mas isso não é verdade, a linha prevista no gráfico abrange todos os pontos que são ruídos e discrepantes. Esse modelo também é responsável por prever resultados ruins devido à sua alta complexidade, também chamado de alta _variância_ (high variance).
 
 Quando o modelo aprende sinais e ruídos nos dados de treinamento e não tem um bom desempenho em novos dados sobre os quais o modelo não foi treinado.
