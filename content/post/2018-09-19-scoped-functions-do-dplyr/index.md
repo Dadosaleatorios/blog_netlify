@@ -1,0 +1,144 @@
+---
+title: Scoped functions do dplyr
+author: dadosaleatorios
+date: '2018-09-19'
+slug: scoped-functions-do-dplyr
+categories:
+  - data science
+  - linguagem R
+
+---
+
+```{r echo = F}
+knitr::opts_chunk$set(comment = NA)
+
+iris <- dplyr::as_tibble(iris)
+```
+
+Este post faz parte da série de post que estamos criando sobre o `dplyr`. Caso ainda não conheça o pacote, veja o post de [introdução ao dplyr](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-dplyr/).
+
+O `dplyr` apresenta uma série de funções similares aos verbos, que podem ser usadas para fazer operações sobre uma série de colunas, baseando-se nas suas classes ou nos seus nomes. Os sufixos `_if`, `_at` e `_all` são utilizados com as funções do `dplyr` de forma a realizar uma mesma operação a várias colunas, simultaneamente.
+
+- `_all`: Realiza as operações para todas as colunas do `tibble` ou `dataframe`. 
+
+- `_at`: Realiza operações sobre um conjunto de variáveis com nomes específicos ou índices das colunas.
+
+- `_if`: Realiza operações sobre um conjunto de colunas para os quais a condição lógica é verdadeira.
+
+As funções que podem ser utilizadas com o sufixo são:
+
+- `mutate e transmute`.
+- `summarise`.
+- `filter`.
+- `group_by`.
+- `select e rename`.
+- `arrange`.
+
+Agora vamos mostrar alguns exemplos de aplicações dessas funções. 
+
+### Aprendendo por exemplo:
+
+Iremos utilizar o famoso conjunto de dados `iris`.
+
+```{r, echo=F}
+knitr::opts_chunk$set(warning = F)
+```
+
+<center>
+![](./imagem-01.png)
+</center>
+
+</center>
+
+
+```{r message = FALSE, warning = FALSE}
+require(dplyr)
+
+as_tibble(x = iris)
+```
+
+#### Sufixo `_all`
+
+Vamos agrupar por espécie e calcular a média de todas as colunas (note que os argumentos adicionais da função são colocados depois da função):
+
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(.funs = mean, na.rm = T)
+```
+
+Agora iremos transformar todas as colunas de maneira a estarem na escala $[0, 1]$. Como a coluna de espécies não é numérica, então vamos tranformá-la numa variável de grupo. Assim a função `_all` não se aplicará para ela. Note que poderemos criar uma função para fazer a tarefa desejada.
+
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  mutate_all(.funs = function(x){ x / max(x) })
+```
+
+Para o `summarise_all` e `mutate_all`, a função só será aplicada para as colunas que não sejam de grupos. Já o `filter_all`, faz o filtro para todas as variáveis. Sendo assim, iremos descartar a variável `Species` antes de fazer o filtro.
+
+Vamos filtrar para que todas as variáveis sejam maiores que $1,5$:
+
+```{r}
+iris %>% 
+  select(-Species) %>% 
+  filter_all(.vars_predicate = all_vars(. > 1.5))
+```
+
+Agora filtraremos para que pelo menos uma das variáveis sejam maiores que $7,5$:
+
+```{r}
+iris %>% 
+  select(-Species) %>% 
+  filter_all(.vars_predicate = any_vars(. > 7.5))
+```
+
+Podemos, de duas maneiras, modificar os nomes de todas as colunas:
+
+```{r}
+iris %>% 
+  select_all(.funs = toupper) # ou rename_all(toupper)
+```
+
+O `group_by_all` torna todas as colunas do `tibble` em colunas de grupos. Já o `arrange_all` irá ordenar os dados de acordo com os valores de todas as colunas, em ordem crescente. Caso desejemos a ordenação descrescente, basta adicionar `desc` no segundo argumento.
+
+#### Sufixo `_at`
+
+Utilizando o sufixo `_at`, podemos selecionar as colunas para as quais as funções serão aplicadas, da mesma maneira como podemos escrever no `select`. Basta utilizar a função `vars`. Desta maneira, podemos calcular a média de todas as variáveis, exceto `Species`.
+
+```{r}
+iris %>% 
+  summarise_at(.vars = vars(-Species), .funs = mean)
+```
+
+Também podemos utilizar as *help functions*. Neste caso multiplicaremos por $100$ as colunas que terminam com "Length":
+
+```{r}
+iris %>% 
+  mutate_at(.vars = vars(ends_with("Length")), .funs =  funs(. * 100))
+```
+
+Note que ao invés de criar uma função que recebe `x` e retorna `x * 100`, nós utilizamos a função `funs`. O ponto funciona como cada uma das colunas, que, neste caso, é multiplicada por $100$.
+
+O mesmo raciocínio se aplica às outras funções: `filter`, `arrange` e `group_by`. Não foi encontrado uso de `select_at` e `rename_at`.
+
+#### Sufixo `_if`
+
+O sufixo `_if` permite que nós apliquemos as funções para colunas que tenham algum predicado.
+
+Vamos calcular o máximo de todas as variáveis que são numéricas:
+
+```{r}
+iris %>% 
+  summarise_if(.predicate = is.numeric, .funs = max)
+```
+
+Da mesma maneira acontece com todas as outras funções.
+
+#### Select *vs* Rename
+
+As funções `select_ e rename_`, com algum dos sufixos, se diferenciam pelo fato de que com o `select` não é necessário passar uma função que mude os nomes, já com o `rename` é necessário incluir uma função que modifique os nomes das colunas.
+
+### Fonte
+
+- https://dplyr.tidyverse.org/reference/index.html
