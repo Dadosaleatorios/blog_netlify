@@ -9,7 +9,8 @@ categories:
   - R
   - Python
   - data science
-tags: 
+tags:
+  - talk
   - data science
   - R
 image:

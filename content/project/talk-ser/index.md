@@ -19,6 +19,7 @@ external_link: https://brunolucian.github.io/talk-ser/#/
 categories:
   - talk
 tags:
+  - talk
   - R
   - python
 featured: yes
