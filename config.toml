@@ -75,5 +75,6 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 ## Marketing
 ############################
 [marketing]
+  googleAnalitycsID = "UA-99209585-1"
   google_analytics = "UA-99209585-1"
   google_tag_manager = ""
