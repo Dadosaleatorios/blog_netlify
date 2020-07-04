@@ -19,7 +19,6 @@ dados_long <- dados_wide %>%
   gather(Ano, valor, -uf)
 ```
 
-![](./tidyr.png)
 
 O pacote [`tidyr`](https://tidyr.tidyverse.org/) tem como principal objetivo transformar um data frame para o formato *tidy*, ou limpo. Segundo a filosofia do `tidyverse`, um dado limpo é o que apresenta as seguintes propriedades:
 
