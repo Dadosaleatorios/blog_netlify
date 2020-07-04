@@ -3,10 +3,10 @@ title: Introdução ao GIT
 author: dadosaleatorios
 date: '2018-10-03'
 slug: introdução-ao-git
-categories:
-  - Controle de versão
-  - data science
+tags:
+  - git
   - github
+  - version
 
 ---
 
@@ -14,9 +14,8 @@ categories:
 
 No cotidiano de nossas tarefas acabamos por criar varias "versões finais" dos nossos projetos, como ilustrado abaixo. O sistema de controle de versão GIT vem pra ajudar a organizar essa nossa bagunça de versões.
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/doc_final.png){width=800px}
-</center>
+
+![](./doc_final.png)
 
 
 Git é um sistema de controle de versão. Mas o que é controle de versão?
@@ -33,9 +32,8 @@ O objetivo de um VCS é garantir que todas as mudanças ocorram de maneira contr
 
 Faça [aqui](https://git-scm.com/downloads) o download do Git
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/git_download.png){width=800px}
-</center>
+
+![](./git_download.png)
 
 ## O que é o [GitHub](https://github.com/)?  
 
@@ -46,31 +44,24 @@ Com ele podemos criar e manter repositórios, com vários tipos de arquivos poss
 
 A idéia é que o repositório remoto fique sempre com a versão mais atualizada que se queira compartilhar. Podemos ver como funciona na imagem a seguir:
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/git_distribuido.jpg){width=800px}
-</center>
+
+![](./git_distribuido.jpg)
 
 Abaixo temos um exemplo de um repositório do pacote *dplyr* hospedado no GitHub. 
 
-
-<center>
-![](/img/2018-10-03-introducao-ao-git/dplyr.png){width=800px}
-</center>
+![](./dplyr.png)
 
 O GitHub apresenta diferentes funcionalidades para um repositório:
 
 - **Código** - Todos (com acesso ao repositório) terão acesso aos códigos utilizados, e poderão modificá-los:
 
-    <center>
-    ![](/img/2018-10-03-introducao-ao-git/codigo.png){width=800px}
-    </center>
+    
+    ![](./codigo.png)
+    
 
 - **Histórico de modificações** - Todas as modificações contêm uma mensagem que explica as modificações feitas, sempre identificadas e reversíveis:
 
-    <center>
-    ![](/img/2018-10-03-introducao-ao-git/commits.png){width=800px}
-    </center>
-
+    ![](./commits.png)
 
 ## Configurando o GIT
 
@@ -96,9 +87,7 @@ No GitHub, clique na sua foto > Settings > SSH and GPG Keys e cole a key copiada
 
 Basta abrir a página do repositório no GitLab e copiar o endereço destacado:
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/git_clone.png){width=800px}
-</center>
+![](./git_clone.png)
 
 Com essa informação copiada, abrimos o RStudio, File > New Project. Selecionamos *Version Control*, escolhemos *Git* e colamos a *url* do repositório.
 
@@ -106,9 +95,7 @@ Com essa informação copiada, abrimos o RStudio, File > New Project. Selecionam
 
 Tendo clonado o projeto com sucesso, irá aparecer esta nova aba no RStudio, chamada Git:
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/RStudio_Git.png){width=700px}
-</center>
+![](./RStudio_Git.png)
 
 Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com Git. São elas:
 
@@ -120,17 +107,13 @@ Com isto poderemos facilmente realizar as 3 tarefas cotidianas ao trabalhar com 
 
 *Puxa* as modificações do repositório remoto (GitHub). Precisamos dar pull para atualizar o repositório antes de enviar modificações. 
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/pull.png){width=450px}
-</center>
+![](./pull.png)
 
 ### Commit
 
 É a modificação dos arquivos, juntamente com uma mensagem de modificação. Basicamente, iremos contextualizar as mudanças feitas no código. 
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/commit_msg.png){width=800px}
-</center>
+![](./commit_msg.png)
 
 Existe toda uma discussão sobre boas práticas ao escrever uma mensagem de commit, mas não é o objetivo deste post. 
 
@@ -140,9 +123,8 @@ Ao dar um commit, nada é atualizado no repositório remoto, apenas no local. Pa
 
 É importante o repositório estar atualizado, caso contrário o push retornará um erro. Na mensagem de erro, o Git sugere que seja dado um *pull* antes do *push*.
 
-<center>
-![](/img/2018-10-03-introducao-ao-git/push.png){width=450px}
-</center>
+
+![](./push.png)
 
 ## Veja também:
 
