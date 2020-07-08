@@ -1,6 +1,7 @@
 ---
 title: 'Utilizando o R para enviar e-mails '
-author: Felipe Barrientos
+authors: 
+  - Barrientos
 date: '2020-07-06'
 slug: utilizando-o-r-para-enviar-e-mails
 categories: []

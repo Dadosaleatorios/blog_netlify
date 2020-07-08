@@ -1,6 +1,7 @@
 ---
 title: Introdução ao tidyr
-author: dadosaleatorios
+authors:
+  - Bruno
 date: '2018-10-18'
 slug: introducao-ao-tidyr
 categories:
