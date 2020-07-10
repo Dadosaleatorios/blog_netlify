@@ -19,6 +19,6 @@ image:
   preview_only: true  
 ---
 
-Workshop que tive a oportunidade de aprensentar projetos que desenvolvi enquanto trabalhava pela Globo.
+Workshop que tive a oportunidade de apresentar projetos que desenvolvi enquanto trabalhava pela Globo.
 
 {{< youtube KsOB4xkwGdY >}}
