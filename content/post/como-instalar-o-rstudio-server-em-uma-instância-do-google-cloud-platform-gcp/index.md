@@ -1,12 +1,13 @@
-+++
-author = "Bruno" 
-categories = ["Rstudio-server", "Rstudio", "GCP"]
-date = "2019-08-14T14:00:00+00:00"
-slug = ""
-tags = []
-title = "Como instalar o RStudio Server em uma instância do Google Cloud Platform (GCP)?"
+---
+authors:
+- Bruno 
+categories: ["Rstudio-server", "Rstudio", "GCP"]
+date: "2019-08-14T14:00:00+00:00"
+slug: ""
+tags: []
+title: "Como instalar o RStudio Server em uma instância do Google Cloud Platform (GCP)?"
 
-+++
+---
 Já pensou em ter seu próprio servidor Rstudio para acessar de onde quiser?
 
 Se sua resposta for **SIM**, vamos aprender agora como instalar o Rstudio Server para você chamar de seu!

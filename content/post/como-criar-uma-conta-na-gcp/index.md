@@ -1,12 +1,14 @@
-+++
-author = "Larissa Lima e Bruno Lucian"
-categories = []
-date = "2019-07-31T15:00:00+00:00"
-slug = ""
-tags = ["cloud", "google", "gcp"]
-title = "Como criar uma conta no Google Cloud Platform"
+---
+authors: 
+- Larissa 
+- Bruno
+categories: []
+date: "2019-07-31T15:00:00+00:00"
+slug: ""
+tags: ["cloud", "google", "gcp"]
+title: "Como criar uma conta no Google Cloud Platform"
 
-+++
+---
 Você conhece o Google Cloud? Já ouviu falar? Possui uma conta para usufruir dos serviços? Não?! Então esse post é pra você!  ;)
 
 Vamos nesse post descrever como criar um usuário no Google Cloud.  E no momento deste post o Google está dando 300 dinheiros para você testar a plataforma. Top né?!

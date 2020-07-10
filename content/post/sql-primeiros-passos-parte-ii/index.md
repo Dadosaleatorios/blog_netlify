@@ -1,12 +1,13 @@
-+++
-author = "Larissa Lima"
-categories = []
-date = 2020-05-21T03:00:00Z
-slug = "SQL"
-tags = []
-title = "SQL - Primeiros Passos - Parte II"
+---
+authors:
+- Larissa
+categories: []
+date: 2020-05-21T03:00:00Z
+slug: "SQL"
+tags: []
+title: "SQL - Primeiros Passos - Parte II"
 
-+++
+---
 E aí galera!
 
 Dando continuidade ao primeiro post de SQL, hoje iremos falar sobre mecanismos para filtrar resultados. Se você não conferiu o primeiro post, é só clicar [aqui](https://www.dadosaleatorios.com.br/blog/sql_basico/).
