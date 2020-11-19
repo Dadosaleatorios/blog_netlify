@@ -1,0 +1,112 @@
+---
+title: Consultas em banco SQL Server com R
+authors: 
+- Barrientos
+date: '2020-11-16'
+slug: consulta-sqlserver-r
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+lastmod: '2020-11-14T17:59:59-03:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>Olá galera, Filipe Barrientos mais uma vez por aqui, neste post vou dar uma explicação de como conectar a um banco do SQL Server e realizar uma query utilizando o R.</p>
+<p>É bem comum que os dados de empresas estejam em bancos de dados SQL Server ao invés de planilhas ou arquivos csv, sendo assim se torna mais simples extrair as querys diretamente para um data frame em R, do que ficar salvando as informações em arquivos diferentes para poder carrega no R.</p>
+<p>Por conta desta e várias outras razões explicarei como faço este processo, desde a conexão ao banco de dados, realização da query.
+<!-- , e até salvar uma tabela no banco novamente. --></p>
+<div id="pacotes-de-conexão" class="section level3">
+<h3>Pacotes de Conexão</h3>
+<p>Existem alguns pacotes para fazer esta conexão, aqui abordaremos como realizar o processo com o pacote “odbc” em um sistema operacional Windows, ele é bem simples e realiza bem a tarefa, enfim entendendo a lógica geral a aplicação é bem parecida para todos os demais.</p>
+<pre class="r"><code>install.packages(&quot;odbc&quot;)
+require(odbc)</code></pre>
+</div>
+<div id="realizando-a-conexão" class="section level3">
+<h3>Realizando a Conexão</h3>
+<p>Esta é a primeira parte do processo, afinal de contas para fazer uma consulta ao banco você vai precisar estar conectado no mesmo né (nossa quem diria), para realizar esta conexão vamos usar função <strong>odbc::dbConnect()</strong>.</p>
+<p>A função <strong>odbc::dbConnect()</strong> vai possibilita conectar ao banco de duas formas diferentes, uma é via DSN, pegando um acesso ODBC já pré-definido do seu computador, para esta forma vai utilizar os seguintes parâmetros:</p>
+<ul>
+<li><strong>drv</strong>: Basta atribuir a função “odbc()”;</li>
+<li><strong>dsn</strong>: Nome da fonte de dados que já está pré-definida na máquina;</li>
+</ul>
+<p>esta conexão ficará da seguinte forma</p>
+<pre class="r"><code># Conectando via DSN
+con &lt;- dbConnect(odbc(), &quot;Nome_DSN_Exemplo&quot;)</code></pre>
+<p>A outra forma de conectar com o <strong>odbc::dbConnect()</strong> é passando todos os parâmetros de conexão a fonte de dados na própria função, esta função possui uma infinidade de parâmetros, porém para uma conexão padrão os parâmetros listados abaixo são suficientes:</p>
+<ul>
+<li><strong>drv</strong>: Basta atribuir a função “odbc()”;</li>
+<li><strong>Driver</strong>: O nome do driver o qual você irá conectar, no caso vamos focar no driver “SQL Server”;</li>
+<li><strong>Server</strong>: Aqui você colocará o nome do server do SQL Server que você deseja conectar;</li>
+<li><strong>Database</strong>: Este aqui é o nome do banco de dados(“DataBase”) onde se encontram as tabelas de interesse;</li>
+<li><strong>UID</strong>: O usuário com permissão de acesso ao banco de dados(“DataBase”) escolhido;<br />
+</li>
+<li><strong>PWD</strong>: A senha deste usuário;</li>
+<li><strong>encoding</strong>: Este é um parâmetro opcional, porém é sempre bom configurar de acordo com seu banco por preocaução;</li>
+</ul>
+<p>desta forma podemos usar como referência o exemplo abaixo, para realizar a conexão:</p>
+<pre class="r"><code># Conectando via definição dos parâmetros
+con &lt;- dbConnect(odbc(),
+                       Driver = &quot;SQL Server&quot;,
+                       Server = &quot;SERVIDOR_HOSPEDADO&quot;,
+                       Database = &quot;BANCO_DE_DADOS&quot;,
+                       UID = &quot;USUARIO&quot;,
+                       PWD = &quot;SENHA&quot;,
+                       encoding =&quot;latin1&quot;)</code></pre>
+<p>porém o exemplo acima possui um problema no quesito de segurança, caso esteja se conectando em um banco de dados de informações sensíveis, não é uma boa idéia deixar no seu código explicitamente o “UID” e o “PWD”, ainda mais se esta conexão fizer parte de uma aplicação shiny ou algo do gênero.</p>
+<p>Para garantir que somente usuários autorizadas terão acesso a esta conexão, ao invés de atribuir diretamente no código um “usuário” e “senha”, coloque a função <strong>rstudioapi::askForPassword()</strong>, no caso esta função abrirá um prompt requisitando que coloque um valor, neste caso será o “usuário” e “senha”. Seguindo este método a conexão terá a seguinte estrutura:</p>
+<pre class="r"><code># Conectando requerindo acesso individual
+con &lt;- dbConnect(odbc(),
+                       Driver = &quot;SQL Server&quot;,
+                       Server = &quot;SERVIDOR_HOSPEDADO&quot;,
+                       Database = &quot;BANCO_DE_DADOS&quot;,
+                       UID = rstudioapi::askForPassword(&quot;Insira seu Usuario&quot;),
+                       PWD = rstudioapi::askForPassword(&quot;Insira sua Senha&quot;),
+                       encoding =&quot;latin1&quot;)</code></pre>
+<p>desta forma ao executar o código, ele abrirá duas caixas de diálogos em sequência, uma requisitando o Usuário e outra a senha de quem estiver entrando, assim qualquer um que não possua nivel de acesso para o banco de dados em questão não conseguirá conectar, mantendo seus dados seguros.</p>
+<p>Para exemplificação, abaixo estão imagens das caixas de diálogos que aparecem ao executar o código:</p>
+<p><img src="InserirUsuario.JPG" alt="Alt text" />
+<img src="InserirSenha.JPG" alt="Alt text" />
+percebam que o texto é personalizável, permitindo que coloque o texto que você preferir.</p>
+</div>
+<div id="executando-a-query" class="section level3">
+<h3>Executando A Query</h3>
+<p>Agora que fizemos a conexão com o banco de dados que será consultado, chegou a hora de trazer os dados para um data.frame no R, onde poderemos fazer análises e tratamentos que quisermos.</p>
+<p>Para realizar tal consulta vamos usar a função <strong>odbc::dbGetQuery()</strong>, onde passaremos dois parâmetros:</p>
+<ul>
+<li><strong>conn</strong>: Que vai receber a conexão com o banco de dados que foi estabelecido, no nosso caso o objeto “con”;</li>
+<li><strong>statement</strong>: Aqui em forma de texto deve ser posto a query desejada;</li>
+</ul>
+<p>para facilitar o entendimento do código, particulamente, costumo atribuir o texto da query a um objeto nomeado de acordo, como “QUERY_VENDAS”, para então colocar o objeto na parte do <strong>statement</strong> da função, como é possível observar no exemplo abaixo:</p>
+<pre class="r"><code># Realizando Query
+QUERY_VENDAS &lt;- paste0(
+    &quot;SET NOCOUNT ON
+    SET ANSI_WARNINGS OFF
+  
+    SELECT  *
+    FROM VENDAS
+    
+    SET NOCOUNT OFF
+    SET ANSI_WARNINGS ON&quot;
+  )
+  
+  VENDAS &lt;- dbGetQuery(con, QUERY_VENDAS)</code></pre>
+<p>e este simples código acima já estaria atribuindo o resultado da query ao data.frame “VENDAS”, com a ajuda de outras funções do pacote <strong>odbc</strong> tais como <strong>dbWriteTable()</strong>, <strong>dbSendQuery()</strong> entre outros é possível fazer um universo de coisas no banco de dados pelo R.</p>
+</div>
+<div id="dicas-de-aplicação" class="section level3">
+<h3>Dicas de Aplicação</h3>
+<p>Uma boa forma de aplicação que encontrei da combinação destas ferramentas, foi em intermediar o processo de ETL da empresa onde trabalho.</p>
+<p>Uma boa forma de realizar alguns tratamentos mais complexos e salvar uma nova tabela já com os tratamentos aplicados é exatamente realizando a conexão ao banco pelo R, então você pode ter o script que for que trate dados estruturados de onde você quiser e da forma que for, pegando de api do Google Analytics ou até de querys do banco SQL mesmo, que o data frame final desejado você pode gravar na tabela no banco, tanto sobrescrevendo a anterior ou realizando um insert.</p>
+<p>E esta é somente uma de um, como dito anteriormente, universo de coisas que será possível que você venha fazer sabendo e tendo criatividade para utilizar as combinações de funções que são possíveis, talvez facilitando muitas automatizações suas de hoje em dia.</p>
+</div>
+<div id="resumo" class="section level3">
+<h3>Resumo</h3>
+<p>Em resumo explicamos quais os parâmetros que devem se ter em mãos para configurar uma conexão a um banco SQL SERVER, de duas maneiras diferentes, e como realizar uma query a este banco, se você chegou até aqui espero muito que tenha conseguido sanar suas dúvidas e se der tudo certo até a próxima!</p>
+</div>
