@@ -1,0 +1,482 @@
+---
+title: DataWarehouse - carga ETL e sua estrutura. 
+authors: 
+- Barrientos
+- Bruno
+date: '2021-01-31'
+slug: 
+draft: true
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+lastmod: '2021-01-14T17:59:59-03:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="processo-de-etl-na-construção-de-um-dw" class="section level2">
+<h2>Processo de ETL na construção de um DW</h2>
+<p>Fala galera, eu sou o Filipe Barrientos e neste artigo vou elucidar sobre as etapas do processo de Carga ETL na construção de um DataWarehouse(DW).</p>
+<p>Onde trabalho surgiu o desafio de estar a frente da equipe de BI, juntamente a responsabilidade de construir um DataWarehouse, devido a isto pratiquei diversas skills que normalmente um Cientista ou Analista de Dados só trabalham mais superficialmente, o que me fez entender melhor o trabalho dos Engenheiros de Dados, além de me colocar a par de todo fluxo de analise.</p>
+<p>Antes de começarmos, porém, devo agradecer ao grande Mestre Bruno Lucian que está me dando este espaço aqui e ao Bruno Salles, um grande profissional com quem tive o prazer de trabalhar e que me ensinou boa parte das práticas que falarei aqui.</p>
+<div id="etl-quem-dw-o-quê" class="section level3">
+<h3>ETL quem? DW o quê?</h3>
+<p>Para incio de conversa vamos explicar o significado das siglas ETL e DW, que são:</p>
+<ul>
+<li><p><strong>ETL</strong>: <strong>E</strong>xtract, <strong>T</strong>ransform, <strong>L</strong>oad.</p></li>
+<li><p><strong>DW</strong>: <strong>D</strong>ata<strong>W</strong>arehouse.</p>
+<p>Bom agora que já sabem o que significam as siglas está tudo explicado né, ainda não?</p></li>
+</ul>
+<p><img src="nazareconfusamatematica.gif" width="220" height="146" /></p>
+<p>Então tudo bem explicarei um pouco mais os conceitos de cada um, vamos começar pelo ETL então.</p>
+<p>O ETL é o processo de integração dos dados que vai viabilizar a construção do DW e como o nome já indica, passar por três etapas:</p>
+<p><img src="ETL_Fluxo.gif" /></p>
+<ol class="example" style="list-style-type: decimal">
+<li><strong>Extract</strong></li>
+</ol>
+<p>Começamos com a extração dos dados das diversas fontes que eles possam estar e juntamos todos em tabelas em um único banco de chamado ODS(Operational data store) que será basicamente uma cópia dos dados operacionais que são do nosso interesse.</p>
+<ol start="2" class="example" style="list-style-type: decimal">
+<li><strong>Transform</strong></li>
+</ol>
+<p>Vamos depois para transformação das tabelas já no ODS em tabelas de dimensões e fatos, criando assim uma estrutura de fatos e dimensões, aplicando as regras de negócios necessárias e padronizando os formatos.</p>
+<ol start="3" class="example" style="list-style-type: decimal">
+<li><strong>Load</strong></li>
+</ol>
+<p>Finalizando realizamos a carga da estrutura de fatos e dimensões que criamos, assim materializando as tabelas para o banco do DW.</p>
+<p>Após efetuado a Carga ETL, teremos um DW com a estrutura ideal para ser acessada por ferramentas de BI e por outros analistas da empresa.</p>
+<p>Abaixo temos uma figura que ilustra bem o fluxo da Carga ETL, desde os dados brutos até o DW, nota-se que ela engloba um passo a mais que são os Data Marts, de forma bem resumida, estes seriam como subgrupos do DW com um foco especializado para cada departamento.</p>
+<p><img src="FluxoETL.png" /></p>
+<p>Não se preocupem se ainda não ficou totalmente claro como realizar o ETL, pois o importante é compreender a ordem que acontece e qual a função de cada etapa o resto é prática.</p>
+<p>Uma vez que o ETL é o processo que pega o dado bruto e o trata para armazenar no DW, o que é este DW onde são levadas estas informações? O DW, como o nome já diz, é o “Armazém de Dados (DataWarehouse)” da empresa, onde se encontram centralizadas e tratadas todas as informações de relevância analítica, ele também possui uma estrutura que visa facilitar o acesso e entendimento dos analistas e consultas das ferramentas de BI, a estruturação mais comum é a de tabelas de Fatos e Dimensões, também chamado de Modelo Estrela(Star Schema).</p>
+</div>
+<div id="fatos-dimensões-e-um-modelo-que-é-a-estrela-do-show-eita-piada-ruim" class="section level3">
+<h3>Fatos, Dimensões e um Modelo que é a “Estrela” do Show (eita piada ruim)</h3>
+<p><img src="piadaruim.gif" width="220" height="146" /></p>
+<p>A estrutura do Modelo Estrela se baseia em dividir todos os dados transacionais e informações cruas, aqueles que foram extraidos para o ODS, em dois tipos de tabelas:</p>
+<ul>
+<li><p><strong>Fatos</strong>: São as métricas como valores de venda, número de atendimentos e outras variáveis quantitativas, que servem para calcular os indicadores, além das colunas chaves das dimensões, que definem a granularidade possível de se alcançar para estes valores.</p></li>
+<li><p><strong>Dimensões</strong>: São as variáveis descritivas dos atributos associados as Fatos, elas vão possibilitar as diferentes visões de um indicador, pois nelas estão, por exemplo, produtos, filiais, clientes, e seus detalhes como Grupo_Produto, Nome_Filial, Endereço consecutivamente. Além das citadas, ela também possui uma coluna chave, que será um ID único por cada combinação de atributos(cada linha) que é a que fará o cruzamento com a tabela Fato.</p></li>
+</ul>
+<p>Como exemplo vamos fazer uma tabela transacional fictícia e mostrar como ela se transformaria em tabelas de Fatos e de Dimensões, não iremos aplicar os tratamentos da Carga ETL somente a lógica de Fatos e Dimensões.</p>
+<p>Para começar vamos exemplificar uma tabela transacional que já esteja no ODS, vamos chamá-la de “tb_ODS_Exemplo_Venda”:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>tb_ODS_Exemplo_Venda</caption>
+<colgroup>
+<col width="13%" />
+<col width="19%" />
+<col width="12%" />
+<col width="12%" />
+<col width="13%" />
+<col width="14%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Valor Venda</th>
+<th align="right">Quantidade Venda</th>
+<th align="left">Cod Pedido</th>
+<th align="left">Cod Filial</th>
+<th align="left">Cod Cliente</th>
+<th align="left">Cod Vendedor</th>
+<th align="left">Cod Produto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">918</td>
+<td align="right">1</td>
+<td align="left">P_1</td>
+<td align="left">F_A</td>
+<td align="left">C_A</td>
+<td align="left">V_A</td>
+<td align="left">PROD_A</td>
+</tr>
+<tr class="even">
+<td align="right">530</td>
+<td align="right">1</td>
+<td align="left">P_1</td>
+<td align="left">F_B</td>
+<td align="left">C_B</td>
+<td align="left">V_B</td>
+<td align="left">PROD_B</td>
+</tr>
+<tr class="odd">
+<td align="right">681</td>
+<td align="right">1</td>
+<td align="left">P_1</td>
+<td align="left">F_C</td>
+<td align="left">C_C</td>
+<td align="left">V_C</td>
+<td align="left">PROD_C</td>
+</tr>
+<tr class="even">
+<td align="right">696</td>
+<td align="right">1</td>
+<td align="left">P_1</td>
+<td align="left">F_C</td>
+<td align="left">C_C</td>
+<td align="left">V_C</td>
+<td align="left">PROD_D</td>
+</tr>
+<tr class="odd">
+<td align="right">583</td>
+<td align="right">2</td>
+<td align="left">P_1</td>
+<td align="left">F_D</td>
+<td align="left">C_D</td>
+<td align="left">V_D</td>
+<td align="left">PROD_E</td>
+</tr>
+<tr class="even">
+<td align="right">692</td>
+<td align="right">2</td>
+<td align="left">P_2</td>
+<td align="left">F_D</td>
+<td align="left">C_E</td>
+<td align="left">V_E</td>
+<td align="left">PROD_F</td>
+</tr>
+</tbody>
+</table>
+<p>acima temos a tabela na sua forma original, é possível ver que a mesma possui duas métricas(<code>Valor Venda</code> e <code>Quantidade Venda</code>) e cinco dimensões(<code>Cod Pedido</code>, <code>Cod Filial</code>, <code>Cod Cliente</code>, <code>Cod Vendedor</code>, <code>Cod Produto</code>), uma regra de negócio(para fins de exemplo) que vamos considerar é que tivemos que fazer uma dimensão de pedido pois o mesmo <code>Cod Pedido</code> pode existir em <code>Cod Filiais</code> diferentes, e a combinação única será <code>Cod Pedido+Cod Filial+Cod Cliente</code>, pois no caso de ele já ser um identificador geral único, não haveria necessidades de criar uma tabela de dimensão somente para ele.</p>
+<p>Agora que já temos um exemplo de dados transacionais, vamos mostrar as tabelas de dimensões que existiriam para esta situação:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 2: </span>tb_Dim_Pedido</caption>
+<thead>
+<tr class="header">
+<th align="right">IdPedido</th>
+<th align="left">Cod Pedido</th>
+<th align="left">Cod Filial</th>
+<th align="left">Cod Cliente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">P_1</td>
+<td align="left">F_A</td>
+<td align="left">C_A</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">P_1</td>
+<td align="left">F_B</td>
+<td align="left">C_B</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">P_1</td>
+<td align="left">F_C</td>
+<td align="left">C_C</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">P_1</td>
+<td align="left">F_D</td>
+<td align="left">C_D</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">P_2</td>
+<td align="left">F_D</td>
+<td align="left">C_E</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 3: </span>tb_Dim_Filial</caption>
+<thead>
+<tr class="header">
+<th align="right">IdFilial</th>
+<th align="left">Cod Filial</th>
+<th align="left">UF</th>
+<th align="left">Localização</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">F_A</td>
+<td align="left">RJ</td>
+<td align="left">SHOPPING</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">F_B</td>
+<td align="left">SP</td>
+<td align="left">SHOPPING</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">F_C</td>
+<td align="left">MG</td>
+<td align="left">RUA</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">F_D</td>
+<td align="left">AC</td>
+<td align="left">RUA</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-4">Table 4: </span>tb_Dim_Cliente</caption>
+<thead>
+<tr class="header">
+<th align="right">IdCliente</th>
+<th align="left">CodCliente</th>
+<th align="left">CPF</th>
+<th align="left">Sexo</th>
+<th align="right">Idade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">C_A</td>
+<td align="left">0001</td>
+<td align="left">M</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">C_B</td>
+<td align="left">0002</td>
+<td align="left">M</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">C_C</td>
+<td align="left">0003</td>
+<td align="left">F</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">C_D</td>
+<td align="left">0004</td>
+<td align="left">F</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">C_E</td>
+<td align="left">0005</td>
+<td align="left">M</td>
+<td align="right">30</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 5: </span>tb_Dim_Vendedor</caption>
+<thead>
+<tr class="header">
+<th align="right">IdVendedor</th>
+<th align="left">Cod Vendedor</th>
+<th align="left">Supervisor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">V_A</td>
+<td align="left">S_A</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">V_B</td>
+<td align="left">S_A</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">V_C</td>
+<td align="left">S_B</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">V_D</td>
+<td align="left">S_C</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">V_E</td>
+<td align="left">S_D</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-6">Table 6: </span>tb_Dim_Produto</caption>
+<thead>
+<tr class="header">
+<th align="right">IdProduto</th>
+<th align="left">Cod Produto</th>
+<th align="left">Marca</th>
+<th align="left">Material</th>
+<th align="left">Grupo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">PROD_A</td>
+<td align="left">M_EX</td>
+<td align="left">UNOBTAINIUUM</td>
+<td align="left">ENGENHARIA</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">PROD_B</td>
+<td align="left">M_EX</td>
+<td align="left">MITHRIL</td>
+<td align="left">LOTR</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">PROD_C</td>
+<td align="left">M_EMPLO</td>
+<td align="left">CARBONITA</td>
+<td align="left">STARWARS</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">PROD_D</td>
+<td align="left">M_EMPLO</td>
+<td align="left">KRYPITONITA</td>
+<td align="left">DC</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">PROD_E</td>
+<td align="left">M_EMPLO</td>
+<td align="left">VIBRANIUM</td>
+<td align="left">MARVEL</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">PROD_F</td>
+<td align="left">M_EMPLO</td>
+<td align="left">ADAMANTIUM</td>
+<td align="left">MARVEL</td>
+</tr>
+</tbody>
+</table>
+<p>como é possível perceber, estas tabelas possuem todos os detalhes da dimensão observada, mas podem servir também, como no caso do pedido, para facilitar na contagem, uma vez que os textos serão substítuidos pelos Id’s de cada dimensão, esta alteração ajuda muito também em questão de velocidade e desempenho de leitura, uma vez que é mais rápido a leitura de uma tabela somente com valores numéricos do que com textos de diversos tamanhos.</p>
+<p>Agora que as tabelas de dimensão foram apresentadas, podemos ver abaixo como ficaria a tabela Fato deste exemplo:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 7: </span>tb_Fato_Exemplo_Venda</caption>
+<thead>
+<tr class="header">
+<th align="right">Valor Venda</th>
+<th align="right">Quantidade Venda</th>
+<th align="left">IdPedido</th>
+<th align="left">IdFilial</th>
+<th align="left">IdCliente</th>
+<th align="left">IdVendedor</th>
+<th align="left">IdProduto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">918</td>
+<td align="right">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="right">530</td>
+<td align="right">1</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="odd">
+<td align="right">681</td>
+<td align="right">1</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="right">696</td>
+<td align="right">1</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="right">583</td>
+<td align="right">2</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="right">692</td>
+<td align="right">2</td>
+<td align="left">5</td>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">6</td>
+</tr>
+</tbody>
+</table>
+<p>vejam que cada uma das variáveis que se referiam a uma dimensão foi substituida por sua respectiva chave(Id), outro ponto é a contagem de pedidos mais facilitada, antes seria necessário uma concatenação de três campos e uma contagem de objetos distintos para obtermos a este valor, já agora, basta fazermos a contagem sobre o campo de <code>Idpedido</code>, ou no caso de não haver nenhuma condição(vendas acima de, cliente específico e etc..) basta verificar o valor máximo do campo, veja que a referência de cada pedido não se perde também, pois continua existir na tabela de dimensão.</p>
+<p>Após todos estes exemplos e explicações alguns podem estar sem entender a questão do nome do modelo, afinal de contas o que tudo isto tem haver com uma “Estrela”? Basicamente o nome se dá por conta da disposição das tabelas ligadas e representadas no schema:</p>
+<p><img src="StarModel.png" /></p>
+<p>e para quem estiver pensando, sim eu coloquei com cinco dimensões para que ficasse mais fácil a visualização,
+<img src="piscada.gif" width="220" height="146" />
+mas é possível fazer uma fato se ligar a mais ou menos dimensões, vai depender da sua necessidade.</p>
+</div>
+<div id="dicas-para-o-etl" class="section level3">
+<h3>Dicas para o ETL</h3>
+<p>Agora que já passamos por toda a parte mais teórica dos conceitos, torço para que vocês estejam já entendo um pouco melhor sobre o processo de construção de um DW, mas nesta parte gostaria de compartilhar algumas dicas mais práticas da Carga ETL que me foram ensinadas e outras que fui aprendendo na prática que facilitam bastante na manutenção e para trabalhar com os dados.</p>
+<p>Então vamos dividir as dicas por cada passo respectivimanete, a partir daqui vou utiizar alguns termos do SQL SERVER, então caso não entenda algo e só dar uma google, então sem mais papo vamos dar essas dicas:</p>
+<ul>
+<li><p>Popule as tabelas do ODS através de procedures que façam a query na produção e insiram nas tabelas do ODS, e mesmo que seja mais fácil por vezes coletar dados de api’s por scripts em Python/R, não salve diretamente no ODS mas sim em outro banco para que seja carregada via procedure para o ODS, desta forma facilita o rastreio da origem das tabelas.</p></li>
+<li><p>As procedures devem já ser criadas, quando possível, com parâmetros que possibilitem a carga completa ou incremental dos dados, afinal de contas quanto menos informações estiver trazendo de um só vez mais rápido será.</p></li>
+<li><p>Mesmo na etapa de Extração algumas transformações são bem vindas, como a padronização de todos os campos, aplicando pequenos tratamentos como LTRIM e RTRIM em campos de textos, convertendo números em int ou float e datas para DateTime, além dos Nomes das variáveis adaptar a um padrão, se os campos de <code>CodiGO_de_CLIENTE</code> em uma tabela virou <code>CodCliente</code>, esta mesma variável nas demais tabelas também deve seguir este padrão.</p></li>
+<li><p>Falando em padronização é sempre bom também fazer o mesmo nos nomes das suas tabelas, procedures e views, no meu caso por exemplo minhas tabelas no ODS possuem o prefixo <code>tb_ODS</code> seguido do nome da tabela Ex.: “tb_ODS_Exemplo_Venda”, enquanto no DW as fatos e dimensões possuem respectivamente os prefixos <code>tb_Fato</code> e <code>tb_Dim</code>, Ex.: <code>tb_Fato_Exemplo_Venda</code> e <code>tb_Dim_Exemplo</code>. Desta forma se cria um padrão que facilita a vida de quem é novo, pois estamos tornando as coisas mais intuitivas.</p></li>
+<li><p>Algumas dimensões podem sofrer atualizações cadastrais, então é sempre bom para isto as procedures responsáveis pela carga de tais tabelas serem feitas com merge sempre que for possível, assim você garante a atualização dos dados sempre, e não somente a inserção de novos.</p></li>
+<li><p>Organize seu processo de carga ETL dentro de um projeto SSIS, desta forma você organiza melhor quem deve se carregado antes ou depois, lembrando que a ordem de carga sempre será Tabelas para o ODS, seguido da atualização das Dimensões e finalizando com a atualização das Fatos, no projeto crie containers com os nomes que facilite o entendimento.</p></li>
+</ul>
+<p>Espero que sejam úteis estas dicas, são algumas pequenas coisas que percebi ajudarem bastante durante o processo de construção, manutenção e atualização do DW.</p>
+</div>
+<div id="bônusporque-ficar-no-armazém-ao-invés-de-mergulhar-no-lago" class="section level3">
+<h3>(Bônus!!)Porque ficar no armazém ao invés de mergulhar no lago?</h3>
+<p>Alguns devem estar se perguntando porque estou falando de DataWarehouse quando o assunto quente de agora é o DataLake, como este assunto é bem extenso e com certeza daria um artigo inteiro somente para explicar e comparar estes dois, por agora me limitarei a dizer que, assim como uma regressão linear pode ser melhor que rede neural dependendo dos seus dados, um DataWarehouse pode ser mais acessível e útil dependendo da situação.
+Em meu caso, chegamos a conclusão analisando a situação que tinhamos que era mais barato e rápido a construção de um DW, baseado nos pontos:</p>
+<ul>
+<li>Todos os dados eram em formato estruturados.</li>
+<li>Volume de dados não era suficientemente grande para justificar uma estrutura em nuvem.</li>
+<li>Os skills necessários para a construção e manutenção de um DataLake são mais complexos do que para um DataWarehouse.</li>
+<li>Em alguns casos o Ambientes em nuvem pode se torna mais caro do que a criação de um banco em um servidor local.</li>
+</ul>
+<p>Por isto é importante uma boa análise da situação antes, para não acabar querendo se jogar num “Hype” sem saber se existem outras alternativas melhores para seu momento.</p>
+</div>
+<div id="conclusão" class="section level3">
+<h3>Conclusão</h3>
+<p>Bem pessoal isto era o que eu tinha para falar(ou escrever) sobre este assunto, sei que deixei algumas coisas de fora e não me aprofundei muito em outros pontos, mas o objetivo era mesmo dá uma visão mais geral sobre o assunto mais voltado para a galera mais iniciante mesmo, então espero que tenham gostado e se tiverem algum dica ou discordar de algum ponto, comenta ai em baixo e vamos espalhar o conhecimento entre nós. Grande Abraço!</p>
+</div>
+</div>
