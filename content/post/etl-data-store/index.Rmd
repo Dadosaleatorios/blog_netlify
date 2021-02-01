@@ -1,5 +1,5 @@
 ---
-title: DataWarehouse - carga ETL e sua estrutura. 
+title: Data Warehouse - carga ETL e sua estrutura. 
 authors: 
 - Barrientos
 - Bruno
@@ -25,15 +25,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Processo de ETL na construção de um DW 
 
-  Fala galera, eu sou o Filipe Barrientos e neste artigo vou elucidar sobre as etapas do processo de Carga ETL na construção de um DataWarehouse(DW). 
+  Fala galera, eu sou o Filipe Barrientos e neste artigo vou elucidar sobre as etapas do processo de Carga ETL na construção de um Data Warehouse(DW). 
   
-  Onde trabalho surgiu o desafio de estar a frente da equipe de BI, juntamente a responsabilidade de construir um DataWarehouse, devido a isto pratiquei diversas skills que normalmente um Cientista ou Analista de Dados só trabalham mais superficialmente, o que me fez entender melhor o trabalho dos Engenheiros de Dados, além de me colocar a par de todo fluxo de analise. 
+  Onde trabalho surgiu o desafio de estar a frente da equipe de BI, juntamente a responsabilidade de construir um Data Warehouse, devido a isto pratiquei diversas skills que normalmente um Cientista ou Analista de Dados só trabalham mais superficialmente, o que me fez entender melhor o trabalho dos Engenheiros de Dados, além de me colocar a par de todo fluxo de analise. 
 
   Antes de começarmos, porém, devo agradecer ao grande Mestre Bruno Lucian que está me dando este espaço aqui e ao Bruno Salles, um grande profissional com quem tive o prazer de trabalhar e que me ensinou boa parte das práticas que falarei aqui.
 
 ### ETL quem? DW o quê?
 
-  Para incio de conversa vamos explicar o significado das siglas ETL e DW, que são:
+  Para início de conversa vamos explicar o significado das siglas ETL e DW, que são:
   
 * **ETL**: **E**xtract, **T**ransform, **L**oad. 
 * **DW**: **D**ata**W**arehouse.
@@ -68,7 +68,7 @@ Finalizando realizamos a carga da estrutura de fatos e dimensões que criamos, a
 
   Não se preocupem se ainda não ficou totalmente claro como realizar o ETL, pois o importante é compreender a ordem que acontece e qual a função de cada etapa o resto é prática.
 
-  Uma vez que o ETL é o processo que pega o dado bruto e o trata para armazenar no DW, o que é este DW onde são levadas estas informações? O DW, como o nome já diz, é o "Armazém de Dados (DataWarehouse)" da empresa, onde se encontram centralizadas e tratadas todas as informações de relevância analítica, ele também possui uma estrutura que visa facilitar o acesso e entendimento dos analistas e consultas das ferramentas de BI, a estruturação mais comum é a de tabelas de Fatos e Dimensões, também chamado de Modelo Estrela(Star Schema).
+  Uma vez que o ETL é o processo que pega o dado bruto e o trata para armazenar no DW, o que é este DW onde são levadas estas informações? O DW, como o nome já diz, é o "Armazém de Dados (Data Warehouse)" da empresa, onde se encontram centralizadas e tratadas todas as informações de relevância analítica, ele também possui uma estrutura que visa facilitar o acesso e entendimento dos analistas e consultas das ferramentas de BI, a estruturação mais comum é a de tabelas de Fatos e Dimensões, também chamado de Modelo Estrela(Star Schema).
   
 ### Fatos, Dimensões e um Modelo que é a "Estrela" do Show (eita piada ruim)
 
@@ -239,12 +239,12 @@ mas é possível fazer uma fato se ligar a mais ou menos dimensões, vai depende
   
 ### (Bônus!!)Porque ficar no armazém ao invés de mergulhar no lago?
 
-  Alguns devem estar se perguntando porque estou falando de DataWarehouse quando o assunto quente de agora é o DataLake, como este assunto é bem extenso e com certeza daria um artigo inteiro somente para explicar e comparar estes dois, por agora me limitarei a dizer que, assim como uma regressão linear pode ser melhor que  rede neural dependendo dos seus dados, um DataWarehouse pode ser mais acessível e útil dependendo da situação.
+  Alguns devem estar se perguntando porque estou falando de Data Warehouse quando o assunto quente de agora é o DataLake, como este assunto é bem extenso e com certeza daria um artigo inteiro somente para explicar e comparar estes dois, por agora me limitarei a dizer que, assim como uma regressão linear pode ser melhor que  rede neural dependendo dos seus dados, um Data Warehouse pode ser mais acessível e útil dependendo da situação.
   Em meu caso, chegamos a conclusão analisando a situação que tinhamos que era mais barato e rápido a construção de um DW, baseado nos pontos:
   
 * Todos os dados eram em formato estruturados.
 *	Volume de dados não era suficientemente grande para justificar uma estrutura em nuvem.
-*	Os skills necessários para a construção e manutenção de um DataLake são mais complexos do que para um DataWarehouse.
+*	Os skills necessários para a construção e manutenção de um DataLake são mais complexos do que para um Data Warehouse.
 *	Em alguns casos o Ambientes em nuvem pode se torna mais caro do que a criação de um banco em um servidor local.
 
   Por isto é importante uma boa análise da situação antes, para não acabar querendo se jogar num "Hype" sem saber se existem outras alternativas melhores para seu momento.
